@@ -122,15 +122,15 @@ jobs:
           } > /tmp/results/latest.md
           git config user.name "ci-results"
           git config user.email "ci-results@users.noreply.github.com"
-          git fetch origin ci-results:ci-results 2>/dev/null || true
-          git checkout -B ci-results 2>/dev/null
+          if git fetch -q origin ci-results; then git checkout -q -B ci-results FETCH_HEAD; else git checkout -q --orphan ci-results; fi
           git rm -rq --cached . 2>/dev/null || true
           find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          git checkout -q FETCH_HEAD -- . 2>/dev/null || true
           cp /tmp/results/latest.md latest.md
           cp latest.md "build-$RUN.md"
-          git add latest.md "build-$RUN.md"
+          git add -A .
           git commit -qm "results of build $RUN" || true
-          git push -q origin ci-results
+          git push -q --force origin ci-results
 
   emulator:
     needs: build
@@ -174,11 +174,11 @@ jobs:
           cp -r shots emu-logs /tmp/emu/ 2>/dev/null || true
           git config user.name "ci-results"
           git config user.email "ci-results@users.noreply.github.com"
-          git fetch origin ci-results
-          git checkout -B ci-results origin/ci-results
+          git fetch -q origin ci-results
+          git checkout -q -B ci-results FETCH_HEAD
           rm -rf "emulator-$RUN" && mkdir -p "emulator-$RUN"
           cp -r /tmp/emu/* "emulator-$RUN/" 2>/dev/null || true
           rm -rf emulator-latest && cp -r "emulator-$RUN" emulator-latest
           git add "emulator-$RUN" emulator-latest
           git commit -qm "emulator results of build $RUN" || true
-          git push -q origin ci-results
+          git push -q --force origin ci-results
