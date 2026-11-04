@@ -6,6 +6,9 @@ import * as WebBrowser from 'expo-web-browser';
 import { AppText, Button, Icon, type IconName } from '@/components/ui';
 import { Loading } from '@/components/States';
 import { useAuth } from '@/auth/session';
+import { useBlocked } from '@/auth/mine';
+import { useQuery } from '@tanstack/react-query';
+import { fetchBlockedShops } from '@/api/me';
 import { db } from '@/api/db';
 import { config } from '@/lib/config';
 import { CONTACT_EMAIL, SITE_URL } from '@/lib/site';
@@ -36,6 +39,24 @@ function RowList({ rows }: { rows: Row[] }) {
           </View>
           <Icon name="chevronRight" color={colors.borderStrong} size={18} strokeWidth={2} />
         </Pressable>
+      ))}
+    </View>
+  );
+}
+
+function BlockedShops({ userId }: { userId: string }) {
+  const q = useQuery({ queryKey: ['blocked-shops', userId], queryFn: () => fetchBlockedShops(userId) });
+  const { change } = useBlocked();
+  const shops = q.data ?? [];
+  return (
+    <View style={[styles.panel, styles.blocked]}>
+      {q.isPending ? <Loading /> : shops.length === 0 ? (
+        <AppText variant="bodySmall" tone="secondary">You have not blocked any shops.</AppText>
+      ) : shops.map((s) => (
+        <View key={s.id} style={styles.blockedRow}>
+          <AppText variant="label" style={styles.flex} numberOfLines={1}>{s.name}</AppText>
+          <Button title="Unblock" variant="ghost" onPress={() => change.mutate({ shopId: s.id, block: false })} />
+        </View>
       ))}
     </View>
   );
@@ -74,6 +95,13 @@ export default function AccountScreen() {
         <AppText variant="caption" tone="secondary" style={styles.section}>HELP</AppText>
         <RowList rows={HELP_ROWS} />
 
+        {user ? (
+          <>
+            <AppText variant="caption" tone="secondary" style={styles.section}>BLOCKED SHOPS</AppText>
+            <BlockedShops userId={user.id} />
+          </>
+        ) : null}
+
         {user ? <Button title="Sign out" variant="outline" loading={busy} onPress={signOut} style={styles.signOut} /> : null}
 
         <AppText variant="caption" tone="secondary" style={styles.env}>
@@ -96,5 +124,7 @@ const styles = StyleSheet.create({
   flex: { flex: 1, gap: 2 },
   section: { marginTop: space.md, letterSpacing: 0.5 },
   signOut: { marginTop: space.md },
+  blocked: { padding: space.lg, gap: space.sm },
+  blockedRow: { flexDirection: 'row', alignItems: 'center', gap: space.sm },
   env: { textAlign: 'center', marginTop: space.lg },
 });

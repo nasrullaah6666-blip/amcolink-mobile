@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { AppText } from '@/components/ui';
 import { Photo } from '@/components/Photo';
+import { SaveButton } from '@/components/SaveButton';
 import type { Listing } from '@/api/listings';
 import { formatPrice } from '@/core/utils';
 import { conditionLabel } from '@/core/conditions';
@@ -23,7 +24,10 @@ export const ListingCard = memo(function ListingCard({ ad }: { ad: Listing }) {
       onPress={() => router.push({ pathname: '/ads/[id]', params: { id: ad.id } })}
       style={({ pressed }) => [styles.card, pressed && { opacity: 0.85 }]}
     >
-      <Photo src={ad.photo_urls?.[0]} thumb style={styles.photo} label={ad.title} />
+      <View>
+        <Photo src={ad.photo_urls?.[0]} thumb style={styles.photo} label={ad.title} />
+        <SaveButton adId={ad.id} overlay />
+      </View>
       <View style={styles.body}>
         <AppText variant="price" tone="green" numberOfLines={1}>{formatPrice(ad.price, ad.currency, ad.price_from)}</AppText>
         <AppText variant="bodySmall" numberOfLines={2}>{ad.title}</AppText>

@@ -4,6 +4,7 @@ import { ListingCard } from '../ListingCard';
 
 jest.mock('expo-router', () => ({ router: { push: jest.fn() } }));
 jest.mock('expo-image', () => ({ Image: () => null }));
+jest.mock('@/auth/mine', () => ({ useSaved: () => ({ signedIn: false, saved: { ads: new Set(), shops: new Set() }, toggle: { mutate: jest.fn(), isPending: false } }) }));
 
 const base = {
   id: 'a1', shop_id: 's1', owner_id: 'u1', title: 'Samsung A15', description: '', price: 15000, currency: 'KES',

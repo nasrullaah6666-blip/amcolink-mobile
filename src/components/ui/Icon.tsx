@@ -8,8 +8,8 @@ export type IconName =
   | 'grid' | 'compass' | 'call' | 'whatsapp' | 'map' | 'share' | 'flag' | 'more';
 
 /** One icon set, one stroke style. Colour defaults to the main text colour. */
-export function Icon({ name, color = colors.text, size: s = size.icon, strokeWidth = 1.8 }: { name: IconName; color?: string; size?: number; strokeWidth?: number }) {
-  const p = { stroke: color, strokeWidth, fill: 'none' as const, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+export function Icon({ name, color = colors.text, size: s = size.icon, strokeWidth = 1.8, filled }: { name: IconName; color?: string; size?: number; strokeWidth?: number; filled?: boolean }) {
+  const p = { stroke: color, strokeWidth, fill: filled ? color : 'none', strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
   return (
     <Svg width={s} height={s} viewBox="0 0 24 24" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
       {name === 'home' || name === 'house' ? <Path {...p} d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" /> : null}

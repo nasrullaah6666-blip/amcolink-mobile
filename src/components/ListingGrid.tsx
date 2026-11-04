@@ -4,6 +4,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { ListingCard } from '@/components/ListingCard';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { PAGE_SIZE, type Listing } from '@/api/listings';
+import { useBlocked } from '@/auth/mine';
 import { colors, space } from '@/theme/tokens';
 
 /**
@@ -23,7 +24,9 @@ export function ListingGrid({ queryKey, load, header, emptyTitle, emptyHint }: {
     initialPageParam: 0,
     getNextPageParam: (last, all) => (last.length === PAGE_SIZE ? all.length : undefined),
   });
-  const ads = q.data?.pages.flat() ?? [];
+  const { blocked } = useBlocked();
+  // Shops the person blocked are hidden (website does the same, in the database query).
+  const ads = (q.data?.pages.flat() ?? []).filter((a) => !blocked.has(a.shop_id));
   const seen = new Set<string>();
   const unique = ads.filter((a) => (seen.has(a.id) ? false : (seen.add(a.id), true)));
 

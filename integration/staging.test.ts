@@ -113,3 +113,12 @@ test('app query: shop profile lookup and trust run on staging', async () => {
   expect(res.error).toBeNull();
   await expect(getTrust(db, [])).resolves.toBeInstanceOf(Map);
 });
+
+test('signed-out visitors cannot save, block or read other people\'s saved items', async () => {
+  const fav = await db.from('favorites').insert({ user_id: '00000000-0000-0000-0000-000000000000', ad_id: '00000000-0000-0000-0000-000000000000' });
+  expectRefused(fav.error);
+  const blk = await db.from('blocked_shops').insert({ user_id: '00000000-0000-0000-0000-000000000000', shop_id: '00000000-0000-0000-0000-000000000000' });
+  expectRefused(blk.error);
+  const read = await db.from('favorites').select('id').limit(1);
+  if (read.error) expectRefused(read.error); else expect(read.data ?? []).toHaveLength(0);
+});

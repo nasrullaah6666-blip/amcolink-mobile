@@ -8,6 +8,8 @@ import { ScreenHeader } from '@/components/ScreenHeader';
 import { ListingCard } from '@/components/ListingCard';
 import { ContactBar } from '@/components/ContactBar';
 import { Photo } from '@/components/Photo';
+import { FollowButton } from '@/components/SaveButton';
+import { ReportAndBlock } from '@/components/ReportAndBlock';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { fetchShop, fetchShopListings } from '@/api/listings';
 import { trackEvent } from '@/api/track';
@@ -60,6 +62,7 @@ export default function ShopScreen() {
         <Photo src={shop.logo_url} thumb style={styles.logo} label={`${shop.name} logo`} />
         <AppText variant="title" accessibilityRole="header">{shop.name}</AppText>
         {shop.is_verified ? <AppText variant="label" tone="green">Verified</AppText> : null}
+        <FollowButton shopId={shop.id} />
         {place ? <AppText variant="bodySmall" tone="secondary">{place}</AppText> : null}
         {area ? <AppText variant="bodySmall" tone="secondary">{area}</AppText> : null}
         {status ? <AppText variant="label" tone={status.open ? 'green' : 'secondary'}>{status.text}</AppText> : null}
@@ -71,6 +74,7 @@ export default function ShopScreen() {
           <Button style={styles.flex} variant="outline" title="Map" icon={<Icon name="map" color={colors.green} size={18} strokeWidth={2} />} onPress={() => Linking.openURL(mapsUrl({ ...s, name: shop.name })).catch(() => {})} />
           <Button style={styles.flex} variant="outline" title="Share" icon={<Icon name="share" color={colors.green} size={18} strokeWidth={2} />} onPress={share} />
         </View>
+        <ReportAndBlock shopId={shop.id} shopName={shop.name} />
         <AppText variant="heading" style={styles.section}>Ads ({ads.length})</AppText>
       </View>
     </View>

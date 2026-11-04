@@ -8,6 +8,7 @@ import { ListingCard } from '@/components/ListingCard';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { fetchLatest, PAGE_SIZE, type Listing } from '@/api/listings';
 import { MAIN_CATEGORIES } from '@/core/categories';
+import { useBlocked } from '@/auth/mine';
 import { colors, fonts, radius, size, space, type } from '@/theme/tokens';
 
 const ICONS: Record<string, IconName> = {
@@ -72,7 +73,9 @@ export default function HomeScreen() {
     initialPageParam: 0,
     getNextPageParam: (last, all) => (last.length === PAGE_SIZE ? all.length : undefined),
   });
-  const items: Listing[] = feed.data?.pages.flat() ?? [];
+  const { blocked } = useBlocked();
+  // Shops the person blocked are hidden (website does the same).
+  const items: Listing[] = (feed.data?.pages.flat() ?? []).filter((a) => !blocked.has(a.shop_id));
   const onSearch = useCallback((q: string) => router.push({ pathname: '/search', params: { q } }), []);
 
   return (

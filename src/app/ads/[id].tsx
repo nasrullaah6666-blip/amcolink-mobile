@@ -9,6 +9,8 @@ import { ContactBar } from '@/components/ContactBar';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { Photo } from '@/components/Photo';
+import { SaveButton } from '@/components/SaveButton';
+import { ReportAndBlock } from '@/components/ReportAndBlock';
 import { fetchListing } from '@/api/listings';
 import { trackEvent } from '@/api/track';
 import { formatPrice } from '@/core/utils';
@@ -66,11 +68,12 @@ export default function ListingScreen() {
 
   return (
     <SafeAreaView edges={['top']} style={styles.page}>
-      <ScreenHeader right={
+      <ScreenHeader right={<View style={styles.headerRight}>
+        <SaveButton adId={ad.id} />
         <Pressable accessibilityRole="button" accessibilityLabel="Share" onPress={share} style={styles.iconButton}>
           <Icon name="share" strokeWidth={2} size={22} />
         </Pressable>
-      } />
+      </View>} />
       <ScrollView contentContainerStyle={styles.scroll}>
         <PhotoPager photos={ad.photo_urls ?? []} title={ad.title} />
         <View style={styles.body}>
@@ -122,6 +125,7 @@ export default function ListingScreen() {
           <View style={styles.safety}>
             <AppText variant="bodySmall" style={styles.safetyText}>{safety}</AppText>
           </View>
+          {shop ? <ReportAndBlock adId={ad.id} shopId={shop.id} shopName={shop.name} /> : null}
         </View>
       </ScrollView>
       {shop ? <ContactBar shop={shop} adId={ad.id} adTitle={ad.title} /> : null}
@@ -144,5 +148,6 @@ const styles = StyleSheet.create({
   flex: { flex: 1, gap: 2 },
   safety: { padding: space.md, borderRadius: radius.md, backgroundColor: colors.greenTint },
   safetyText: { color: colors.greenPressed },
+  headerRight: { flexDirection: 'row' },
   iconButton: { width: size.touch, height: size.touch, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
 });

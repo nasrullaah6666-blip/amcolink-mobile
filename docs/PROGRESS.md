@@ -12,6 +12,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 | 5 | Data layer + Home feed (latest finds, search box, category tiles) | IN PROGRESS |
 | 6 | Browse screens: listing detail, shop profile, category, search, property, Explore collections | IN PROGRESS |
 | 7 | Accounts: sign in, create account, forgot password, sign out, Account tab | BLOCKED (owner: staging security-check site key) |
+| 8 | Saved, Follow, Report, Block (signed-in buyer actions) | IN PROGRESS |
 
 ---
 
@@ -63,3 +64,12 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Tests:** 5 unit tests (token sent, wrong password, no token = nothing sent, sign-up rules, sign-up data) — passed locally.
 - **BLOCKED:** the test build needs the staging Turnstile **site key** (public value) as GitHub secret `STAGING_TURNSTILE_SITE_KEY`. Without it the app shows "The security check is not set up in this build" and does not try to sign in.
 - **Not yet verified:** a real sign-in on the emulator/phone (needs the key and a staging test account).
+
+## Task 8 — Saved, Follow, Report, Block
+- **Objective:** the signed-in buyer actions the website has on listings and shops.
+- **Files:** `src/api/me.ts`, `src/auth/mine.ts`, `src/components/SaveButton.tsx`, `src/components/ReportAndBlock.tsx`, `src/core/reportReasons.ts`, `src/app/(tabs)/saved.tsx`, Account tab (blocked shops + Unblock), heart on every listing card and the listing page, Follow on the shop page.
+- **Website rules kept:** favorites one row per listing/shop; report reasons and text rule; "already reported" answer; block confirmation text; blocked shops hidden from lists.
+- **Difference:** the website hides blocked shops inside the database query; the app hides them after loading (a page may show fewer than 24 items). Same result for the buyer.
+- **Not in this task:** saved searches and price-drop alerts (later task).
+- **Tests:** 4 unit tests (report text, save, already reported, block); staging test that signed-out visitors cannot save or block.
+- **Not yet verified on a device:** needs sign-in (Task 7 blocker).
