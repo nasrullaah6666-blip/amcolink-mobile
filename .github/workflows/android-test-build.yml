@@ -23,6 +23,7 @@ jobs:
     env:
       CI: "1"
       EXPO_PUBLIC_APP_ENV: preview
+      ANDROID_VERSION_CODE: ${{ github.run_number }}
       EXPO_PUBLIC_SUPABASE_URL: https://ckhoycpsjftavuqxxnss.supabase.co
       EXPO_PUBLIC_SUPABASE_KEY: ${{ secrets.STAGING_SUPABASE_KEY }}
       EXPO_PUBLIC_TURNSTILE_SITE_KEY: ${{ secrets.STAGING_TURNSTILE_SITE_KEY }}

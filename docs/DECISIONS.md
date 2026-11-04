@@ -51,3 +51,12 @@ Each entry: what was chosen, why, and what else was considered.
 - **Why:** Supabase requires a Turnstile token for sign-in/sign-up (CAPTCHA stays on). Turnstile only runs in a web page on an approved address.
 - **Alternatives:** loading the check with a fake website address (works on some phones, but pretends to be amcolink.com — not used); a page on amcolink.com (needs a website change — not allowed).
 - **Production:** needs a permanent check page on the owner's Cloudflare and that address added to the production Turnstile widget (owner action, listed in the report).
+
+## D11. Test app and store app side by side
+- **Chosen:** `app.config.ts` gives test builds the name "Amcolink (staging)" and Android ID `com.amcolink.app.dev`; the store build (`EXPO_PUBLIC_APP_ENV=production`) is "Amcolink", `com.amcolink.app`. Version code = build number.
+- **Why:** testers can keep both on one phone, and a test build can never be mistaken for the real app. The data guard still refuses production data in test builds.
+- **Note:** `com.amcolink.app` becomes permanent once uploaded to Google Play — owner to confirm it before the first upload.
+
+## D12. App icon from the website logo
+- **Chosen:** icons drawn from the website's own logo (components/Logo.tsx: green tile, white bag, "A" with linked rings), rendered at 1024 px; Android adaptive icon with the bag inside the safe zone and a white one-colour version for themed icons.
+- **Alternatives:** the Expo default icon (not Amcolink); the website's 512 px PNG (too small for the store).
