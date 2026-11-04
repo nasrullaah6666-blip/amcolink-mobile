@@ -6,9 +6,9 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.google.protobuf.UnsafeUtil$MemoryAccessor (file:/home/runner/.maestro/lib/protobuf-java-3.21.9.jar)
 WARNING: Please consider reporting this to the maintainers of class com.google.protobuf.UnsafeUtil$MemoryAccessor
 WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
-[Failed] 03-account (1m 14s) (Element not found: Text matching regex: Create account)
-[Passed] 01-smoke (39s)
-[Passed] 02-browse (1m 14s)
+[Passed] 03-account (1m 4s)
+[Failed] 01-smoke (42s) (Assertion is false: "Test build · connected to STAGING" is visible)
+[Passed] 02-browse (1m 16s)
 
 1/3 Flow Failed
 
