@@ -38,6 +38,14 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: gradle-${{ runner.os }}-
+
       - name: Prepare log folder
         run: mkdir -p ci-logs
 
@@ -122,4 +130,55 @@ jobs:
           cp latest.md "build-$RUN.md"
           git add latest.md "build-$RUN.md"
           git commit -qm "results of build $RUN" || true
+          git push -q origin ci-results
+
+  emulator:
+    needs: build
+    if: needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: amcolink-staging-test-${{ github.run_number }}
+
+      - name: Allow the emulator to use hardware speed-up
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Install Maestro (UI test tool)
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Run the app on an Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          profile: pixel_6
+          disable-animations: true
+          script: bash .maestro/run.sh
+
+      - name: Write emulator results to the ci-results branch
+        if: always()
+        env:
+          RUN: ${{ github.run_number }}
+        run: |
+          mkdir -p /tmp/emu
+          cp -r shots emu-logs /tmp/emu/ 2>/dev/null || true
+          git config user.name "ci-results"
+          git config user.email "ci-results@users.noreply.github.com"
+          git fetch origin ci-results
+          git checkout -B ci-results origin/ci-results
+          rm -rf "emulator-$RUN" && mkdir -p "emulator-$RUN"
+          cp -r /tmp/emu/* "emulator-$RUN/" 2>/dev/null || true
+          rm -rf emulator-latest && cp -r "emulator-$RUN" emulator-latest
+          git add "emulator-$RUN" emulator-latest
+          git commit -qm "emulator results of build $RUN" || true
           git push -q origin ci-results

@@ -1,0 +1,20 @@
+# Smoke test on an Android emulator: the app opens and every tab can be reached.
+appId: com.amcolink.app.dev
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "The latest finds"
+    timeout: 60000
+- takeScreenshot: shots/01-home
+- assertVisible: "All countries"
+- assertVisible: "Property"
+- tapOn: "Saved"
+- takeScreenshot: shots/02-saved
+- tapOn: "Account"
+- assertVisible: "Test build · connected to STAGING"
+- takeScreenshot: shots/03-account
+- tapOn: "Post Ad"
+- takeScreenshot: shots/04-post-ad
+- tapOn: "Home"
+- assertVisible: "The latest finds"
