@@ -7,7 +7,6 @@ appId: com.amcolink.app.dev
     visible: "The latest finds"
     timeout: 60000
 - takeScreenshot: shots/01-home
-- assertVisible: "All countries"
 - assertVisible: "Property"
 - tapOn: "Saved"
 - takeScreenshot: shots/02-saved

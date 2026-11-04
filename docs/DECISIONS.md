@@ -31,3 +31,17 @@ Each entry: what was chosen, why, and what else was considered.
 ## D6. Integration tests: read-only, staging, on GitHub
 - **Chosen:** tests that act as a signed-out visitor and expect every write to be refused.
 - **Why:** this workspace cannot reach Supabase; GitHub can, using the staging key stored as a secret. Nothing is written to staging.
+
+## D7. Data loading with TanStack Query
+- **Chosen:** TanStack Query for every read (cache 60 s, 2 retries, infinite scroll pages).
+- **Why:** gives loading, error, retry and pull-to-refresh the same way on every screen without custom code.
+- **Alternatives:** plain `useEffect` fetching (repeated code, no cache); Redux Toolkit Query (heavier).
+
+## D8. Visitor key for view counts
+- **Chosen:** a random 40-character key kept on the phone, sent with `track_event` like the website's visitor cookie, so each person counts once.
+- **Why:** the website's trending rules count people, not taps. The key holds no personal data.
+- **Alternatives:** none needed: the database function already expects this key.
+
+## D9. No buttons that do nothing
+- **Chosen:** features not built yet are hidden (Home country pill, Filters, Explore Trending/Gifts/Wanted) instead of shown disabled.
+- **Why:** the directive forbids unfinished workflows reaching users; dead buttons look broken.

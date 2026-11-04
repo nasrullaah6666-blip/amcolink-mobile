@@ -13,6 +13,12 @@ if (!key.startsWith('sb_publishable_')) throw new Error('Integration tests need 
 
 const db = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
 
+/** A refusal must come from the database or auth server, never from a network failure. */
+function expectRefused(error: { message?: string; code?: string; status?: number } | null) {
+  expect(error).not.toBeNull();
+  expect(String(error?.message ?? '')).not.toMatch(/fetch failed|network|ENOTFOUND|ECONNREFUSED|timeout/i);
+}
+
 test('signed-out visitors can read approved shops and published ads', async () => {
   const shops = await db.from('shops').select('id,name,status').eq('status', 'approved').limit(5);
   expect(shops.error).toBeNull();
@@ -28,7 +34,7 @@ test('the countries list is available (243 countries on staging)', async () => {
 
 test('signed-out visitors cannot read a Wanted buyer WhatsApp number', async () => {
   const res = await db.from('wanted_posts').select('id,whatsapp').limit(1);
-  expect(res.error).not.toBeNull();
+  expectRefused(res.error);
 });
 
 test('signed-out visitors can read the public Wanted columns', async () => {
@@ -38,19 +44,19 @@ test('signed-out visitors can read the public Wanted columns', async () => {
 
 test('signed-out visitors cannot create a shop', async () => {
   const res = await db.from('shops').insert({ owner_id: '00000000-0000-0000-0000-000000000000', slug: 'ci-should-fail', name: 'CI should fail', city: 'Test' });
-  expect(res.error).not.toBeNull();
+  expectRefused(res.error);
 });
 
 test('signed-out visitors cannot create a report', async () => {
   const res = await db.from('reports').insert({ reason: 'CI should fail', shop_id: '00000000-0000-0000-0000-000000000000' });
-  expect(res.error).not.toBeNull();
+  expectRefused(res.error);
 });
 
 test('signed-out visitors cannot use admin functions', async () => {
   const ban = await db.rpc('admin_set_ban', { target: '00000000-0000-0000-0000-000000000000', banned: true });
-  expect(ban.error).not.toBeNull();
+  expectRefused(ban.error);
   const insights = await db.rpc('insights_summary', { p_days: 7 });
-  expect(insights.error).not.toBeNull();
+  expectRefused(insights.error);
 });
 
 test('public trending lists can be read signed out', async () => {
@@ -61,12 +67,49 @@ test('public trending lists can be read signed out', async () => {
 
 test('sign-up without the security check is refused (CAPTCHA is on)', async () => {
   const res = await db.auth.signUp({ email: `ci-${Date.now()}@example.com`, password: 'ci-test-Password-1' });
-  expect(res.error).not.toBeNull();
+  expectRefused(res.error);
   expect(String(res.error?.message).toLowerCase()).toContain('captcha');
 });
 
 test('notifications are private', async () => {
   const res = await db.from('notifications').select('id').limit(1);
   // Either refused or no rows: a signed-out visitor must never see notifications.
-  expect(res.error !== null || (res.data ?? []).length === 0).toBe(true);
+  if (res.error) expectRefused(res.error);
+  else expect(res.data ?? []).toHaveLength(0);
+});
+
+// The app's own list queries must be accepted by the real database (staging may have no rows yet).
+import { fetchCategory, fetchCollection, fetchLatest, fetchProperties, fetchSearch, fetchShop } from '../src/api/listings';
+import { getTrust } from '../src/core/trust';
+
+test('app query: latest finds runs on staging', async () => {
+  await expect(fetchLatest({}, db)).resolves.toEqual(expect.any(Array));
+  await expect(fetchLatest({ country: 'Kenya', page: 1 }, db)).resolves.toEqual(expect.any(Array));
+});
+
+test('app query: category page with every filter runs on staging', async () => {
+  await expect(fetchCategory({ category: 'Fashion', sub: 'Men', q: 'shoes', city: 'Nairobi', min: 1, max: 9999, condition: 'used', verified: true, sort: 'price_asc' }, db)).resolves.toEqual(expect.any(Array));
+  await expect(fetchCategory({ category: 'Phones & Tablets', q: 'samsung' }, db)).resolves.toEqual(expect.any(Array));
+});
+
+test('app query: properties for rent and for sale run on staging', async () => {
+  await expect(fetchProperties({ deal: 'rent', area: 'Eastleigh', type: 'apartment' }, db)).resolves.toEqual(expect.any(Array));
+  await expect(fetchProperties({ deal: 'sale' }, db)).resolves.toEqual(expect.any(Array));
+});
+
+test('app query: search runs on staging', async () => {
+  await expect(fetchSearch('t-shirt', {}, db)).resolves.toEqual(expect.any(Array));
+});
+
+test('app query: Explore collections run on staging', async () => {
+  for (const k of ['deals', 'free', 'used', 'new'] as const) {
+    await expect(fetchCollection(k, {}, db)).resolves.toEqual(expect.any(Array));
+  }
+});
+
+test('app query: shop profile lookup and trust run on staging', async () => {
+  await expect(fetchShop('no-such-shop-for-test', db)).resolves.toBeNull();
+  const res = await db.rpc('shop_trust', { p_shops: ['00000000-0000-0000-0000-000000000000'] });
+  expect(res.error).toBeNull();
+  await expect(getTrust(db, [])).resolves.toBeInstanceOf(Map);
 });

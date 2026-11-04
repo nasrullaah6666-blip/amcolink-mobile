@@ -9,6 +9,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 | 2 | Test setup: unit tests (Jest) for guard, session storage, copied website rules | COMPLETED |
 | 3 | GitHub build: APK on every change + read-only staging integration tests + results written back to the repo | COMPLETED |
 | 4 | Android emulator test on GitHub (Maestro): open the app, visit every tab, screenshots back to the repo | IN PROGRESS |
+| 5 | Data layer + Home feed (latest finds, search box, category tiles) | IN PROGRESS |
+| 6 | Browse screens: listing detail, shop profile, category, search, property, Explore collections | IN PROGRESS |
 
 ---
 
@@ -35,3 +37,17 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 4 — Emulator test
 - **Objective:** real Android checks without a phone: install the APK on an emulator (Android 14, Pixel 6 size), run Maestro flows, return screenshots and app error logs.
 - **Files:** `.maestro/flows/01-smoke.yaml`, `.maestro/run.sh`, workflow job `emulator`; Gradle cache added to speed builds.
+
+## Task 5 — Data layer + Home feed
+- **Objective:** the app reads the same listings the website shows, with the same rules.
+- **Files:** `src/api/db.ts`, `src/api/listings.ts`, `src/api/track.ts`, `src/lib/visitor.ts`, `src/lib/site.ts`, `src/components/{Photo,ListingCard,ListingGrid,States}.tsx`, `src/app/(tabs)/index.tsx`, `src/app/_layout.tsx` (data cache).
+- **Rules copied from the website:** published ads of approved shops, available or reserved, confirmed in the last 14 days, verified sellers first, then newest; 24 per page; search uses the website's word rules and closest-title ranking.
+- **Tests:** unit tests on every query's filters (fake database client) — passed locally; new staging integration tests that run each app query against the real staging database — pending GitHub run.
+- **Changed from the mockup:** the country pill and Filters button on Home are not shown yet (they would do nothing); they return with the country choice task.
+
+## Task 6 — Browse screens
+- **Objective:** a buyer can open any listing, see the seller, call or WhatsApp, and browse by category, property, search and Explore.
+- **Files:** `src/app/ads/[id].tsx`, `src/app/shops/[slug].tsx`, `src/app/category/[slug].tsx`, `src/app/search.tsx`, `src/app/properties.tsx`, `src/app/explore.tsx`, `src/app/collection/[kind].tsx`, `src/components/{PhotoPager,ContactBar,ScreenHeader,SearchField,ChipRow}.tsx`.
+- **Website behaviour kept:** WhatsApp message text, Call/WhatsApp/view/share counted with `track_event`, safety notes (general, rent, sale), shop rating and open/closed hours, map link, old category links.
+- **Explore:** Deals, Free stuff, Brand new and Used are built. Trending, Gifts and Wanted are NOT shown yet (no dead buttons); they are later tasks.
+- **Not yet:** saving (heart), report, block — these need sign-in (later tasks).

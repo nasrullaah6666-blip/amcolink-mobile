@@ -109,6 +109,7 @@ jobs:
           R_PREBUILD: ${{ steps.prebuild.outcome }}
           R_GRADLE: ${{ steps.gradle.outcome }}
           R_RELEASE: ${{ steps.release.outcome }}
+          TOKEN: ${{ github.token }}
         run: |
           mkdir -p /tmp/results
           {
@@ -120,17 +121,8 @@ jobs:
               echo; echo "## $f (last 120 lines)"; echo '```'; tail -n 120 "$f"; echo '```'
             done
           } > /tmp/results/latest.md
-          git config user.name "ci-results"
-          git config user.email "ci-results@users.noreply.github.com"
-          if git fetch -q origin ci-results; then git checkout -q -B ci-results FETCH_HEAD; else git checkout -q --orphan ci-results; fi
-          git rm -rq --cached . 2>/dev/null || true
-          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
-          git checkout -q FETCH_HEAD -- . 2>/dev/null || true
-          cp /tmp/results/latest.md latest.md
-          cp latest.md "build-$RUN.md"
-          git add -A .
-          git commit -qm "results of build $RUN" || true
-          git push -q --force origin ci-results
+          mkdir -p /tmp/out && cp /tmp/results/latest.md /tmp/out/latest.md && cp /tmp/results/latest.md "/tmp/out/build-$RUN.md"
+          bash .github/scripts/push-results.sh /tmp/out "results of build $RUN"
 
   emulator:
     needs: build
@@ -169,16 +161,11 @@ jobs:
         if: always()
         env:
           RUN: ${{ github.run_number }}
+          TOKEN: ${{ github.token }}
         run: |
           mkdir -p /tmp/emu
           cp -r shots emu-logs /tmp/emu/ 2>/dev/null || true
-          git config user.name "ci-results"
-          git config user.email "ci-results@users.noreply.github.com"
-          git fetch -q origin ci-results
-          git checkout -q -B ci-results FETCH_HEAD
-          rm -rf "emulator-$RUN" && mkdir -p "emulator-$RUN"
-          cp -r /tmp/emu/* "emulator-$RUN/" 2>/dev/null || true
-          rm -rf emulator-latest && cp -r "emulator-$RUN" emulator-latest
-          git add "emulator-$RUN" emulator-latest
-          git commit -qm "emulator results of build $RUN" || true
-          git push -q --force origin ci-results
+          mkdir -p "/tmp/out-emu/emulator-$RUN"
+          cp -r /tmp/emu/. "/tmp/out-emu/emulator-$RUN/" 2>/dev/null || true
+          cp -r "/tmp/out-emu/emulator-$RUN" /tmp/out-emu/emulator-latest
+          bash .github/scripts/push-results.sh /tmp/out-emu "emulator results of build $RUN"

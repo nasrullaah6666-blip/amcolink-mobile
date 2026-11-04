@@ -1,0 +1,32 @@
+# Browse screens open from Home and show their content or an honest empty state (staging may have few ads).
+appId: com.amcolink.app.dev
+---
+- launchApp
+- extendedWaitUntil:
+    visible: "The latest finds"
+    timeout: 60000
+- tapOn: "Property"
+- extendedWaitUntil:
+    visible: "For rent"
+    timeout: 30000
+- takeScreenshot: shots/05-property
+- tapOn: "For sale"
+- takeScreenshot: shots/06-property-sale
+- tapOn: "Back"
+- tapOn: "Fashion"
+- extendedWaitUntil:
+    visible: "Newest"
+    timeout: 30000
+- takeScreenshot: shots/07-category-fashion
+- tapOn: "Back"
+- tapOn: "Explore"
+- assertVisible: "Deals"
+- takeScreenshot: shots/08-explore
+- tapOn: "Free stuff"
+- takeScreenshot: shots/09-free
+- tapOn: "Back"
+- tapOn: "Back"
+- tapOn: "Search"
+- inputText: "phone"
+- pressKey: Enter
+- takeScreenshot: shots/10-search
