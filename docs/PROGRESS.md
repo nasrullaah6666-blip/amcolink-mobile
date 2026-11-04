@@ -11,6 +11,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 | 4 | Android emulator test on GitHub (Maestro): open the app, visit every tab, screenshots back to the repo | IN PROGRESS |
 | 5 | Data layer + Home feed (latest finds, search box, category tiles) | IN PROGRESS |
 | 6 | Browse screens: listing detail, shop profile, category, search, property, Explore collections | IN PROGRESS |
+| 7 | Accounts: sign in, create account, forgot password, sign out, Account tab | BLOCKED (owner: staging security-check site key) |
 
 ---
 
@@ -51,3 +52,14 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website behaviour kept:** WhatsApp message text, Call/WhatsApp/view/share counted with `track_event`, safety notes (general, rent, sale), shop rating and open/closed hours, map link, old category links.
 - **Explore:** Deals, Free stuff, Brand new and Used are built. Trending, Gifts and Wanted are NOT shown yet (no dead buttons); they are later tasks.
 - **Not yet:** saving (heart), report, block — these need sign-in (later tasks).
+
+### Found by the staging tests (build 5)
+- One-row lookups (a listing, a shop) returned an empty list instead of "nothing" when the row did not exist. Fixed (`mustOne`) and covered by a unit test.
+
+## Task 7 — Accounts
+- **Objective:** sign in, create account, resend confirmation, forgot password and sign out, exactly as on the website (same checks, messages, CAPTCHA on every attempt, one token per attempt).
+- **Files:** `src/components/AuthForm.tsx`, `src/components/HumanCheck.tsx`, `src/components/ui/TextField.tsx`, `src/auth/session.tsx`, `src/app/sign-in.tsx`, `src/app/sign-up.tsx`, `src/app/forgot-password.tsx`, `src/app/(tabs)/account.tsx`, `src/lib/config.ts`.
+- **Website behaviour kept:** password rules (`core/password`), friendly errors (`core/authErrors`), "may already have an account" rule, Check-your-email screen with 60-second resend wait, Terms/18+ tick box, email links open the website (`/auth/callback`), wrong password clears the field.
+- **Tests:** 5 unit tests (token sent, wrong password, no token = nothing sent, sign-up rules, sign-up data) — passed locally.
+- **BLOCKED:** the test build needs the staging Turnstile **site key** (public value) as GitHub secret `STAGING_TURNSTILE_SITE_KEY`. Without it the app shows "The security check is not set up in this build" and does not try to sign in.
+- **Not yet verified:** a real sign-in on the emulator/phone (needs the key and a staging test account).

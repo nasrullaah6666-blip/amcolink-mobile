@@ -8,7 +8,7 @@ import { BIG_DEAL_PERCENT, cutoffIso, DEAL_DAYS, dealPercent, FRESH_DAYS } from 
 import { RENTAL } from '@/core/rentals';
 import { searchWords, wordFilter, rankByRelevance } from '@/core/searchWords';
 import { sanitizeSearch } from '@/core/utils';
-import { db, must } from './db';
+import { db, must, mustOne } from './db';
 
 export type ShopLite = Pick<Shop, 'id' | 'name' | 'slug' | 'city' | 'country' | 'is_verified' | 'status'> & { region?: string | null };
 export type Listing = Ad & { shops: ShopLite | null };
@@ -94,13 +94,13 @@ export async function fetchProperties(f: PropertyFilters, c: SupabaseClient = db
 /** One listing with its shop (website: app/ads/[id]/page.tsx). Returns null when not found or not visible. */
 export async function fetchListing(id: string, c: SupabaseClient = db()): Promise<(Ad & { shops: Shop | null }) | null> {
   const res = await c.from('ads').select('*, shops(*)').eq('id', id).maybeSingle();
-  return must(res) as (Ad & { shops: Shop | null }) | null;
+  return mustOne(res) as (Ad & { shops: Shop | null }) | null;
 }
 
 /** A shop profile by its address name (website: app/shops/[slug]/page.tsx). */
 export async function fetchShop(slug: string, c: SupabaseClient = db()): Promise<Shop | null> {
   const res = await c.from('shops').select('*').eq('slug', slug).maybeSingle();
-  return must(res) as Shop | null;
+  return mustOne(res) as Shop | null;
 }
 
 /** All published ads of one shop, newest first (website: same page). */

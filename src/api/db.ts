@@ -8,6 +8,12 @@ export function db(): SupabaseClient {
   return supabase;
 }
 
+/** For one-row lookups: the row, or null when there is none (never an empty list). */
+export function mustOne<T>(res: { data: T | null; error: { message: string } | null }): T | null {
+  if (res.error) throw new Error(friendlyError(res.error.message));
+  return res.data ?? null;
+}
+
 /** Turns a Supabase reply into data, or throws a friendly error. */
 export function must<T>(res: { data: T | null; error: { message: string } | null }): T {
   if (res.error) throw new Error(friendlyError(res.error.message));

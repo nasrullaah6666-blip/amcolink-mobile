@@ -25,6 +25,8 @@ jobs:
       EXPO_PUBLIC_APP_ENV: preview
       EXPO_PUBLIC_SUPABASE_URL: https://ckhoycpsjftavuqxxnss.supabase.co
       EXPO_PUBLIC_SUPABASE_KEY: ${{ secrets.STAGING_SUPABASE_KEY }}
+      EXPO_PUBLIC_TURNSTILE_SITE_KEY: ${{ secrets.STAGING_TURNSTILE_SITE_KEY }}
+      EXPO_PUBLIC_CAPTCHA_PAGE: https://amcolink-captcha-test.nasrullaah4444.workers.dev/
     steps:
       - uses: actions/checkout@v4
 

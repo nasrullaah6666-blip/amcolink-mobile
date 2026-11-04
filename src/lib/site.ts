@@ -3,3 +3,4 @@ export const SITE_URL = (process.env.EXPO_PUBLIC_SITE_URL ?? 'https://amcolink.c
 export const BRAND = 'Amcolink';
 export const adUrl = (id: string) => `${SITE_URL}/ads/${id}`;
 export const shopUrl = (slug: string) => `${SITE_URL}/shops/${slug}`;
+export const CONTACT_EMAIL = (process.env.EXPO_PUBLIC_CONTACT_EMAIL ?? 'info@amcolink.com').trim();

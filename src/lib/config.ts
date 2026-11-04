@@ -10,6 +10,9 @@ export type AppEnv = 'development' | 'preview' | 'production';
 const appEnv = (process.env.EXPO_PUBLIC_APP_ENV ?? 'development') as AppEnv;
 const supabaseUrl = (process.env.EXPO_PUBLIC_SUPABASE_URL ?? '').trim();
 const supabaseKey = (process.env.EXPO_PUBLIC_SUPABASE_KEY ?? '').trim();
+// Security check (Cloudflare Turnstile). The site key is public. The page shows the check and hands the token back.
+const turnstileSiteKey = (process.env.EXPO_PUBLIC_TURNSTILE_SITE_KEY ?? '').trim();
+const captchaPage = (process.env.EXPO_PUBLIC_CAPTCHA_PAGE ?? '').trim();
 
 function problem(): string | null {
   if (!supabaseUrl || !supabaseKey) return 'The app is not set up yet: the Supabase address or public key is missing.';
@@ -26,4 +29,8 @@ export const config = {
   supabaseKey,
   configProblem: problem(),
   isStaging: !supabaseUrl.includes(PRODUCTION_PROJECT_REF),
+  turnstileSiteKey,
+  captchaPage,
+  /** Sign-in needs both. Without them the app says so instead of trying (the server would refuse anyway). */
+  captchaReady: /^[0-9A-Za-z_-]{10,100}$/.test(turnstileSiteKey) && /^https:\/\/[^\s?#]+$/.test(captchaPage),
 } as const;

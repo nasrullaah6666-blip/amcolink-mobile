@@ -1,5 +1,5 @@
 // The app's queries must apply the same rules as the website. A fake Supabase client records every call.
-import { fetchCategory, fetchCollection, fetchLatest, fetchProperties, fetchSearch, PAGE_SIZE } from '../listings';
+import { fetchCategory, fetchCollection, fetchListing, fetchShop, fetchLatest, fetchProperties, fetchSearch, PAGE_SIZE } from '../listings';
 
 type Call = [string, ...unknown[]];
 function fakeClient(rows: unknown[] = []) {
@@ -104,4 +104,12 @@ test('deals: only 30% or more off, biggest discount first', async () => {
   const out = await fetchCollection('deals', {}, client);
   expect(calls.some((c) => c[0] === 'not' && c[1] === 'previous_price')).toBe(true);
   expect(out.map((a) => a.id)).toEqual(['b', 'c']);
+});
+
+test('one-row lookups return null when nothing is found (not an empty list)', async () => {
+  const chain: Record<string, unknown> = {};
+  for (const m of ['from', 'select', 'eq']) chain[m] = () => chain;
+  chain.maybeSingle = () => Promise.resolve({ data: null, error: null });
+  await expect(fetchShop('none', chain as never)).resolves.toBeNull();
+  await expect(fetchListing('none', chain as never)).resolves.toBeNull();
 });

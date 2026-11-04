@@ -1,0 +1,23 @@
+# Signed-out Account tab, Sign in, Create account and Forgot password screens open and show their forms.
+appId: com.amcolink.app.dev
+---
+- launchApp
+- extendedWaitUntil:
+    visible: "The latest finds"
+    timeout: 60000
+- tapOn: "Account"
+- assertVisible: "HELP"
+- tapOn:
+    text: "Sign in"
+    index: 0
+- extendedWaitUntil:
+    visible: "Welcome back to Amcolink."
+    timeout: 15000
+- takeScreenshot: shots/11-sign-in
+- tapOn: "Forgot password?"
+- assertVisible: "Reset your password"
+- takeScreenshot: shots/12-forgot-password
+- tapOn: "Back to sign in"
+- tapOn: "Create account"
+- assertVisible: "Join Amcolink for free."
+- takeScreenshot: shots/13-sign-up

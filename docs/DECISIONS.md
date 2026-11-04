@@ -45,3 +45,9 @@ Each entry: what was chosen, why, and what else was considered.
 ## D9. No buttons that do nothing
 - **Chosen:** features not built yet are hidden (Home country pill, Filters, Explore Trending/Gifts/Wanted) instead of shown disabled.
 - **Why:** the directive forbids unfinished workflows reaching users; dead buttons look broken.
+
+## D10. Security check page for the app
+- **Chosen:** the app shows Cloudflare Turnstile inside a small web box that loads one page (`EXPO_PUBLIC_CAPTCHA_PAGE`) and only lets that page and Cloudflare load. Test builds use the Worker page that passed the CAPTCHA test.
+- **Why:** Supabase requires a Turnstile token for sign-in/sign-up (CAPTCHA stays on). Turnstile only runs in a web page on an approved address.
+- **Alternatives:** loading the check with a fake website address (works on some phones, but pretends to be amcolink.com — not used); a page on amcolink.com (needs a website change — not allowed).
+- **Production:** needs a permanent check page on the owner's Cloudflare and that address added to the production Turnstile widget (owner action, listed in the report).

@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useFonts, Outfit_400Regular, Outfit_500Medium, Outfit_600SemiBold, Outfit_700Bold } from '@expo-google-fonts/outfit';
 import { AppText } from '@/components/ui';
 import { config } from '@/lib/config';
+import { AuthProvider } from '@/auth/session';
 import { colors, space } from '@/theme/tokens';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -37,12 +38,14 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <AuthProvider>
       <SafeAreaProvider>
         <StatusBar style="dark" />
         <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}>
           <Stack.Screen name="(tabs)" />
         </Stack>
       </SafeAreaProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
