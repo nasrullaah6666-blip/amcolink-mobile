@@ -30,7 +30,7 @@ new_shops as (
          case when s.slug = 'test-hodan-homes' then 'property' else 'shop' end, case when s.slug = 'test-hodan-homes' then 'owner' else null end
   from owner, (values
     ('test-amina-fashion', '[TEST] Amina Fashion', 'Dresses, abayas and shoes for women and kids.', 'Kenya', 'Nairobi', 'Nairobi', 'Eastleigh, 1st Avenue', 'Next to Garissa Lodge', '+254712345678', true,
-      '{"mon":[["08:00","19:00"]],"tue":[["08:00","19:00"]],"wed":[["08:00","19:00"]],"thu":[["08:00","19:00"]],"fri":[["14:00","19:00"]],"sat":[["08:00","19:00"]]}'),
+      '{"mon":{"open":"08:00","close":"19:00"},"tue":{"open":"08:00","close":"19:00"},"wed":{"open":"08:00","close":"19:00"},"thu":{"open":"08:00","close":"19:00"},"fri":{"open":"14:00","close":"19:00"},"sat":{"open":"08:00","close":"19:00"}}'),
     ('test-juma-electronics', '[TEST] Juma Electronics', 'Phones, laptops and TVs. Repairs too.', 'Kenya', 'Mombasa', 'Mombasa', 'Biashara Street', null, '+254723456789', false, '{}'),
     ('test-hodan-homes', '[TEST] Hodan Homes', 'Houses and apartments for rent and sale in Mogadishu.', 'Somalia', 'Banadir', 'Mogadishu', 'Hodan district', 'Near KM4', '+252615123456', false, '{}')
   ) as s(slug, name, descr, country, region, city, address, landmark, phone, verified, hours)
