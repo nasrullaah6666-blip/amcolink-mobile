@@ -98,6 +98,7 @@ export default function AccountScreen() {
             <RowList rows={[
               { label: 'My ads', hint: 'Your profile, posts and stats', icon: 'grid', open: () => router.push('/dashboard') },
               { label: 'Saved', hint: 'Saved shops and listings', icon: 'heart', open: () => router.push('/saved') },
+              { label: 'Notifications', hint: 'Price drops and updates about your shop', icon: 'bell', open: () => router.push('/notifications') },
             ]} />
           </>
         ) : null}
@@ -113,6 +114,12 @@ export default function AccountScreen() {
         ) : null}
 
         {user ? <Button title="Sign out" variant="outline" loading={busy} onPress={signOut} style={styles.signOut} /> : null}
+
+        {user ? (
+          <Pressable accessibilityRole="link" onPress={() => router.push('/account/delete')} style={styles.deleteLink}>
+            <AppText variant="caption" tone="secondary">Want to leave Amcolink? <AppText variant="caption" tone="secondary" style={styles.underline}>Delete account</AppText></AppText>
+          </Pressable>
+        ) : null}
 
         <AppText variant="caption" tone="secondary" style={styles.env}>
           {config.isStaging ? 'Test build · connected to STAGING' : 'Production build'}
@@ -136,5 +143,7 @@ const styles = StyleSheet.create({
   signOut: { marginTop: space.md },
   blocked: { padding: space.lg, gap: space.sm },
   blockedRow: { flexDirection: 'row', alignItems: 'center', gap: space.sm },
+  deleteLink: { marginTop: space.xxl * 2, alignItems: 'center', minHeight: size.touch, justifyContent: 'center' },
+  underline: { textDecorationLine: 'underline' },
   env: { textAlign: 'center', marginTop: space.lg },
 });

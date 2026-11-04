@@ -15,6 +15,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 | 8 | Saved, Follow, Report, Block (signed-in buyer actions) | IN PROGRESS |
 | 9 | Seller: create profile, My ads (stats, confirm, available/reserved/sold, hide, delete) | IN PROGRESS |
 | 10 | Post Ad for Shopping and Services, with photo upload | IN PROGRESS |
+| 11 | Notifications inbox and Delete account | IN PROGRESS |
 
 ---
 
@@ -89,3 +90,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website rules kept:** checks, messages and saved columns from `AdForm` (photos 1–6, description ≥ 20, sub-category, condition, expiry for food/cosmetics, services price modes, free items, rules tick). Photos: JPEG ≤ 2048 px and ≈1.5 MB at `{user}/{random}.jpg` plus a 480 px thumbnail, same as the website.
 - **Not in the app yet:** Properties (houses, rooms, land — the form shows a link to the website); gift tags; AI "fill in details"; photo fingerprints (`photo_hashes`, optional on the website too).
 - **Tests:** 5 unit tests on the listing rules; staging test that signed-out visitors cannot post or upload.
+
+## Task 11 — Notifications and Delete account
+- **Files:** `src/api/account.ts`, `src/app/notifications.tsx`, `src/app/account/delete.tsx`, Account tab rows.
+- **Website rules kept:** notifications marked read on opening, Clear all, only links inside amcolink.com are followed (listing, shop and My ads open in the app, others open the website); delete account lists what is removed, needs the tick and typing DELETE, deletes photos first then calls `delete_my_account`, admin accounts cannot be deleted here.
+- **Google Play:** an in-app delete-account path is required for apps with sign-up — this is it.
+- **Tests:** link rule unit test. Real deletion only to be tried with a throwaway staging account.
