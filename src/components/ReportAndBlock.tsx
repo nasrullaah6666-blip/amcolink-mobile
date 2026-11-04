@@ -5,14 +5,14 @@ import { AppText, Button, Chip, TextField } from '@/components/ui';
 import { useAuth } from '@/auth/session';
 import { useBlocked } from '@/auth/mine';
 import { reportText, sendReport } from '@/api/me';
-import { REPORT_REASONS_AD, REPORT_REASONS_SHOP } from '@/core/reportReasons';
+import { REPORT_REASONS_AD, REPORT_REASONS_SHOP, REPORT_REASONS_WANTED } from '@/core/reportReasons';
 import { colors, radius, space } from '@/theme/tokens';
 
 /**
  * Report (listing or shop) and Block shop — website: ReportButton + BlockButton.
  * Same reasons, same text rule, same "already reported" answer. Signed out: asks to sign in.
  */
-export function ReportAndBlock({ adId, shopId, shopName }: { adId?: string; shopId: string; shopName: string }) {
+export function ReportAndBlock({ adId, shopId, shopName, wantedId }: { adId?: string; shopId?: string; shopName?: string; wantedId?: string }) {
   const { user } = useAuth();
   const { blocked, change } = useBlocked();
   const [open, setOpen] = useState(false);
@@ -20,8 +20,8 @@ export function ReportAndBlock({ adId, shopId, shopName }: { adId?: string; shop
   const [note, setNote] = useState('');
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
-  const reasons = adId ? REPORT_REASONS_AD : REPORT_REASONS_SHOP;
-  const isBlocked = blocked.has(shopId);
+  const reasons = adId ? REPORT_REASONS_AD : wantedId ? REPORT_REASONS_WANTED : REPORT_REASONS_SHOP;
+  const isBlocked = !!shopId && blocked.has(shopId);
 
   const needSignIn = () => router.push('/sign-in');
 
@@ -32,7 +32,7 @@ export function ReportAndBlock({ adId, shopId, shopName }: { adId?: string; shop
     if (!reason) { setMessage('Add a short note about the problem.'); return; }
     setBusy(true);
     try {
-      const r = await sendReport(user.id, adId ? { adId } : { shopId }, reason);
+      const r = await sendReport(user.id, adId ? { adId } : wantedId ? { wantedId } : { shopId }, reason);
       setMessage(r === 'already' ? 'You have already reported this. Thank you.' : 'Report submitted for review. Thank you.');
       setChoice(''); setNote(''); setOpen(false);
     } catch (e) {
@@ -42,7 +42,8 @@ export function ReportAndBlock({ adId, shopId, shopName }: { adId?: string; shop
 
   const toggleBlock = () => {
     if (!user) return needSignIn();
-    const go = () => change.mutate({ shopId, block: !isBlocked }, {
+    if (!shopId) return;
+    const go = () => change.mutate({ shopId: shopId!, block: !isBlocked }, {
       onSuccess: () => setMessage(isBlocked ? 'Unblocked.' : 'Blocked. You won’t see this shop any more.'),
       onError: (e) => setMessage((e as Error).message || 'Could not update.'),
     });
@@ -56,7 +57,7 @@ export function ReportAndBlock({ adId, shopId, shopName }: { adId?: string; shop
     <View style={styles.wrap}>
       <View style={styles.row}>
         <Button title="Report" variant="ghost" onPress={() => (user ? setOpen((o) => !o) : needSignIn())} />
-        <Button title={isBlocked ? 'Unblock shop' : 'Block shop'} variant="ghost" loading={change.isPending} onPress={toggleBlock} />
+        {shopId ? <Button title={isBlocked ? 'Unblock shop' : 'Block shop'} variant="ghost" loading={change.isPending} onPress={toggleBlock} /> : null}
       </View>
       {open ? (
         <View style={styles.panel}>

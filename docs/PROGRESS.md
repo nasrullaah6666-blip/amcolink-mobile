@@ -16,6 +16,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 | 9 | Seller: create profile, My ads (stats, confirm, available/reserved/sold, hide, delete) | IN PROGRESS |
 | 10 | Post Ad for Shopping and Services, with photo upload | IN PROGRESS |
 | 11 | Notifications inbox and Delete account | IN PROGRESS |
+| 12 | Wanted: browse, post, reply on WhatsApp, found/delete, report | IN PROGRESS |
 
 ---
 
@@ -96,3 +97,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website rules kept:** notifications marked read on opening, Clear all, only links inside amcolink.com are followed (listing, shop and My ads open in the app, others open the website); delete account lists what is removed, needs the tick and typing DELETE, deletes photos first then calls `delete_my_account`, admin accounts cannot be deleted here.
 - **Google Play:** an in-app delete-account path is required for apps with sign-up — this is it.
 - **Tests:** link rule unit test. Real deletion only to be tried with a throwaway staging account.
+
+## Task 12 — Wanted
+- **Files:** `src/api/wanted.ts`, `src/app/wanted/index.tsx`, `src/app/wanted/new.tsx`, Explore tiles (Wanted, Post a need), Report supports Wanted.
+- **Website rules kept:** open and not expired only; visitors never request the WhatsApp column (database also blocks it); My requests; same form checks; "I have it — WhatsApp" message text; I found it / Still looking / Delete; Report reasons for Wanted.
+- **Not included:** admin removal (no admin in the app, by rule).
+- **Tests:** 2 unit tests; staging visitor query test.

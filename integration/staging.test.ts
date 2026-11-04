@@ -134,3 +134,8 @@ test('profile name check is for signed-in people only (as on the website)', asyn
   const res = await db.rpc('shop_name_available', { p_name: 'Amcolink CI name check ' + Date.now() });
   expectRefused(res.error);
 });
+
+test('app query: Wanted list runs on staging as a visitor', async () => {
+  const { fetchWanted } = await import('../src/api/wanted');
+  await expect(fetchWanted({ signedIn: false, city: 'Nairobi', category: 'Other' }, db)).resolves.toEqual(expect.any(Array));
+});

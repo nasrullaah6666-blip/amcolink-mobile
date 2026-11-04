@@ -6,13 +6,15 @@ import { AppText, Icon, type IconName } from '@/components/ui';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { colors, radius, size, space } from '@/theme/tokens';
 
-// Website /explore tiles that the app has today. Trending, Gifts and Wanted come in later tasks
+// Website /explore tiles that the app has today. Trending and Gifts come in later tasks
 // (they need their own screens) and are added here when they are built — no dead buttons.
-const TILES: { kind: string; label: string; icon: IconName }[] = [
+const TILES: { kind: string; label: string; icon: IconName; route?: '/wanted' | '/wanted/new' }[] = [
   { kind: 'deals', label: 'Deals', icon: 'flag' },
   { kind: 'free', label: 'Free stuff', icon: 'heart' },
   { kind: 'new', label: 'Brand new', icon: 'grid' },
   { kind: 'used', label: 'Used', icon: 'compass' },
+  { kind: 'wanted', label: 'Wanted', icon: 'bell', route: '/wanted' },
+  { kind: 'post-need', label: 'Post a need', icon: 'plus', route: '/wanted/new' },
 ];
 
 export default function ExploreScreen() {
@@ -24,7 +26,7 @@ export default function ExploreScreen() {
         <View style={styles.grid}>
           {TILES.map((t) => (
             <Pressable key={t.kind} accessibilityRole="button" accessibilityLabel={t.label}
-              onPress={() => router.push({ pathname: '/collection/[kind]', params: { kind: t.kind } })} style={styles.tile}>
+              onPress={() => (t.route ? router.push(t.route) : router.push({ pathname: '/collection/[kind]', params: { kind: t.kind } }))} style={styles.tile}>
               <View style={styles.icon}><Icon name={t.icon} color={colors.green} /></View>
               <AppText variant="caption" style={styles.center}>{t.label}</AppText>
             </Pressable>

@@ -57,8 +57,8 @@ export function reportText(choice: string, note: string): string | null {
   return (choice === 'Other' ? extra : extra ? `${choice}: ${extra}` : choice).slice(0, 500);
 }
 
-export async function sendReport(userId: string, target: { adId?: string; shopId?: string }, reason: string, c: SupabaseClient = db()): Promise<'sent' | 'already'> {
-  const { error } = await c.from('reports').insert({ reporter_id: userId, shop_id: target.shopId ?? null, ad_id: target.adId ?? null, reason });
+export async function sendReport(userId: string, target: { adId?: string; shopId?: string; wantedId?: string }, reason: string, c: SupabaseClient = db()): Promise<'sent' | 'already'> {
+  const { error } = await c.from('reports').insert({ reporter_id: userId, shop_id: target.shopId ?? null, ad_id: target.adId ?? null, ...(target.wantedId ? { wanted_id: target.wantedId } : {}), reason });
   if (error) {
     if (error.code === '23505') return 'already';
     throw new Error(error.message);
