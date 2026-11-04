@@ -18,3 +18,7 @@ Read `PROJECT_RULES.md` first.
 ## Design
 All colours, sizes, spacing, corners and fonts live in `src/theme/tokens.ts`.
 Screens use only the shared components in `src/components/ui` (AppText, Button, Chip, Icon).
+
+## Android test builds
+Every change to `main` builds an Android test app on GitHub (Actions -> "Android test build").
+The APK appears under **Releases** as "Test build N (staging)". It is signed with the Android test key: testing only.

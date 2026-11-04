@@ -1,0 +1,75 @@
+# Builds an installable Android TEST app (APK) connected to STAGING, on GitHub's servers.
+# Runs when main changes, or by hand (Actions -> Android test build -> Run workflow).
+# The APK is signed with the standard Android test (debug) key: for testing only, never for the Play Store.
+name: Android test build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-test-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      CI: "1"
+      EXPO_PUBLIC_APP_ENV: preview
+      EXPO_PUBLIC_SUPABASE_URL: https://ckhoycpsjftavuqxxnss.supabase.co
+      EXPO_PUBLIC_SUPABASE_KEY: ${{ secrets.STAGING_SUPABASE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Stop if the staging key is missing
+        run: test -n "$EXPO_PUBLIC_SUPABASE_KEY" || (echo "Add the STAGING_SUPABASE_KEY secret" && exit 1)
+
+      - name: Install
+        run: npm ci
+
+      - name: Checks (types + design rules)
+        run: npm run check
+
+      - name: Create the Android project
+        run: npx expo prebuild --platform android --clean --no-install
+
+      - name: Build the test app
+        working-directory: android
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Name the file
+        run: cp android/app/build/outputs/apk/release/app-release.apk "amcolink-staging-test-${{ github.run_number }}.apk"
+
+      - name: Keep the file on this run
+        uses: actions/upload-artifact@v4
+        with:
+          name: amcolink-staging-test-${{ github.run_number }}
+          path: amcolink-staging-test-${{ github.run_number }}.apk
+          retention-days: 14
+
+      - name: Publish as a test release (easy download on the phone)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: test-build-${{ github.run_number }}
+          name: Test build ${{ github.run_number }} (staging)
+          prerelease: true
+          body: |
+            Android TEST app connected to STAGING only. Not for real users.
+            Commit: ${{ github.sha }}
+          files: amcolink-staging-test-${{ github.run_number }}.apk
