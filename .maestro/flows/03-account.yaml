@@ -18,6 +18,6 @@ appId: com.amcolink.app.dev
 - assertVisible: "Reset your password"
 - takeScreenshot: shots/12-forgot-password
 - tapOn: "Back to sign in"
-- tapOn: "Create account"
+- tapOn: ".*Create account"
 - assertVisible: "Join Amcolink for free."
 - takeScreenshot: shots/13-sign-up

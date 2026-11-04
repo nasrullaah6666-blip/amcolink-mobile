@@ -8,7 +8,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 | 1 | Foundation: Expo SDK 55 project, design rules, shared components, navigation shell, staging client | COMPLETED |
 | 2 | Test setup: unit tests (Jest) for guard, session storage, copied website rules | COMPLETED |
 | 3 | GitHub build: APK on every change + read-only staging integration tests + results written back to the repo | COMPLETED |
-| 4 | Android emulator test on GitHub (Maestro): open the app, visit every tab, screenshots back to the repo | IN PROGRESS |
+| 4 | Android emulator test on GitHub (Maestro): open the app, visit every tab, screenshots back to the repo | COMPLETED |
 | 5 | Data layer + Home feed (latest finds, search box, category tiles) | IN PROGRESS |
 | 6 | Browse screens: listing detail, shop profile, category, search, property, Explore collections | IN PROGRESS |
 | 7 | Accounts: sign in, create account, forgot password, sign out, Account tab | BLOCKED (owner: staging security-check site key) |
@@ -43,6 +43,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 4 — Emulator test
 - **Objective:** real Android checks without a phone: install the APK on an emulator (Android 14, Pixel 6 size), run Maestro flows, return screenshots and app error logs.
 - **Files:** `.maestro/flows/01-smoke.yaml`, `.maestro/run.sh`, workflow job `emulator`; Gradle cache added to speed builds.
+- **Result (build 6, commit c740de1, Android 14 emulator):** the app installs and opens; flows 01-smoke and 02-browse PASSED; 03-account failed only because the test looked for the words "Create account" alone (they sit inside a longer line) — test fixed. 13 screenshots saved in `ci-results/emulator-6/`.
+- **What the screenshots show:** Home, tabs, Property (rent and sale with the right safety notes), Fashion category with sub-category chips, Explore, Free stuff, Search, Sign in, Forgot password all render correctly in Amcolink green. Staging has **no listings yet**, so lists show their empty states — listing and shop pages could not be seen with real data (owner action: test data on staging).
+- **Earlier problems fixed:** results upload to `ci-results` failed in builds 3–4 (fixed by pushing from a fresh copy, build 5 onwards).
 
 ## Task 5 — Data layer + Home feed
 - **Objective:** the app reads the same listings the website shows, with the same rules.
