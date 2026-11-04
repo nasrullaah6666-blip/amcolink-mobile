@@ -38,7 +38,15 @@
           }
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Amcolink uses your photos so you can add pictures to your listings.",
+          "cameraPermission": "Amcolink uses the camera so you can take photos of what you sell.",
+          "microphonePermission": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

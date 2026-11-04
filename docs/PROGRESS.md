@@ -13,6 +13,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 | 6 | Browse screens: listing detail, shop profile, category, search, property, Explore collections | IN PROGRESS |
 | 7 | Accounts: sign in, create account, forgot password, sign out, Account tab | BLOCKED (owner: staging security-check site key) |
 | 8 | Saved, Follow, Report, Block (signed-in buyer actions) | IN PROGRESS |
+| 9 | Seller: create profile, My ads (stats, confirm, available/reserved/sold, hide, delete) | IN PROGRESS |
+| 10 | Post Ad for Shopping and Services, with photo upload | IN PROGRESS |
 
 ---
 
@@ -73,3 +75,17 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Not in this task:** saved searches and price-drop alerts (later task).
 - **Tests:** 4 unit tests (report text, save, already reported, block); staging test that signed-out visitors cannot save or block.
 - **Not yet verified on a device:** needs sign-in (Task 7 blocker).
+
+## Task 9 — Seller profile and My ads
+- **Objective:** a seller can create their profile and manage their ads like the website dashboard.
+- **Files:** `src/api/seller.ts`, `src/app/shops/new.tsx`, `src/app/dashboard.tsx`, `src/components/PickerField.tsx`, `src/core/{shop,saveShop,places,deletePhotos}.ts` (copied from the website).
+- **Website rules kept:** profile form fields and checks (`parseShopForm`), name-taken check, slug rule, region → town picker with "Other", one number for call and WhatsApp; dashboard filters, 30-day stats (`my_listing_stats`), "not confirmed for a week" nudge and Confirm all, Still available/Reserved/Sold, Hide, Delete with photo clean-up.
+- **Not yet:** edit profile (logo, address, hours, links), edit ad, pin, away mode, reviews panel.
+- **Staging note:** the repository's database rules (loaded on staging) may require an address when a profile is created; production does not (decision D-4). If staging refuses a new profile, that is this difference, not an app error. To be checked once sign-in works.
+
+## Task 10 — Post Ad (Shopping and Services)
+- **Objective:** post a listing with photos from the phone.
+- **Files:** `src/app/(tabs)/post.tsx`, `src/api/postAd.ts`, `src/api/photos.ts`, `src/core/notAllowed.ts`, `app.json` (photo and camera permission text).
+- **Website rules kept:** checks, messages and saved columns from `AdForm` (photos 1–6, description ≥ 20, sub-category, condition, expiry for food/cosmetics, services price modes, free items, rules tick). Photos: JPEG ≤ 2048 px and ≈1.5 MB at `{user}/{random}.jpg` plus a 480 px thumbnail, same as the website.
+- **Not in the app yet:** Properties (houses, rooms, land — the form shows a link to the website); gift tags; AI "fill in details"; photo fingerprints (`photo_hashes`, optional on the website too).
+- **Tests:** 5 unit tests on the listing rules; staging test that signed-out visitors cannot post or upload.

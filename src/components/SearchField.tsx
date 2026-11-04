@@ -4,8 +4,8 @@ import { Icon } from '@/components/ui';
 import { colors, radius, size, space, type } from '@/theme/tokens';
 
 /** The one search box style. Submits on the keyboard's search key. */
-export function SearchField({ initial = '', placeholder = "I'm looking for…", onSubmit, label = 'Search' }: {
-  initial?: string; placeholder?: string; onSubmit: (text: string) => void; label?: string;
+export function SearchField({ initial = '', placeholder = "I'm looking for…", onSubmit, onChange, label = 'Search' }: {
+  initial?: string; placeholder?: string; onSubmit: (text: string) => void; onChange?: (text: string) => void; label?: string;
 }) {
   const [q, setQ] = useState(initial);
   return (
@@ -17,7 +17,7 @@ export function SearchField({ initial = '', placeholder = "I'm looking for…", 
         placeholderTextColor={colors.textSecondary}
         style={styles.input}
         value={q}
-        onChangeText={setQ}
+        onChangeText={(t) => { setQ(t); onChange?.(t); }}
         returnKeyType="search"
         onSubmitEditing={() => onSubmit(q.trim())}
       />

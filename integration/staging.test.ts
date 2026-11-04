@@ -122,3 +122,15 @@ test('signed-out visitors cannot save, block or read other people\'s saved items
   const read = await db.from('favorites').select('id').limit(1);
   if (read.error) expectRefused(read.error); else expect(read.data ?? []).toHaveLength(0);
 });
+
+test('signed-out visitors cannot post an ad or upload a photo', async () => {
+  const ad = await db.from('ads').insert({ shop_id: '00000000-0000-0000-0000-000000000000', owner_id: '00000000-0000-0000-0000-000000000000', title: 'test', description: 'integration test should be refused', currency: 'KES', category: 'Other', photo_urls: [] });
+  expectRefused(ad.error);
+  const up = await db.storage.from('ad-photos').upload(`00000000-0000-0000-0000-000000000000/ci-${Date.now()}.jpg`, new Uint8Array([0xff, 0xd8, 0xff]), { contentType: 'image/jpeg' });
+  expect(up.error).not.toBeNull();
+});
+
+test('profile name check is for signed-in people only (as on the website)', async () => {
+  const res = await db.rpc('shop_name_available', { p_name: 'Amcolink CI name check ' + Date.now() });
+  expectRefused(res.error);
+});

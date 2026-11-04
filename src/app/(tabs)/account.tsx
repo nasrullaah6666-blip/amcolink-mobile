@@ -92,6 +92,16 @@ export default function AccountScreen() {
           </View>
         )}
 
+        {user ? (
+          <>
+            <AppText variant="caption" tone="secondary" style={styles.section}>SHOPPING & SELLING</AppText>
+            <RowList rows={[
+              { label: 'My ads', hint: 'Your profile, posts and stats', icon: 'grid', open: () => router.push('/dashboard') },
+              { label: 'Saved', hint: 'Saved shops and listings', icon: 'heart', open: () => router.push('/saved') },
+            ]} />
+          </>
+        ) : null}
+
         <AppText variant="caption" tone="secondary" style={styles.section}>HELP</AppText>
         <RowList rows={HELP_ROWS} />
 

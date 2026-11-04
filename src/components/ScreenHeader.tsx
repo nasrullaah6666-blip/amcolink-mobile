@@ -5,13 +5,13 @@ import { AppText, Icon } from '@/components/ui';
 import { radius, size, space } from '@/theme/tokens';
 
 /** Back button + title, the same on every inner screen. */
-export function ScreenHeader({ title, right }: { title?: string; right?: React.ReactNode }) {
+export function ScreenHeader({ title, right, onBack }: { title?: string; right?: React.ReactNode; onBack?: () => void }) {
   return (
     <View style={styles.row}>
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Back"
-        onPress={() => (router.canGoBack() ? router.back() : router.replace('/'))}
+        onPress={onBack ?? (() => (router.canGoBack() ? router.back() : router.replace('/')))}
         style={styles.back}
       >
         <Icon name="chevronLeft" strokeWidth={2} />
