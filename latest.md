@@ -1,6 +1,6 @@
-# Android test build 7
-commit: 6e4e38d543b2a8058b9bb2556a835d1329393269
-key: success | install: success | checks: success | integration: failure | prebuild: skipped | gradle: skipped | release: skipped
+# Android test build 8
+commit: 3893100a6162b505e26d6e416966adaf98bf82e0
+key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
 
 ## ci-logs/checks.log (last 120 lines)
 ```
@@ -22,7 +22,7 @@ design check ok: all colours come from src/theme/tokens.ts
 > jest --ci
 
 PASS src/api/__tests__/listings.test.ts
-PASS src/components/__tests__/AuthForm.test.tsx (5.822 s)
+PASS src/components/__tests__/AuthForm.test.tsx (6.282 s)
 PASS src/api/__tests__/postAd.test.ts
 PASS src/lib/__tests__/config.test.ts
 PASS src/api/__tests__/me.test.ts
@@ -35,8 +35,132 @@ PASS src/api/__tests__/account.test.ts
 Test Suites: 10 passed, 10 total
 Tests:       45 passed, 45 total
 Snapshots:   0 total
-Time:        9.546 s
+Time:        10.15 s
 Ran all test suites.
+```
+
+## ci-logs/gradle.log (last 120 lines)
+```
+> Task :react-native-webview:mergeReleaseResources
+> Task :react-native-webview:verifyReleaseResources
+> Task :react-native-webview:assembleRelease
+> Task :react-native-worklets:bundleReleaseAar
+> Task :react-native-worklets:mapReleaseSourceSetPaths
+> Task :react-native-worklets:mergeReleaseResources
+> Task :react-native-worklets:verifyReleaseResources
+> Task :react-native-worklets:assembleRelease
+> Task :react-native-reanimated:buildCMakeRelWithDebInfo[x86][reanimated]
+> Task :react-native-reanimated:buildCMakeRelWithDebInfo[x86_64][reanimated]
+> Task :react-native-reanimated:externalNativeBuildRelease
+> Task :react-native-reanimated:prefabReleasePackage
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[arm64-v8a]
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[armeabi-v7a]
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[x86]
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[x86_64]
+> Task :react-native-gesture-handler:mergeReleaseNativeLibs
+> Task :react-native-gesture-handler:copyReleaseJniLibsProjectOnly
+> Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
+> Task :react-native-reanimated:mergeReleaseNativeLibs
+> Task :react-native-reanimated:copyReleaseJniLibsProjectOnly
+
+> Task :react-native-reanimated:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :react-native-reanimated:bundleLibCompileToJarRelease
+
+> Task :react-native-gesture-handler:compileReleaseKotlin
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:8:8 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:13:29 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:14:32 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/RNGestureHandlerModule.kt:173:53 This synthetic property is based on the getter function 'fun getRootViewTag(): Int' from Kotlin. In the future, synthetic properties will be available only if the base getter function came from Java. Consider replacing this property access with a 'getRootViewTag()' function call.
+
+> Task :react-native-gesture-handler:compileReleaseJavaWithJavac
+> Task :react-native-gesture-handler:bundleLibRuntimeToDirRelease
+> Task :react-native-reanimated:bundleLibRuntimeToDirRelease
+> Task :react-native-gesture-handler:bundleLibCompileToJarRelease
+> Task :react-native-reanimated:prepareReleaseArtProfile
+> Task :react-native-gesture-handler:bundleLibRuntimeToJarRelease
+> Task :react-native-reanimated:bundleLibRuntimeToJarRelease
+> Task :react-native-reanimated:mergeReleaseShaders
+> Task :react-native-reanimated:compileReleaseShaders NO-SOURCE
+> Task :react-native-reanimated:generateReleaseAssets UP-TO-DATE
+> Task :react-native-reanimated:mergeReleaseAssets
+> Task :react-native-gesture-handler:processReleaseJavaRes
+> Task :react-native-gesture-handler:createFullJarRelease
+> Task :react-native-reanimated:processReleaseJavaRes NO-SOURCE
+> Task :react-native-reanimated:createFullJarRelease
+> Task :react-native-reanimated:extractProguardFiles
+> Task :react-native-reanimated:generateReleaseLintModel
+> Task :react-native-reanimated:prepareLintJarForPublish
+> Task :react-native-gesture-handler:generateReleaseLintModel
+> Task :react-native-gesture-handler:stripReleaseDebugSymbols
+> Task :react-native-gesture-handler:copyReleaseJniLibsProjectAndLocalJars
+> Task :react-native-gesture-handler:extractReleaseAnnotations
+> Task :react-native-gesture-handler:mergeReleaseGeneratedProguardFiles
+> Task :react-native-gesture-handler:mergeReleaseConsumerProguardFiles
+> Task :react-native-gesture-handler:mergeReleaseJavaResource
+> Task :react-native-gesture-handler:syncReleaseLibJars
+> Task :react-native-gesture-handler:bundleReleaseLocalLintAar
+> Task :react-native-reanimated:stripReleaseDebugSymbols
+> Task :react-native-reanimated:copyReleaseJniLibsProjectAndLocalJars
+> Task :react-native-reanimated:extractDeepLinksForAarRelease
+> Task :react-native-reanimated:extractReleaseAnnotations
+> Task :react-native-reanimated:mergeReleaseGeneratedProguardFiles
+> Task :react-native-reanimated:mergeReleaseConsumerProguardFiles
+> Task :react-native-reanimated:mergeReleaseJavaResource
+> Task :react-native-reanimated:syncReleaseLibJars
+> Task :react-native-reanimated:bundleReleaseLocalLintAar
+> Task :react-native-reanimated:writeReleaseLintModelMetadata
+> Task :react-native-gesture-handler:lintVitalAnalyzeRelease
+> Task :react-native-reanimated:lintVitalAnalyzeRelease
+> Task :react-native-gesture-handler:generateReleaseLintVitalModel
+> Task :react-native-reanimated:generateReleaseLintVitalModel
+> Task :react-native-gesture-handler:bundleReleaseAar
+> Task :react-native-gesture-handler:assembleRelease
+> Task :react-native-reanimated:bundleReleaseAar
+> Task :react-native-reanimated:mapReleaseSourceSetPaths
+> Task :react-native-reanimated:mergeReleaseResources
+> Task :react-native-reanimated:verifyReleaseResources
+> Task :react-native-reanimated:assembleRelease
+> Task :app:buildCMakeRelWithDebInfo[armeabi-v7a]
+> Task :app:buildCMakeRelWithDebInfo[x86]
+> Task :app:buildCMakeRelWithDebInfo[x86_64]
+> Task :app:compileReleaseKotlin
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:dexBuilderRelease
+> Task :app:mergeReleaseNativeLibs
+> Task :app:mergeDexRelease
+> Task :app:mergeReleaseArtProfile
+> Task :app:stripReleaseDebugSymbols
+> Task :app:mergeReleaseGlobalSynthetics
+> Task :app:compileReleaseArtProfile
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:processReleaseJavaRes
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:mergeReleaseJavaResource
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+
+[Incubating] Problems report is available at: file:///home/runner/work/amcolink-mobile/amcolink-mobile/android/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 46m 25s
+655 actionable tasks: 655 executed
 ```
 
 ## ci-logs/install.log (last 120 lines)
@@ -73,7 +197,7 @@ npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and cont
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
-added 948 packages, and audited 949 packages in 23s
+added 948 packages, and audited 949 packages in 26s
 
 89 packages are looking for funding
   run `npm fund` for details
@@ -95,68 +219,43 @@ Run `npm audit` for details.
 > amcolink-mobile@1.0.0 test:integration
 > jest --ci -c jest.integration.config.js
 
-FAIL integration/staging.test.ts (12.57 s)
-  ✓ signed-out visitors can read approved shops and published ads (1011 ms)
-  ✓ the countries list is available (243 countries on staging) (348 ms)
-  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (336 ms)
-  ✓ signed-out visitors can read the public Wanted columns (457 ms)
-  ✓ signed-out visitors cannot create a shop (321 ms)
-  ✓ signed-out visitors cannot create a report (332 ms)
-  ✓ signed-out visitors cannot use admin functions (662 ms)
-  ✓ public trending lists can be read signed out (342 ms)
-  ✓ sign-up without the security check is refused (CAPTCHA is on) (324 ms)
+PASS integration/staging.test.ts (12.318 s)
+  ✓ signed-out visitors can read approved shops and published ads (946 ms)
+  ✓ the countries list is available (243 countries on staging) (315 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (337 ms)
+  ✓ signed-out visitors can read the public Wanted columns (433 ms)
+  ✓ signed-out visitors cannot create a shop (327 ms)
+  ✓ signed-out visitors cannot create a report (431 ms)
+  ✓ signed-out visitors cannot use admin functions (482 ms)
+  ✓ public trending lists can be read signed out (135 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (327 ms)
   ✓ notifications are private (335 ms)
-  ✓ app query: latest finds runs on staging (701 ms)
-  ✓ app query: category page with every filter runs on staging (687 ms)
-  ✓ app query: properties for rent and for sale run on staging (657 ms)
-  ✓ app query: search runs on staging (348 ms)
-  ✓ app query: Explore collections run on staging (1132 ms)
-  ✓ app query: shop profile lookup and trust run on staging (663 ms)
-  ✓ signed-out visitors cannot save, block or read other people's saved items (626 ms)
-  ✓ signed-out visitors cannot post an ad or upload a photo (524 ms)
-  ✕ profile name check is for signed-in people only (as on the website) (331 ms)
-  ✕ app query: Wanted list runs on staging as a visitor (1 ms)
+  ✓ app query: latest finds runs on staging (687 ms)
+  ✓ app query: category page with every filter runs on staging (690 ms)
+  ✓ app query: properties for rent and for sale run on staging (453 ms)
+  ✓ app query: search runs on staging (126 ms)
+  ✓ app query: Explore collections run on staging (1363 ms)
+  ✓ app query: shop profile lookup and trust run on staging (466 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (614 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (478 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (315 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (321 ms)
 
-  ● profile name check is for signed-in people only (as on the website)
-
-    expect(received).not.toBeNull()
-
-    Received: null
-
-    [0m [90m 16 |[39m [90m/** A refusal must come from the database or auth server, never from a network failure. */[39m
-     [90m 17 |[39m [36mfunction[39m expectRefused(error[33m:[39m { message[33m?[39m[33m:[39m string[33m;[39m code[33m?[39m[33m:[39m string[33m;[39m status[33m?[39m[33m:[39m number } [33m|[39m [36mnull[39m) {
-    [31m[1m>[22m[39m[90m 18 |[39m   expect(error)[33m.[39mnot[33m.[39mtoBeNull()[33m;[39m
-     [90m    |[39m                     [31m[1m^[22m[39m
-     [90m 19 |[39m   expect([33mString[39m(error[33m?[39m[33m.[39mmessage [33m?[39m[33m?[39m [32m''[39m))[33m.[39mnot[33m.[39mtoMatch([35m/fetch failed|network|ENOTFOUND|ECONNREFUSED|timeout/i[39m)[33m;[39m
-     [90m 20 |[39m }
-     [90m 21 |[39m[0m
-
-      at toBeNull (integration/staging.test.ts:18:21)
-      at Object.expectRefused (integration/staging.test.ts:135:3)
-      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
-      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
-
-  ● app query: Wanted list runs on staging as a visitor
-
-    TypeError: A dynamic import callback was invoked without --experimental-vm-modules
-
-    [0m [90m 137 |[39m
-     [90m 138 |[39m test([32m'app query: Wanted list runs on staging as a visitor'[39m[33m,[39m [36masync[39m () [33m=>[39m {
-    [31m[1m>[22m[39m[90m 139 |[39m   [36mconst[39m { fetchWanted } [33m=[39m [36mawait[39m [36mimport[39m([32m'../src/api/wanted'[39m)[33m;[39m
-     [90m     |[39m   [31m[1m^[22m[39m
-     [90m 140 |[39m   [36mawait[39m expect(fetchWanted({ signedIn[33m:[39m [36mfalse[39m[33m,[39m city[33m:[39m [32m'Nairobi'[39m[33m,[39m category[33m:[39m [32m'Other'[39m }[33m,[39m db))[33m.[39mresolves[33m.[39mtoEqual(expect[33m.[39many([33mArray[39m))[33m;[39m
-     [90m 141 |[39m })[33m;[39m
-     [90m 142 |[39m[0m
-
-      at Object.<anonymous> (integration/staging.test.ts:139:3)
-      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
-      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
-      at node_modules/@babel/runtime/helpers/asyncToGenerator.js:22:7
-      at Object.<anonymous> (node_modules/@babel/runtime/helpers/asyncToGenerator.js:14:12)
-
-Test Suites: 1 failed, 1 total
-Tests:       2 failed, 18 passed, 20 total
+Test Suites: 1 passed, 1 total
+Tests:       20 passed, 20 total
 Snapshots:   0 total
-Time:        12.677 s
+Time:        12.426 s
 Ran all test suites.
+```
+
+## ci-logs/prebuild.log (last 120 lines)
+```
+- Clearing android
+✔ Cleared android code
+- Creating native directory (./android)
+✔ Created native directory
+- Updating package.json
+✔ Updated package.json
+- Running prebuild
+✔ Finished prebuild
 ```
