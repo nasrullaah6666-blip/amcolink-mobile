@@ -6,13 +6,14 @@ import { AppText, Icon, type IconName } from '@/components/ui';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { colors, radius, size, space } from '@/theme/tokens';
 
-// Website /explore tiles that the app has today. Trending and Gifts come in later tasks
-// (they need their own screens) and are added here when they are built — no dead buttons.
-const TILES: { kind: string; label: string; icon: IconName; route?: '/wanted' | '/wanted/new' }[] = [
-  { kind: 'deals', label: 'Deals', icon: 'flag' },
+// Website /explore tiles, same order: Deals, Trending, Gifts, Free stuff, Brand new, Used, Wanted, Post a need.
+const TILES: { kind: string; label: string; icon: IconName; route?: '/wanted' | '/wanted/new' | '/trending' | '/gifts' }[] = [
+  { kind: 'deals', label: 'Deals', icon: 'tag' },
+  { kind: 'trending', label: 'Trending', icon: 'trend', route: '/trending' },
+  { kind: 'gifts', label: 'Gifts', icon: 'gift', route: '/gifts' },
   { kind: 'free', label: 'Free stuff', icon: 'heart' },
-  { kind: 'new', label: 'Brand new', icon: 'grid' },
-  { kind: 'used', label: 'Used', icon: 'compass' },
+  { kind: 'new', label: 'Brand new', icon: 'sparkle' },
+  { kind: 'used', label: 'Used', icon: 'recycle' },
   { kind: 'wanted', label: 'Wanted', icon: 'bell', route: '/wanted' },
   { kind: 'post-need', label: 'Post a need', icon: 'plus', route: '/wanted/new' },
 ];

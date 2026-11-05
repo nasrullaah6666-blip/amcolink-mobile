@@ -82,6 +82,8 @@ test('notifications are private', async () => {
 import { fetchCategory, fetchCollection, fetchLatest, fetchProperties, fetchSearch, fetchShop } from '../src/api/listings';
 import { getTrust } from '../src/core/trust';
 import { fetchWanted } from '../src/api/wanted';
+import { fetchGifts } from '../src/api/listings';
+import { getTrending } from '../src/core/trending';
 
 test('app query: latest finds runs on staging', async () => {
   await expect(fetchLatest({}, db)).resolves.toEqual(expect.any(Array));
@@ -141,4 +143,11 @@ test('profile name check answers yes/no (visitors can run it on staging — see 
 
 test('app query: Wanted list runs on staging as a visitor', async () => {
   await expect(fetchWanted({ signedIn: false, city: 'Nairobi', category: 'Other' }, db)).resolves.toEqual(expect.any(Array));
+});
+
+test('app query: Gifts and Trending run on staging as a visitor', async () => {
+  await expect(fetchGifts({}, db)).resolves.toEqual(expect.any(Array));
+  await expect(fetchGifts({ occasion: 'eid', forWho: 'her', sort: 'price_asc' }, db)).resolves.toEqual(expect.any(Array));
+  const t = await getTrending(db, new Set(), 10);
+  expect(Array.isArray(t.ads) && Array.isArray(t.shops)).toBe(true);
 });

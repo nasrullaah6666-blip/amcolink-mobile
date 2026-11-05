@@ -5,7 +5,7 @@ import { colors, size } from '@/theme/tokens';
 export type IconName =
   | 'home' | 'heart' | 'plus' | 'user' | 'bell' | 'search' | 'chevronDown' | 'chevronLeft' | 'chevronRight'
   | 'filters' | 'house' | 'tools' | 'phone' | 'tv' | 'sofa' | 'shirt' | 'bottle' | 'car' | 'leaf' | 'hammer'
-  | 'grid' | 'compass' | 'call' | 'whatsapp' | 'map' | 'share' | 'flag' | 'more';
+  | 'grid' | 'compass' | 'call' | 'whatsapp' | 'map' | 'share' | 'flag' | 'more' | 'gift' | 'trend' | 'tag' | 'recycle' | 'sparkle';
 
 /** One icon set, one stroke style. Colour defaults to the main text colour. */
 export function Icon({ name, color = colors.text, size: s = size.icon, strokeWidth = 1.8, filled }: { name: IconName; color?: string; size?: number; strokeWidth?: number; filled?: boolean }) {
@@ -14,6 +14,11 @@ export function Icon({ name, color = colors.text, size: s = size.icon, strokeWid
     <Svg width={s} height={s} viewBox="0 0 24 24" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
       {name === 'home' || name === 'house' ? <Path {...p} d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" /> : null}
       {name === 'heart' ? <Path {...p} d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" /> : null}
+      {name === 'gift' ? <><Rect {...p} x="3" y="8" width="18" height="4" rx="1" /><Path {...p} d="M5 12v8h14v-8M12 8v12M12 8S10.5 4 8 4a2 2 0 0 0 0 4M12 8s1.5-4 4-4a2 2 0 0 1 0 4" /></> : null}
+      {name === 'trend' ? <Path {...p} d="M3 17l6-6 4 4 8-8M15 7h6v6" /> : null}
+      {name === 'tag' ? <><Path {...p} d="M3 12V4h8l10 10-8 8z" /><Circle {...p} cx="7.5" cy="8.5" r="1.2" /></> : null}
+      {name === 'recycle' ? <Path {...p} d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" /> : null}
+      {name === 'sparkle' ? <Path {...p} d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" /> : null}
       {name === 'plus' ? <Path {...p} d="M12 5v14M5 12h14" /> : null}
       {name === 'user' ? <><Circle {...p} cx="12" cy="8" r="4" /><Path {...p} d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" /></> : null}
       {name === 'bell' ? <><Path {...p} d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><Path {...p} d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></> : null}

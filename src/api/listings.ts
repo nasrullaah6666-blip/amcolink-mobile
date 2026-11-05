@@ -137,3 +137,17 @@ export async function fetchCollection(kind: CollectionKind, opts: { category?: s
   const res = await q.order('feed_boost', { ascending: false }).order('created_at', { ascending: false }).range(from, from + PAGE_SIZE - 1);
   return must(res) as Listing[];
 }
+
+/** Gifts (website: app/gifts): items sellers tagged as gifts, by occasion and/or who it is for. */
+export async function fetchGifts(f: { occasion?: string; forWho?: string; sort?: 'price_asc' | 'price_desc'; country?: string; page?: number }, c: SupabaseClient = db()): Promise<Listing[]> {
+  const from = (f.page ?? 0) * PAGE_SIZE;
+  let q = c.from('ads').select(LISTING_SELECT).eq('status', 'published').eq('availability', 'available').eq('shops.status', 'approved');
+  if (f.country) q = q.eq('shops.country', f.country);
+  if (f.occasion) q = q.contains('gift_occasions', [f.occasion]);
+  if (f.forWho) q = q.contains('gift_for', [f.forWho]);
+  if (!f.occasion && !f.forWho) q = q.or('gift_occasions.neq.{},gift_for.neq.{}');
+  if (f.sort === 'price_asc') q = q.order('price', { ascending: true, nullsFirst: false });
+  if (f.sort === 'price_desc') q = q.order('price', { ascending: false, nullsFirst: false });
+  const res = await q.order('feed_boost', { ascending: false }).order('created_at', { ascending: false }).range(from, from + PAGE_SIZE - 1);
+  return must(res) as Listing[];
+}

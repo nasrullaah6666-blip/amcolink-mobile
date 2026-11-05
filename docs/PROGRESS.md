@@ -162,3 +162,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Test run — build 13 (commit b8bdc91)
 - Unit 52/52, staging 20/20, APK `test-build-13`. Emulator: 01-smoke, 02-browse, 03-account, 04-country PASSED; 05-listings failed only because the test looked for a listing below the screen without scrolling (test fixed).
 - Country choice confirmed on the emulator: pill shows "Kenya" after choosing it, back to "All countries".
+
+## Task 19 — Trending and Gifts in Explore
+- **Files:** `src/app/trending.tsx`, `src/app/gifts.tsx`, `fetchGifts` in `src/api/listings.ts`, `src/core/{trending,gifts}.ts` (copied from the website), Explore now has all 8 website tiles in the website's order, new icons (tag, trend, gift, sparkle, recycle).
+- **Website rules kept:** Trending = top 10 items by unique viewers and top 10 shops by unique contacts in 7 days (database functions `trending_ads`/`trending_shops`), country and blocked shops applied; Gifts = items tagged by occasion and/or who it is for, "All"/"Everyone" chips, sorting.
+- **Tests:** staging test runs both queries as a visitor.
