@@ -8,7 +8,7 @@ import { colors, radius, space } from '@/theme/tokens';
 
 // Website /explore, same tiles and order: Deals, Trending, Gifts, Free stuff, Brand new, Used, Wanted, Post a need.
 // Icons follow the website (giving hand, bag, megaphone, plus in a circle). The one-line help is app-only (owner chose layout A).
-const ROWS: { kind: string; label: string; hint: string; icon: IconName; route?: '/wanted' | '/wanted/new' | '/trending' | '/gifts' }[] = [
+const ROWS: { kind: string; label: string; hint: string; icon: IconName; route?: '/wanted' | '/wanted/new' | '/trending' | '/gifts' | '/profiles' }[] = [
   { kind: 'deals', label: 'Deals', hint: 'Price drops of 30% or more this week', icon: 'tag' },
   { kind: 'trending', label: 'Trending', hint: 'Most viewed items and shops this week', icon: 'trend', route: '/trending' },
   { kind: 'gifts', label: 'Gifts', hint: 'Ideas by occasion and who it’s for', icon: 'gift', route: '/gifts' },
@@ -17,6 +17,8 @@ const ROWS: { kind: string; label: string; hint: string; icon: IconName; route?:
   { kind: 'used', label: 'Used', hint: 'Second-hand items at lower prices', icon: 'recycle' },
   { kind: 'wanted', label: 'Wanted', hint: 'What buyers are looking for', icon: 'megaphone', route: '/wanted' },
   { kind: 'post-need', label: 'Post a need', hint: 'Tell sellers what you want', icon: 'plusCircle', route: '/wanted/new' },
+  // Website: "View all shops" on Home (/shops). Last, so the website's 8 tiles keep their order.
+  { kind: 'shops', label: 'Shops', hint: 'Browse sellers by name and town', icon: 'store', route: '/profiles' },
 ];
 
 export default function ExploreScreen() {

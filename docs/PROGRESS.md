@@ -310,3 +310,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website rules kept:** location rounded to ~0.5 km before use, never saved; radius 2/5/10/25/50 km (default 10); profiles with a map pin inside the radius, closest first; then same-town profiles without a pin (no distance); any country; blocked profiles left out.
 - **App difference:** if location is refused, the screen explains how to allow it (the website also offers typing a town — the app's Filters → Town covers that).
 - **Tests:** unit test for distance rules (61/61). Real location must be tried on a phone.
+
+## Task 38 — Shops and service providers directory (website parity) — COMPLETED (code)
+- **Files:** `src/api/profiles.ts`, `src/app/profiles.tsx` (`kind=shop|service`), Explore row "Shops" (new store icon; after the website's 8 tiles), "Browse providers" on the Services category.
+- **Website rules kept (ShopsDirectory):** approved profiles with live ads in that group (database marks sells_shopping / sells_services), search by name, town matches town or region, chosen country, verified first, newest first or A–Z for a town, trust score pill, blocked profiles left out.
+- **Not included yet:** the town pick-list with counts and Near me for profiles (the listings Near me exists).

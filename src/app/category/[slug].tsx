@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
-import { AppText } from '@/components/ui';
+import { AppText, Button } from '@/components/ui';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { ListingGrid } from '@/components/ListingGrid';
 import { ChipRow } from '@/components/ChipRow';
@@ -76,6 +76,7 @@ export default function CategoryScreen() {
           }}
         />
       ) : null}
+      {cat.slug === 'services' ? <Button title="Browse providers" variant="outline" onPress={() => router.push({ pathname: '/profiles', params: { kind: 'service' } })} /> : null}
       <ChipRow options={SORTS} value={sort} onChange={setSort} />
       <FiltersButton value={f} onChange={setF} showCondition={needsCondition(cat.name, sub)} />
       {sub || q || filterCount(f) ? (
