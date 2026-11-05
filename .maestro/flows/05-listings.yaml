@@ -40,6 +40,12 @@ appId: com.amcolink.app.dev
 - takeScreenshot: shots/18-deals
 - back
 - back
+# Home is still scrolled down from the listing step: scroll back up to the category tiles.
+- scrollUntilVisible:
+    element:
+      text: "Property"
+    direction: UP
+    timeout: 30000
 - tapOn: "Property"
 - extendedWaitUntil:
     visible: ".*apartment for rent.*"

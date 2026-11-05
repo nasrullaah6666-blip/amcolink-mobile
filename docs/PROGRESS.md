@@ -197,3 +197,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website change needed (prepared, NOT deployed — branch `ai-helper-app`, commit ff6a493d):** the helper only understood website sign-ins (cookies). It now also accepts the app's sign-in ("Bearer" token). Same checks; website behaviour unchanged. Website tests 47/47.
 - **BLOCKED on owner:** (1) "deploy" for the website change; (2) `ANTHROPIC_API_KEY` set on Render (the website's own button also stays hidden until then).
 - **Test limit:** the helper checks sign-ins against the production database, so it only works in the store (production) build. Test builds (staging) hide the button. It can only be tried for real once the store build is installed. Unit tests 56/56.
+
+## Test run — build 17 (commit ba6deb4)
+- Unit 52/52, staging tests passed, APK `test-build-17`. Emulator 4/5: 01-smoke, 02-browse, 03-account, 04-country PASSED (the launcher-dialog fix works); listing, shop and Deals screens recorded.
+- 05-listings stopped at the last step: Home was still scrolled down from the listing step, so the "Property" tile was above the screen. Test fixed (scrolls up first). Not an app fault.
