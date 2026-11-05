@@ -10,6 +10,7 @@ import { ContactBar } from '@/components/ContactBar';
 import { Photo } from '@/components/Photo';
 import { FollowButton } from '@/components/SaveButton';
 import { ReportAndBlock } from '@/components/ReportAndBlock';
+import { ShopReviews } from '@/components/ShopReviews';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { fetchShop, fetchShopListings } from '@/api/listings';
 import { trackEvent } from '@/api/track';
@@ -91,6 +92,7 @@ export default function ShopScreen() {
         contentContainerStyle={styles.content}
         ListHeaderComponent={header}
         renderItem={({ item }) => <ListingCard ad={item} />}
+        ListFooterComponent={<ShopReviews shopId={shop.id} ownerId={(shop as { owner_id: string }).owner_id} shopName={shop.name} />}
         ListEmptyComponent={adsQ.isPending ? <Loading /> : adsQ.isError ? <ErrorState message={(adsQ.error as Error).message} onRetry={() => adsQ.refetch()} /> : <Empty title="No ads yet" />}
       />
       <ContactBar shop={shop} />

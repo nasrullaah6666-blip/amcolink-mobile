@@ -167,3 +167,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/app/trending.tsx`, `src/app/gifts.tsx`, `fetchGifts` in `src/api/listings.ts`, `src/core/{trending,gifts}.ts` (copied from the website), Explore now has all 8 website tiles in the website's order, new icons (tag, trend, gift, sparkle, recycle).
 - **Website rules kept:** Trending = top 10 items by unique viewers and top 10 shops by unique contacts in 7 days (database functions `trending_ads`/`trending_shops`), country and blocked shops applied; Gifts = items tagged by occasion and/or who it is for, "All"/"Everyone" chips, sorting.
 - **Tests:** staging test runs both queries as a visitor.
+
+## Task 20 — Shop reviews
+- **Files:** `src/api/reviews.ts`, `src/components/ShopReviews.tsx`, shown at the bottom of every shop page.
+- **Website rules kept (ShopReviews, ReviewForm, ReplyForm):** last 30 reviews; who may review is decided by the database (`review_status`: sign in first, contact the seller first, own shop, banned, already reviewed → edit); 1–5 stars + optional comment up to 500 characters; the shop owner can reply. Stars are Amcolink green in the app (the website uses amber; owner's green-only rule).
+- **Tests:** staging test (visitor reads reviews and is told to sign in).

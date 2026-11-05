@@ -84,6 +84,7 @@ import { getTrust } from '../src/core/trust';
 import { fetchWanted } from '../src/api/wanted';
 import { fetchGifts } from '../src/api/listings';
 import { getTrending } from '../src/core/trending';
+import { fetchReviews } from '../src/api/reviews';
 
 test('app query: latest finds runs on staging', async () => {
   await expect(fetchLatest({}, db)).resolves.toEqual(expect.any(Array));
@@ -150,4 +151,12 @@ test('app query: Gifts and Trending run on staging as a visitor', async () => {
   await expect(fetchGifts({ occasion: 'eid', forWho: 'her', sort: 'price_asc' }, db)).resolves.toEqual(expect.any(Array));
   const t = await getTrending(db, new Set(), 10);
   expect(Array.isArray(t.ads) && Array.isArray(t.shops)).toBe(true);
+});
+
+test('reviews: visitors can read them and are told to sign in before reviewing', async () => {
+  const shop = await db.from('shops').select('id').eq('status', 'approved').limit(1).maybeSingle();
+  if (!shop.data) return; // no approved shop on staging yet
+  const r = await fetchReviews((shop.data as { id: string }).id, db);
+  expect(Array.isArray(r.list)).toBe(true);
+  expect(r.status).toBe('signin');
 });
