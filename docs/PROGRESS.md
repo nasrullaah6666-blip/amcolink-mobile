@@ -261,3 +261,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/components/DeleteProfile.tsx`, at the bottom of Edit profile.
 - **Website rules kept (DeleteShop):** type the profile name to confirm; deletes the profile (database removes its listings, reviews, statistics), then its listing photos and logo/cover; the account stays; "taking a break? use Away mode" hint.
 - **Colour:** no red button (green-only rule); the danger is in the words and the typed-name check.
+
+## Task 29 — Opening hours and links in Edit profile (website parity) — COMPLETED (code)
+- **Files:** `src/components/HoursField.tsx`, `src/components/LinksField.tsx`, Edit profile (hours, "Note about hours", links). Only the map pin still opens the website.
+- **Website rules kept (HoursEditor, LinksField, parseShopForm):** a day off = closed; "use the first day's time for all open days"; up to 6 links, type found from the pasted link, one per type, reorder, remove; the same form check saves everything.
+- **App difference:** times are chosen from a half-hour list (the website box allows any minute; an existing time not on the list is kept and shown).

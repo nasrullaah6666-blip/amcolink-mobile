@@ -1,6 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native';
 import { DeleteProfile } from '@/components/DeleteProfile';
+import { HoursField } from '@/components/HoursField';
+import { LinksField } from '@/components/LinksField';
+import type { Hours } from '@/core/hours';
+import type { ShopLink } from '@/core/links';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
@@ -49,6 +53,8 @@ export default function EditProfile() {
   const [cover, setCover] = useState<string | null>(null);
   const [uploading, setUploading] = useState<'' | 'logo' | 'cover'>('');
   const [nameTaken, setNameTaken] = useState(false);
+  const [hours, setHours] = useState<Hours>({});
+  const [links, setLinks] = useState<ShopLink[]>([]);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const set = (k: string) => (t: string) => setV((o) => ({ ...o, [k]: t }));
@@ -64,8 +70,9 @@ export default function EditProfile() {
     setV({
       name: shop.name ?? '', country: countryByName(shop.country)?.name ?? 'Kenya', phone: shop.phone ?? '', whatsapp: shop.whatsapp ?? '',
       announcement: shop.announcement ?? '', building: shop.building ?? '', floor: shop.floor ?? '', unit: shop.unit ?? '',
-      address: shop.address ?? '', landmark: shop.landmark ?? '', description: shop.description ?? '',
+      address: shop.address ?? '', landmark: shop.landmark ?? '', description: shop.description ?? '', opening_hours: shop.opening_hours ?? '',
     });
+    setHours(cleanHours(shop.hours)); setLinks(shopLinks(shop));
     const code0 = countryByName(shop.country)?.code;
     const regs = regionsFor(code0);
     if (regs.length) {
@@ -107,11 +114,11 @@ export default function EditProfile() {
       const free = await nameAvailable(v.name.trim(), shop.id);
       if (free === false) { setNameTaken(true); return; }
     }
-    // Fields the app does not edit yet go back exactly as they are, so nothing is lost.
+    // The map pin is not edited in the app yet: it goes back exactly as it is, so nothing is lost.
     const parsed = parseShopForm(formOf({
       ...v, region: regions.length ? region : '', city,
-      links: JSON.stringify(shopLinks(shop)), hours: JSON.stringify(cleanHours(shop.hours)),
-      opening_hours: shop.opening_hours ?? '', lat: shop.lat != null ? String(shop.lat) : '', lng: shop.lng != null ? String(shop.lng) : '',
+      links: JSON.stringify(links), hours: JSON.stringify(hours),
+      lat: shop.lat != null ? String(shop.lat) : '', lng: shop.lng != null ? String(shop.lng) : '',
     }));
     if (!parsed.ok) { setMessage(parsed.error); return; }
     setBusy(true);
@@ -164,8 +171,11 @@ export default function EditProfile() {
           <TextField label="Street or area" value={v.address} onChangeText={set('address')} maxLength={200} placeholder="e.g. Kebele 05, Taiwan area" />
           <TextField label="Directions / nearest landmark" value={v.landmark} onChangeText={set('landmark')} maxLength={300} multiline style={styles.multi} />
           <TextField label="Description" value={v.description} onChangeText={set('description')} maxLength={1500} multiline style={styles.multi} />
+          <HoursField value={hours} onChange={setHours} />
+          <TextField label="Note about hours (optional)" value={v.opening_hours} onChangeText={set('opening_hours')} maxLength={120} placeholder="e.g. Closed for Friday prayers 12–2 PM" />
+          <LinksField value={links} onChange={setLinks} />
           <View style={styles.note}>
-            <AppText variant="bodySmall">Opening hours, links and the map pin are edited on the website for now. They stay as they are when you save here.</AppText>
+            <AppText variant="bodySmall">The map pin is set on the website for now. It stays as it is when you save here.</AppText>
             <Button title="Open the website" variant="ghost" onPress={() => WebBrowser.openBrowserAsync(`${SITE_URL}/shops/${shop.slug}/edit`)} />
           </View>
           {message ? <AppText variant="bodySmall" tone="error" accessibilityRole="alert">{message}</AppText> : null}
