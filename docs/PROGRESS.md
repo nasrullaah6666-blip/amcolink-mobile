@@ -150,3 +150,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website rules kept (SaveSearchButton, SavedSearchList, app/favorites):** same label (`describeSearch`) and stored query (`searchParamsOf`, sort left out), so a search saved in the app opens on the website and the other way; bell turns alerts on/off; delete; property searches open Property.
 - **Alerts themselves** are sent by the existing database job as notifications (shown in the app's Notifications). Push to the phone is not built (needs your approval).
 - **Not yet on a device** (needs sign-in).
+
+## Fix — bottom bar hidden behind the phone's buttons (found by the owner on a real phone, build 11)
+- On phones with on-screen buttons (|||  ○  <) the tab bar had a fixed height and sat under them, so Home/Saved/Post Ad/Account were half hidden and hard to tap. The bar now adds the phone's bottom inset (`useSafeAreaInsets`). First physical-device finding.

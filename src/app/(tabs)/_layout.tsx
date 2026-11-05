@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Tabs } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon, type IconName } from '@/components/ui';
 import { colors, radius, size, type } from '@/theme/tokens';
 
@@ -18,6 +19,8 @@ function PostAdIcon() {
 }
 
 export default function TabsLayout() {
+  // Phones with on-screen buttons (|||  ○  <) draw them over the app: lift the bar above them.
+  const insets = useSafeAreaInsets();
   return (
     <Tabs
       screenOptions={{
@@ -25,7 +28,7 @@ export default function TabsLayout() {
         tabBarActiveTintColor: colors.green,
         tabBarInactiveTintColor: colors.textSecondary,
         tabBarLabelStyle: type.tab,
-        tabBarStyle: { height: size.tabBar, backgroundColor: colors.surface, borderTopColor: colors.border },
+        tabBarStyle: { height: size.tabBar + insets.bottom, paddingBottom: insets.bottom, backgroundColor: colors.surface, borderTopColor: colors.border },
         sceneStyle: { backgroundColor: colors.background },
       }}
     >
