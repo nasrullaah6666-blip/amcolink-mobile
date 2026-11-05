@@ -5,10 +5,12 @@ appId: com.amcolink.app.dev
 - extendedWaitUntil:
     visible: "The latest finds"
     timeout: 60000
-- extendedWaitUntil:
-    visible: ".*Samsung Galaxy A15.*"
-    timeout: 30000
 - takeScreenshot: shots/15-home-with-listings
+- scrollUntilVisible:
+    element:
+      text: ".*Samsung Galaxy A15.*"
+    direction: DOWN
+    timeout: 30000
 - tapOn: ".*Samsung Galaxy A15.*"
 - extendedWaitUntil:
     visible: ".*Meet in a public place.*"

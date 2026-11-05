@@ -158,3 +158,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Passed:** app installs and runs; Home shows staging test listings with photos; create account + email confirmation + sign in with the security check; saving listings (heart) and the Saved tab (4 items shown with photo, title, price, "Free").
 - **Failed → fixed:** bottom bar hidden behind the phone's on-screen buttons (fixed in commit b8bdc91, build 13).
 - Website categories deploy (website commit d3ef747) confirmed live by the owner: Vehicles page shows Parts, Cars, Motorbikes & tuk-tuks, Trucks & buses, Other vehicles, Car services.
+
+## Test run — build 13 (commit b8bdc91)
+- Unit 52/52, staging 20/20, APK `test-build-13`. Emulator: 01-smoke, 02-browse, 03-account, 04-country PASSED; 05-listings failed only because the test looked for a listing below the screen without scrolling (test fixed).
+- Country choice confirmed on the emulator: pill shows "Kenya" after choosing it, back to "All countries".
