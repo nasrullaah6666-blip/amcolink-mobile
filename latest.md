@@ -1,5 +1,5 @@
-# Android test build 26
-commit: f511233924839a7bc9635497691a74cca8376ecc
+# Android test build 27
+commit: 42ae1ad7566d9b75f69e8713176a91e1dce11e24
 key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
 
 ## ci-logs/checks.log (last 120 lines)
@@ -23,7 +23,7 @@ design check ok: all colours come from src/theme/tokens.ts
 
 PASS src/api/__tests__/postAd.test.ts
 PASS src/api/__tests__/listings.test.ts
-PASS src/components/__tests__/AuthForm.test.tsx
+PASS src/components/__tests__/AuthForm.test.tsx (6.252 s)
 PASS src/core/__tests__/core.test.ts
 PASS src/lib/__tests__/config.test.ts
 PASS src/api/__tests__/me.test.ts
@@ -54,14 +54,15 @@ PASS src/components/__tests__/ListingCard.test.tsx
       at Object.require (src/components/__tests__/ListingCard.test.tsx:3:1)
 
 PASS src/api/__tests__/wanted.test.ts
+PASS src/lib/__tests__/priceDrops.test.ts
 PASS src/core/__tests__/shopEdit.test.ts
 PASS src/lib/__tests__/recent.test.ts
 PASS src/api/__tests__/account.test.ts
 
-Test Suites: 13 passed, 13 total
-Tests:       58 passed, 58 total
+Test Suites: 14 passed, 14 total
+Tests:       59 passed, 59 total
 Snapshots:   0 total
-Time:        9.384 s
+Time:        12.649 s
 Ran all test suites.
 ```
 
@@ -105,12 +106,12 @@ Ran all test suites.
 > Task :react-native-webview:mergeReleaseResources
 > Task :react-native-webview:verifyReleaseResources
 > Task :react-native-webview:assembleRelease
-> Task :app:configureCMakeRelWithDebInfo[x86_64]
 > Task :react-native-worklets:bundleReleaseAar
 > Task :react-native-worklets:mapReleaseSourceSetPaths
 > Task :react-native-worklets:mergeReleaseResources
 > Task :react-native-worklets:verifyReleaseResources
 > Task :react-native-worklets:assembleRelease
+> Task :app:configureCMakeRelWithDebInfo[x86_64]
 > Task :app:buildCMakeRelWithDebInfo[x86_64]
 > Task :app:checkReleaseAarMetadata
 > Task :app:generateReleaseResValues
@@ -122,6 +123,7 @@ Ran all test suites.
 > Task :app:parseReleaseLocalResources
 > Task :app:createReleaseCompatibleScreenManifests
 > Task :app:extractDeepLinksRelease
+> Task :app:mergeReleaseNativeLibs
 
 > Task :app:processReleaseMainManifest
 /home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml:4:3-88 Warning:
@@ -138,18 +140,17 @@ Ran all test suites.
 
 > Task :app:processReleaseManifest
 > Task :app:processReleaseManifestForPackage
-> Task :app:processReleaseResources
-> Task :app:mergeReleaseNativeLibs
-> Task :app:compileReleaseKotlin
-> Task :app:javaPreCompileRelease
 > Task :app:stripReleaseDebugSymbols
-> Task :app:compileReleaseJavaWithJavac
-> Task :app:dexBuilderRelease
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:processReleaseResources
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:javaPreCompileRelease
 > Task :app:desugarReleaseFileDependencies
 > Task :app:mergeReleaseStartupProfile
-> Task :app:extractReleaseNativeSymbolTables
+> Task :app:compileReleaseKotlin
 > Task :app:mergeExtDexRelease
-> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:dexBuilderRelease
 > Task :app:mergeReleaseArtProfile
 > Task :app:mergeReleaseGlobalSynthetics
 > Task :app:mergeReleaseShaders
@@ -166,11 +167,11 @@ Ran all test suites.
 > Task :app:lintVitalAnalyzeRelease
 > Task :app:lintVitalReportRelease
 > Task :app:lintVitalRelease
-> Task :app:optimizeReleaseResources
 > Task :app:mergeReleaseJavaResource
 > Task :app:collectReleaseDependencies
 > Task :app:sdkReleaseDependencyData
 > Task :app:validateSigningRelease
+> Task :app:optimizeReleaseResources
 > Task :app:writeReleaseAppMetadata
 > Task :app:writeReleaseSigningConfigVersions
 > Task :app:packageRelease
@@ -185,7 +186,7 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 38m 24s
+BUILD SUCCESSFUL in 49m 24s
 697 actionable tasks: 697 executed
 ```
 
@@ -219,11 +220,11 @@ npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and cont
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated whatwg-encoding@2.0.0: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated whatwg-encoding@2.0.0: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 npm warn deprecated domexception@4.0.0: Use your platform's native DOMException instead
 
-added 958 packages, and audited 959 packages in 16s
+added 958 packages, and audited 959 packages in 22s
 
 89 packages are looking for funding
   run `npm fund` for details
@@ -245,34 +246,34 @@ Run `npm audit` for details.
 > amcolink-mobile@1.0.0 test:integration
 > jest --ci -c jest.integration.config.js
 
-PASS integration/staging.test.ts (10.331 s)
-  ✓ signed-out visitors can read approved shops and published ads (1086 ms)
-  ✓ the countries list is available (243 countries on staging) (154 ms)
-  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (426 ms)
-  ✓ signed-out visitors can read the public Wanted columns (428 ms)
-  ✓ signed-out visitors cannot create a shop (164 ms)
-  ✓ signed-out visitors cannot create a report (390 ms)
-  ✓ signed-out visitors cannot use admin functions (553 ms)
-  ✓ public trending lists can be read signed out (158 ms)
-  ✓ sign-up without the security check is refused (CAPTCHA is on) (143 ms)
-  ✓ notifications are private (144 ms)
-  ✓ app query: latest finds runs on staging (325 ms)
-  ✓ app query: category page with every filter runs on staging (352 ms)
-  ✓ app query: properties for rent and for sale run on staging (346 ms)
-  ✓ app query: search runs on staging (209 ms)
-  ✓ app query: Explore collections run on staging (679 ms)
-  ✓ app query: shop profile lookup and trust run on staging (285 ms)
-  ✓ signed-out visitors cannot save, block or read other people's saved items (442 ms)
-  ✓ signed-out visitors cannot post an ad or upload a photo (676 ms)
-  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (171 ms)
-  ✓ app query: Wanted list runs on staging as a visitor (153 ms)
-  ✓ app query: Gifts and Trending run on staging as a visitor (653 ms)
-  ✓ reviews: visitors can read them and are told to sign in before reviewing (321 ms)
+PASS integration/staging.test.ts (15.209 s)
+  ✓ signed-out visitors can read approved shops and published ads (963 ms)
+  ✓ the countries list is available (243 countries on staging) (369 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (401 ms)
+  ✓ signed-out visitors can read the public Wanted columns (414 ms)
+  ✓ signed-out visitors cannot create a shop (352 ms)
+  ✓ signed-out visitors cannot create a report (334 ms)
+  ✓ signed-out visitors cannot use admin functions (703 ms)
+  ✓ public trending lists can be read signed out (331 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (330 ms)
+  ✓ notifications are private (332 ms)
+  ✓ app query: latest finds runs on staging (685 ms)
+  ✓ app query: category page with every filter runs on staging (483 ms)
+  ✓ app query: properties for rent and for sale run on staging (496 ms)
+  ✓ app query: search runs on staging (364 ms)
+  ✓ app query: Explore collections run on staging (1385 ms)
+  ✓ app query: shop profile lookup and trust run on staging (711 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (832 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (563 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (325 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (127 ms)
+  ✓ app query: Gifts and Trending run on staging as a visitor (1233 ms)
+  ✓ reviews: visitors can read them and are told to sign in before reviewing (728 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       22 passed, 22 total
 Snapshots:   0 total
-Time:        10.514 s
+Time:        15.316 s
 Ran all test suites.
 ```
 
