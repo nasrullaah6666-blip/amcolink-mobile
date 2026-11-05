@@ -13,6 +13,7 @@ import { Photo } from '@/components/Photo';
 import { SaveButton } from '@/components/SaveButton';
 import { ReportAndBlock } from '@/components/ReportAndBlock';
 import { StatusShareButton } from '@/components/StatusShare';
+import { QuickQuestions } from '@/components/QuickQuestions';
 import { fetchListing } from '@/api/listings';
 import { trackEvent } from '@/api/track';
 import { formatPrice } from '@/core/utils';
@@ -133,6 +134,10 @@ export default function ListingScreen() {
               </View>
               <Icon name="chevronRight" color={colors.textSecondary} size={20} strokeWidth={2} />
             </Pressable>
+          ) : null}
+
+          {shop && ad.availability !== 'sold' && !(user && user.id === ad.owner_id) ? (
+            <QuickQuestions shopId={shop.id} adId={ad.id} shopName={shop.name} whatsapp={shop.whatsapp ?? null} adTitle={ad.title} hasPrice={ad.price !== null} />
           ) : null}
 
           <View style={styles.safety}>

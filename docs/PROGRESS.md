@@ -277,3 +277,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Added to the profile page:** "★ rating · reviews" or "New profile", "· Since Nov 2026"; the profile's announcement (📣, green tint); its links (Facebook, Instagram, website… — each behind the same "Never pay in advance" reminder as the website); the week's opening hours table and the hours note; "📌 Featured" for pinned ads, then "More from …".
 - **Fixed:** Report/Block no longer shows on your own profile (the website hides it for the owner).
 - **Website rules kept:** shopLinks, weekRows (same day grouping), memberSince format, pinned up to 4 newest first. Colours: green tint instead of the website's amber.
+
+## Task 32 — Quick questions on WhatsApp (website parity) — COMPLETED (code)
+- **Files:** `src/components/QuickQuestions.tsx`, listing page under the seller card (not on your own ads, not on sold ones).
+- **Website rules kept:** the same 4 messages ("Is it still available?", "What's your last price?" or "How much is it?" when there is no price, "Where can I see it?", "Can you send more photos?"), counted as WhatsApp contacts, behind the "Never pay in advance" reminder.
