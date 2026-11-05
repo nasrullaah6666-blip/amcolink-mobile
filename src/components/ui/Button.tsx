@@ -8,7 +8,8 @@ type Size = 'md' | 'lg';
 
 /**
  * The one button for the whole app. Three looks only:
- *  primary = green fill (main action), outline = green border (second action), ghost = text only (minor action).
+ *  primary = green fill (the ONE main action on a screen), outline = grey border (normal action), ghost = text only (minor action).
+ * Green is kept for the main action and for what is selected, so screens stay calm and consistent (owner, 5 Nov 2026).
  */
 export function Button({
   title, onPress, variant = 'primary', size: s = 'md', icon, disabled, loading, style, accessibilityLabel,
@@ -17,7 +18,8 @@ export function Button({
   disabled?: boolean; loading?: boolean; style?: ViewStyle; accessibilityLabel?: string;
 }) {
   const height = s === 'lg' ? size.buttonLg : size.buttonMd;
-  const textTone = variant === 'primary' ? 'onGreen' : variant === 'ghost' ? 'secondary' : 'green';
+  const textTone = variant === 'primary' ? 'onGreen' : variant === 'ghost' ? 'secondary' : 'default';
+  const slop = Math.max(0, (size.touch - height) / 2);
   return (
     <Pressable
       accessibilityRole="button"
@@ -25,18 +27,19 @@ export function Button({
       accessibilityState={{ disabled: !!disabled || !!loading, busy: !!loading }}
       disabled={disabled || loading}
       onPress={onPress}
+      hitSlop={{ top: slop, bottom: slop }}
       style={({ pressed }) => [
         styles.base,
-        { height, minHeight: size.touch },
+        { height },
         variant === 'primary' && { backgroundColor: pressed ? colors.greenPressed : colors.green },
-        variant === 'outline' && { borderWidth: 1.5, borderColor: colors.green, backgroundColor: pressed ? colors.greenTint : colors.surface },
+        variant === 'outline' && { borderWidth: 1, borderColor: colors.borderStrong, backgroundColor: pressed ? colors.greenTint : colors.surface },
         variant === 'ghost' && { backgroundColor: pressed ? colors.greenTint : 'transparent' },
         (disabled || loading) && styles.disabled,
         style,
       ]}
     >
       {loading ? (
-        <ActivityIndicator color={variant === 'primary' ? colors.onGreen : colors.green} />
+        <ActivityIndicator color={variant === 'primary' ? colors.onGreen : colors.textSecondary} />
       ) : (
         <View style={styles.row}>
           {icon}
@@ -48,7 +51,7 @@ export function Button({
 }
 
 const styles = StyleSheet.create({
-  base: { borderRadius: radius.md, paddingHorizontal: space.lg, alignItems: 'center', justifyContent: 'center' },
+  base: { borderRadius: radius.sm, paddingHorizontal: space.md + 2, alignItems: 'center', justifyContent: 'center' },
   row: { flexDirection: 'row', alignItems: 'center', gap: space.sm },
   disabled: { opacity: 0.5 },
 });

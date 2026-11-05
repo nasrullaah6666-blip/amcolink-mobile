@@ -50,9 +50,9 @@ const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.background },
   body: { paddingHorizontal: space.lg, paddingBottom: space.xxl, gap: space.md },
   list: { backgroundColor: colors.surface, borderRadius: radius.lg, borderWidth: 1, borderColor: colors.border, overflow: 'hidden' },
-  row: { minHeight: 76, flexDirection: 'row', alignItems: 'center', gap: space.md, paddingHorizontal: space.md + 2 },
+  row: { minHeight: 64, flexDirection: 'row', alignItems: 'center', gap: space.md, paddingHorizontal: space.md + 2 },
   line: { borderTopWidth: 1, borderTopColor: colors.border },
-  icon: { width: 44, height: 44, borderRadius: radius.md, backgroundColor: colors.greenTint, alignItems: 'center', justifyContent: 'center' },
+  icon: { width: 40, height: 40, borderRadius: radius.md, backgroundColor: colors.greenTint, alignItems: 'center', justifyContent: 'center' },
   text: { flex: 1, gap: 2 },
-  title: { fontSize: 16 },
+  title: { fontSize: 15 },
 });

@@ -28,7 +28,7 @@ export function ErrorState({ message, onRetry }: { message: string; onRetry?: ()
     <View style={[styles.box, styles.card]} accessibilityRole="alert">
       <AppText variant="heading" style={styles.center}>Something went wrong</AppText>
       <AppText variant="bodySmall" tone="secondary" style={styles.center}>{message}</AppText>
-      {onRetry ? <Button title="Try again" onPress={onRetry} /> : null}
+      {onRetry ? <Button title="Try again" variant="outline" onPress={onRetry} /> : null}
     </View>
   );
 }

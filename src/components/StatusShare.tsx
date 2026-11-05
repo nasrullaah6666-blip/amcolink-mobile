@@ -59,10 +59,10 @@ export function StatusShareButton({ ad, onShared }: { ad: StatusAd; onShared?: (
     <View>
       <Button
         title="Share to WhatsApp Status"
-        size="lg"
+        variant="outline"
         loading={busy}
         onPress={share}
-        icon={<Icon name="whatsapp" color={colors.onGreen} size={20} strokeWidth={2} />}
+        icon={<Icon name="whatsapp" color={colors.text} size={18} strokeWidth={2} />}
       />
       {error ? <Text style={styles.error} accessibilityLiveRegion="polite">{error}</Text> : null}
       {drawing ? (

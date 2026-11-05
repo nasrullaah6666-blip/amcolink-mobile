@@ -27,5 +27,5 @@ export function SearchField({ initial = '', placeholder = "I'm looking for…", 
 
 const styles = StyleSheet.create({
   box: { flexDirection: 'row', alignItems: 'center', gap: space.sm + 2, height: size.input, paddingHorizontal: space.md + 2, borderRadius: radius.md, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border },
-  input: { flex: 1, ...type.body, fontSize: 16, color: colors.text },
+  input: { flex: 1, ...type.body, fontSize: 15, color: colors.text },
 });

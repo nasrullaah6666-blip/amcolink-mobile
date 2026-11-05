@@ -30,7 +30,7 @@ export default function ShoppingScreen() {
             </Pressable>
           ))}
         </View>
-        <Button title="Browse shops" variant="outline" icon={<Icon name="store" color={colors.green} size={18} strokeWidth={2} />} onPress={() => router.push('/profiles')} />
+        <Button title="Browse shops" variant="outline" icon={<Icon name="store" color={colors.text} size={18} strokeWidth={2} />} onPress={() => router.push('/profiles')} />
       </ScrollView>
     </SafeAreaView>
   );

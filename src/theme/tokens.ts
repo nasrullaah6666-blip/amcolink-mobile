@@ -36,13 +36,14 @@ export const fonts = {
 
 /** Text styles: weights follow the website (400 body, 500 labels, 600 buttons/section headings, 700 main headings). */
 export const type = {
-  title: { fontFamily: fonts.bold, fontSize: 22, lineHeight: 28 },
-  heading: { fontFamily: fonts.semibold, fontSize: 18, lineHeight: 24 },
+  // Compact sizes (owner, 5 Nov 2026): Android Material 3 scale, like other marketplace apps.
+  title: { fontFamily: fonts.bold, fontSize: 20, lineHeight: 26 },
+  heading: { fontFamily: fonts.semibold, fontSize: 16, lineHeight: 22 },
   price: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20 },
-  body: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21 },
+  body: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20 },
   bodySmall: { fontFamily: fonts.regular, fontSize: 13, lineHeight: 18 },
-  label: { fontFamily: fonts.medium, fontSize: 14, lineHeight: 18 },
-  button: { fontFamily: fonts.semibold, fontSize: 16, lineHeight: 20 },
+  label: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18 },
+  button: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 18 },
   caption: { fontFamily: fonts.regular, fontSize: 12, lineHeight: 16 },
   tab: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 14 },
 } as const;
@@ -56,14 +57,14 @@ export const radius = { sm: 9, md: 12, lg: 14, tile: 16, pill: 999 } as const;
 /** Sizes shared by every control. */
 export const size = {
   touch: 44, // smallest tappable area
-  buttonMd: 44,
-  buttonLg: 50,
-  chip: 36,
-  input: 48,
+  buttonMd: 36, // normal button (visible size; tap area stays 44 with an invisible margin)
+  buttonLg: 44, // a screen's main button
+  chip: 30,
+  input: 44,
   tabBar: 68,
   icon: 24,
   iconSmall: 18,
-  categoryTile: 56,
+  categoryTile: 52,
 } as const;
 
 export const theme = { colors, fonts, type, space, radius, size } as const;

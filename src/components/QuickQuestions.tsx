@@ -25,7 +25,7 @@ export function QuickQuestions({ shopId, adId, shopName, whatsapp, adTitle, hasP
       <AppText variant="caption" tone="secondary" style={styles.title}>ASK THE SELLER ON WHATSAPP</AppText>
       <View style={styles.chips}>
         {links.map((q) => (
-          <Pressable key={q.label} accessibilityRole="button" accessibilityLabel={`Ask on WhatsApp: ${q.label}`}
+          <Pressable key={q.label} accessibilityRole="button" accessibilityLabel={`Ask on WhatsApp: ${q.label}`} hitSlop={6}
             onPress={() => safetyGate(`ad:${adId}`, 'Continue to WhatsApp', () => { trackEvent(shopId, adId, 'whatsapp'); Linking.openURL(q.href!).catch(() => {}); })}
             style={({ pressed }) => [styles.chip, pressed && { backgroundColor: colors.greenTint }]}>
             <Icon name="whatsapp" color={colors.green} size={15} strokeWidth={2} />
@@ -41,5 +41,5 @@ const styles = StyleSheet.create({
   wrap: { gap: space.sm },
   title: { letterSpacing: 0.5 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
-  chip: { flexDirection: 'row', alignItems: 'center', gap: 6, minHeight: size.touch, paddingHorizontal: space.md, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.borderStrong, backgroundColor: colors.surface },
+  chip: { flexDirection: 'row', alignItems: 'center', gap: 6, minHeight: size.chip + 2, paddingHorizontal: space.md, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.borderStrong, backgroundColor: colors.surface },
 });

@@ -126,8 +126,8 @@ export default function ShopScreen() {
           </View>
         ) : null}
         <View style={styles.actions}>
-          <Button style={styles.flex} variant="outline" title="Map" icon={<Icon name="map" color={colors.green} size={18} strokeWidth={2} />} onPress={() => Linking.openURL(mapsUrl({ ...s, name: shop.name })).catch(() => {})} />
-          <Button style={styles.flex} variant="outline" title="Share" icon={<Icon name="share" color={colors.green} size={18} strokeWidth={2} />} onPress={share} />
+          <Button style={styles.flex} variant="outline" title="Map" icon={<Icon name="map" color={colors.text} size={18} strokeWidth={2} />} onPress={() => Linking.openURL(mapsUrl({ ...s, name: shop.name })).catch(() => {})} />
+          <Button style={styles.flex} variant="outline" title="Share" icon={<Icon name="share" color={colors.text} size={18} strokeWidth={2} />} onPress={share} />
         </View>
         <TrustCard trust={trust} />
         {!mine ? <ReportAndBlock shopId={shop.id} shopName={shop.name} /> : null}

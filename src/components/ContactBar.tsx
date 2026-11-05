@@ -35,7 +35,7 @@ export function ContactBar({ shop, adId, adTitle }: { shop: Seller; adId?: strin
   return (
     <View style={[styles.bar, styles.row, { paddingBottom: space.md + insets.bottom }]}>
       {tel ? (
-        <Button style={styles.flex} size="lg" variant="outline" title="Call" icon={<Icon name="call" color={colors.green} size={20} strokeWidth={2} />} onPress={() => open(tel, 'call')} accessibilityLabel={`Call ${shop.name}`} />
+        <Button style={styles.flex} size="lg" variant="outline" title="Call" icon={<Icon name="call" color={colors.text} size={20} strokeWidth={2} />} onPress={() => open(tel, 'call')} accessibilityLabel={`Call ${shop.name}`} />
       ) : null}
       {wa ? (
         <Button style={styles.flex} size="lg" title="WhatsApp" icon={<Icon name="whatsapp" color={colors.onGreen} size={20} strokeWidth={2} />} onPress={() => open(wa, 'whatsapp')} accessibilityLabel={`WhatsApp ${shop.name}`} />

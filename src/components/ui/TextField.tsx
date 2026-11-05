@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
   boxMulti: { height: undefined, minHeight: size.input, alignItems: 'stretch', paddingVertical: space.xs },
   focused: { borderColor: colors.green, borderWidth: 1.5 },
   wrong: { borderColor: colors.error, borderWidth: 1.5 },
-  input: { flex: 1, ...type.body, fontSize: 16, color: colors.text, height: '100%' },
+  input: { flex: 1, ...type.body, fontSize: 15, color: colors.text, height: '100%' },
   toggle: { height: size.touch, paddingHorizontal: space.md, justifyContent: 'center' },
 });

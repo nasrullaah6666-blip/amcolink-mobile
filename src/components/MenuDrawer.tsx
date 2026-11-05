@@ -67,6 +67,6 @@ const styles = StyleSheet.create({
   logo: { width: 34, height: 34, borderRadius: radius.sm },
   close: { width: size.touch, height: size.touch, alignItems: 'center', justifyContent: 'center' },
   login: { padding: space.lg, paddingBottom: space.xs },
-  row: { flexDirection: 'row', alignItems: 'center', gap: space.md, minHeight: 60, paddingHorizontal: space.lg },
-  label: { flex: 1, fontSize: 17 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: space.md, minHeight: 52, paddingHorizontal: space.lg },
+  label: { flex: 1, fontSize: 15 },
 });

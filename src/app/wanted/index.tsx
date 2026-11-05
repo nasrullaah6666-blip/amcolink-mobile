@@ -47,7 +47,7 @@ function Card({ w, userId, onChanged }: { w: WantedPost; userId?: string; onChan
           <Button title="Delete" variant="ghost" onPress={() => Alert.alert('Delete this request?', '', [{ text: 'Cancel', style: 'cancel' }, { text: 'Delete', style: 'destructive', onPress: () => run('delete') }])} />
         </View>
       ) : reply ? (
-        <Button title="I have it — WhatsApp" icon={<Icon name="whatsapp" color={colors.onGreen} size={18} strokeWidth={2} />} onPress={() => Linking.openURL(reply).catch(() => {})} />
+        <Button title="I have it — WhatsApp" variant="outline" icon={<Icon name="whatsapp" color={colors.text} size={18} strokeWidth={2} />} onPress={() => Linking.openURL(reply).catch(() => {})} />
       ) : (
         <Button title="Log in to reply" variant="outline" onPress={() => router.push('/sign-in')} />
       )}

@@ -87,10 +87,8 @@ function AdRow({ ad, stat, onChanged }: { ad: MyAd; stat: Totals; onChanged: () 
           accessibilityLabel={ad.pinned_at ? 'Unpin from the top of my profile' : 'Pin to the top of my profile (up to 4)'}
           onPress={() => run('pin', () => updateAd(ad.id, { pinned_at: ad.pinned_at ? null : new Date().toISOString() }))} /> : null}
         {ad.status !== 'removed' ? <Button style={styles.flex} title={ad.hidden_by_owner ? 'Show' : 'Hide'} variant="outline" loading={busy === 'hide'} onPress={() => run('hide', () => updateAd(ad.id, { hidden_by_owner: !ad.hidden_by_owner }))} /> : null}
-      </View>
-      {/* Delete on its own small line: four buttons in one row don't fit on a phone ("Delet / e"). */}
-      <View style={styles.deleteRow}>
-        <Button title={busy === 'delete' ? 'Deleting…' : 'Delete listing'} variant="ghost" loading={busy === 'delete'} onPress={askDelete} accessibilityLabel={`Delete ${ad.title} permanently`} />
+        {/* Compact sizes: Delete fits as a small text button at the end of the row. */}
+        <Button title="Delete" variant="ghost" loading={busy === 'delete'} onPress={askDelete} accessibilityLabel={`Delete ${ad.title} permanently`} style={styles.delete} />
       </View>
       {msg ? <AppText variant="caption" tone="error">{msg}</AppText> : null}
     </View>
@@ -213,5 +211,5 @@ const styles = StyleSheet.create({
   faded: { opacity: 0.5 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
   actions: { flexDirection: 'row', gap: space.sm },
-  deleteRow: { alignItems: 'flex-end', marginTop: -space.xs },
+  delete: { paddingHorizontal: space.sm },
 });

@@ -224,8 +224,8 @@ export default function PostScreen() {
                 ) : null}
                 <AppText variant="caption" tone="secondary">{rental ? 'Real photos of the actual property only.' : 'Real photos of the actual item only. No pictures taken from other sites.'}</AppText>
                 {aiHelperAvailable() && !rental && photos.length > 0 ? (
-                  <Button title={aiBusy ? 'Looking at your photo…' : 'Fill in the ad from my photo'} size="lg" loading={aiBusy} onPress={fillFromPhoto}
-                    icon={<Icon name="sparkle" color={colors.onGreen} size={20} strokeWidth={2} />} />
+                  <Button title={aiBusy ? 'Looking at your photo…' : 'Fill in the ad from my photo'} variant="outline" loading={aiBusy} onPress={fillFromPhoto}
+                    icon={<Icon name="sparkle" color={colors.green} size={18} strokeWidth={2} />} />
                 ) : null}
                 {aiNote ? <View style={styles.note}><AppText variant="bodySmall" accessibilityLiveRegion="polite">{aiNote}</AppText></View> : null}
               </Section>

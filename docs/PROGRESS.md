@@ -388,3 +388,10 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/components/MenuDrawer.tsx` (☰ next to the Country button on Home; opens from the right), `src/app/shopping.tsx` (website /shopping: shopping categories as tiles + Browse shops), icons menu/close, colour token `backdrop`.
 - **Website rules kept (MenuDrawer):** the four ways in — Shopping, Services, Properties, Explore; "Log in or create account" at the top when signed out. The website's Admin panel / Insights rows are NOT in the app (owner's choice; no admin in the app).
 - **Tests:** emulator flow 07 opens the menu (29) and Shopping (30).
+
+## Task 55 — Compact sizes and calmer colours across the app (owner "go", 5 Nov 2026 21:56) — COMPLETED (code)
+- **Why:** owner found buttons and text too large and too much green.
+- **Research:** Jiji, OLX and Facebook Marketplace don't publish their sizes; Android's Material 3 (which they follow) uses 40 dp normal / 32 dp small buttons. Chosen: normal button 36, main button 44, chip 30, text box 44, category tile 52; text: button 14, body 14, label 13, page title 20, section title 16, header 18. Tap areas stay ≥ 44 dp with invisible margins (hitSlop).
+- **Colours:** normal (outline) buttons are grey border + dark text; selected chips are light-green tint with green text; solid green only for a screen's one main action (Publish, Sign in, WhatsApp, Save…). Made secondary: Share to WhatsApp Status, AI photo helper, "I have it — WhatsApp" on Wanted cards, Try again. Home: Property and Services tiles look like the others (the website shows them solid green — owner's choice for the app).
+- **My ads:** Edit · Pin · Hide · Delete fit in one row again (Delete as a small text button).
+- All in `src/theme/tokens.ts`, `Button`, `Chip`, `TextField`, `SearchField`, `ScreenHeader` plus a few screens — one design file, so every screen follows.

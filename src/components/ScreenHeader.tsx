@@ -25,5 +25,5 @@ export function ScreenHeader({ title, right, onBack }: { title?: string; right?:
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: space.xs, paddingHorizontal: space.sm, paddingTop: space.sm, paddingBottom: space.xs },
   back: { width: size.touch, height: size.touch, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
-  title: { flex: 1, fontSize: 20 },
+  title: { flex: 1, fontSize: 18 },
 });

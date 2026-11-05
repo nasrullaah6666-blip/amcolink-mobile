@@ -60,10 +60,11 @@ function Header({ onSearch }: { onSearch: (q: string) => void }) {
       <View style={styles.grid}>
         {TILES.map((t) => (
           <Pressable key={t.key} accessibilityRole="button" accessibilityLabel={t.label} onPress={t.go} style={styles.tile}>
-            <View style={[styles.tileIcon, { backgroundColor: t.strong ? colors.green : colors.greenTint }]}>
-              <Icon name={t.icon} color={t.strong ? colors.onGreen : colors.green} />
+            {/* All tiles look the same (owner, 5 Nov 2026: no solid green tiles; the website shows Property and Services in solid green). */}
+            <View style={[styles.tileIcon, { backgroundColor: colors.greenTint }]}>
+              <Icon name={t.icon} color={colors.green} />
             </View>
-            <AppText variant="caption" style={[styles.tileLabel, t.strong && { fontFamily: fonts.semibold }]} numberOfLines={2}>{t.label}</AppText>
+            <AppText variant="caption" style={styles.tileLabel} numberOfLines={2}>{t.label}</AppText>
           </Pressable>
         ))}
       </View>
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
   brand: { flex: 1 },
   band: { backgroundColor: colors.green, marginHorizontal: -space.lg, paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: space.lg },
   search: { flexDirection: 'row', alignItems: 'center', gap: space.sm + 2, height: size.input, paddingHorizontal: space.md + 2, borderRadius: radius.md, backgroundColor: colors.surface },
-  searchInput: { flex: 1, ...type.body, fontSize: 16, color: colors.text },
+  searchInput: { flex: 1, ...type.body, fontSize: 15, color: colors.text },
   content: { paddingHorizontal: space.lg, paddingBottom: space.xxl },
   row: { gap: space.sm + 2, marginBottom: space.sm + 2 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', rowGap: space.sm + 2, marginTop: space.lg },
