@@ -272,3 +272,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/lib/safetyGate.ts` (same text, same once-per-listing memory key `amc_safety_ok_v1`), Call/WhatsApp bar on listings and profiles. Buttons: Safety tips · Cancel · Call seller / Continue to WhatsApp.
 - **App difference:** Android's own dialog instead of the website's card (simplest, familiar).
 - **Tests:** emulator step in 06 (tap Call → reminder → Cancel, screenshot 23).
+
+## Task 31 — Profile page details (website parity) — COMPLETED (code)
+- **Added to the profile page:** "★ rating · reviews" or "New profile", "· Since Nov 2026"; the profile's announcement (📣, green tint); its links (Facebook, Instagram, website… — each behind the same "Never pay in advance" reminder as the website); the week's opening hours table and the hours note; "📌 Featured" for pinned ads, then "More from …".
+- **Fixed:** Report/Block no longer shows on your own profile (the website hides it for the owner).
+- **Website rules kept:** shopLinks, weekRows (same day grouping), memberSince format, pinned up to 4 newest first. Colours: green tint instead of the website's amber.

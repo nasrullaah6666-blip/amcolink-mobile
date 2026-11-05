@@ -16,7 +16,9 @@ import { fetchShop, fetchShopListings } from '@/api/listings';
 import { trackEvent } from '@/api/track';
 import { db } from '@/api/db';
 import { areaLine, mapsUrl, placeLine } from '@/core/address';
-import { cleanHours, openStatus } from '@/core/hours';
+import { cleanHours, hasHours, openStatus, weekRows } from '@/core/hours';
+import { LINK_INFO, shopLinks } from '@/core/links';
+import { safetyGate } from '@/lib/safetyGate';
 import { getTrust } from '@/core/trust';
 import { awayUntilLabel, isAway } from '@/core/away';
 import { useAuth } from '@/auth/session';
@@ -51,12 +53,19 @@ export default function ShopScreen() {
   const place = placeLine(s);
   const area = areaLine(s);
   const status = openStatus(cleanHours(s.hours), shop.country);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const card = (a: any) => <ListingCard key={a.id} ad={a} />;
   const trust = trustQ.data;
   const all = adsQ.data ?? [];
   // Website: up to 4 pinned listings first (newest pin first), then the rest newest first.
   const pinned = all.filter((a) => (a as { pinned_at?: string | null }).pinned_at && !(a as { hidden_by_owner?: boolean }).hidden_by_owner)
     .sort((x, y) => String((y as { pinned_at?: string }).pinned_at).localeCompare(String((x as { pinned_at?: string }).pinned_at))).slice(0, 4);
-  const ads = [...pinned, ...all.filter((a) => !pinned.some((p) => p.id === a.id))];
+  const rest = all.filter((a) => !pinned.some((p) => p.id === a.id));
+  const hours = cleanHours(s.hours);
+  const links = shopLinks(s);
+  const since = s.created_at ? new Date(s.created_at).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) : '';
+  const announcement = String(s.announcement || '').trim();
+  const note = String(s.opening_hours || '').trim();
   const away = isAway(s);
   const mine = user?.id === (shop as { owner_id?: string }).owner_id;
 
@@ -76,8 +85,18 @@ export default function ShopScreen() {
         {place ? <AppText variant="bodySmall" tone="secondary">{place}</AppText> : null}
         {area ? <AppText variant="bodySmall" tone="secondary">{area}</AppText> : null}
         {status ? <AppText variant="label" tone={status.open ? 'green' : 'secondary'}>{status.text}</AppText> : null}
-        {trust && trust.reviews > 0 && trust.rating != null ? (
-          <AppText variant="bodySmall">{trust.rating.toFixed(1)} out of 5 · {trust.reviews} review{trust.reviews === 1 ? '' : 's'}</AppText>
+        <AppText variant="bodySmall">
+          {trust && trust.reviews > 0 && trust.rating != null ? `★ ${trust.rating.toFixed(1)} · ${trust.reviews} review${trust.reviews === 1 ? '' : 's'}` : 'New profile'}
+          {since ? ` · Since ${since}` : ''}
+        </AppText>
+        {announcement ? <View style={styles.note}><AppText variant="bodySmall">📣 {announcement}</AppText></View> : null}
+        {links.length ? (
+          <View style={styles.links}>
+            {links.map((l) => (
+              <Button key={l.type} variant="outline" title={LINK_INFO[l.type].label} accessibilityLabel={`${shop.name} on ${LINK_INFO[l.type].label}`}
+                onPress={() => safetyGate(`shop:${shop.id}`, `Continue to ${LINK_INFO[l.type].label}`, () => { Linking.openURL(l.url).catch(() => {}); })} />
+            ))}
+          </View>
         ) : null}
         {away ? (
           <View style={styles.away}>
@@ -86,12 +105,32 @@ export default function ShopScreen() {
           </View>
         ) : null}
         {shop.description ? <AppText variant="body">{shop.description}</AppText> : null}
+        {hasHours(hours) || note ? (
+          <View style={styles.hours}>
+            <AppText variant="label">Opening hours</AppText>
+            {weekRows(hours).map((r) => (
+              <View key={r.days} style={styles.hourRow}>
+                <AppText variant="bodySmall" style={styles.days}>{r.days}</AppText>
+                <AppText variant="bodySmall" tone="secondary">{r.time}</AppText>
+              </View>
+            ))}
+            {note ? <AppText variant="caption" tone="secondary">{note}</AppText> : null}
+          </View>
+        ) : null}
         <View style={styles.actions}>
           <Button style={styles.flex} variant="outline" title="Map" icon={<Icon name="map" color={colors.green} size={18} strokeWidth={2} />} onPress={() => Linking.openURL(mapsUrl({ ...s, name: shop.name })).catch(() => {})} />
           <Button style={styles.flex} variant="outline" title="Share" icon={<Icon name="share" color={colors.green} size={18} strokeWidth={2} />} onPress={share} />
         </View>
-        <ReportAndBlock shopId={shop.id} shopName={shop.name} />
-        <AppText variant="heading" style={styles.section}>Ads ({ads.length})</AppText>
+        {!mine ? <ReportAndBlock shopId={shop.id} shopName={shop.name} /> : null}
+        {pinned.length ? (
+          <>
+            <AppText variant="heading" style={styles.section}>📌 Featured</AppText>
+            {Array.from({ length: Math.ceil(pinned.length / 2) }).map((_, i) => (
+              <View key={i} style={styles.pinRow}>{pinned.slice(i * 2, i * 2 + 2).map(card)}{pinned.length - i * 2 === 1 ? <View style={styles.flex} /> : null}</View>
+            ))}
+          </>
+        ) : null}
+        {!pinned.length || rest.length ? <AppText variant="heading" style={styles.section}>{pinned.length ? `More from ${shop.name}` : `Ads (${all.length})`}</AppText> : null}
       </View>
     </View>
   );
@@ -100,7 +139,7 @@ export default function ShopScreen() {
     <SafeAreaView edges={['top']} style={styles.page}>
       <ScreenHeader />
       <FlatList
-        data={ads}
+        data={rest}
         keyExtractor={(a) => a.id}
         numColumns={2}
         columnWrapperStyle={styles.row}
@@ -108,7 +147,7 @@ export default function ShopScreen() {
         ListHeaderComponent={header}
         renderItem={({ item }) => <ListingCard ad={item} />}
         ListFooterComponent={<ShopReviews shopId={shop.id} ownerId={(shop as { owner_id: string }).owner_id} shopName={shop.name} />}
-        ListEmptyComponent={adsQ.isPending ? <Loading /> : adsQ.isError ? <ErrorState message={(adsQ.error as Error).message} onRetry={() => adsQ.refetch()} /> : <Empty title={away ? 'This profile is away. Its listings will be back soon.' : 'No ads yet'} />}
+        ListEmptyComponent={pinned.length ? null : adsQ.isPending ? <Loading /> : adsQ.isError ? <ErrorState message={(adsQ.error as Error).message} onRetry={() => adsQ.refetch()} /> : <Empty title={away ? 'This profile is away. Its listings will be back soon.' : 'No ads yet'} />}
       />
       <ContactBar shop={shop} />
     </SafeAreaView>
@@ -127,6 +166,12 @@ const styles = StyleSheet.create({
   actions: { flexDirection: 'row', gap: space.sm, marginTop: space.sm },
   flex: { flex: 1 },
   section: { marginTop: space.lg, marginBottom: space.sm },
+  note: { padding: space.md, borderRadius: radius.md, backgroundColor: colors.greenTint, marginTop: space.xs },
+  links: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm, marginTop: space.xs },
+  hours: { gap: space.xs, padding: space.md, borderRadius: radius.md, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.surface, marginTop: space.sm },
+  hourRow: { flexDirection: 'row', gap: space.md },
+  days: { width: 96 },
+  pinRow: { flexDirection: 'row', gap: space.sm + 2, marginBottom: space.sm + 2 },
   away: { gap: space.xs, padding: space.md, borderRadius: radius.md, backgroundColor: colors.greenTint, marginTop: space.sm },
 });
 
