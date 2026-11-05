@@ -21,6 +21,17 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       package: production ? 'com.amcolink.app' : 'com.amcolink.app.dev',
       versionCode: Number(process.env.ANDROID_VERSION_CODE ?? 1),
       ...(pushReady ? { googleServicesFile: googleServices } : {}),
+      // Store app only: amcolink.com links to listings, profiles, categories and Wanted open in the app
+      // (Android App Links). Works once the website serves /.well-known/assetlinks.json (docs/APP-LINKS.md).
+      ...(production ? {
+        intentFilters: [{
+          action: 'VIEW',
+          autoVerify: true,
+          data: ['/ads', '/shops', '/category', '/wanted', '/explore', '/trending', '/gifts']
+            .flatMap((pathPrefix) => ['amcolink.com', 'www.amcolink.com'].map((host) => ({ scheme: 'https', host, pathPrefix }))),
+          category: ['BROWSABLE', 'DEFAULT'],
+        }],
+      } : {}),
     },
     extra: { ...config.extra, pushReady },
     ios: { ...config.ios, bundleIdentifier: production ? 'com.amcolink.app' : 'com.amcolink.app.dev' },

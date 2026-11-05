@@ -11,6 +11,7 @@ and given to the owner together when asked. Updated: 5 Nov 2026, evening.
 | 4 | Google Play: developer account (one-time fee) and the release signing key (created on the owner's side) | purchase, account, key | later |
 | 6 | Release settings in GitHub (production publishable key, Turnstile site key, permanent security page, upload key) — exact steps in `docs/RELEASE.md` | keys and accounts are the owner's | later |
 | 7 | Approve the store text and Data safety answers in `docs/STORE-LISTING.md`; "go" + "deploy" for the privacy page additions listed there | owner decision, live website | open |
+| 8 | After the first Play upload: copy the app-signing SHA-256 fingerprint (public) from Play Console → App integrity, so amcolink.com links open in the app — then "deploy" the website file (`docs/APP-LINKS.md`) | Play Console, live website | later |
 | 5 | Optional: delete the leftover GitHub branch `hold-status-fix` (GitHub → Branches → bin icon) | GitHub refuses deletes from Claude | open |
 
 Done today: Cloudflare purge · Wanted alerts on staging · Firebase project + `GOOGLE_SERVICES` secret · Supabase `push` function, secrets and webhook on staging · real phone alert received · Status share and Forgot password checked on the phone · app ID `com.amcolink.app` confirmed · Explore layout A chosen.
