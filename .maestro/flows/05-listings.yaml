@@ -16,8 +16,9 @@ appId: com.amcolink.app.dev
     direction: DOWN
     timeout: 30000
 - tapOn: ".*Samsung Galaxy A15.*"
+# The listing has opened when its main button shows (the safety note is lower down since the WhatsApp questions came).
 - extendedWaitUntil:
-    visible: ".*Meet in a public place.*"
+    visible: "Share to WhatsApp Status"
     timeout: 30000
 - takeScreenshot: shots/16-listing
 - scrollUntilVisible:

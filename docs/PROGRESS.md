@@ -294,3 +294,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/lib/priceDrops.ts` (copied rule from the website lib/priceDrops.ts + DropDot), Saved page banner "🔔 N saved items are cheaper now…", a dot on the Saved tab until Saved is opened.
 - **Website rules kept:** only items saved before the price dropped in the last 7 days, still published and not sold, real drop (≥5%); "seen" remembered on the phone (`soko-drops-seen`). Dot is green (website red; green-only rule).
 - **Tests:** unit test for the rule (59/59). Note for myself: always run the full `npm run check` and read its exit code — a failing suite still prints the passing-test count.
+
+## Test run — build 26 (tasks 26–32)
+- Unit, staging tests passed, APK `test-build-26`. Emulator 5/6; the new "Never pay in advance" reminder shows before Call (screenshot 23).
+- 05-listings waited for the safety note, which is now lower on the page (quick WhatsApp questions above it); the listing itself opened correctly. Test now waits for "Share to WhatsApp Status".
