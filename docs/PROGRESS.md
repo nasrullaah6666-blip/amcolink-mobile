@@ -331,3 +331,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Test run — build 28 (tasks 36–38)
 - Unit, staging tests passed, APK `test-build-28`. **Emulator 6/6 PASSED.**
+
+## Task 41 — "Verified": what it means (website parity) — COMPLETED (code)
+- **Checked first:** the website says the Verified badge can't be requested or bought (Amcolink's team picks and checks shops; the old request field is cleared by the database). So there is NO "request verification" in the app — that was on my list by mistake and is dropped.
+- **Built instead:** on a profile, "✓ Verified seller · What this means" (property: "Verified profile") opens the website's /verified page, like the website's badge link.

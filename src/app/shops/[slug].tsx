@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { FlatList, Linking, Share, StyleSheet, View } from 'react-native';
+import { FlatList, Linking, Pressable, Share, StyleSheet, View } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
+import { isPropertyAccount } from '@/core/property';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
@@ -23,7 +25,7 @@ import { getTrust } from '@/core/trust';
 import { TrustCard } from '@/components/TrustCard';
 import { awayUntilLabel, isAway } from '@/core/away';
 import { useAuth } from '@/auth/session';
-import { shopUrl } from '@/lib/site';
+import { shopUrl, SITE_URL } from '@/lib/site';
 import { colors, radius, space } from '@/theme/tokens';
 
 export default function ShopScreen() {
@@ -81,7 +83,12 @@ export default function ShopScreen() {
       <View style={styles.headBody}>
         <Photo src={shop.logo_url} thumb style={styles.logo} label={`${shop.name} logo`} />
         <AppText variant="title" accessibilityRole="header">{shop.name}</AppText>
-        {shop.is_verified ? <AppText variant="label" tone="green">Verified</AppText> : null}
+        {shop.is_verified ? (
+          <Pressable accessibilityRole="link" accessibilityLabel={`Verified ${isPropertyAccount(s) ? 'profile' : 'seller'}. What this means`} hitSlop={8}
+            onPress={() => WebBrowser.openBrowserAsync(`${SITE_URL}/verified`).catch(() => {})}>
+            <AppText variant="label" tone="green">✓ Verified {isPropertyAccount(s) ? 'profile' : 'seller'} · <AppText variant="label" tone="green" style={styles.underline}>What this means</AppText></AppText>
+          </Pressable>
+        ) : null}
         <FollowButton shopId={shop.id} />
         {place ? <AppText variant="bodySmall" tone="secondary">{place}</AppText> : null}
         {area ? <AppText variant="bodySmall" tone="secondary">{area}</AppText> : null}
@@ -174,6 +181,7 @@ const styles = StyleSheet.create({
   hourRow: { flexDirection: 'row', gap: space.md },
   days: { width: 96 },
   pinRow: { flexDirection: 'row', gap: space.sm + 2, marginBottom: space.sm + 2 },
+  underline: { textDecorationLine: 'underline' },
   away: { gap: space.xs, padding: space.md, borderRadius: radius.md, backgroundColor: colors.greenTint, marginTop: space.sm },
 });
 
