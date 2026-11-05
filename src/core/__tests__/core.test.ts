@@ -38,3 +38,12 @@ test('away mode: on until the return date, typed date checks', () => {
   expect(awayDateProblem('2026-11-01', now)).toMatch(/tomorrow/);
   expect(awayDateProblem('2028-01-01', now)).toMatch(/one year/);
 });
+
+import { distanceKm, formatKm, snap } from '@/core/distance';
+test('near me: distance, rounding to ~0.5 km, labels (website rules)', () => {
+  expect(Math.round(distanceKm({ lat: -1.286, lng: 36.817 }, { lat: -4.043, lng: 39.668 }))).toBeGreaterThan(400);
+  expect(snap(-1.28634)).toBe(-1.285);
+  expect(formatKm(0.2)).toBe('under 0.5 km away');
+  expect(formatKm(2.3)).toBe('about 2.5 km away');
+  expect(formatKm(12.6)).toBe('about 13 km away');
+});

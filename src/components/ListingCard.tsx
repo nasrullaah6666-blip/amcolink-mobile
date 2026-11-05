@@ -11,8 +11,9 @@ import { bedsLabel, isRental } from '@/core/rentals';
 import { colors, radius, space } from '@/theme/tokens';
 
 /** The listing card used in every list (Home, categories, search, properties, shop pages). */
-export const ListingCard = memo(function ListingCard({ ad }: { ad: Listing }) {
-  const town = ad.shops?.city ?? '';
+export const ListingCard = memo(function ListingCard({ ad, place }: { ad: Listing; place?: string }) {
+  // Near me shows the distance instead of the town (website AdCard: distanceKm).
+  const town = place ?? ad.shops?.city ?? '';
   const extra = isRental(ad.category)
     ? [bedsLabel(ad.rental?.bedrooms), ad.rental?.area].filter(Boolean).join(' · ')
     : [town, ad.condition ? conditionLabel(ad.condition) : ''].filter(Boolean).join(' · ');

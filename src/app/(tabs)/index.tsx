@@ -69,6 +69,10 @@ function Header({ onSearch }: { onSearch: (q: string) => void }) {
       <RecentlyViewed />
       <View style={styles.sectionRow}>
         <AppText variant="heading" accessibilityRole="header">The latest finds</AppText>
+        <Pressable accessibilityRole="button" accessibilityLabel="Near me: closest listings first" hitSlop={8} onPress={() => router.push('/near')} style={styles.near}>
+          <Icon name="map" color={colors.green} size={16} strokeWidth={2} />
+          <AppText variant="label" tone="green">Near me</AppText>
+        </Pressable>
       </View>
     </View>
   );
@@ -137,5 +141,6 @@ const styles = StyleSheet.create({
   tile: { width: '25%', alignItems: 'center', gap: 6, paddingHorizontal: 2, minHeight: size.touch },
   tileIcon: { width: size.categoryTile, height: size.categoryTile, borderRadius: radius.tile, alignItems: 'center', justifyContent: 'center' },
   tileLabel: { textAlign: 'center' },
+  near: { flexDirection: 'row', alignItems: 'center', gap: 4, minHeight: size.touch, paddingHorizontal: space.xs },
   sectionRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: space.xl, marginBottom: space.sm + 2 },
 });

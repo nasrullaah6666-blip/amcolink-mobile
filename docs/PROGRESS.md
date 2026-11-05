@@ -304,3 +304,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website rules kept (SearchFilters):** town (matches the profile's town or region), price from/to, condition (only where the category uses it), verified sellers only; saved searches store the same keys the database's alert rule reads (city, min, max, condition, verified).
 - **Not included:** "Near me" with distance (needs the phone's location — separate task).
 - **Tests:** unit test (60/60).
+
+## Task 37 — Near me (website parity) — COMPLETED (code)
+- **Files:** `src/core/distance.ts` (copied), `src/api/nearby.ts` (website Home ?near= logic + guessBuyerCity), `src/app/near.tsx`, "Near me" on Home next to "The latest finds", cards show "about 2.5 km away"; package `expo-location` (location only while the app is open; no background location).
+- **Website rules kept:** location rounded to ~0.5 km before use, never saved; radius 2/5/10/25/50 km (default 10); profiles with a map pin inside the radius, closest first; then same-town profiles without a pin (no distance); any country; blocked profiles left out.
+- **App difference:** if location is refused, the screen explains how to allow it (the website also offers typing a town — the app's Filters → Town covers that).
+- **Tests:** unit test for distance rules (61/61). Real location must be tried on a phone.
