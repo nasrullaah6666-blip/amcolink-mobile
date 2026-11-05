@@ -180,3 +180,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Test run — build 15 (commit 7383df1)
 - Unit 52/52, staging 22/22 (new: Gifts, Trending, reviews), APK `test-build-15`.
 - Emulator 0/5: not an app fault — the emulator's own home-screen program froze ("Pixel Launcher isn't responding") and its dialog covered the app, which was running normally underneath (screenshot). Tests now wait for the emulator to settle, close system dialogs and tap "Wait" if that dialog appears.
+
+## Physical phone test — owner, build 15, 5 Nov 2026
+- **Passed:** bottom bar now fully visible above the phone's on-screen buttons (fix confirmed); hearts fill green when saved; Save search ("Tshirt") appears in Saved with alerts on; Explore shows all 8 tiles with their own icons; country pill shows "All countries".
+- **Noted:** Explore leaves the lower two-thirds of the screen empty (owner's "no leftover empty space" rule) — options proposed to the owner, nothing changed yet.
