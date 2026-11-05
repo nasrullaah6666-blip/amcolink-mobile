@@ -13,6 +13,13 @@ appId: com.amcolink.app.dev
 - extendedWaitUntil:
     visible: "Welcome back to Amcolink."
     timeout: 15000
+# The security check must be switched on in this build (site key present) and load Cloudflare's box.
+- assertNotVisible: "The security check is not set up in this build, so sign-in is turned off."
+- extendedWaitUntil:
+    visible: "Security check"
+    timeout: 20000
+- waitForAnimationToEnd:
+    timeout: 8000
 - takeScreenshot: shots/11-sign-in
 - tapOn: "Forgot password?"
 - assertVisible: "Reset your password"
