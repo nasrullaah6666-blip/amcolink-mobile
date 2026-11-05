@@ -349,3 +349,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Task 45 — Emulator tests for the newer screens — COMPLETED (code)
 - New flow `07-new-screens`: Filters on a category (25), Property filters (26), Shops directory from Explore (27), Near me with the location question (28). Earlier flows already cover the photo viewer (24) and the safety reminder (23).
+
+## Task 46 — Accessibility and speed pass — COMPLETED (code)
+- Tap areas: photo "remove" buttons (28 px) get an 8 px touch margin; quick-question chips are 44 px tall. Chips, hearts and tabs were already ≥ 44 px (with touch margins).
+- Every new screen has screen-reader labels (rows read as "name. help", time boxes "Monday opens: 8:00 AM", photo viewer "photo n of m", trust card read as one sentence).
+- Speed: every listing grid draws 6 cards first and keeps a 7-screen window (same as Home), for low-cost phones. Lists use small thumbnails; only the listing page and photo viewer load full photos.

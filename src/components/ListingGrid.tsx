@@ -39,6 +39,9 @@ export function ListingGrid({ queryKey, load, header, emptyTitle, emptyHint }: {
       contentContainerStyle={styles.content}
       ListHeaderComponent={header}
       renderItem={({ item }) => <ListingCard ad={item} />}
+      // Fewer cards drawn at once: smoother on low-cost phones (Home uses the same numbers).
+      initialNumToRender={6}
+      windowSize={7}
       onEndReachedThreshold={0.6}
       onEndReached={() => q.hasNextPage && !q.isFetchingNextPage && q.fetchNextPage()}
       refreshControl={<RefreshControl refreshing={q.isRefetching && !q.isFetchingNextPage} onRefresh={() => q.refetch()} tintColor={colors.green} colors={[colors.green]} />}

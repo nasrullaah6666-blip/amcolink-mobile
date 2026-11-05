@@ -41,7 +41,7 @@ export function PhotoEditor({ userId, photos, onChange, onError }: { userId: str
         {photos.map((u, i) => (
           <View key={u}>
             <Photo src={u} thumb style={styles.photo} label={`Photo ${i + 1}`} />
-            <Pressable accessibilityRole="button" accessibilityLabel={`Remove photo ${i + 1}`} onPress={() => onChange(photos.filter((x) => x !== u))} style={styles.remove}>
+            <Pressable accessibilityRole="button" accessibilityLabel={`Remove photo ${i + 1}`} hitSlop={8} onPress={() => onChange(photos.filter((x) => x !== u))} style={styles.remove}>
               <AppText variant="label">✕</AppText>
             </Pressable>
           </View>

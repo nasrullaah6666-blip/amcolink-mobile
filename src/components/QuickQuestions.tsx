@@ -5,7 +5,7 @@ import { whatsappLink } from '@/core/utils';
 import { trackEvent } from '@/api/track';
 import { BRAND } from '@/lib/site';
 import { safetyGate } from '@/lib/safetyGate';
-import { colors, radius, space } from '@/theme/tokens';
+import { colors, radius, size, space } from '@/theme/tokens';
 
 /** One-tap questions (website: components/QuickQuestions.tsx): each opens WhatsApp with the message already written. */
 export function QuickQuestions({ shopId, adId, shopName, whatsapp, adTitle, hasPrice }: {
@@ -41,5 +41,5 @@ const styles = StyleSheet.create({
   wrap: { gap: space.sm },
   title: { letterSpacing: 0.5 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
-  chip: { flexDirection: 'row', alignItems: 'center', gap: 6, minHeight: 40, paddingHorizontal: space.md, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.borderStrong, backgroundColor: colors.surface },
+  chip: { flexDirection: 'row', alignItems: 'center', gap: 6, minHeight: size.touch, paddingHorizontal: space.md, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.borderStrong, backgroundColor: colors.surface },
 });
