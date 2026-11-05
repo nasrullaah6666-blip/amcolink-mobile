@@ -19,7 +19,12 @@ import { colors, radius, space } from '@/theme/tokens';
 /** Opens a saved search on the screen that shows it (website: rentalsUrl / searchUrl). */
 function openSearch(x: SavedSearch) {
   const q = x.query ?? {};
-  if (q.page === 'rentals') { router.push('/properties'); return; }
+  if (q.page === 'rentals') {
+    // Property search opens with its filters (keys as saved by the website's and the app's Alert me).
+    const keep = ['deal', 'area', 'type', 'period', 'furnished', 'beds', 'min', 'max', 'by'];
+    router.push({ pathname: '/properties', params: Object.fromEntries(keep.filter((k) => q[k]).map((k) => [k, String(q[k])])) });
+    return;
+  }
   const s = parseSearch(q);
   const cat = categoryByName(s.category);
   // Filters go along so the search opens exactly as it was saved.

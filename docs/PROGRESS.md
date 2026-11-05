@@ -369,3 +369,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 50 — amcolink.com links open in the store app (App Links) — COMPLETED (app side)
 - **Files:** `app.config.ts` (store build only: verified links for /ads, /shops, /category, /wanted, /explore, /trending, /gifts on amcolink.com and www), `src/app/+not-found.tsx` (a link the app has no screen for offers the website page or Home), `docs/APP-LINKS.md`.
 - **Owner side (later):** after the first Play upload, the website must serve `/.well-known/assetlinks.json` with the Play app-signing fingerprint — a website change, needs "deploy". Until then links open in the browser (no harm).
+
+## Task 51 — Saved property searches reopen with their filters — COMPLETED (code)
+- Saved → a property alert opens Property with its deal, area, type, bedrooms, furnished, period, owner/agent and price (values checked like the website's PropertyMarket).
