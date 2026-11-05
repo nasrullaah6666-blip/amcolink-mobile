@@ -232,3 +232,13 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Builds 21–22 — phone alerts were still off
 - Checked the app files themselves (assets/app.config: pushReady false) and the build logs: the Firebase secret was empty. Cause: the owner's GitHub secret is named `GOOGLE_SERVICES`, the build looked for `GOOGLE_SERVICES_JSON`. The build now accepts either name. Owner's phone had registered 0 devices — expected, since alerts were off.
+
+## Test run — build 23 (commit after d86c01f, Firebase secret name fix)
+- Unit 56/56, staging tests passed, APK `test-build-23` — app file checked: phone alerts ON (pushReady true, Firebase settings inside).
+- **Emulator 6/6 PASSED** for the first time (01 smoke, 02 browse, 03 account, 04 country, 05 listings, 06 Status share).
+
+## Phone alerts — first real alert, owner's phone, 5 Nov 2026 15:26
+- Supabase staging: Wanted-alerts SQL ("wanted alerts ready"), Edge Function `push` deployed (JWT check off, own secret header), secrets FCM_SERVICE_ACCOUNT and PUSH_WEBHOOK_SECRET, Database Webhook `push-alerts` on notifications INSERT.
+- Owner's phone (build 23) registered (push_tokens = 1). Test via `notify(...)` → "Amcolink test alert — Phone alerts are working." arrived on the lock screen with the Amcolink icon. **#2 phone alerts work end to end on staging.**
+- Status picture (build 22) re-checked by the owner in WhatsApp: the link line is clear of WhatsApp's buttons.
+- Production is NOT set up (no production webhook/function/secrets, #5 SQL not run on production) — waits for the owner.
