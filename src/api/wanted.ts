@@ -17,7 +17,7 @@ export type WantedPost = {
  * Open requests (or my own). Signed-in members also get the buyer's WhatsApp number; visitors only see the request
  * (the database enforces this: visitors cannot read the whatsapp column).
  */
-export async function fetchWanted(o: { signedIn: boolean; mineUserId?: string; city?: string; category?: string; page?: number }, c: SupabaseClient = db()): Promise<WantedPost[]> {
+export async function fetchWanted(o: { signedIn: boolean; mineUserId?: string; city?: string; category?: string; country?: string; page?: number }, c: SupabaseClient = db()): Promise<WantedPost[]> {
   const from = (o.page ?? 0) * WANTED_PAGE;
   let q = c.from('wanted_posts').select(o.signedIn ? `${PUBLIC_COLUMNS},whatsapp` : PUBLIC_COLUMNS.replace('user_id,', ''))
     .order('created_at', { ascending: false }).range(from, from + WANTED_PAGE - 1);
@@ -26,6 +26,7 @@ export async function fetchWanted(o: { signedIn: boolean; mineUserId?: string; c
   const city = sanitizeSearch(o.city);
   if (city) q = q.ilike('city', `%${city}%`);
   if (o.category) q = q.eq('category', o.category);
+  if (o.country && !o.mineUserId) q = q.eq('country', o.country);
   return must(await q) as unknown as WantedPost[];
 }
 

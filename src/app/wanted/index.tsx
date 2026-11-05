@@ -16,6 +16,7 @@ import { agoLabel } from '@/core/freshness';
 import { CATEGORIES } from '@/core/types';
 import { formatPrice, whatsappLink } from '@/core/utils';
 import { BRAND } from '@/lib/site';
+import { useCountry } from '@/lib/countryPref';
 import { colors, radius, space } from '@/theme/tokens';
 
 const CATEGORY_OPTIONS = [{ value: '', label: 'All categories' }, ...CATEGORIES.filter((c) => c !== 'All').map((c) => ({ value: c, label: c }))];
@@ -57,13 +58,14 @@ function Card({ w, userId, onChanged }: { w: WantedPost; userId?: string; onChan
 
 /** Wanted: what buyers are looking for (website: app/wanted). */
 export default function WantedScreen() {
+  const { name: country } = useCountry();
   const { user } = useAuth();
   const [mine, setMine] = useState(false);
   const [city, setCity] = useState('');
   const [category, setCategory] = useState('');
   const q = useInfiniteQuery({
-    queryKey: ['wanted', !!user, mine ? user?.id : '', city, category],
-    queryFn: ({ pageParam }) => fetchWanted({ signedIn: !!user, mineUserId: mine ? user?.id : undefined, city: mine ? '' : city, category: mine ? '' : category, page: pageParam }),
+    queryKey: ['wanted', !!user, mine ? user?.id : '', city, category, mine ? '' : country ?? 'ALL'],
+    queryFn: ({ pageParam }) => fetchWanted({ signedIn: !!user, mineUserId: mine ? user?.id : undefined, city: mine ? '' : city, category: mine ? '' : category, country: mine ? undefined : country ?? undefined, page: pageParam }),
     initialPageParam: 0,
     getNextPageParam: (last, all) => (last.length === WANTED_PAGE ? all.length : undefined),
   });

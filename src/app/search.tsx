@@ -7,10 +7,12 @@ import { ListingGrid } from '@/components/ListingGrid';
 import { SearchField } from '@/components/SearchField';
 import { Empty } from '@/components/States';
 import { fetchSearch } from '@/api/listings';
+import { useCountry } from '@/lib/countryPref';
 import { colors, space } from '@/theme/tokens';
 
 /** Search every category (same word rules and ranking as the website's search). */
 export default function SearchScreen() {
+  const { name: country } = useCountry();
   const params = useLocalSearchParams<{ q?: string }>();
   const [q, setQ] = useState(String(params.q ?? ''));
   return (
@@ -19,8 +21,8 @@ export default function SearchScreen() {
       <View style={styles.box}><SearchField initial={q} onSubmit={setQ} /></View>
       {q ? (
         <ListingGrid
-          queryKey={['search', q]}
-          load={(page) => fetchSearch(q, { page })}
+          queryKey={['search', q, country ?? 'ALL']}
+          load={(page) => fetchSearch(q, { page, country: country ?? undefined })}
           emptyTitle={`No results for "${q}"`}
           emptyHint="Try fewer or different words."
         />

@@ -9,8 +9,10 @@ import { colors, radius, size, space } from '@/theme/tokens';
 export type PickOption = { value: string; label: string; hint?: string };
 
 /** The one "choose from a list" box: tap → full-screen list with search. Used for country, region, town, category. */
-export function PickerField({ label, value, options, onChange, placeholder = 'Choose…', disabled, error }: {
+export function PickerField({ label, value, options, onChange, placeholder = 'Choose…', disabled, error, trigger }: {
   label: string; value: string; options: PickOption[]; onChange: (v: string) => void; placeholder?: string; disabled?: boolean; error?: string | null;
+  /** Optional custom button (e.g. the Home country pill); the list screen is the same. */
+  trigger?: (open: () => void, current: string) => React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState('');
@@ -20,7 +22,8 @@ export function PickerField({ label, value, options, onChange, placeholder = 'Ch
   }, [q, options]);
   const current = options.find((o) => o.value === value);
   return (
-    <View style={styles.wrap}>
+    <View style={trigger ? undefined : styles.wrap}>
+      {trigger ? trigger(() => { setQ(''); setOpen(true); }, current?.label ?? placeholder) : <>
       <AppText variant="label">{label}</AppText>
       <Pressable accessibilityRole="button" accessibilityLabel={`${label}: ${current?.label ?? placeholder}`} disabled={disabled}
         onPress={() => { setQ(''); setOpen(true); }} style={[styles.box, !!error && styles.wrong, disabled && styles.disabled]}>
@@ -28,6 +31,7 @@ export function PickerField({ label, value, options, onChange, placeholder = 'Ch
         <Icon name="chevronDown" color={colors.textSecondary} size={20} strokeWidth={2} />
       </Pressable>
       {error ? <AppText variant="bodySmall" tone="error">{error}</AppText> : null}
+      </>}
       <Modal visible={open} animationType="slide" onRequestClose={() => setOpen(false)}>
         <SafeAreaView style={styles.page}>
           <ScreenHeader title={label} onBack={() => setOpen(false)} />

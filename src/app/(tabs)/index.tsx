@@ -8,7 +8,10 @@ import { ListingCard } from '@/components/ListingCard';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { fetchLatest, PAGE_SIZE, type Listing } from '@/api/listings';
 import { MAIN_CATEGORIES } from '@/core/categories';
+import { FEATURED_COUNTRIES, OTHER_COUNTRIES } from '@/core/geo';
+import { PickerField } from '@/components/PickerField';
 import { useBlocked } from '@/auth/mine';
+import { useCountry } from '@/lib/countryPref';
 import { colors, fonts, radius, size, space, type } from '@/theme/tokens';
 
 const ICONS: Record<string, IconName> = {
@@ -17,6 +20,9 @@ const ICONS: Record<string, IconName> = {
 };
 
 type Tile = { key: string; label: string; icon: IconName; strong?: boolean; go: () => void };
+
+// Same list as the website's country sheet: All countries, then East Africa, then the rest.
+const COUNTRY_OPTIONS = [{ value: 'ALL', label: 'All countries' }, ...[...FEATURED_COUNTRIES, ...OTHER_COUNTRIES].map((c) => ({ value: c.code, label: c.name }))];
 
 const openCategory = (slug: string) => router.push({ pathname: '/category/[slug]', params: { slug } });
 
@@ -67,9 +73,10 @@ function Header({ onSearch }: { onSearch: (q: string) => void }) {
 }
 
 export default function HomeScreen() {
+  const { name: country, code: countryCode, setCode } = useCountry();
   const feed = useInfiniteQuery({
-    queryKey: ['latest'],
-    queryFn: ({ pageParam }) => fetchLatest({ page: pageParam }),
+    queryKey: ['latest', country ?? 'ALL'],
+    queryFn: ({ pageParam }) => fetchLatest({ page: pageParam, country: country ?? undefined }),
     initialPageParam: 0,
     getNextPageParam: (last, all) => (last.length === PAGE_SIZE ? all.length : undefined),
   });
@@ -82,6 +89,13 @@ export default function HomeScreen() {
     <SafeAreaView edges={['top']} style={styles.page}>
       <View style={styles.header}>
         <AppText variant="title" tone="green">Amcolink</AppText>
+        <PickerField label="Country" value={countryCode ?? 'ALL'} options={COUNTRY_OPTIONS} onChange={(v) => setCode(v === 'ALL' ? null : v)}
+          trigger={(open, current) => (
+            <Pressable accessibilityRole="button" accessibilityLabel={`Country: ${current}. Change`} onPress={open} style={styles.countryPill}>
+              <AppText variant="label" numberOfLines={1}>{current}</AppText>
+              <Icon name="chevronDown" size={16} strokeWidth={2} color={colors.textSecondary} />
+            </Pressable>
+          )} />
       </View>
       <FlatList
         data={items}
@@ -110,7 +124,8 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.background },
-  header: { paddingHorizontal: space.lg, paddingTop: space.sm, paddingBottom: space.sm },
+  countryPill: { flexDirection: 'row', alignItems: 'center', gap: space.xs, height: size.chip, maxWidth: 180, paddingHorizontal: space.md, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.borderStrong, backgroundColor: colors.surface },
+  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.md, paddingHorizontal: space.lg, paddingTop: space.sm, paddingBottom: space.sm },
   band: { backgroundColor: colors.green, marginHorizontal: -space.lg, paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: space.lg },
   search: { flexDirection: 'row', alignItems: 'center', gap: space.sm + 2, height: size.input, paddingHorizontal: space.md + 2, borderRadius: radius.md, backgroundColor: colors.surface },
   searchInput: { flex: 1, ...type.body, fontSize: 16, color: colors.text },

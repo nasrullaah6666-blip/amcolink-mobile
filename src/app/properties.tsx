@@ -8,10 +8,12 @@ import { ChipRow } from '@/components/ChipRow';
 import { SearchField } from '@/components/SearchField';
 import { fetchProperties } from '@/api/listings';
 import { DEALS, RENTAL_SAFETY, SALE_SAFETY, typesFor, type Deal } from '@/core/rentals';
+import { useCountry } from '@/lib/countryPref';
 import { colors, radius, space } from '@/theme/tokens';
 
 /** Property for rent or for sale (website: /properties, components/PropertyMarket.tsx). */
 export default function PropertiesScreen() {
+  const { name: country } = useCountry();
   const [deal, setDeal] = useState<Deal>('rent');
   const [type, setType] = useState('');
   const [area, setArea] = useState('');
@@ -28,8 +30,8 @@ export default function PropertiesScreen() {
     <SafeAreaView edges={['top']} style={styles.page}>
       <ScreenHeader title="Property" />
       <ListingGrid
-        queryKey={['properties', deal, type, area]}
-        load={(page) => fetchProperties({ deal, type: type || undefined, area: area || undefined, page })}
+        queryKey={['properties', deal, type, area, country ?? 'ALL']}
+        load={(page) => fetchProperties({ deal, type: type || undefined, area: area || undefined, country: country ?? undefined, page })}
         header={header}
         emptyTitle={deal === 'rent' ? 'No places for rent yet' : 'No property for sale yet'}
         emptyHint={area ? 'Try another area.' : undefined}

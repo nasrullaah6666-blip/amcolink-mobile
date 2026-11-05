@@ -1,0 +1,14 @@
+# Country choice on Home: pick Kenya, the pill shows it; pick All countries again.
+appId: com.amcolink.app.dev
+---
+- launchApp
+- extendedWaitUntil:
+    visible: "The latest finds"
+    timeout: 60000
+- tapOn: "Country: All countries. Change"
+- tapOn: "Kenya"
+- assertVisible: "Kenya"
+- takeScreenshot: shots/14-country-kenya
+- tapOn: "Country: Kenya. Change"
+- tapOn: "All countries"
+- assertVisible: "All countries"

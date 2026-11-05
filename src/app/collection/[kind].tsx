@@ -7,6 +7,7 @@ import { ScreenHeader } from '@/components/ScreenHeader';
 import { ListingGrid } from '@/components/ListingGrid';
 import { Empty } from '@/components/States';
 import { fetchCollection, type CollectionKind } from '@/api/listings';
+import { useCountry } from '@/lib/countryPref';
 import { colors, space } from '@/theme/tokens';
 
 // Titles and intro lines follow the website pages /deals, /free, /used and Home "Brand new".
@@ -18,6 +19,7 @@ const INFO: Record<CollectionKind, { title: string; intro: string; empty: string
 };
 
 export default function CollectionScreen() {
+  const { name: country } = useCountry();
   const { kind } = useLocalSearchParams<{ kind: string }>();
   const k = String(kind) as CollectionKind;
   const info = INFO[k];
@@ -33,8 +35,8 @@ export default function CollectionScreen() {
     <SafeAreaView edges={['top']} style={styles.page}>
       <ScreenHeader title={info.title} />
       <ListingGrid
-        queryKey={['collection', k]}
-        load={(page) => fetchCollection(k, { page })}
+        queryKey={['collection', k, country ?? 'ALL']}
+        load={(page) => fetchCollection(k, { page, country: country ?? undefined })}
         header={<AppText variant="bodySmall" tone="secondary" style={styles.intro}>{info.intro}</AppText>}
         emptyTitle={info.empty}
       />

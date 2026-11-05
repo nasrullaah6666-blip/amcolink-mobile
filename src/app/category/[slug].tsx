@@ -10,6 +10,7 @@ import { SearchField } from '@/components/SearchField';
 import { Empty } from '@/components/States';
 import { fetchCategory, type CategoryFilters } from '@/api/listings';
 import { categoryBySlug, oldSlug } from '@/core/categories';
+import { useCountry } from '@/lib/countryPref';
 import { colors, space } from '@/theme/tokens';
 
 const SORTS = [
@@ -20,6 +21,7 @@ const SORTS = [
 
 /** One category (website: app/category/[slug]). Sub-category chips, search inside the category, sorting. */
 export default function CategoryScreen() {
+  const { name: country } = useCountry();
   const { slug, sub: subParam } = useLocalSearchParams<{ slug: string; sub?: string }>();
   const old = oldSlug(String(slug)); // old website links still work, as on the website
   const cat = categoryBySlug(String(slug)) ?? categoryBySlug(old?.slug);
@@ -52,8 +54,8 @@ export default function CategoryScreen() {
     <SafeAreaView edges={['top']} style={styles.page}>
       <ScreenHeader title={cat.label} />
       <ListingGrid
-        queryKey={['category', filters]}
-        load={(page) => fetchCategory({ ...filters, page })}
+        queryKey={['category', filters, country ?? 'ALL']}
+        load={(page) => fetchCategory({ ...filters, country: country ?? undefined, page })}
         header={header}
         emptyTitle="Nothing here yet"
         emptyHint={q ? 'Try fewer or different words.' : 'New ads appear here as sellers post them.'}

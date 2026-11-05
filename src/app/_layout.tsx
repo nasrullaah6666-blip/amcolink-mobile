@@ -9,6 +9,7 @@ import { useFonts, Outfit_400Regular, Outfit_500Medium, Outfit_600SemiBold, Outf
 import { AppText } from '@/components/ui';
 import { config } from '@/lib/config';
 import { AuthProvider } from '@/auth/session';
+import { CountryProvider } from '@/lib/countryPref';
 import { colors, space } from '@/theme/tokens';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -39,12 +40,14 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
+      <CountryProvider>
       <SafeAreaProvider>
         <StatusBar style="dark" />
         <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}>
           <Stack.Screen name="(tabs)" />
         </Stack>
       </SafeAreaProvider>
+      </CountryProvider>
       </AuthProvider>
     </QueryClientProvider>
   );

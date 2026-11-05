@@ -132,3 +132,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website rules kept:** the website's own `parseRental` checks the details (type, area, period, bedrooms, furnished, size for land, deposit, agent fee, included items, available-from); rent or sale is chosen by the poster, never defaulted; owner/agent asked once and saved on the profile; rent/sale price required; rental rules text and tick.
 - **Still on the website:** editing a property listing.
 - **Tests:** 2 unit tests. Not yet on a device.
+
+## Task 16 — Country choice
+- **Files:** `src/lib/countryPref.tsx`, Home country pill, country passed to Home, categories, search, property, Explore collections and Wanted.
+- **Website rules kept (CountrySwitcher):** default All countries; East Africa first in the list; remembered on the phone; lists filter by the shop's country (Wanted by the request's country; "My requests" not filtered).
+- **Tests:** emulator flow `04-country`.

@@ -43,7 +43,7 @@ Each entry: what was chosen, why, and what else was considered.
 - **Alternatives:** none needed: the database function already expects this key.
 
 ## D9. No buttons that do nothing
-- **Chosen:** features not built yet are hidden (Home country pill, Filters, Explore Trending/Gifts/Wanted) instead of shown disabled.
+- **Chosen:** features not built yet are hidden (Home Filters, Explore Trending/Gifts) instead of shown disabled. The country pill and Wanted are now built.
 - **Why:** the directive forbids unfinished workflows reaching users; dead buttons look broken.
 
 ## D10. Security check page for the app
