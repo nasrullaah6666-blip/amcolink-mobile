@@ -46,7 +46,8 @@
           "cameraPermission": "Amcolink uses the camera so you can take photos of what you sell.",
           "microphonePermission": false
         }
-      ]
+      ],
+      "expo-sharing"
     ],
     "experiments": {
       "typedRoutes": true,

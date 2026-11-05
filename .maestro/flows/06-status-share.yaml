@@ -1,0 +1,29 @@
+# Share to WhatsApp Status: the button is on a listing, it makes the picture and opens the phone's share screen.
+# (The emulator has no WhatsApp, so this records the share screen; the picking of WhatsApp is checked on a real phone.)
+appId: com.amcolink.app.dev
+---
+- launchApp
+- tapOn:
+    text: "Wait"
+    optional: true
+- extendedWaitUntil:
+    visible: "The latest finds"
+    timeout: 60000
+- scrollUntilVisible:
+    element:
+      text: ".*Samsung Galaxy A15.*"
+    direction: DOWN
+    timeout: 30000
+- tapOn: ".*Samsung Galaxy A15.*"
+- extendedWaitUntil:
+    visible: "Share to WhatsApp Status"
+    timeout: 30000
+- takeScreenshot: shots/21-listing-status-button
+- tapOn: "Share to WhatsApp Status"
+- waitForAnimationToEnd:
+    timeout: 10000
+- extendedWaitUntil:
+    notVisible: "Could not make the picture. Try again."
+    timeout: 3000
+- takeScreenshot: shots/22-share-screen
+- back

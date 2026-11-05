@@ -12,6 +12,7 @@ import { Empty, ErrorState, Loading } from '@/components/States';
 import { Photo } from '@/components/Photo';
 import { SaveButton } from '@/components/SaveButton';
 import { ReportAndBlock } from '@/components/ReportAndBlock';
+import { StatusShareButton } from '@/components/StatusShare';
 import { fetchListing } from '@/api/listings';
 import { trackEvent } from '@/api/track';
 import { formatPrice } from '@/core/utils';
@@ -86,6 +87,11 @@ export default function ListingScreen() {
             {ad.availability === 'reserved' ? <AppText variant="label" tone="green">Reserved</AppText> : null}
             {ad.availability === 'sold' ? <AppText variant="label" tone="secondary">Sold</AppText> : null}
           </View>
+
+          <StatusShareButton
+            ad={{ title: ad.title, price, place, photo: ad.photo_urls?.[0] ?? null, condition: ad.condition ? conditionLabel(ad.condition) : null }}
+            onShared={() => { if (shop?.id) trackEvent(shop.id, ad.id, 'share'); }}
+          />
 
           <View style={styles.chips}>
             {ad.condition ? <View style={styles.tag}><AppText variant="caption" tone="green">{conditionLabel(ad.condition)}</AppText></View> : null}

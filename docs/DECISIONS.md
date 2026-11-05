@@ -60,3 +60,8 @@ Each entry: what was chosen, why, and what else was considered.
 ## D12. App icon from the website logo
 - **Chosen:** icons drawn from the website's own logo (components/Logo.tsx: green tile, white bag, "A" with linked rings), rendered at 1024 px; Android adaptive icon with the bag inside the safe zone and a white one-colour version for themed icons.
 - **Alternatives:** the Expo default icon (not Amcolink); the website's 512 px PNG (too small for the store).
+
+## D13. WhatsApp Status sharing goes through the phone's share screen
+- **Chosen:** the app makes the picture and opens Android's share screen; the person taps WhatsApp, then "My status".
+- **Why:** WhatsApp has no public way for another app to post straight to Status. Opening the share screen works on every phone, also without WhatsApp (Facebook, Instagram, Telegram), and needs no extra permission.
+- **Note:** a link inside a picture cannot be tapped, so the picture shows "amcolink.com" in large text; the regular Share button still sends a tappable link.

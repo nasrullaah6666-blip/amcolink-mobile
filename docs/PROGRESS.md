@@ -184,3 +184,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Physical phone test — owner, build 15, 5 Nov 2026
 - **Passed:** bottom bar now fully visible above the phone's on-screen buttons (fix confirmed); hearts fill green when saved; Save search ("Tshirt") appears in Saved with alerts on; Explore shows all 8 tiles with their own icons; country pill shows "All countries".
 - **Noted:** Explore leaves the lower two-thirds of the screen empty (owner's "no leftover empty space" rule) — options proposed to the owner, nothing changed yet.
+
+## Task 21 — Share to WhatsApp Status (owner approved the drawing, "go", 5 Nov 2026)
+- **Files:** `src/components/StatusShare.tsx` (new), button on `src/app/ads/[id].tsx` under the price and title; packages `react-native-view-shot` (draws the picture) and `expo-sharing` (opens the share screen).
+- **What it does:** one tap makes a tall 1080×1920 picture (Status shape): Amcolink logo, the ad's main photo, price, title, condition and town, "See it and chat with the seller · amcolink.com". Then the phone's share screen opens; the person picks WhatsApp → My status (or any other app). Counts as a "share" in the seller's stats, like the existing Share button.
+- **Backend:** none. Website unchanged.
+- **Tests:** emulator flow `06-status-share` (button visible, share screen opens). Picking WhatsApp Status itself must be checked on a real phone (the emulator has no WhatsApp).
