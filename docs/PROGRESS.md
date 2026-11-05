@@ -335,3 +335,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 41 — "Verified": what it means (website parity) — COMPLETED (code)
 - **Checked first:** the website says the Verified badge can't be requested or bought (Amcolink's team picks and checks shops; the old request field is cleared by the database). So there is NO "request verification" in the app — that was on my list by mistake and is dropped.
 - **Built instead:** on a profile, "✓ Verified seller · What this means" (property: "Verified profile") opens the website's /verified page, like the website's badge link.
+
+## Task 42 — Directory: town pick-list with counts (website parity) — COMPLETED (code)
+- Shops / providers directory: "Town" is now a pick-list of towns that have such profiles, with counts and the region (or country) as a hint, searchable; matched exactly like the website's list. Website: getShopPlaces + ShopFilterForm.

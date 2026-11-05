@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { FlatList, Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { AppText, TextField } from '@/components/ui';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { AppText } from '@/components/ui';
+import { PickerField } from '@/components/PickerField';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { SearchField } from '@/components/SearchField';
 import { Photo } from '@/components/Photo';
 import { Empty, ErrorState, Loading } from '@/components/States';
-import { fetchProfiles, PROFILES_PAGE } from '@/api/profiles';
+import { fetchProfilePlaces, fetchProfiles, PROFILES_PAGE } from '@/api/profiles';
 import { useBlocked } from '@/auth/mine';
 import { useCountry } from '@/lib/countryPref';
 import { colors, radius, space } from '@/theme/tokens';
@@ -20,11 +21,12 @@ export default function ProfilesScreen() {
   const { name: country } = useCountry();
   const { blocked } = useBlocked();
   const [q, setQ] = useState('');
-  const [town, setTown] = useState('');
   const [city, setCity] = useState('');
+  const places = useQuery({ queryKey: ['profile-places', kind, country ?? 'ALL'], queryFn: () => fetchProfilePlaces(kind, country ?? undefined) });
+  const townOptions = [{ value: '', label: 'All towns' }, ...(places.data ?? []).map((p) => ({ value: p.name, label: `${p.name} (${p.count})`, hint: p.hint || undefined }))];
   const list = useInfiniteQuery({
     queryKey: ['profiles', kind, q, city, country ?? 'ALL'],
-    queryFn: ({ pageParam }) => fetchProfiles(kind, { q, city, country: country ?? undefined, page: pageParam }),
+    queryFn: ({ pageParam }) => fetchProfiles(kind, { q, city, exactCity: true, country: country ?? undefined, page: pageParam }),
     initialPageParam: 0,
     getNextPageParam: (last, all) => (last.length === PROFILES_PAGE ? all.length : undefined),
   });
@@ -34,8 +36,7 @@ export default function ProfilesScreen() {
   const header = (
     <View style={styles.head}>
       <SearchField placeholder={kind === 'service' ? 'Provider name' : 'Shop name'} onSubmit={setQ} label="Search by name" />
-      <TextField label="Town" value={town} onChangeText={setTown} onSubmitEditing={() => setCity(town.trim())} onBlur={() => setCity(town.trim())}
-        placeholder="e.g. Nairobi" maxLength={60} returnKeyType="search" />
+      <PickerField label="Town" value={city} options={townOptions} onChange={setCity} placeholder="All towns" />
       {city ? <AppText variant="caption" tone="secondary">{kind === 'service' ? 'Providers' : 'Shops'} in {city}, A–Z</AppText> : null}
     </View>
   );
