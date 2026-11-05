@@ -5,6 +5,7 @@ import { router } from 'expo-router';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { AppText, Icon, type IconName } from '@/components/ui';
 import { ListingCard } from '@/components/ListingCard';
+import { RecentlyViewed } from '@/components/RecentlyViewed';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { fetchLatest, PAGE_SIZE, type Listing } from '@/api/listings';
 import { MAIN_CATEGORIES } from '@/core/categories';
@@ -65,6 +66,7 @@ function Header({ onSearch }: { onSearch: (q: string) => void }) {
           </Pressable>
         ))}
       </View>
+      <RecentlyViewed />
       <View style={styles.sectionRow}>
         <AppText variant="heading" accessibilityRole="header">The latest finds</AppText>
       </View>

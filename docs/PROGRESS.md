@@ -251,3 +251,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website rules kept:** away_since/away_until, return date = start of that day, no date = until turned off; pinned_at, up to 4 shown first, newest pin first; same messages. Colour: Amcolink green tint instead of the website's indigo (owner's green-only rule).
 - **App difference:** the return date is typed (YYYY-MM-DD) like the ad expiry field; checked tomorrow … one year ahead.
 - **Tests:** unit test for the away rules (57/57). Needs a seller profile to try on a device (staging profile creation is on the owner list).
+
+## Task 27 — "Continue where you left off" on Home (website parity) — COMPLETED (code)
+- **Files:** `src/lib/recent.ts`, `src/components/RecentlyViewed.tsx`, Home (row above "The latest finds"), listing page (remembers each public listing opened).
+- **Website rules kept (RecordView + RecentlyViewed):** on the phone only, no account; newest first, no doubles, 12 kept, 10 shown, 30 days; Clear button; same title "Continue where you left off". Hidden when empty.
+- **Tests:** unit test (58/58).

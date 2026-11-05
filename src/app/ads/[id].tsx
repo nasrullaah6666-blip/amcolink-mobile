@@ -22,6 +22,7 @@ import {
   agentFeeLabel, bedsLabel, claimedRole, dealOf, furnishedLabel, isRental, periodShort, RENTAL_SAFETY, SALE_SAFETY, sizeLabel, typeLabel,
 } from '@/core/rentals';
 import { adUrl } from '@/lib/site';
+import { recordView } from '@/lib/recent';
 import { colors, radius, size, space } from '@/theme/tokens';
 
 const GENERAL_SAFETY = 'Meet in a public place, inspect the item before you pay, and never send money in advance to someone you have not met.';
@@ -44,7 +45,11 @@ export default function ListingScreen() {
 
   useEffect(() => {
     if (ad?.shops?.id) trackEvent(ad.shops.id, ad.id, 'view');
-  }, [ad?.id, ad?.shops?.id]);
+    // "Continue where you left off" on Home (public listings only, like the website).
+    if (ad && ad.status === 'published') {
+      recordView({ id: ad.id, title: ad.title, price: formatPrice(ad.price, ad.currency, ad.price_from), photo: ad.photo_urls?.[0] ?? null, city: ad.shops?.city ?? '' });
+    }
+  }, [ad?.id, ad?.shops?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (q.isPending) return <SafeAreaView style={styles.page}><ScreenHeader /><Loading /></SafeAreaView>;
   if (q.isError) return <SafeAreaView style={styles.page}><ScreenHeader /><View style={styles.pad}><ErrorState message={(q.error as Error).message} onRetry={() => q.refetch()} /></View></SafeAreaView>;
