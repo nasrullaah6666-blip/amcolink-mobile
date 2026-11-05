@@ -1,5 +1,5 @@
-# Android test build 13
-commit: b8bdc912207e0e3c3648a35f17c78964d9c73405
+# Android test build 14
+commit: cb4cad7cccb7bee50066736cbef03db99f4fe15b
 key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
 
 ## ci-logs/checks.log (last 120 lines)
@@ -23,7 +23,7 @@ design check ok: all colours come from src/theme/tokens.ts
 
 PASS src/api/__tests__/postAd.test.ts
 PASS src/api/__tests__/listings.test.ts
-PASS src/components/__tests__/AuthForm.test.tsx (5.529 s)
+PASS src/components/__tests__/AuthForm.test.tsx
 PASS src/lib/__tests__/config.test.ts
 PASS src/api/__tests__/me.test.ts
 PASS src/lib/__tests__/secureStorage.test.ts
@@ -36,7 +36,7 @@ PASS src/api/__tests__/account.test.ts
 Test Suites: 11 passed, 11 total
 Tests:       52 passed, 52 total
 Snapshots:   0 total
-Time:        9.481 s
+Time:        7.303 s
 Ran all test suites.
 ```
 
@@ -60,7 +60,6 @@ Ran all test suites.
 > Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[x86_64]
 > Task :react-native-gesture-handler:mergeReleaseNativeLibs
 > Task :react-native-gesture-handler:copyReleaseJniLibsProjectOnly
-> Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
 > Task :react-native-reanimated:mergeReleaseNativeLibs
 > Task :react-native-reanimated:copyReleaseJniLibsProjectOnly
 
@@ -71,6 +70,7 @@ Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 
 > Task :react-native-reanimated:bundleLibCompileToJarRelease
+> Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
 
 > Task :react-native-gesture-handler:compileReleaseKotlin
 w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:8:8 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
@@ -134,11 +134,11 @@ w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-n
 > Task :app:dexBuilderRelease
 > Task :app:mergeReleaseNativeLibs
 > Task :app:mergeDexRelease
-> Task :app:mergeReleaseArtProfile
 > Task :app:stripReleaseDebugSymbols
+> Task :app:mergeReleaseArtProfile
 > Task :app:mergeReleaseGlobalSynthetics
-> Task :app:compileReleaseArtProfile
 > Task :app:extractReleaseNativeSymbolTables
+> Task :app:compileReleaseArtProfile
 > Task :app:mergeReleaseAssets
 > Task :app:compressReleaseAssets
 > Task :app:generateReleaseLintVitalReportModel
@@ -146,8 +146,8 @@ w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-n
 > Task :app:lintVitalReportRelease
 > Task :app:lintVitalRelease
 > Task :app:processReleaseJavaRes
-> Task :app:mergeReleaseJavaResource
 > Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:mergeReleaseJavaResource
 > Task :app:packageRelease
 > Task :app:createReleaseApkListingFileRedirect
 > Task :app:assembleRelease
@@ -160,7 +160,7 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 43m 10s
+BUILD SUCCESSFUL in 32m 16s
 655 actionable tasks: 655 executed
 ```
 
@@ -198,7 +198,7 @@ npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and cont
 npm warn deprecated whatwg-encoding@2.0.0: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 npm warn deprecated domexception@4.0.0: Use your platform's native DOMException instead
 
-added 948 packages, and audited 949 packages in 18s
+added 948 packages, and audited 949 packages in 16s
 
 89 packages are looking for funding
   run `npm fund` for details
@@ -220,32 +220,32 @@ Run `npm audit` for details.
 > amcolink-mobile@1.0.0 test:integration
 > jest --ci -c jest.integration.config.js
 
-PASS integration/staging.test.ts (9.962 s)
-  ✓ signed-out visitors can read approved shops and published ads (904 ms)
-  ✓ the countries list is available (243 countries on staging) (155 ms)
-  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (467 ms)
-  ✓ signed-out visitors can read the public Wanted columns (535 ms)
-  ✓ signed-out visitors cannot create a shop (182 ms)
-  ✓ signed-out visitors cannot create a report (172 ms)
-  ✓ signed-out visitors cannot use admin functions (342 ms)
-  ✓ public trending lists can be read signed out (422 ms)
-  ✓ sign-up without the security check is refused (CAPTCHA is on) (440 ms)
-  ✓ notifications are private (159 ms)
-  ✓ app query: latest finds runs on staging (353 ms)
-  ✓ app query: category page with every filter runs on staging (327 ms)
-  ✓ app query: properties for rent and for sale run on staging (369 ms)
-  ✓ app query: search runs on staging (173 ms)
-  ✓ app query: Explore collections run on staging (635 ms)
-  ✓ app query: shop profile lookup and trust run on staging (359 ms)
-  ✓ signed-out visitors cannot save, block or read other people's saved items (449 ms)
-  ✓ signed-out visitors cannot post an ad or upload a photo (642 ms)
-  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (152 ms)
-  ✓ app query: Wanted list runs on staging as a visitor (158 ms)
+PASS integration/staging.test.ts (9.841 s)
+  ✓ signed-out visitors can read approved shops and published ads (1176 ms)
+  ✓ the countries list is available (243 countries on staging) (190 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (478 ms)
+  ✓ signed-out visitors can read the public Wanted columns (545 ms)
+  ✓ signed-out visitors cannot create a shop (178 ms)
+  ✓ signed-out visitors cannot create a report (184 ms)
+  ✓ signed-out visitors cannot use admin functions (669 ms)
+  ✓ public trending lists can be read signed out (447 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (170 ms)
+  ✓ notifications are private (180 ms)
+  ✓ app query: latest finds runs on staging (325 ms)
+  ✓ app query: category page with every filter runs on staging (366 ms)
+  ✓ app query: properties for rent and for sale run on staging (373 ms)
+  ✓ app query: search runs on staging (170 ms)
+  ✓ app query: Explore collections run on staging (664 ms)
+  ✓ app query: shop profile lookup and trust run on staging (607 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (505 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (371 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (160 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (159 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       20 passed, 20 total
 Snapshots:   0 total
-Time:        10.062 s
+Time:        9.916 s
 Ran all test suites.
 ```
 
