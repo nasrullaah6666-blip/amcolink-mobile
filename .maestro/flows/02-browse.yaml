@@ -2,6 +2,10 @@
 appId: com.amcolink.app.dev
 ---
 - launchApp
+# The emulator sometimes shows "... is not responding" for its own launcher: dismiss it if present.
+- tapOn:
+    text: "Wait"
+    optional: true
 - extendedWaitUntil:
     visible: "The latest finds"
     timeout: 60000
