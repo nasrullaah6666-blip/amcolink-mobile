@@ -111,3 +111,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - Unit tests 45/45 passed; staging integration tests 20/20 passed; APK built (release `test-build-8`).
 - Emulator (Android 14): 02-browse PASSED, 03-account PASSED, 01-smoke FAILED only because the "connected to STAGING" line is now below the screen on the longer Account page (test now scrolls to it). 12 screenshots in `ci-results/emulator-8/`.
 - Finding: visitors can run `shop_name_available` on staging (repository grants it to signed-in people only). Low risk; reported, nothing changed.
+
+## Test run — build 9 (commit 80a1ff9)
+- Unit 45/45, staging integration 20/20, APK `test-build-9`, emulator flows 3/3 PASSED.
