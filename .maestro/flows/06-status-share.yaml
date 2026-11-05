@@ -34,3 +34,10 @@ appId: com.amcolink.app.dev
     timeout: 10000
 - takeScreenshot: shots/23-safety-reminder
 - tapOn: "Cancel"
+# Full-screen photos (website: tap to enlarge).
+- tapOn: ".*photo 1 of.*"
+- extendedWaitUntil:
+    visible: "Pinch or double-tap to zoom"
+    timeout: 10000
+- takeScreenshot: shots/24-photo-viewer
+- tapOn: "Close photos"

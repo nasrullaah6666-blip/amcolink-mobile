@@ -318,3 +318,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Test run — build 27 (tasks 33–35 + test fix)
 - Unit, staging tests passed, APK `test-build-27`. **Emulator 6/6 PASSED** (listing with similar items, trust card and quick questions; profile page; Saved).
+
+## Task 39 — Full-screen photo viewer (website parity) — COMPLETED (code)
+- **Files:** `src/components/PhotoViewer.tsx`, `PhotoPager` (tap a photo to open).
+- **Website rules kept (PhotoGallery Viewer):** full-size sharp photo, swipe between photos, "n / total", zoom, ✕ to close. App: pinch or double-tap to zoom (up to 4×), drag while zoomed; swiping is paused while zoomed.
+- **Tests:** emulator step in 06 (open viewer, screenshot 24, close).

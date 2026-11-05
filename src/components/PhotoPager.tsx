@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { FlatList, Pressable, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { PhotoViewer } from '@/components/PhotoViewer';
 import { Photo } from '@/components/Photo';
 import { colors, space } from '@/theme/tokens';
 
@@ -7,6 +8,7 @@ import { colors, space } from '@/theme/tokens';
 export function PhotoPager({ photos, title }: { photos: string[]; title: string }) {
   const { width } = useWindowDimensions();
   const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
   const height = Math.round((width * 3) / 4);
   if (!photos.length) return <Photo src={null} style={{ width, height }} label={title} />;
   return (
@@ -19,7 +21,9 @@ export function PhotoPager({ photos, title }: { photos: string[]; title: string 
         showsHorizontalScrollIndicator={false}
         onMomentumScrollEnd={(e) => setIndex(Math.round(e.nativeEvent.contentOffset.x / width))}
         renderItem={({ item, index: i }) => (
-          <Photo src={item} style={{ width, height }} label={`${title}, photo ${i + 1} of ${photos.length}`} />
+          <Pressable accessibilityRole="imagebutton" accessibilityHint="Opens the photo full screen" onPress={() => { setIndex(i); setOpen(true); }}>
+            <Photo src={item} style={{ width, height }} label={`${title}, photo ${i + 1} of ${photos.length}`} />
+          </Pressable>
         )}
       />
       {photos.length > 1 ? (
@@ -29,6 +33,7 @@ export function PhotoPager({ photos, title }: { photos: string[]; title: string 
           ))}
         </View>
       ) : null}
+      {open ? <PhotoViewer photos={photos} title={title} index={index} onClose={() => setOpen(false)} /> : null}
     </View>
   );
 }
