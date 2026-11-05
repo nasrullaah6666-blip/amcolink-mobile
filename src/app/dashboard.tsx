@@ -139,6 +139,7 @@ export default function Dashboard() {
       {shops.length > 1 ? <ChipRow options={shops.map((s) => ({ value: s.id, label: s.name }))} value={current.id} onChange={setPicked} /> : <AppText variant="heading">{current.name}</AppText>}
       <View style={styles.row}>
         <Button style={styles.flex} title="View my page" variant="outline" onPress={() => router.push({ pathname: '/shops/[slug]', params: { slug: current.slug } })} />
+        <Button style={styles.flex} title="Edit profile" variant="outline" onPress={() => router.push({ pathname: '/edit-profile/[id]', params: { id: current.id } })} />
       </View>
       {current.status !== 'approved' ? (
         <View style={styles.alert}><AppText variant="bodySmall">

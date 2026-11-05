@@ -73,3 +73,9 @@ export async function confirmAll(userId: string, c: SupabaseClient = db()) {
     .eq('owner_id', userId).eq('status', 'published').neq('availability', 'sold');
   if (error) throw new Error(error.message);
 }
+
+/** Save Edit profile (website: components/ShopEditForm.tsx → saveShop on the shop's id). */
+export async function updateShop(shopId: string, row: Record<string, unknown>, c: SupabaseClient = db()): Promise<void> {
+  const error = await saveShop(c, row, shopId, ['property_role']);
+  if (error) throw new Error(error.message);
+}

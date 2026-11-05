@@ -120,3 +120,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Website rules kept (AdEditForm):** same checks and messages; unchanged old expiry date allowed; at least one photo; removed photo files deleted after saving; `price_from` cleared when leaving Services; price drops are saved like on the website (the database then records the drop for Deals and saved-item alerts).
 - **Property listings:** edited on the website for now (button opens it).
 - **Tests:** 3 unit tests. Not yet tried on a device (needs sign-in).
+
+## Task 14 — Edit profile
+- **Files:** `src/app/edit-profile/[id].tsx`, `updateShop` in `src/api/seller.ts`; Edit profile button in My ads.
+- **In the app:** name (with name-taken check), country/region/town, phone, WhatsApp, announcement, building/floor/stall, street, directions, description, logo and cover (uploaded to `shop-media` like the website).
+- **Kept unchanged on save:** opening hours, links, map pin, hours note — sent back exactly as stored (unit test proves nothing is lost); edited on the website for now.
+- **Tests:** 1 unit test (round trip). Not yet on a device.
