@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, Pressable, RefreshControl, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -13,6 +13,7 @@ import { parseSearch } from '@/core/search';
 import { Icon } from '@/components/ui';
 import { dealPercent } from '@/core/freshness';
 import { formatPrice } from '@/core/utils';
+import { markDropsSeen, usePriceDrops } from '@/lib/priceDrops';
 import { colors, radius, space } from '@/theme/tokens';
 
 /** Opens a saved search on the screen that shows it (website: rentalsUrl / searchUrl). */
@@ -59,6 +60,8 @@ function SavedSearches({ userId }: { userId: string }) {
 export default function SavedScreen() {
   const { ready, user } = useAuth();
   const q = useQuery({ queryKey: ['saved-items', user?.id], queryFn: () => fetchSavedItems(user!.id), enabled: !!user });
+  const drops = usePriceDrops().data;
+  useEffect(() => { if (drops?.latest) markDropsSeen(drops.latest); }, [drops?.latest]);
 
   const open = (f: SavedItem) =>
     f.shop ? router.push({ pathname: '/shops/[slug]', params: { slug: f.shop.slug } }) : router.push({ pathname: '/ads/[id]', params: { id: f.ad!.id } });
@@ -78,7 +81,12 @@ export default function SavedScreen() {
           data={q.data ?? []}
           keyExtractor={(f) => f.id}
           contentContainerStyle={styles.list}
-          ListHeaderComponent={<SavedSearches userId={user.id} />}
+          ListHeaderComponent={<>
+            {drops && drops.ids.size > 0 ? (
+              <View style={styles.drops}><AppText variant="label">🔔 {drops.ids.size} saved {drops.ids.size === 1 ? 'item is' : 'items are'} cheaper now. Message the seller before someone else does!</AppText></View>
+            ) : null}
+            <SavedSearches userId={user.id} />
+          </>}
           refreshControl={<RefreshControl refreshing={q.isRefetching} onRefresh={() => q.refetch()} tintColor={colors.green} colors={[colors.green]} />}
           ListEmptyComponent={q.isPending ? <Loading /> : q.isError ? <ErrorState message={(q.error as Error).message} onRetry={() => q.refetch()} /> :
             <Empty title="Nothing saved yet" hint="Tap the heart on a listing to keep it here." />}
@@ -107,6 +115,7 @@ export default function SavedScreen() {
 
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.background },
+  drops: { padding: space.md, borderRadius: radius.md, backgroundColor: colors.greenTint, marginBottom: space.md },
   head: { paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: space.sm, gap: 2 },
   pad: { padding: space.lg },
   list: { padding: space.lg, gap: space.sm + 2 },

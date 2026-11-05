@@ -289,3 +289,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 34 — Trust score card (website parity) — COMPLETED (code)
 - **Files:** `src/components/TrustCard.tsx`, on the listing page (under the seller) and the profile page.
 - **Website rules kept:** same database score (`getTrust`), same facts (verified, rating, months, buyers in 90 days, items confirmed) and the same "not a guarantee" line. Colour: green bar on green tint for every level (the website changes colour by level; green-only rule).
+
+## Task 35 — Price drops on saved items: banner and Saved-tab dot (website parity) — COMPLETED (code)
+- **Files:** `src/lib/priceDrops.ts` (copied rule from the website lib/priceDrops.ts + DropDot), Saved page banner "🔔 N saved items are cheaper now…", a dot on the Saved tab until Saved is opened.
+- **Website rules kept:** only items saved before the price dropped in the last 7 days, still published and not sold, real drop (≥5%); "seen" remembered on the phone (`soko-drops-seen`). Dot is green (website red; green-only rule).
+- **Tests:** unit test for the rule (59/59). Note for myself: always run the full `npm run check` and read its exit code — a failing suite still prints the passing-test count.
