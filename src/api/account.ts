@@ -23,6 +23,7 @@ export function noticeTarget(link: string | null): { app?: { pathname: string; p
   const shop = /^\/shops\/([a-z0-9-]+)(?:[?#]|$)/i.exec(link);
   if (shop && shop[1] !== 'new') return { app: { pathname: '/shops/[slug]', params: { slug: shop[1] } } };
   if (/^\/dashboard(?:[?#]|$)/.test(link)) return { app: { pathname: '/dashboard', params: {} } };
+  if (/^\/wanted(?:[?#]|$)/.test(link)) return { app: { pathname: '/wanted', params: {} } };
   return { web: link };
 }
 
