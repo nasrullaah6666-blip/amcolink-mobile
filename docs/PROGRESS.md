@@ -126,3 +126,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **In the app:** name (with name-taken check), country/region/town, phone, WhatsApp, announcement, building/floor/stall, street, directions, description, logo and cover (uploaded to `shop-media` like the website).
 - **Kept unchanged on save:** opening hours, links, map pin, hours note — sent back exactly as stored (unit test proves nothing is lost); edited on the website for now.
 - **Tests:** 1 unit test (round trip). Not yet on a device.
+
+## Task 15 — Post property (rent and sale)
+- **Files:** `src/components/PropertyFields.tsx`, `buildPropertyAd`/`saveProfileRole` in `src/api/postAd.ts`, Properties option in Post Ad.
+- **Website rules kept:** the website's own `parseRental` checks the details (type, area, period, bedrooms, furnished, size for land, deposit, agent fee, included items, available-from); rent or sale is chosen by the poster, never defaulted; owner/agent asked once and saved on the profile; rent/sale price required; rental rules text and tick.
+- **Still on the website:** editing a property listing.
+- **Tests:** 2 unit tests. Not yet on a device.

@@ -5,7 +5,8 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { needsCondition, needsExpiry, subsOf } from '@/core/categories';
 import { CONDITIONS } from '@/core/conditions';
-import { categoriesInGroup } from '@/core/property';
+import { categoriesInGroup, isRole } from '@/core/property';
+import { parseRental, RENTAL, type Deal } from '@/core/rentals';
 import { CATEGORIES } from '@/core/types';
 import { db } from './db';
 
@@ -129,4 +130,47 @@ export async function saveAdEdit(id: string, values: Record<string, unknown>, re
   // Delete files that were removed from the listing (website does the same; a left-over file is harmless).
   const paths = removedPhotos.map((u) => /\/ad-photos\/(.+)$/.exec(u)?.[1]).filter(Boolean).map((p) => decodeURIComponent(p!));
   if (paths.length) { try { await c.storage.from('ad-photos').remove(paths); } catch { /* ignore */ } }
+}
+
+
+/** Property details as the form holds them (website field names: r_type, r_area, …). */
+export type PropertyDraft = Record<string, string> & { r_includes_list?: string };
+
+/** A FormData look-alike so the website's own parseRental can read the app's fields. */
+function rentalForm(p: PropertyDraft): FormData {
+  const includes = (p.r_includes_list ?? '').split(',').filter(Boolean);
+  return { get: (n: string) => (p[n] ?? null), getAll: (n: string) => (n === 'r_includes' ? includes : p[n] ? [p[n]] : []) } as unknown as FormData;
+}
+
+/**
+ * New property listing (website: AdForm with Houses & Rentals). Same order of checks and messages.
+ * `role` is the profile's saved owner/agent answer; `newRole` is asked once when the profile has none.
+ */
+export function buildPropertyAd(d: { shopId: string; title: string; description: string; price: string; currency: string; availability: AdDraft['availability']; rulesOk: boolean; photos: string[] },
+  deal: Deal | '', p: PropertyDraft, role: string | null | undefined, newRole: string, ownerId: string):
+  { ok: false; error: string } | { ok: true; row: Record<string, unknown>; saveRole: string | null } {
+  const price = d.price.trim();
+  if (d.photos.length < 1) return { ok: false, error: 'Add at least one real photo of the item.' };
+  if (d.title.trim().length < 2) return { ok: false, error: 'Add a title.' };
+  if (d.description.trim().length < 20) return { ok: false, error: "Write a short description (at least 20 characters): size, colour, what's included." };
+  if (!d.rulesOk) return { ok: false, error: 'Tick the box to confirm your listing follows the rules.' };
+  if (!isRole(role) && !isRole(newRole)) return { ok: false, error: 'Say whether you are the owner or an agent.' };
+  const r = parseRental(rentalForm(p), deal);
+  if (!r.ok) return r;
+  if (!(Number(price) > 0)) return { ok: false, error: r.deal === 'sale' ? 'Add the sale price.' : 'Add the rent amount.' };
+  return {
+    ok: true,
+    saveRole: !isRole(role) && isRole(newRole) ? newRole : null,
+    row: {
+      shop_id: d.shopId, owner_id: ownerId, title: d.title.trim(), description: d.description.trim(), price: Number(price),
+      currency: d.currency, category: RENTAL, subcategory: null, photo_urls: d.photos, availability: d.availability, condition: null,
+      rental: r.rental, transaction_type: r.deal,
+    },
+  };
+}
+
+/** Website: the first house or room saves owner/agent once on the profile. */
+export async function saveProfileRole(shopId: string, role: string, c: SupabaseClient = db()) {
+  const { error } = await c.from('shops').update({ property_role: role }).eq('id', shopId);
+  if (error) throw new Error(error.message);
 }

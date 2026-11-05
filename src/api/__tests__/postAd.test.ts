@@ -81,3 +81,29 @@ test('edit: at least one photo stays', () => {
   const r = buildAdEdit({ ...draft, photos: [] }, saved);
   expect(r.ok ? null : r.error).toMatch(/photo/);
 });
+
+import { buildPropertyAd } from '../postAd';
+
+const home = { shopId: 's1', title: '2 bedroom flat in Hodan', description: 'Clean 2 bedroom flat, water included, secure compound.', price: '450', currency: 'USD', availability: 'available' as const, rulesOk: true, photos: ['https://x/p.jpg'] };
+const rent = { r_type: 'apartment', r_area: 'Hodan', r_period: 'month', r_bedrooms: '2', r_furnished: 'no', r_includes_list: 'water,security' };
+
+test('property for rent: website parseRental details, rent + deal saved', () => {
+  const r = buildPropertyAd(home, 'rent', rent, 'owner', '', 'u1');
+  expect(r.ok).toBe(true);
+  if (r.ok) {
+    expect(r.row.category).toBe('Houses & Rentals');
+    expect(r.row.transaction_type).toBe('rent');
+    expect(r.row.rental).toEqual({ type: 'apartment', period: 'month', bedrooms: 2, furnished: 'no', area: 'Hodan', includes: ['water', 'security'] });
+    expect(r.saveRole).toBeNull();
+  }
+});
+
+test('property: deal never defaulted; owner/agent asked once; land needs a size', () => {
+  const e = (...a: Parameters<typeof buildPropertyAd>) => { const r = buildPropertyAd(...a); return r.ok ? null : r.error; };
+  expect(e(home, '', rent, 'owner', '', 'u1')).toMatch(/For rent or For sale/);
+  expect(e(home, 'rent', rent, null, '', 'u1')).toMatch(/owner or an agent/);
+  const first = buildPropertyAd(home, 'rent', rent, null, 'agent', 'u1');
+  expect(first.ok && first.saveRole).toBe('agent');
+  expect(e(home, 'sale', { r_type: 'land', r_area: 'Daynile' }, 'owner', '', 'u1')).toMatch(/size of the plot/);
+  expect(e({ ...home, price: '' }, 'sale', { r_type: 'land', r_area: 'Daynile', r_size_sqm: '400' }, 'owner', '', 'u1')).toMatch(/sale price/);
+});

@@ -11,16 +11,18 @@ import { Empty, ErrorState, Loading } from '@/components/States';
 import { useAuth } from '@/auth/session';
 import { fetchMyShops } from '@/api/seller';
 import { uploadAdPhoto } from '@/api/photos';
-import { buildAd, insertAd, type PriceMode } from '@/api/postAd';
+import { buildAd, buildPropertyAd, insertAd, saveProfileRole, type PriceMode, type PropertyDraft } from '@/api/postAd';
 import { db } from '@/api/db';
 import { needsCondition, needsExpiry, subsOf } from '@/core/categories';
 import { CONDITIONS } from '@/core/conditions';
 import { currencyForCountry } from '@/core/geo';
 import { CURRENCIES, currencyLabel } from '@/core/listing';
-import { NOT_ALLOWED_ITEMS } from '@/core/notAllowed';
+import { NOT_ALLOWED_ITEMS, NOT_ALLOWED_RENTALS } from '@/core/notAllowed';
+import { PropertyFields } from '@/components/PropertyFields';
+import { DEALS, type Deal } from '@/core/rentals';
 import { categoriesInGroup } from '@/core/property';
 import { CATEGORIES } from '@/core/types';
-import { SITE_URL } from '@/lib/site';
+import { isRole, roleLabel, ROLES } from '@/core/property';
 import { colors, radius, size, space } from '@/theme/tokens';
 
 const MAX_PHOTOS = 6;
@@ -57,6 +59,9 @@ export default function PostScreen() {
   const [noExpiry, setNoExpiry] = useState(false);
   const [availability, setAvailability] = useState<'available' | 'reserved' | 'sold'>('available');
   const [rulesOk, setRulesOk] = useState(false);
+  const [deal, setDeal] = useState<Deal | ''>('');
+  const [prop, setProp] = useState<PropertyDraft>({});
+  const [newRole, setNewRole] = useState('');
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -83,12 +88,14 @@ export default function PostScreen() {
   }
 
   const service = category === 'Services';
+  const rental = group === 'property';
+  const shopRole = (shop as { property_role?: string | null }).property_role ?? null;
   const subs = subsOf(category);
   const showCondition = needsCondition(category, sub);
   const showExpiry = needsExpiry(category, sub);
 
   const pickGroup = (g: 'shop' | 'service' | 'property') => {
-    setGroup(g); setSub(''); setFree(false);
+    setGroup(g); setSub(''); setFree(false); setDeal(''); setProp({});
     setCategory(g === 'service' ? 'Services' : '');
   };
 
@@ -123,19 +130,30 @@ export default function PostScreen() {
 
   async function publish() {
     setMessage('');
-    if (group === 'property') return;
-    const built = buildAd({
-      shopId: shop.id, group, title, description, price, currency, category, subcategory: sub, condition, free, priceMode,
-      expiryDate: expiry, noExpiry, availability, rulesOk, photos,
-    }, user!.id);
-    if (!built.ok) { setMessage(built.error); return; }
+    let row: Record<string, unknown>;
+    let saveRole: string | null = null;
+    if (group === 'property') {
+      // Rent or sale is chosen by the poster, never defaulted (website rule).
+      const built = buildPropertyAd({ shopId: shop.id, title, description, price, currency, availability, rulesOk, photos }, deal, prop, shopRole, newRole, user!.id);
+      if (!built.ok) { setMessage(built.error); return; }
+      row = built.row; saveRole = built.saveRole;
+    } else {
+      const built = buildAd({
+        shopId: shop.id, group, title, description, price, currency, category, subcategory: sub, condition, free, priceMode,
+        expiryDate: expiry, noExpiry, availability, rulesOk, photos,
+      }, user!.id);
+      if (!built.ok) { setMessage(built.error); return; }
+      row = built.row;
+    }
     setBusy(true);
     try {
-      await insertAd(built.row);
+      // First house or room on this profile: save owner or agent once on the profile (website rule).
+      if (saveRole) { await saveProfileRole(shop.id, saveRole); qc.invalidateQueries({ queryKey: ['my-shops', user!.id] }); }
+      await insertAd(row);
       qc.invalidateQueries({ queryKey: ['my-ads', user!.id] });
       Alert.alert('Published', 'Your listing is saved. You can see it in My ads.');
       setPhotos([]); setTitle(''); setDescription(''); setPrice(''); setCategory(group === 'service' ? 'Services' : ''); setSub(''); setCondition('');
-      setFree(false); setExpiry(''); setNoExpiry(false); setAvailability('available'); setRulesOk(false);
+      setFree(false); setExpiry(''); setNoExpiry(false); setAvailability('available'); setRulesOk(false); setDeal(''); setProp({});
       router.push('/dashboard');
     } catch (e) {
       setMessage((e as Error).message || 'Could not publish listing.');
@@ -160,12 +178,7 @@ export default function PostScreen() {
             </View>
           </Section>
 
-          {group === 'property' ? (
-            <View style={styles.note}>
-              <AppText variant="bodySmall">Posting houses, rooms and land from the app is coming in a later update. For now, post property on the website.</AppText>
-              <Button title="Open the website" variant="outline" onPress={() => import('expo-web-browser').then((w) => w.openBrowserAsync(`${SITE_URL}/ads/new`))} />
-            </View>
-          ) : group ? (
+          {group ? (
             <>
               <Section title={`Photos * (at least 1, up to ${MAX_PHOTOS})`}>
                 <View style={styles.photos}>
@@ -185,7 +198,7 @@ export default function PostScreen() {
                     <Button style={styles.flex} title="Choose photos" variant="outline" onPress={() => addPhotos(false)} />
                   </View>
                 ) : null}
-                <AppText variant="caption" tone="secondary">Real photos of the actual item only. No pictures taken from other sites.</AppText>
+                <AppText variant="caption" tone="secondary">{rental ? 'Real photos of the actual property only.' : 'Real photos of the actual item only. No pictures taken from other sites.'}</AppText>
               </Section>
 
               <TextField label="Title *" value={title} onChangeText={setTitle} maxLength={140}
@@ -193,6 +206,29 @@ export default function PostScreen() {
               <TextField label="Description *" value={description} onChangeText={setDescription} maxLength={5000} multiline
                 style={styles.multi} placeholder="Size, colour, model, what’s included, any faults… (at least 20 characters)" />
 
+              {rental ? (
+                <>
+                  {isRole(shopRole) ? (
+                    <View style={styles.note}><AppText variant="bodySmall">Listed by: {roleLabel(shopRole)}. Shown on this listing, taken from your profile.</AppText></View>
+                  ) : (
+                    <Section title="Are you the owner or an agent? *">
+                      {ROLES.map((r) => (
+                        <Pressable key={r.value} accessibilityRole="radio" accessibilityState={{ selected: newRole === r.value }} onPress={() => setNewRole(r.value)} style={styles.tick}>
+                          <View style={[styles.box, newRole === r.value && styles.boxOn]}>{newRole === r.value ? <AppText variant="label" tone="onGreen">✓</AppText> : null}</View>
+                          <View style={styles.flex}><AppText variant="label">{r.label}</AppText><AppText variant="caption" tone="secondary">{r.help}</AppText></View>
+                        </Pressable>
+                      ))}
+                    </Section>
+                  )}
+                  <Section title="For rent or for sale? *">
+                    <View style={styles.groups}>
+                      {DEALS.map((d) => <Chip key={d.value} label={d.label} selected={deal === d.value}
+                        onPress={() => { setDeal(d.value); setProp({ r_period: 'month', ...((shopRole ?? newRole) === 'agent' ? { r_agent_fee: 'none' } : {}) }); }} />)}
+                    </View>
+                  </Section>
+                  {deal ? <PropertyFields deal={deal} agent={(shopRole ?? newRole) === 'agent'} value={prop} onChange={setProp} /> : null}
+                </>
+              ) : null}
               {group === 'shop' ? (
                 <PickerField label="Category *" value={category} options={SHOP_CATEGORIES} placeholder="Choose a category" onChange={(v) => { setCategory(v); setSub(''); }} />
               ) : null}
@@ -208,7 +244,9 @@ export default function PostScreen() {
                 </Section>
               ) : null}
               {!(service && priceMode === 'ask') ? (
-                free && !service ? (
+                rental ? (
+                  <TextField label={deal === 'sale' ? 'Sale price *' : 'Rent *'} value={price} onChangeText={setPrice} keyboardType="decimal-pad" placeholder={deal === 'sale' ? 'e.g. 8500000' : 'e.g. 15000'} />
+                ) : free && !service ? (
                   <View style={styles.note}><AppText variant="heading" tone="green">FREE</AppText></View>
                 ) : (
                   <TextField label={service ? 'Amount *' : 'Price (optional)'} value={price} onChangeText={setPrice} keyboardType="decimal-pad"
@@ -217,7 +255,7 @@ export default function PostScreen() {
               ) : null}
               <PickerField label="Currency" value={currency} options={CURRENCY_OPTIONS} onChange={setCurrency} />
 
-              {!service ? (
+              {!service && !rental ? (
                 <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: free }} onPress={() => setFree((f) => !f)} style={styles.tick}>
                   <View style={[styles.box, free && styles.boxOn]}>{free ? <AppText variant="label" tone="onGreen">✓</AppText> : null}</View>
                   <View style={styles.flex}>
@@ -244,7 +282,7 @@ export default function PostScreen() {
 
               <Section title="Availability">
                 <View style={styles.groups}>
-                  {([['available', 'Available'], ['reserved', 'Reserved'], ['sold', 'Sold / unavailable']] as const).map(([v, l]) => (
+                  {([['available', 'Available'], ['reserved', 'Reserved'], ['sold', rental && deal !== 'sale' ? 'Rented / unavailable' : 'Sold / unavailable']] as const).map(([v, l]) => (
                     <Chip key={v} label={l} selected={availability === v} onPress={() => setAvailability(v)} />
                   ))}
                 </View>
@@ -252,10 +290,10 @@ export default function PostScreen() {
 
               <View style={styles.rules}>
                 <AppText variant="label" tone="green">Not allowed on Amcolink</AppText>
-                <AppText variant="caption" tone="secondary">{NOT_ALLOWED_ITEMS.join(' · ')}.</AppText>
+                <AppText variant="caption" tone="secondary">{(rental ? NOT_ALLOWED_RENTALS : NOT_ALLOWED_ITEMS).join(' · ')}.</AppText>
                 <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: rulesOk }} onPress={() => setRulesOk((v) => !v)} style={styles.tick}>
                   <View style={[styles.box, rulesOk && styles.boxOn]}>{rulesOk ? <AppText variant="label" tone="onGreen">✓</AppText> : null}</View>
-                  <AppText variant="bodySmall" style={styles.flex}>My item is real, mine to sell, and not on this list.</AppText>
+                  <AppText variant="bodySmall" style={styles.flex}>{deal === 'sale' && rental ? 'This property is real, I am the owner or I am authorised to sell it, and it is not on this list.' : rental ? 'This house or room is real, I may rent it out, and it is not on this list.' : 'My item is real, mine to sell, and not on this list.'}</AppText>
                 </Pressable>
               </View>
 
