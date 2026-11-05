@@ -14,6 +14,14 @@ import { categoryByName, categoryBySlug, oldSlug, SHARED_SUBS } from '@/core/cat
 import { useCountry } from '@/lib/countryPref';
 import { colors, space } from '@/theme/tokens';
 
+/** Sub-category chips with the shared ones (website rule): shared before "Other …", which always stays last. */
+function withShared(category: string, subs: string[]) {
+  const own = subs.map((s) => ({ value: s, label: s }));
+  const shared = (SHARED_SUBS[category] ?? []).map((x) => ({ value: `shared:${x.category}|${x.sub}`, label: x.label }));
+  const last = own.length && own[own.length - 1].label.startsWith('Other') ? own.length - 1 : own.length;
+  return [...own.slice(0, last), ...shared, ...own.slice(last)];
+}
+
 const SORTS = [
   { value: '', label: 'Newest' },
   { value: 'price_asc', label: 'Lowest price' },
@@ -46,7 +54,7 @@ export default function CategoryScreen() {
       <SearchField initial={q} placeholder={`Search ${cat.short.toLowerCase()}…`} onSubmit={setQ} label={`Search in ${cat.label}`} />
       {cat.subs.length ? (
         <ChipRow
-          options={[{ value: '', label: 'All' }, ...cat.subs.map((s) => ({ value: s, label: s })), ...(SHARED_SUBS[cat.name] ?? []).map((x) => ({ value: `shared:${x.category}|${x.sub}`, label: x.label }))]}
+          options={[{ value: '', label: 'All' }, ...withShared(cat.name, cat.subs)]}
           value={sub}
           onChange={(v) => {
             // A shared tile lives in another category (website rule): open that category on that sub-category.
