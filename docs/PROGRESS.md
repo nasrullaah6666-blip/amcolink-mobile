@@ -281,3 +281,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 32 — Quick questions on WhatsApp (website parity) — COMPLETED (code)
 - **Files:** `src/components/QuickQuestions.tsx`, listing page under the seller card (not on your own ads, not on sold ones).
 - **Website rules kept:** the same 4 messages ("Is it still available?", "What's your last price?" or "How much is it?" when there is no price, "Where can I see it?", "Can you send more photos?"), counted as WhatsApp contacts, behind the "Never pay in advance" reminder.
+
+## Task 33 — Similar items under each listing (website parity) — COMPLETED (code)
+- **Files:** `src/core/similar.ts` (copied from the website lib/similar.ts + cityPattern), `src/components/SimilarItems.tsx`, end of the listing page.
+- **Website rules kept:** same category, still available and confirmed in the last 14 days, approved profiles, not this item, same town first then anywhere, closest price first, property only the same deal (rent/sale), blocked profiles left out, up to 8; title "Similar items in <town>"; "See more →" opens the category.

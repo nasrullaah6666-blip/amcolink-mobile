@@ -14,6 +14,7 @@ import { SaveButton } from '@/components/SaveButton';
 import { ReportAndBlock } from '@/components/ReportAndBlock';
 import { StatusShareButton } from '@/components/StatusShare';
 import { QuickQuestions } from '@/components/QuickQuestions';
+import { SimilarItems } from '@/components/SimilarItems';
 import { fetchListing } from '@/api/listings';
 import { trackEvent } from '@/api/track';
 import { formatPrice } from '@/core/utils';
@@ -146,6 +147,7 @@ export default function ListingScreen() {
           {user && user.id === ad.owner_id ? (
             <Button title="Edit listing" variant="outline" onPress={() => router.push({ pathname: '/edit-ad/[id]', params: { id: ad.id } })} />
           ) : shop ? <ReportAndBlock adId={ad.id} shopId={shop.id} shopName={shop.name} /> : null}
+          <SimilarItems ad={ad} city={shop?.city ?? ''} />
         </View>
       </ScrollView>
       {shop ? <ContactBar shop={shop} adId={ad.id} adTitle={ad.title} /> : null}
