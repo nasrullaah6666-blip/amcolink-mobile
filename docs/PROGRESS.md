@@ -315,3 +315,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/api/profiles.ts`, `src/app/profiles.tsx` (`kind=shop|service`), Explore row "Shops" (new store icon; after the website's 8 tiles), "Browse providers" on the Services category.
 - **Website rules kept (ShopsDirectory):** approved profiles with live ads in that group (database marks sells_shopping / sells_services), search by name, town matches town or region, chosen country, verified first, newest first or A–Z for a town, trust score pill, blocked profiles left out.
 - **Not included yet:** the town pick-list with counts and Near me for profiles (the listings Near me exists).
+
+## Test run — build 27 (tasks 33–35 + test fix)
+- Unit, staging tests passed, APK `test-build-27`. **Emulator 6/6 PASSED** (listing with similar items, trust card and quick questions; profile page; Saved).
