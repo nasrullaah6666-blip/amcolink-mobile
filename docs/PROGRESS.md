@@ -225,3 +225,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - `server/push-sender/index.ts`: Supabase Edge Function "push". A Database Webhook on new `notifications` rows calls it; it sends the alert to that person's phones via Firebase. It does not decide who gets alerts (the database does), re-reads the row by id (payload not trusted), only sends rows under 10 minutes old, needs a secret header, forgets tokens of uninstalled apps.
 - Owner: Firebase project created and `GOOGLE_SERVICES_JSON` GitHub secret added (5 Nov) → builds from now on have phone alerts switched on.
 - **Next owner steps (staging first):** service-account key and webhook secret as Supabase secrets, create the function, create the webhook.
+
+## Task 21b — Status picture: keep the link clear of WhatsApp's buttons (owner "go", 5 Nov 2026)
+- Owner's real-phone test: the picture posts to WhatsApp Status correctly, but WhatsApp's own buttons (views, Boost, share; the reply bar for viewers) covered "amcolink.com" at the bottom.
+- Change: "See it and chat with the seller · amcolink.com" moved into the white price card (green text); the bottom ~15% of the picture is left plain green for WhatsApp's buttons. Photo slightly shorter.

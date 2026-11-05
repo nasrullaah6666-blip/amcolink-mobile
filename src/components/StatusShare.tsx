@@ -88,11 +88,10 @@ export function StatusShareButton({ ad, onShared }: { ad: StatusAd; onShared?: (
               <Text style={styles.price} numberOfLines={1}>{ad.price}</Text>
               <Text style={styles.title} numberOfLines={2}>{ad.title}</Text>
               {ad.place || ad.condition ? <Text style={styles.place} numberOfLines={1}>{[ad.condition, ad.place].filter(Boolean).join(' · ')}</Text> : null}
+              <Text style={styles.site} numberOfLines={1}>See it and chat with the seller · {SITE}</Text>
             </View>
-            <View style={styles.foot}>
-              <Text style={styles.footSmall}>See it and chat with the seller</Text>
-              <Text style={styles.footSite}>{SITE}</Text>
-            </View>
+            {/* Left empty on purpose: WhatsApp puts its own buttons and the reply bar over the bottom of a Status. */}
+            <View style={styles.whatsappSpace} />
           </View>
         </View>
       ) : null}
@@ -113,7 +112,6 @@ const styles = StyleSheet.create({
   price: { color: colors.green, fontFamily: fonts.bold, fontSize: 28, lineHeight: 34 },
   title: { color: colors.text, fontFamily: fonts.semibold, fontSize: 18, lineHeight: 23 },
   place: { color: colors.textSecondary, fontFamily: fonts.regular, fontSize: 14, lineHeight: 19 },
-  foot: { alignItems: 'center', gap: 2 },
-  footSmall: { color: colors.onGreen, fontFamily: fonts.semibold, fontSize: 14 },
-  footSite: { color: colors.onGreen, fontFamily: fonts.bold, fontSize: 17 },
+  site: { color: colors.green, fontFamily: fonts.semibold, fontSize: 14, lineHeight: 19, marginTop: space.xs },
+  whatsappSpace: { height: H * 0.15 - space.lg },
 });
