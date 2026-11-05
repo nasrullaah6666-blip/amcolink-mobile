@@ -1,0 +1,27 @@
+11-05 16:19:38.475 E/ActivityManager(  529): ANR in com.android.systemui
+11-05 16:19:39.234 E/ActivityManager(  529): ANR in com.google.android.gms.persistent
+11-05 16:19:58.500 I/ActivityManager(  529): Process com.android.systemui (pid 858) has died: pers PER 
+11-05 16:20:07.088 E/ActivityManager(  529): ANR in com.google.android.gms.persistent
+11-05 16:20:46.437 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 5527
+11-05 16:20:47.027 I/ActivityManager(  529): Start proc 5536:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:21:39.284 I/ActivityManager(  529): Start proc 6211:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0ai9000 for  {com.amcolink.app.dev/org.chromium.content.app.SandboxedProcessService0:0}
+11-05 16:22:30.461 I/ActivityManager(  529): Process com.google.android.gms.persistent (pid 4869) has died: fg  BTOP
+11-05 16:22:30.785 I/ActivityManager(  529): Process com.google.android.gms (pid 1621) has died: fg  SVC 
+11-05 16:22:53.598 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: clear data
+11-05 16:22:53.608 I/ActivityManager(  529): Killing 5536:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to clear data
+11-05 16:22:53.691 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=-1: clearApplicationUserData
+11-05 16:22:56.243 I/ActivityManager(  529): Process com.android.externalstorage (pid 2927) has died: cch+99 CEM 
+11-05 16:22:58.770 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7075
+11-05 16:22:59.007 I/ActivityManager(  529): Start proc 7083:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:23:31.855 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7663
+11-05 16:23:31.856 I/ActivityManager(  529): Killing 7083:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 7663
+11-05 16:23:32.608 I/ActivityManager(  529): Start proc 7674:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:24:16.237 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8045
+11-05 16:24:16.241 I/ActivityManager(  529): Killing 7674:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8045
+11-05 16:24:16.881 I/ActivityManager(  529): Start proc 8056:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:24:49.128 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8351
+11-05 16:24:49.133 I/ActivityManager(  529): Killing 8056:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8351
+11-05 16:24:49.905 I/ActivityManager(  529): Start proc 8365:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:26:02.510 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8727
+11-05 16:26:02.514 I/ActivityManager(  529): Killing 8365:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8727
+11-05 16:26:03.297 I/ActivityManager(  529): Start proc 8740:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}

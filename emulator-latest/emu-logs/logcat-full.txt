@@ -1,318 +1,614 @@
 --------- beginning of system
-11-05 15:17:44.313 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10125. pid: 3311
-11-05 15:17:44.478 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10140. pid: 2835
-11-05 15:17:45.413 I/ActivityManager(  524): reportOnUserCompletedEvent(0): stored=10, eligible=111
-11-05 15:17:45.751 W/ActivityManager(  524): Slow operation: 107ms so far, now at startProcess: returned from zygote!
-11-05 15:17:45.848 W/ActivityManager(  524): Slow operation: 204ms so far, now at startProcess: done updating battery stats
-11-05 15:17:45.848 W/ActivityManager(  524): Slow operation: 204ms so far, now at startProcess: building log message
-11-05 15:17:45.848 I/ActivityManager(  524): Start proc 3443:com.android.camera2/u0a145 for broadcast {com.android.camera2/com.android.camera.SetActivitiesCameraReceiver}
-11-05 15:17:45.848 W/ActivityManager(  524): Slow operation: 204ms so far, now at startProcess: starting to update pids map
-11-05 15:17:45.875 W/ActivityManager(  524): Slow operation: 228ms so far, now at startProcess: done updating pids map
-11-05 15:17:46.791 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10145. pid: 3443
-11-05 15:17:46.962 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10128. pid: 3301
-11-05 15:17:49.149 I/ActivityManager(  524): Background started FGS: Allowed [callingPackage: com.google.android.apps.wellbeing; callingUid: 10119; uidState: BTOP; uidBFSL: [BFSL]; intent: Intent { cmp=com.google.android.apps.wellbeing/com.google.apps.tiktok.concurrent.InternalForegroundService (has extras) }; code:BACKGROUND_ACTIVITY_PERMISSION; tempAllowListReason:<21e34f5 com.google.android.apps.wellbeing.action.SCREEN_TURNING_OFF/u0,reasonCode:UNKNOWN,duration:20000,callingUid:10119>; targetSdkVersion:33; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:false]
-11-05 15:17:50.630 W/ActivityManager(  524): Slow operation: 80ms so far, now at startProcess: returned from zygote!
-11-05 15:17:50.630 W/ActivityManager(  524): Slow operation: 80ms so far, now at startProcess: done updating battery stats
-11-05 15:17:50.630 W/ActivityManager(  524): Slow operation: 80ms so far, now at startProcess: building log message
-11-05 15:17:50.630 I/ActivityManager(  524): Start proc 3587:com.android.dynsystem/1000 for broadcast {com.android.dynsystem/com.android.dynsystem.BootCompletedReceiver}
-11-05 15:17:50.630 W/ActivityManager(  524): Slow operation: 80ms so far, now at startProcess: starting to update pids map
-11-05 15:17:50.630 W/ActivityManager(  524): Slow operation: 80ms so far, now at startProcess: done updating pids map
-11-05 15:17:51.448 I/ActivityManager(  524): Start proc 3625:com.android.intentresolver/u0a91 for broadcast {com.android.intentresolver/com.android.intentresolver.ChooserActivityReEnabler}
-11-05 15:17:51.476 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 1000. pid: 3587
-11-05 15:17:51.490 I/ActivityManager(  524): Start proc 3641:com.android.dynsystem:dynsystem/1000 for service {com.android.dynsystem/com.android.dynsystem.DynamicSystemInstallationService}
-11-05 15:17:51.755 E/ActivityManager(  524): Unable to freeze binder for 2835: -11
-11-05 15:17:51.767 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 1000. pid: 3641
-11-05 15:17:51.784 I/ActivityManager(  524): Killing 2835:com.google.android.gm/u0a140 (adj 0): change com.google.android.gm
-11-05 15:17:51.802 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gm/com.android.email.job.BootCompletedJob$BootCompletedJobService in 1000ms for connection
-11-05 15:17:51.802 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gm/com.android.email.job.UpgradeJob$UpgradeJobService in 10999ms for connection
-11-05 15:17:51.803 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gm/com.android.email.job.MigrateDaJob$MigrateDaJobService in 20999ms for connection
-11-05 15:17:51.876 I/ActivityManager(  524): Start proc 3682:com.android.nfc/1027 for broadcast {com.android.nfc/com.android.nfc.NfcBootCompletedReceiver}
-11-05 15:17:52.014 W/ActivityManager(  524): finishReceiver: no app for android.os.BinderProxy@672afd7
-11-05 15:17:52.050 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10091. pid: 3625
-11-05 15:17:52.367 W/ActivityManager(  524): Slow operation: 142ms so far, now at finishAttachApplicationInner: after dispatching broadcasts
-11-05 15:17:52.543 I/ActivityManager(  524): com.android.shell is exempt from freezer
-11-05 15:17:52.559 I/ActivityManager(  524): Start proc 3713:com.android.shell/2000 for broadcast {com.android.shell/com.android.shell.HeapDumpReceiver}
-11-05 15:17:52.590 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 1027. pid: 3682
-11-05 15:17:53.009 I/ActivityManager(  524): Killing 3625:com.android.intentresolver/u0a91 (adj 915): change com.android.intentresolver
-11-05 15:17:53.230 I/ActivityManager(  524): Killing 3682:com.android.nfc/1027 (adj 905): change com.android.nfc
-11-05 15:17:53.384 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 2000. pid: 3713
-11-05 15:17:53.910 W/ActivityManager(  524): Slow operation: 166ms so far, now at startProcess: returned from zygote!
-11-05 15:17:53.917 W/ActivityManager(  524): Slow operation: 172ms so far, now at startProcess: done updating battery stats
-11-05 15:17:53.918 W/ActivityManager(  524): Slow operation: 173ms so far, now at startProcess: building log message
-11-05 15:17:53.918 I/ActivityManager(  524): Start proc 3771:com.google.android.configupdater/u0a129 for broadcast {com.google.android.configupdater/com.google.android.configupdater.MainReceiver}
-11-05 15:17:53.919 W/ActivityManager(  524): Slow operation: 174ms so far, now at startProcess: starting to update pids map
-11-05 15:17:53.919 W/ActivityManager(  524): Slow operation: 174ms so far, now at startProcess: done updating pids map
-11-05 15:17:53.953 I/ActivityManager(  524): Killing 1826:com.google.android.youtube/u0a139 (adj 915): excessive binder traffic during cached
-11-05 15:17:54.265 I/ActivityManager(  524): Start proc 3801:com.google.android.projection.gearhead:shared/u0a123 for broadcast {com.google.android.projection.gearhead/com.google.android.apps.auto.components.app.fzero.FzeroReceiver}
-11-05 15:17:54.545 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10123. pid: 3801
-11-05 15:17:54.935 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10129. pid: 3771
-11-05 15:17:55.024 I/ActivityManager(  524): Start proc 3840:com.google.android.rkpdapp/u0a183 for broadcast {com.google.android.rkpdapp/com.android.rkpdapp.BootReceiver}
-11-05 15:17:55.650 W/ActivityManager(  524): Slow operation: 157ms so far, now at startProcess: returned from zygote!
-11-05 15:17:55.685 W/ActivityManager(  524): Slow operation: 192ms so far, now at startProcess: done updating battery stats
-11-05 15:17:55.686 W/ActivityManager(  524): Slow operation: 193ms so far, now at startProcess: building log message
-11-05 15:17:55.686 I/ActivityManager(  524): Start proc 3889:com.google.android.settings.intelligence/u0a118 for broadcast {com.google.android.settings.intelligence/com.google.android.settings.intelligence.modules.battery.impl.usage.BootBroadcastReceiver}
-11-05 15:17:55.687 W/ActivityManager(  524): Slow operation: 194ms so far, now at startProcess: starting to update pids map
-11-05 15:17:55.687 W/ActivityManager(  524): Slow operation: 195ms so far, now at startProcess: done updating pids map
-11-05 15:17:55.797 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10183. pid: 3840
-11-05 15:17:56.713 I/ActivityManager(  524): Background started FGS: Allowed [callingPackage: com.google.android.apps.wellbeing; callingUid: 10119; uidState: BTOP; uidBFSL: [BFSL]; intent: Intent { cmp=com.google.android.apps.wellbeing/com.google.apps.tiktok.concurrent.InternalForegroundService (has extras) }; code:BACKGROUND_ACTIVITY_PERMISSION; tempAllowListReason:<5636b19 android.intent.action.BOOT_COMPLETED/u0,reasonCode:BOOT_COMPLETED,duration:20000,callingUid:1000>; targetSdkVersion:33; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:false]
-11-05 15:17:56.882 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10118. pid: 3889
-11-05 15:17:57.528 I/ActivityManager(  524): Killing 3889:com.google.android.settings.intelligence/u0a118 (adj 0): change com.google.android.settings.intelligence
-11-05 15:17:57.738 W/ActivityManager(  524): finishReceiver: no app for android.os.BinderProxy@3db5e6d
+11-05 16:19:36.189 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10089. pid: 3439
+11-05 16:19:36.622 I/ActivityManager(  529): Collecting stacks for native pid 476
+11-05 16:19:37.497 I/ActivityManager(  529): Collecting stacks for native pid 1153
+11-05 16:19:37.559 W/ActivityManager(  529): Slow operation: 178ms so far, now at startProcess: done creating new process record
+11-05 16:19:37.559 W/ActivityManager(  529): Slow operation: 178ms so far, now at startProcess: stepping in to startProcess
+11-05 16:19:37.559 I/ActivityManager(  529): com.google.android.devicelockcontroller is exempt from freezer
+11-05 16:19:37.560 W/ActivityManager(  529): Slow operation: 179ms so far, now at startProcess: done starting proc!
+11-05 16:19:37.591 I/ActivityManager(  529): Start proc 3558:com.google.android.devicelockcontroller/u0a176 for broadcast {com.google.android.devicelockcontroller/com.android.devicelockcontroller.receivers.LockedBootCompletedReceiver}
+11-05 16:19:37.687 I/ActivityManager(  529): dumpStackTraces extraPids=[2588, 1115]
+11-05 16:19:37.688 I/ActivityManager(  529): Collecting stacks for extra pid 2588
+11-05 16:19:38.113 I/ActivityManager(  529): Collecting stacks for extra pid 1115
+11-05 16:19:38.365 W/ActivityManager(  529): Slow operation: 73ms so far, now at startProcess: done updating battery stats
+11-05 16:19:38.365 W/ActivityManager(  529): Slow operation: 73ms so far, now at startProcess: building log message
+11-05 16:19:38.365 I/ActivityManager(  529): Start proc 3596:com.google.android.apps.youtube.music/u0a156 for broadcast {com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.player.widget.gm3.FreeformMusicWidgetProvider}
+11-05 16:19:38.365 W/ActivityManager(  529): Slow operation: 73ms so far, now at startProcess: starting to update pids map
+11-05 16:19:38.365 W/ActivityManager(  529): Slow operation: 74ms so far, now at startProcess: done updating pids map
+11-05 16:19:38.376 I/ActivityManager(  529): Done dumping
+11-05 16:19:38.475 E/ActivityManager(  529): ANR in com.android.systemui
+11-05 16:19:38.475 E/ActivityManager(  529): PID: 858
+11-05 16:19:38.475 E/ActivityManager(  529): Reason: executing service com.android.systemui/.dump.SystemUIAuxiliaryDumpService
+11-05 16:19:38.475 E/ActivityManager(  529): ErrorId: a2a639ba-ace7-4e24-b892-427bb0c25d79
+11-05 16:19:38.475 E/ActivityManager(  529): Frozen: false
+11-05 16:19:38.475 E/ActivityManager(  529): Load: 17.01 / 4.26 / 1.43
+11-05 16:19:38.475 E/ActivityManager(  529): ----- Output from /proc/pressure/memory -----
+11-05 16:19:38.475 E/ActivityManager(  529): some avg10=21.25 avg60=6.66 avg300=1.57 total=5462081
+11-05 16:19:38.475 E/ActivityManager(  529): full avg10=5.84 avg60=1.51 avg300=0.34 total=1532063
+11-05 16:19:38.475 E/ActivityManager(  529): ----- End output from /proc/pressure/memory -----
+11-05 16:19:38.475 E/ActivityManager(  529): ----- Output from /proc/pressure/cpu -----
+11-05 16:19:38.475 E/ActivityManager(  529): some avg10=86.77 avg60=41.88 avg300=11.63 total=38572282
+11-05 16:19:38.475 E/ActivityManager(  529): full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+11-05 16:19:38.475 E/ActivityManager(  529): ----- End output from /proc/pressure/cpu -----
+11-05 16:19:38.475 E/ActivityManager(  529): ----- Output from /proc/pressure/io -----
+11-05 16:19:38.475 E/ActivityManager(  529): some avg10=13.72 avg60=9.00 avg300=2.76 total=9533021
+11-05 16:19:38.475 E/ActivityManager(  529): full avg10=0.25 avg60=0.89 avg300=0.33 total=1440413
+11-05 16:19:38.475 E/ActivityManager(  529): ----- End output from /proc/pressure/io -----
+11-05 16:19:38.475 E/ActivityManager(  529): 
+11-05 16:19:38.475 E/ActivityManager(  529): CPU usage from 1438ms to -16961ms ago (2026-11-05 16:19:19.978 to 2026-11-05 16:19:38.376):
+11-05 16:19:38.475 E/ActivityManager(  529):   21% 529/system_server: 15% user + 6.6% kernel / faults: 21401 minor 1563 major
+11-05 16:19:38.475 E/ActivityManager(  529):   12% 1115/com.google.android.apps.nexuslauncher: 4.2% user + 7.9% kernel / faults: 31957 minor 510 major
+11-05 16:19:38.475 E/ActivityManager(  529):   9.5% 1994/com.google.android.googlequicksearchbox:search: 7% user + 2.5% kernel / faults: 24879 minor 715 major
+11-05 16:19:38.475 E/ActivityManager(  529):   8.9% 2588/com.google.android.tts: 7.3% user + 1.5% kernel / faults: 29368 minor 86 major
+11-05 16:19:38.475 E/ActivityManager(  529):   7% 1621/com.google.android.gms: 4.7% user + 2.3% kernel / faults: 10911 minor 147 major
+11-05 16:19:38.475 E/ActivityManager(  529):   6.7% 1442/com.google.android.gms.persistent: 5% user + 1.6% kernel / faults: 19040 minor 364 major
+11-05 16:19:38.475 E/ActivityManager(  529):   4.2% 390/android.hardware.graphics.composer3-service.ranchu: 0.1% user + 4.1% kernel / faults: 4 minor 5 major
+11-05 16:19:38.475 E/ActivityManager(  529):   4.1% 41/kswapd0: 0% user + 4.1% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   3.5% 858/com.android.systemui: 2.3% user + 1.2% kernel / faults: 8774 minor 2206 major
+11-05 16:19:38.475 E/ActivityManager(  529):   2.1% 402/surfaceflinger: 0.3% user + 1.8% kernel / faults: 1032 minor 56 major
+11-05 16:19:38.475 E/ActivityManager(  529): 99% TOTAL: 58% user + 38% kernel + 0.3% iowait + 2.6% softirq
+11-05 16:19:38.475 E/ActivityManager(  529): CPU usage from 770ms to 3598ms later (2026-11-05 16:19:22.186 to 2026-11-05 16:19:25.014):
+11-05 16:19:38.475 E/ActivityManager(  529):   33% 529/system_server: 21% user + 11% kernel / faults: 2500 minor 186 major
+11-05 16:19:38.475 E/ActivityManager(  529):     11% 586/PackageManagerB: 8.2% user + 3.4% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     8.2% 537/Signal Catcher: 5.5% user + 2.7% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     4.8% 589/PackageManager: 2.7% user + 2% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     3.4% 3043/AnrAuxiliaryTas: 1.3% user + 2% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.6% 529/system_server: 0.6% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.6% 562/android.bg: 0.6% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.6% 571/batterystats-ha: 0% user + 0.6% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.6% 783/WifiScanningSer: 0.6% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.6% 1818/binder:529_11: 0.6% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.6% 2051/binder:529_17: 0.6% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.6% 3025/AnrConsumer: 0.6% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   30% 2588/com.google.android.tts: 28% user + 2.3% kernel / faults: 2365 minor
+11-05 16:19:38.475 E/ActivityManager(  529):     27% 2734/SynthThread: 25% user + 1.1% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     2.3% 2604/HeapTaskDaemon: 1.1% user + 1.1% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     1.1% 2693/BG Thread #2: 1.1% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   18% 390/android.hardware.graphics.composer3-service.ranchu: 0% user + 18% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     18% 435/binder:390_3: 0% user + 18% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   5.9% 8/kworker/u4:0-phy1: 0% user + 5.9% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   5.8% 402/surfaceflinger: 0% user + 5.8% kernel / faults: 6 minor 5 major
+11-05 16:19:38.475 E/ActivityManager(  529):     5.2% 431/RenderEngine: 0% user + 5.2% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     1.1% 466/RegionSampling: 0% user + 1.1% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   7.7% 1729/com.android.emulator.multidisplay: 4.3% user + 3.4% kernel / faults: 1583 minor 476 major
+11-05 16:19:38.475 E/ActivityManager(  529):     6.9% 1740/Signal Catcher: 3.4% user + 3.4% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   5.6% 1115/com.google.android.apps.nexuslauncher: 4.8% user + 0.8% kernel / faults: 2696 minor 46 major
+11-05 16:19:38.475 E/ActivityManager(  529):     4.8% 1169/launcher-loader: 4% user + 0.8% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   1.8% 41/kswapd0: 0% user + 1.8% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   3% 858/com.android.systemui: 1.2% user + 1.8% kernel / faults: 964 minor 148 major
+11-05 16:19:38.475 E/ActivityManager(  529):     1.2% 927/RenderThread: 0% user + 1.2% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     1.2% 994/SysUiLng: 1.2% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.6% 858/ndroid.systemui: 0.6% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   4.8% 1994/com.google.android.googlequicksearchbox:search: 3.9% user + 0.9% kernel / faults: 633 minor 3 major
+11-05 16:19:38.475 E/ActivityManager(  529):     2.9% 2012/HeapTaskDaemon: 2.9% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.9% 2535/BG Thread #2: 0.9% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):    +0% 3148/CrAsyncTask #1: 0% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   3.5% 1993/com.google.android.apps.youtube.music: 2.6% user + 0.8% kernel / faults: 246 minor
+11-05 16:19:38.475 E/ActivityManager(  529):     1.7% 2612/yt-critical14-1: 1.7% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.8% 2614/yt-critical14-3: 0% user + 0.8% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):    +0% 3146/GassClient: 0% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):    +0% 3147/Thread-29: 0% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.8% 155/android.system.suspend-service: 0% user + 0.8% kernel / faults: 23 minor 66 major
+11-05 16:19:38.475 E/ActivityManager(  529):     0.4% 503/binder:155_4: 0% user + 0.4% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.8% 245/kworker/u4:3-ext4-rsv-conversion: 0% user + 0.8% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   1.6% 1074/kworker/1:4H-kblockd: 0% user + 1.6% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.3% 13/ksoftirqd/0: 0% user + 0.3% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.3% 50/kworker/0:1H-kblockd: 0% user + 0.3% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.4% 130/logd: 0.4% user + 0% kernel / faults: 5 minor
+11-05 16:19:38.475 E/ActivityManager(  529):     0.4% 142/logd.writer: 0% user + 0.4% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.4% 132/lmkd: 0% user + 0.4% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):     0.4% 132/lmkd: 0% user + 0.4% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.4% 148/kworker/1:3-events: 0% user + 0.4% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.4% 188/jbd2/dm-40-8: 0% user + 0.4% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.5% 336/netd: 0% user + 0.5% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.7% 360/android.hardware.sensors-service.multihal: 0% user + 0.7% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.6% 442/logcat: 0% user + 0.6% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.6% 451/installd: 0% user + 0.6% kernel / faults: 18 minor 136 major
+11-05 16:19:38.475 E/ActivityManager(  529):   0.6% 457/media.extractor: 0.6% user + 0% kernel / faults: 9 minor 2 major
+11-05 16:19:38.475 E/ActivityManager(  529):     0.6% 1406/binder:457_3: 0.6% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   0.8% 1442/com.google.android.gms.persistent: 0.8% user + 0% kernel / faults: 64 minor 2 major
+11-05 16:19:38.475 E/ActivityManager(  529):   0.8% 1621/com.google.android.gms: 0.8% user + 0% kernel / faults: 26 minor 8 major
+11-05 16:19:38.475 E/ActivityManager(  529):   0.8% 1626/com.google.android.as: 0.8% user + 0% kernel / faults: 2 minor 2 major
+11-05 16:19:38.475 E/ActivityManager(  529):   0.8% 1684/com.google.android.googlequicksearchbox:interactor: 0.8% user + 0% kernel / faults: 24 minor
+11-05 16:19:38.475 E/ActivityManager(  529):     0.8% 1684/hbox:interactor: 0.8% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   1% 2005/com.google.android.youtube: 1% user + 0% kernel / faults: 224 minor
+11-05 16:19:38.475 E/ActivityManager(  529):     1% 2020/Jit thread pool: 1% user + 0% kernel
+11-05 16:19:38.475 E/ActivityManager(  529):   1.1% 2927/com.android.externalstorage: 1.1% user + 0% kernel / faults: 51 minor
+11-05 16:19:38.475 E/ActivityManager(  529): 99% TOTAL: 47% user + 49% kernel + 3.2% softirq
+11-05 16:19:38.511 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10176. pid: 3558
+11-05 16:19:38.525 I/ActivityManager(  529): dumpStackTraces pids=null
+11-05 16:19:38.554 I/ActivityManager(  529): Dumping to /data/anr/anr_2026-11-05-16-19-38-547
+11-05 16:19:39.233 I/ActivityManager(  529): dumpStackTraces nativepids=null
+11-05 16:19:39.233 I/ActivityManager(  529): dumpStackTraces extraPids=null
+11-05 16:19:39.233 I/ActivityManager(  529): Done dumping
+11-05 16:19:39.234 E/ActivityManager(  529): ANR in com.google.android.gms.persistent
+11-05 16:19:39.234 E/ActivityManager(  529): PID: 1442
+11-05 16:19:39.234 E/ActivityManager(  529): Reason: Broadcast of Intent { act=android.intent.action.DOMAINS_NEED_VERIFICATION flg=0x10000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver (has extras) }
+11-05 16:19:39.234 E/ActivityManager(  529): ErrorId: 72f02e6c-eb11-4b1d-830f-c0deb4976cdc
+11-05 16:19:39.234 E/ActivityManager(  529): Frozen: false
+11-05 16:19:39.234 E/ActivityManager(  529): Load: 0.0 / 0.0 / 0.0
+11-05 16:19:39.234 E/ActivityManager(  529): ----- Output from /proc/pressure/memory -----
+11-05 16:19:39.234 E/ActivityManager(  529): some avg10=26.27 avg60=11.45 avg300=2.94 total=9935058
+11-05 16:19:39.234 E/ActivityManager(  529): full avg10=2.56 avg60=1.73 avg300=0.46 total=1809979
+11-05 16:19:39.234 E/ActivityManager(  529): ----- End output from /proc/pressure/memory -----
+11-05 16:19:39.234 E/ActivityManager(  529): ----- Output from /proc/pressure/cpu -----
+11-05 16:19:39.234 E/ActivityManager(  529): some avg10=88.97 avg60=52.93 avg300=15.77 total=53610301
+11-05 16:19:39.234 E/ActivityManager(  529): full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+11-05 16:19:39.234 E/ActivityManager(  529): ----- End output from /proc/pressure/cpu -----
+11-05 16:19:39.234 E/ActivityManager(  529): ----- Output from /proc/pressure/io -----
+11-05 16:19:39.234 E/ActivityManager(  529): some avg10=14.80 avg60=10.48 avg300=3.44 total=12314626
+11-05 16:19:39.234 E/ActivityManager(  529): full avg10=0.05 avg60=0.68 avg300=0.31 total=1484174
+11-05 16:19:39.234 E/ActivityManager(  529): ----- End output from /proc/pressure/io -----
+11-05 16:19:39.234 E/ActivityManager(  529): 
+11-05 16:19:39.234 E/ActivityManager(  529): CPU usage from 18534ms to 135ms ago (2026-11-05 16:19:19.978 to 2026-11-05 16:19:38.376):
+11-05 16:19:39.234 E/ActivityManager(  529):   21% 529/system_server: 15% user + 6.6% kernel / faults: 21401 minor 1563 major
+11-05 16:19:39.234 E/ActivityManager(  529):   12% 1115/com.google.android.apps.nexuslauncher: 4.2% user + 7.9% kernel / faults: 31957 minor 510 major
+11-05 16:19:39.234 E/ActivityManager(  529):   9.5% 1994/com.google.android.googlequicksearchbox:search: 7% user + 2.5% kernel / faults: 24879 minor 715 major
+11-05 16:19:39.234 E/ActivityManager(  529):   8.9% 2588/com.google.android.tts: 7.3% user + 1.5% kernel / faults: 29368 minor 86 major
+11-05 16:19:39.234 E/ActivityManager(  529):   7% 1621/com.google.android.gms: 4.7% user + 2.3% kernel / faults: 10911 minor 147 major
+11-05 16:19:39.234 E/ActivityManager(  529):   6.7% 1442/com.google.android.gms.persistent: 5% user + 1.6% kernel / faults: 19040 minor 364 major
+11-05 16:19:39.234 E/ActivityManager(  529):   4.2% 390/android.hardware.graphics.composer3-service.ranchu: 0.1% user + 4.1% kernel / faults: 4 minor 5 major
+11-05 16:19:39.234 E/ActivityManager(  529):   4.1% 41/kswapd0: 0% user + 4.1% kernel
+11-05 16:19:39.234 E/ActivityManager(  529):   3.5% 858/com.android.systemui: 2.3% user + 1.2% kernel / faults: 8774 minor 2206 major
+11-05 16:19:39.234 E/ActivityManager(  529):   2.1% 402/surfaceflinger: 0.3% user + 1.8% kernel / faults: 1032 minor 56 major
+11-05 16:19:39.234 E/ActivityManager(  529): 99% TOTAL: 58% user + 38% kernel + 0.3% iowait + 2.6% softirq
+11-05 16:19:39.234 E/ActivityManager(  529): CPU usage from 93921ms to 93921ms ago (1970-01-01 00:00:00.000 to 1970-01-01 00:00:00.000) with 0% awake:
+11-05 16:19:39.234 E/ActivityManager(  529): 0% TOTAL: 0% user + 0% kernel
+11-05 16:19:39.239 I/ActivityManager(  529): Killing 1442:com.google.android.gms.persistent/u0a128 (adj 0): bg anr
+11-05 16:19:40.006 I/ActivityManager(  529): com.google.android.packageinstaller is exempt from freezer
+11-05 16:19:40.057 W/ActivityManager(  529): Slow operation: 51ms so far, now at startProcess: returned from zygote!
+11-05 16:19:40.057 W/ActivityManager(  529): Slow operation: 51ms so far, now at startProcess: done updating battery stats
+11-05 16:19:40.057 W/ActivityManager(  529): Slow operation: 51ms so far, now at startProcess: building log message
+11-05 16:19:40.057 I/ActivityManager(  529): Start proc 3650:com.google.android.packageinstaller/u0a93 for broadcast {com.google.android.packageinstaller/com.android.packageinstaller.PackageInstalledReceiver}
+11-05 16:19:40.057 W/ActivityManager(  529): Slow operation: 51ms so far, now at startProcess: starting to update pids map
+11-05 16:19:40.058 W/ActivityManager(  529): Slow operation: 52ms so far, now at startProcess: done updating pids map
+11-05 16:19:40.935 I/ActivityManager(  529): Process com.google.android.gms.persistent (pid 1442) early provider death
+11-05 16:19:41.222 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.geotimezone.GeoTimeZoneService in 1000ms for connection
+11-05 16:19:41.223 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentApiService in 10899ms for connection
+11-05 16:19:41.236 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService in 20899ms for start-requested
+11-05 16:19:41.270 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.tron.CollectionService in 30852ms for start-requested
+11-05 16:19:41.725 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.location.geocode.GeocodeService in 40397ms for connection
+11-05 16:19:41.725 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.fused.FusedLocationService in 50396ms for connection
+11-05 16:19:41.725 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentDirectBootAwareApiService in 60396ms for connection
+11-05 16:19:41.725 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.GetToken in 70396ms for connection
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.network.NetworkLocationService in 80396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentIntentOperationService in 90396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService in 100396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.nearby.sharing.ReceiveSurfaceService in 110396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.account.authenticator.GoogleAccountAuthenticatorService in 120396ms for connection
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.gcm.GcmService in 130396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.nearby.discovery.service.DiscoveryService in 140396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.easyunlock.authorization.InitializerIntentService in 150396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.contextmanager.service.ContextManagerService in 160396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.lockbox.service.LockboxBrokerService in 170396ms for connection
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.setup.devicesignals.LockScreenService in 180396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.gcm.PushMessagingRegistrarProxy in 190396ms for connection
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService in 200396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentBoundBrokerService in 210396ms for connection
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService in 220396ms for connection
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.wearable.service.WearableControlService in 230396ms for start-requested
+11-05 16:19:41.726 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.nearby.exposurenotification.service.ExposureNotificationInternalService in 240396ms for start-requested
+11-05 16:19:41.829 W/ActivityManager(  529): ProcessRecord{bad1195 0:com.google.android.gms.persistent/u0a128} is attached to a previous process 1442
+11-05 16:19:41.953 W/ActivityManager(  529): Slow operation: 123ms so far, now at startProcess: returned from zygote!
+11-05 16:19:41.959 W/ActivityManager(  529): Slow operation: 95ms so far, now at finishAttachApplicationInner: after dispatching broadcasts
+11-05 16:19:42.010 W/ActivityManager(  529): Slow operation: 181ms so far, now at startProcess: done updating battery stats
+11-05 16:19:42.014 W/ActivityManager(  529): Slow operation: 184ms so far, now at startProcess: building log message
+11-05 16:19:42.014 I/ActivityManager(  529): Start proc 3739:com.google.android.gms.persistent/u0a128 for content provider {com.google.android.gms/com.google.android.gms.chimera.container.GmsModuleProvider}
+11-05 16:19:42.014 W/ActivityManager(  529): Slow operation: 184ms so far, now at startProcess: starting to update pids map
+11-05 16:19:42.016 W/ActivityManager(  529): Slow operation: 186ms so far, now at startProcess: done updating pids map
+11-05 16:19:42.355 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10156. pid: 3596
+11-05 16:19:42.412 I/ActivityManager(  529): Background started FGS: Allowed [callingPackage: com.google.android.apps.wellbeing; callingUid: 10122; uidState: BTOP; uidBFSL: [BFSL]; intent: Intent { cmp=com.google.android.apps.wellbeing/com.google.apps.tiktok.concurrent.InternalForegroundService (has extras) }; code:BACKGROUND_ACTIVITY_PERMISSION; tempAllowListReason:<c775752 android.intent.action.LOCKED_BOOT_COMPLETED/u0,reasonCode:LOCKED_BOOT_COMPLETED,duration:20000,callingUid:1000>; targetSdkVersion:33; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+11-05 16:19:42.622 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10093. pid: 3650
+11-05 16:19:42.682 I/ActivityManager(  529): Background started FGS: Allowed [callingPackage: com.google.android.inputmethod.latin; callingUid: 10140; uidState: IMPB; uidBFSL: n/a; intent: Intent { cmp=com.google.android.inputmethod.latin/com.google.android.apps.inputmethod.libs.dataservice.superpacks.SuperpacksForegroundTaskService }; code:CURRENT_INPUT_METHOD; tempAllowListReason:<null>; targetSdkVersion:33; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+11-05 16:19:42.747 W/ActivityManager(  529): Foreground service started from background can not have location/camera/microphone access: service com.google.android.inputmethod.latin/com.google.android.apps.inputmethod.libs.dataservice.superpacks.SuperpacksForegroundTaskService
+11-05 16:19:43.010 W/ActivityManager(  529): Slow operation: 182ms so far, now at finishAttachApplicationInner: after mServices.attachApplicationLocked
+11-05 16:19:43.019 W/ActivityManager(  529): Slow operation: 191ms so far, now at finishAttachApplicationInner: after dispatching broadcasts
+11-05 16:19:43.240 I/ActivityManager(  529): Start proc 3785:com.google.android.settings.intelligence/u0a118 for broadcast {com.google.android.settings.intelligence/com.google.android.settings.intelligence.modules.contextualcards.impl.JobBootBroadcastReceiver}
+11-05 16:19:43.247 W/ActivityManager(  529): Slow operation: 105ms so far, now at startProcess: starting to update pids map
+11-05 16:19:43.253 W/ActivityManager(  529): Slow operation: 109ms so far, now at startProcess: done updating pids map
+11-05 16:19:43.472 W/ActivityManager(  529): Slow operation: 70ms so far, now at startProcess: returned from zygote!
+11-05 16:19:43.476 W/ActivityManager(  529): Slow operation: 75ms so far, now at startProcess: done updating battery stats
+11-05 16:19:43.477 W/ActivityManager(  529): Slow operation: 76ms so far, now at startProcess: building log message
+11-05 16:19:43.477 I/ActivityManager(  529): Start proc 3802:com.google.android.documentsui/u0a98 for broadcast {com.google.android.documentsui/com.android.documentsui.PreBootReceiver}
+11-05 16:19:43.478 W/ActivityManager(  529): Slow operation: 77ms so far, now at startProcess: starting to update pids map
+11-05 16:19:43.478 W/ActivityManager(  529): Slow operation: 77ms so far, now at startProcess: done updating pids map
+11-05 16:19:43.939 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10118. pid: 3785
+11-05 16:19:45.240 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10098. pid: 3802
+11-05 16:19:45.632 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10128. pid: 3739
+11-05 16:19:45.635 I/ActivityManager(  529): Posting BOOT_COMPLETED user #0
+11-05 16:19:45.784 W/ActivityManager(  529): Slow operation: 91ms so far, now at startProcess: returned from zygote!
+11-05 16:19:45.784 W/ActivityManager(  529): Slow operation: 92ms so far, now at startProcess: done updating battery stats
+11-05 16:19:45.784 W/ActivityManager(  529): Slow operation: 92ms so far, now at startProcess: building log message
+11-05 16:19:45.784 I/ActivityManager(  529): Start proc 3867:com.android.traceur/u0a116 for broadcast {com.android.traceur/com.android.traceur.Receiver}
+11-05 16:19:45.784 W/ActivityManager(  529): Slow operation: 92ms so far, now at startProcess: starting to update pids map
+11-05 16:19:45.860 W/ActivityManager(  529): Slow operation: 167ms so far, now at startProcess: done updating pids map
+11-05 16:19:45.939 I/ActivityManager(  529): Start proc 3873:com.google.android.rkpdapp/u0a175 for service {com.google.android.rkpdapp/com.android.rkpdapp.service.RemoteProvisioningService}
+11-05 16:19:46.411 W/ActivityManager(  529): Slow operation: 55ms so far, now at finishAttachApplicationInner: after mServices.attachApplicationLocked
+11-05 16:19:46.411 W/ActivityManager(  529): Slow operation: 55ms so far, now at finishAttachApplicationInner: after dispatching broadcasts
+11-05 16:19:46.877 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10116. pid: 3867
+11-05 16:19:47.458 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10175. pid: 3873
+11-05 16:19:48.095 W/ActivityManager(  529): Slow operation: 58ms so far, now at startProcess: returned from zygote!
+11-05 16:19:48.151 W/ActivityManager(  529): Slow operation: 113ms so far, now at startProcess: done updating battery stats
+11-05 16:19:48.151 W/ActivityManager(  529): Slow operation: 113ms so far, now at startProcess: building log message
+11-05 16:19:48.151 I/ActivityManager(  529): Start proc 3980:com.google.android.onetimeinitializer/u0a125 for broadcast {com.google.android.onetimeinitializer/com.google.android.onetimeinitializer.OneTimeInitializerReceiver}
+11-05 16:19:48.151 W/ActivityManager(  529): Slow operation: 113ms so far, now at startProcess: starting to update pids map
+11-05 16:19:48.153 W/ActivityManager(  529): Slow operation: 115ms so far, now at startProcess: done updating pids map
+11-05 16:19:48.408 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10125. pid: 3980
+11-05 16:19:50.682 I/ActivityManager(  529): reportOnUserCompletedEvent(0): stored=10, eligible=111
+11-05 16:19:50.979 I/ActivityManager(  529): Start proc 4094:com.android.camera2/u0a143 for broadcast {com.android.camera2/com.android.camera.SetActivitiesCameraReceiver}
+11-05 16:19:51.662 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10143. pid: 4094
+11-05 16:19:51.758 I/ActivityManager(  529): Start proc 4136:com.android.dynsystem/1000 for broadcast {com.android.dynsystem/com.android.dynsystem.BootCompletedReceiver}
+11-05 16:19:52.150 I/ActivityManager(  529): Start proc 4166:com.android.intentresolver/u0a92 for broadcast {com.android.intentresolver/com.android.intentresolver.ChooserActivityReEnabler}
+11-05 16:19:52.545 I/ActivityManager(  529): Start proc 4203:com.android.nfc/1027 for broadcast {com.android.nfc/com.android.nfc.NfcBootCompletedReceiver}
+11-05 16:19:52.587 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 1000. pid: 4136
+11-05 16:19:52.620 I/ActivityManager(  529): Start proc 4219:com.android.dynsystem:dynsystem/1000 for service {com.android.dynsystem/com.android.dynsystem.DynamicSystemInstallationService}
+11-05 16:19:52.724 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10092. pid: 4166
+11-05 16:19:52.770 I/ActivityManager(  529): Killing 4166:com.android.intentresolver/u0a92 (adj 905): change com.android.intentresolver
+11-05 16:19:52.902 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 1027. pid: 4203
+11-05 16:19:53.128 W/ActivityManager(  529): Slow operation: 135ms so far, now at startProcess: done creating new process record
+11-05 16:19:53.129 W/ActivityManager(  529): Slow operation: 136ms so far, now at startProcess: stepping in to startProcess
+11-05 16:19:53.141 I/ActivityManager(  529): com.android.shell is exempt from freezer
+11-05 16:19:53.154 W/ActivityManager(  529): Slow operation: 161ms so far, now at startProcess: done starting proc!
+11-05 16:19:53.162 I/ActivityManager(  529): Killing 4203:com.android.nfc/1027 (adj 905): change com.android.nfc
+11-05 16:19:53.175 I/ActivityManager(  529): Start proc 4247:com.android.shell/2000 for broadcast {com.android.shell/com.android.shell.HeapDumpReceiver}
+11-05 16:19:53.590 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 1000. pid: 4219
+11-05 16:19:53.968 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 2000. pid: 4247
+11-05 16:19:54.100 I/ActivityManager(  529): Start proc 4279:com.google.android.configupdater/u0a131 for broadcast {com.google.android.configupdater/com.google.android.configupdater.MainReceiver}
+11-05 16:19:54.386 E/ActivityManager(  529): Unable to freeze binder for 2078: -11
+11-05 16:19:54.404 I/ActivityManager(  529): Killing 2078:com.google.android.gm/u0a148 (adj 0): change com.google.android.gm
+11-05 16:19:54.405 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gm/androidx.work.impl.background.systemjob.SystemJobService in 1000ms for connection
+11-05 16:19:54.405 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gm/com.android.email.job.UpgradeJob$UpgradeJobService in 11000ms for connection
+11-05 16:19:54.406 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gm/com.android.email.job.MigrateDaJob$MigrateDaJobService in 21000ms for connection
+11-05 16:19:54.471 W/ActivityManager(  529): finishReceiver: no app for android.os.BinderProxy@69342fd
+11-05 16:19:54.475 W/ActivityManager(  529): ProcessRecord{2d1da84 0:com.google.android.gm/u0a148} is attached to a previous process 2078
+11-05 16:19:54.580 W/ActivityManager(  529): Slow operation: 104ms so far, now at startProcess: returned from zygote!
+11-05 16:19:54.596 W/ActivityManager(  529): Slow operation: 121ms so far, now at startProcess: done updating battery stats
+11-05 16:19:54.597 W/ActivityManager(  529): Slow operation: 121ms so far, now at startProcess: building log message
+11-05 16:19:54.597 I/ActivityManager(  529): Start proc 4297:com.google.android.gm/u0a148 for service {com.google.android.gm/com.android.email.job.BootCompletedJob$BootCompletedJobService}
+11-05 16:19:54.597 W/ActivityManager(  529): Slow operation: 121ms so far, now at startProcess: starting to update pids map
+11-05 16:19:54.597 W/ActivityManager(  529): Slow operation: 121ms so far, now at startProcess: done updating pids map
+11-05 16:19:54.963 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10131. pid: 4279
+11-05 16:19:55.613 I/ActivityManager(  529): Start proc 4367:com.google.android.projection.gearhead:shared/u0a123 for broadcast {com.google.android.projection.gearhead/com.google.android.apps.auto.components.app.fzero.FzeroReceiver}
+11-05 16:19:55.935 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10123. pid: 4367
+11-05 16:19:56.090 I/ActivityManager(  529): Killing 3785:com.google.android.settings.intelligence/u0a118 (adj 0): change com.google.android.settings.intelligence
+11-05 16:19:56.511 W/ActivityManager(  529): Unable to start service Intent { act=com.google.android.gms.home.service.START pkg=com.google.android.gms } U=0: not found
+11-05 16:19:56.538 W/ActivityManager(  529): Unbind failed: could not find connection for android.os.BinderProxy@271b84a
 --------- beginning of main
-11-05 15:17:57.804 E/ActivityManager(  524): Sending non-protected broadcast com.android.settings.battery.action.PERIODIC_JOB_RECHECK from system 1070:com.android.settings/1000 pkg com.android.settings
-11-05 15:17:57.804 E/ActivityManager(  524): java.lang.Throwable
-11-05 15:17:57.804 E/ActivityManager(  524): 	at com.android.server.am.ActivityManagerService.checkBroadcastFromSystem(ActivityManagerService.java:14306)
-11-05 15:17:57.804 E/ActivityManager(  524): 	at com.android.server.am.ActivityManagerService.broadcastIntentLockedTraced(ActivityManagerService.java:15131)
-11-05 15:17:57.804 E/ActivityManager(  524): 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:14370)
-11-05 15:17:57.804 E/ActivityManager(  524): 	at com.android.server.am.ActivityManagerService.broadcastIntentWithFeature(ActivityManagerService.java:15336)
-11-05 15:17:57.804 E/ActivityManager(  524): 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:2653)
-11-05 15:17:57.804 E/ActivityManager(  524): 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2720)
-11-05 15:17:57.804 E/ActivityManager(  524): 	at android.os.Binder.execTransactInternal(Binder.java:1339)
-11-05 15:17:57.804 E/ActivityManager(  524): 	at android.os.Binder.execTransact(Binder.java:1275)
-11-05 15:17:57.841 W/ActivityManager(  524): Slow operation: 72ms so far, now at startProcess: returned from zygote!
-11-05 15:17:57.847 W/ActivityManager(  524): Slow operation: 77ms so far, now at startProcess: done updating battery stats
-11-05 15:17:57.847 W/ActivityManager(  524): Slow operation: 77ms so far, now at startProcess: building log message
-11-05 15:17:57.847 I/ActivityManager(  524): Start proc 3979:com.google.android.gm/u0a140 for broadcast {com.google.android.gm/com.google.android.libraries.internal.growth.growthkit.tiktok.GrowthKitBootCompletedListener_Receiver}
-11-05 15:17:57.847 W/ActivityManager(  524): Slow operation: 77ms so far, now at startProcess: starting to update pids map
-11-05 15:17:57.854 W/ActivityManager(  524): Slow operation: 85ms so far, now at startProcess: done updating pids map
-11-05 15:17:58.305 I/ActivityManager(  524): Start proc 4002:com.google.android.youtube/u0a139 for broadcast {com.google.android.youtube/com.google.android.libraries.notifications.platform.entrypoints.restart.RestartReceiver}
-11-05 15:17:58.310 W/ActivityManager(  524): Slow operation: 55ms so far, now at startProcess: done updating pids map
-11-05 15:18:00.334 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10140. pid: 3979
-11-05 15:18:00.435 I/ActivityManager(  524): com.google.android.packageinstaller is exempt from freezer
-11-05 15:18:00.476 I/ActivityManager(  524): Start proc 4156:com.google.android.packageinstaller/u0a96 for broadcast {com.google.android.packageinstaller/com.android.packageinstaller.PackageInstalledReceiver}
-11-05 15:18:00.486 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10139. pid: 4002
-11-05 15:18:01.319 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10096. pid: 4156
-11-05 15:18:02.237 W/ActivityManager(  524): Unable to start service Intent { act=com.google.android.gms.home.service.START pkg=com.google.android.gms } U=0: not found
-11-05 15:18:02.468 W/ActivityManager(  524): Unbind failed: could not find connection for android.os.BinderProxy@78f8422
-11-05 15:18:03.188 I/ActivityManager(  524): Background started FGS: Allowed [callingPackage: com.google.android.googlequicksearchbox; callingUid: 10132; uidState: BTOP; uidBFSL: [BFSL]; intent: Intent { cmp=com.google.android.googlequicksearchbox/com.google.android.libraries.mdi.download.foreground.sting.ForegroundDownloadService (has extras) }; code:ACTIVITY_STARTER; tempAllowListReason:<5636b19 android.intent.action.BOOT_COMPLETED/u0,reasonCode:BOOT_COMPLETED,duration:20000,callingUid:1000>; targetSdkVersion:31; callerTargetSdkVersion:31; startForegroundCount:0; bindFromPackage:null: isBindService:false]
-11-05 15:18:03.284 W/ActivityManager(  524): Slow operation: 125ms so far, now at startProcess: returned from zygote!
-11-05 15:18:03.291 W/ActivityManager(  524): Slow operation: 132ms so far, now at startProcess: done updating battery stats
-11-05 15:18:03.291 W/ActivityManager(  524): Slow operation: 132ms so far, now at startProcess: building log message
-11-05 15:18:03.291 I/ActivityManager(  524): Start proc 4253:com.google.android.settings.intelligence/u0a118 for broadcast {com.google.android.settings.intelligence/com.google.android.settings.intelligence.modules.contextualcards.impl.JobBootBroadcastReceiver}
-11-05 15:18:03.291 W/ActivityManager(  524): Slow operation: 132ms so far, now at startProcess: starting to update pids map
-11-05 15:18:03.291 W/ActivityManager(  524): Slow operation: 132ms so far, now at startProcess: done updating pids map
-11-05 15:18:04.075 I/ActivityManager(  524): Broadcasting: Intent { act=android.intent.action.CLOSE_SYSTEM_DIALOGS flg=0x400000 }
-11-05 15:18:04.085 I/ActivityManager(  524): Enqueued broadcast Intent { act=android.intent.action.CLOSE_SYSTEM_DIALOGS flg=0x400000 }: 0
-11-05 15:18:04.521 W/ActivityManager(  524): Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
-11-05 15:18:04.611 E/ActivityManager(  524): Cannot find package for uid: 1013
-11-05 15:18:04.663 W/ActivityManager(  524): Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
-11-05 15:18:05.452 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10118. pid: 4253
-11-05 15:18:05.490 I/ActivityManager(  524): Broadcast completed: result=0
-11-05 15:18:07.946 W/ActivityManager(  524): Slow operation: 387ms so far, now at startProcess: returned from zygote!
-11-05 15:18:08.261 W/ActivityManager(  524): Slow operation: 703ms so far, now at startProcess: done updating battery stats
-11-05 15:18:08.266 W/ActivityManager(  524): Slow operation: 707ms so far, now at startProcess: building log message
-11-05 15:18:08.266 I/ActivityManager(  524): Start proc 4385:com.google.android.googlequicksearchbox/u0a132 for broadcast {com.google.android.googlequicksearchbox/com.google.android.libraries.phenotype.client.stable.PhenotypeUpdateBackgroundBroadcastReceiver}
-11-05 15:18:08.268 W/ActivityManager(  524): Slow operation: 708ms so far, now at startProcess: starting to update pids map
-11-05 15:18:08.268 W/ActivityManager(  524): Slow operation: 709ms so far, now at startProcess: done updating pids map
-11-05 15:18:09.402 W/ActivityManager(  524): Receiver with filter android.content.IntentFilter@986830a already registered for pid 4385, callerPackage is com.google.android.googlequicksearchbox
-11-05 15:18:11.870 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10132. pid: 4385
-11-05 15:18:15.801 W/ActivityManager(  524): Slow operation: 304ms so far, now at startProcess: done updating battery stats
-11-05 15:18:15.801 W/ActivityManager(  524): Slow operation: 304ms so far, now at startProcess: building log message
-11-05 15:18:15.801 I/ActivityManager(  524): Start proc 4529:com.android.emergency/u0a165 for content provider {com.android.emergency/com.android.emergency.EmergencySearchIndexablesProvider}
-11-05 15:18:15.801 W/ActivityManager(  524): Slow operation: 304ms so far, now at startProcess: starting to update pids map
-11-05 15:18:15.801 W/ActivityManager(  524): Slow operation: 304ms so far, now at startProcess: done updating pids map
-11-05 15:18:15.801 W/ActivityManager(  524): Slow operation: 280ms so far, now at startProcess: asking zygote to start proc
-11-05 15:18:15.837 W/ActivityManager(  524): Slow operation: 316ms so far, now at startProcess: returned from zygote!
-11-05 15:18:15.838 W/ActivityManager(  524): Slow operation: 317ms so far, now at startProcess: done updating battery stats
-11-05 15:18:15.838 W/ActivityManager(  524): Slow operation: 317ms so far, now at startProcess: building log message
-11-05 15:18:15.838 I/ActivityManager(  524): Start proc 4540:com.google.android.apps.messaging/u0a131 for content provider {com.google.android.apps.messaging/com.google.android.apps.messaging.settings.search.MessagesSearchIndexablesProvider}
-11-05 15:18:15.838 W/ActivityManager(  524): Slow operation: 317ms so far, now at startProcess: starting to update pids map
-11-05 15:18:15.838 W/ActivityManager(  524): Slow operation: 317ms so far, now at startProcess: done updating pids map
-11-05 15:18:15.977 W/ActivityManager(  524): Slow operation: 167ms so far, now at startProcess: returned from zygote!
-11-05 15:18:15.994 W/ActivityManager(  524): Slow operation: 183ms so far, now at startProcess: done updating battery stats
-11-05 15:18:15.995 W/ActivityManager(  524): Slow operation: 184ms so far, now at startProcess: building log message
-11-05 15:18:15.995 I/ActivityManager(  524): Start proc 4547:com.google.android.healthconnect.controller/u0a175 for content provider {com.google.android.healthconnect.controller/com.android.healthconnect.controller.searchindexables.HealthConnectSearchIndexablesProvider}
-11-05 15:18:15.995 W/ActivityManager(  524): Slow operation: 184ms so far, now at startProcess: starting to update pids map
-11-05 15:18:15.995 W/ActivityManager(  524): Slow operation: 184ms so far, now at startProcess: done updating pids map
-11-05 15:18:15.995 W/ActivityManager(  524): Slow operation: 172ms so far, now at startProcess: asking zygote to start proc
-11-05 15:18:16.176 W/ActivityManager(  524): Slow operation: 353ms so far, now at startProcess: returned from zygote!
-11-05 15:18:16.251 W/ActivityManager(  524): Slow operation: 428ms so far, now at startProcess: done updating battery stats
-11-05 15:18:16.252 W/ActivityManager(  524): Slow operation: 430ms so far, now at startProcess: building log message
-11-05 15:18:16.253 I/ActivityManager(  524): Start proc 4552:com.google.android.marvin.talkback/u0a138 for content provider {com.google.android.marvin.talkback/com.google.android.accessibility.talkback.preference.search.TalkBackSearchIndexablesProvider}
-11-05 15:18:16.253 W/ActivityManager(  524): Slow operation: 431ms so far, now at startProcess: starting to update pids map
-11-05 15:18:16.254 W/ActivityManager(  524): Slow operation: 431ms so far, now at startProcess: done updating pids map
-11-05 15:18:16.254 W/ActivityManager(  524): Slow operation: 274ms so far, now at startProcess: asking zygote to start proc
-11-05 15:18:16.404 W/ActivityManager(  524): Slow operation: 77ms so far, now at finishAttachApplicationInner: after updateOomAdjLocked
-11-05 15:18:16.698 W/ActivityManager(  524): Slow operation: 718ms so far, now at startProcess: returned from zygote!
-11-05 15:18:17.522 W/ActivityManager(  524): Slow operation: 73ms so far, now at attachApplicationLocked: immediately after bindApplication
-11-05 15:18:17.527 W/ActivityManager(  524): Slow operation: 78ms so far, now at attachApplicationLocked: after updateLruProcessLocked
-11-05 15:18:17.633 W/ActivityManager(  524): Slow operation: 97ms so far, now at finishAttachApplicationInner: after updateOomAdjLocked
-11-05 15:18:17.706 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10165. pid: 4529
-11-05 15:18:17.907 W/ActivityManager(  524): Slow operation: 1927ms so far, now at startProcess: done updating battery stats
-11-05 15:18:17.908 W/ActivityManager(  524): Slow operation: 1928ms so far, now at startProcess: building log message
-11-05 15:18:17.915 I/ActivityManager(  524): Start proc 4593:com.google.android.gms.ui/u0a128 for content provider {com.google.android.gms/com.google.android.gms.accountsettings.content.SettingsSearchContentProvider}
-11-05 15:18:17.915 W/ActivityManager(  524): Slow operation: 1935ms so far, now at startProcess: starting to update pids map
-11-05 15:18:17.915 W/ActivityManager(  524): Slow operation: 1936ms so far, now at startProcess: done updating pids map
-11-05 15:18:19.091 W/ActivityManager(  524): Unable to start service Intent { act=com.google.android.gms.drive.ApiService.RESET_AFTER_BOOT flg=0x4 cmp=com.google.android.gms/.drive.api.ApiService (has extras) } U=0: not found
-11-05 15:18:19.227 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10175. pid: 4547
-11-05 15:18:19.647 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10138. pid: 4552
-11-05 15:18:20.425 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10131. pid: 4540
-11-05 15:18:20.582 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10128. pid: 4593
-11-05 15:18:25.373 I/ActivityManager(  524): Background started FGS: Allowed [callingPackage: com.google.android.apps.messaging; callingUid: 10131; uidState: CEM ; uidBFSL: n/a; intent: Intent { cmp=com.google.android.apps.messaging/com.google.apps.tiktok.concurrent.InternalForegroundService (has extras) }; code:BACKGROUND_FGS_PERMISSION; tempAllowListReason:<null>; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:false]
-11-05 15:18:25.398 W/ActivityManager(  524): Foreground service started from background can not have location/camera/microphone access: service com.google.android.apps.messaging/com.google.apps.tiktok.concurrent.InternalForegroundService
-11-05 15:18:35.860 I/ActivityManager(  524): Force stopping dev.mobile.maestro appid=10193 user=0: start instr
-11-05 15:18:35.930 I/ActivityManager(  524): Start proc 4879:dev.mobile.maestro/u0a193 for added application dev.mobile.maestro
-11-05 15:18:38.160 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10193. pid: 4879
-11-05 15:18:45.715 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 5171
-11-05 15:18:46.218 W/ActivityManager(  524): Slow operation: 132ms so far, now at startProcess: returned from zygote!
-11-05 15:18:46.219 W/ActivityManager(  524): Slow operation: 133ms so far, now at startProcess: done updating battery stats
-11-05 15:18:46.219 W/ActivityManager(  524): Slow operation: 133ms so far, now at startProcess: building log message
-11-05 15:18:46.219 I/ActivityManager(  524): Start proc 5179:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
-11-05 15:18:46.219 W/ActivityManager(  524): Slow operation: 133ms so far, now at startProcess: starting to update pids map
-11-05 15:18:46.228 W/ActivityManager(  524): Slow operation: 143ms so far, now at startProcess: done updating pids map
-11-05 15:18:47.028 W/ActivityManager(  524): Slow operation: 585ms so far, now at attachApplicationLocked: immediately before bindApplication
-11-05 15:18:47.031 W/ActivityManager(  524): Slow operation: 588ms so far, now at attachApplicationLocked: immediately after bindApplication
-11-05 15:18:47.031 W/ActivityManager(  524): Slow operation: 588ms so far, now at attachApplicationLocked: after updateLruProcessLocked
-11-05 15:18:47.140 W/ActivityManager(  524): Slow operation: 108ms so far, now at finishAttachApplicationInner: after mServices.attachApplicationLocked
-11-05 15:18:47.141 W/ActivityManager(  524): Slow operation: 109ms so far, now at finishAttachApplicationInner: after dispatching broadcasts
-11-05 15:18:48.739 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 5179
-11-05 15:18:50.575 I/ReactNativeJS( 5179): Running "main"
-11-05 15:19:03.684 I/ActivityManager(  524): Start proc 5401:com.google.android.apps.messaging:rcs/u0a131 for broadcast {com.google.android.apps.messaging/com.google.android.ims.receiver.ProvisioningEventReceiver}
-11-05 15:19:04.205 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10131. pid: 5401
-11-05 15:19:12.296 I/ActivityManager(  524): Start proc 5525:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0ai9000 for  {com.amcolink.app.dev/org.chromium.content.app.SandboxedProcessService0:0}
-11-05 15:19:12.328 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 99000. pid: 5525
-11-05 15:19:12.533 I/ActivityManager(  524): Start proc 5556:com.google.android.webview:webview_apk/u0a134 for service {com.google.android.webview/org.chromium.android_webview.nonembedded.AwComponentUpdateService}
-11-05 15:19:12.658 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10134. pid: 5556
-11-05 15:19:37.698 I/ActivityManager(  524): Finished processing BOOT_COMPLETED for u0
-11-05 15:19:37.974 W/ActivityManager(  524): Unable to start service Intent { act=com.google.android.play.core.splitinstall.BIND_SPLIT_INSTALL_SERVICE pkg=com.android.vending } U=0: not found
-11-05 15:19:46.608 I/ActivityManager(  524): Start proc 5857:com.google.android.webview/u0a134 for broadcast {com.google.android.webview/com.google.android.libraries.phenotype.client.stable.PhenotypeUpdateBackgroundBroadcastReceiver}
-11-05 15:19:46.809 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10134. pid: 5857
-11-05 15:19:47.101 I/ActivityManager(  524): Background started FGS: Allowed [callingPackage: com.google.android.inputmethod.latin; callingUid: 10141; uidState: IMPB; uidBFSL: n/a; intent: Intent { cmp=com.google.android.inputmethod.latin/com.google.android.apps.inputmethod.libs.dataservice.superpacks.SuperpacksForegroundTaskService }; code:CURRENT_INPUT_METHOD; tempAllowListReason:<null>; targetSdkVersion:33; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:false]
-11-05 15:19:47.255 W/ActivityManager(  524): Foreground service started from background can not have location/camera/microphone access: service com.google.android.inputmethod.latin/com.google.android.apps.inputmethod.libs.dataservice.superpacks.SuperpacksForegroundTaskService
-11-05 15:19:55.286 W/ActivityManager(  524): Unable to start service Intent { act=android.settings.hats.START_SERVICE pkg=com.google.android.settings.intelligence (has extras) } U=0: not found
-11-05 15:19:55.450 E/ActivityManager(  524): Unable to freeze binder for 4253: -11
-11-05 15:19:55.502 I/ActivityManager(  524): Killing 4253:com.google.android.settings.intelligence/u0a118 (adj 0): change com.google.android.settings.intelligence
-11-05 15:19:55.552 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.settings.intelligence/.modules.routines.impl.RoutinesJobIntentService in 1000ms for connection
-11-05 15:19:56.866 W/ActivityManager(  524): Slow operation: 283ms so far, now at startProcess: returned from zygote!
-11-05 15:19:56.867 W/ActivityManager(  524): Slow operation: 284ms so far, now at startProcess: done updating battery stats
-11-05 15:19:56.867 W/ActivityManager(  524): Slow operation: 284ms so far, now at startProcess: building log message
-11-05 15:19:56.867 I/ActivityManager(  524): Start proc 5908:com.google.android.settings.intelligence/u0a118 for service {com.google.android.settings.intelligence/com.google.android.settings.intelligence.modules.routines.impl.RoutinesJobIntentService}
-11-05 15:19:56.867 W/ActivityManager(  524): Slow operation: 284ms so far, now at startProcess: starting to update pids map
-11-05 15:19:56.867 W/ActivityManager(  524): Slow operation: 284ms so far, now at startProcess: done updating pids map
-11-05 15:19:58.945 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10118. pid: 5908
-11-05 15:20:06.677 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: clear data
-11-05 15:20:06.708 I/ActivityManager(  524): Killing 5179:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to clear data
-11-05 15:20:06.713 I/ActivityManager(  524): Killing 5525:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a192i0 (adj 0): isolated not needed
-11-05 15:20:07.408 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=-1: clearApplicationUserData
-11-05 15:20:08.542 W/ActivityManager(  524): setHasOverlayUi called on unknown pid: 5179
-11-05 15:20:12.052 I/ActivityManager(  524): Process com.android.externalstorage (pid 2650) early provider death
-11-05 15:20:12.052 I/ActivityManager(  524): Process com.android.externalstorage (pid 2650) has died: cch+99 CEM 
-11-05 15:20:12.314 W/ActivityManager(  524): ProcessRecord{ceb508f 0:com.android.externalstorage/u0a87} is attached to a previous process 2650
-11-05 15:20:12.349 I/ActivityManager(  524): Start proc 6115:com.android.externalstorage/u0a87 for content provider {com.android.externalstorage/com.android.externalstorage.ExternalStorageProvider}
-11-05 15:20:12.556 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10087. pid: 6115
-11-05 15:20:15.089 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 6318
-11-05 15:20:15.397 I/ActivityManager(  524): Start proc 6352:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
-11-05 15:20:16.147 W/ActivityManager(  524): Slow operation: 109ms so far, now at finishAttachApplicationInner: after mServices.attachApplicationLocked
-11-05 15:20:16.148 W/ActivityManager(  524): Slow operation: 110ms so far, now at finishAttachApplicationInner: after dispatching broadcasts
-11-05 15:20:17.643 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 6352
-11-05 15:20:18.866 I/ReactNativeJS( 6352): Running "main"
-11-05 15:20:46.353 I/ActivityManager(  524): Process com.google.android.gms (pid 1505) has died: fg  BFGS
-11-05 15:20:46.357 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.icing.service.IndexService in 1000ms for connection
-11-05 15:20:46.358 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.chimera.GmsApiService in 11000ms for connection
-11-05 15:20:46.358 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.chimera.container.ExternalFileApkService in 21000ms for start-requested
-11-05 15:20:46.358 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.chimera.GmsIntentOperationService in 31000ms for start-requested
-11-05 15:20:46.358 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.chimera.GmsBoundBrokerService in 41000ms for connection
-11-05 15:20:46.358 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.icing.service.AppIndexingService in 50999ms for connection
-11-05 15:20:46.375 I/ActivityManager(  524): Process com.google.android.gms.persistent (pid 1411) has died: fg  BFGS
-11-05 15:20:46.413 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.gcm.nts.SchedulerService in 1000ms for start-requested
-11-05 15:20:46.413 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.fido.fido2.pollux.CableAuthenticatorService in 40944ms for start-requested
-11-05 15:20:46.414 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.common.stats.GmsCoreStatsService in 50944ms for start-requested
-11-05 15:20:46.418 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService in 60939ms for start-requested
-11-05 15:20:46.419 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.deviceconnection.service.DeviceConnectionWatcherService in 70939ms for start-requested
-11-05 15:20:46.419 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService in 80939ms for connection
-11-05 15:20:46.419 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.gcm.GcmService in 90939ms for start-requested
-11-05 15:20:46.420 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.network.NetworkLocationService in 100938ms for connection
-11-05 15:20:46.420 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.presencemanager.service.PresenceManagerPresenceReportService in 110938ms for start-requested
-11-05 15:20:46.420 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.thunderbird.EmergencyPersistentService in 120938ms for start-requested
-11-05 15:20:46.421 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.location.persistent.LocationPersistentService in 130937ms for start-requested
-11-05 15:20:46.421 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.clearcut.debug.ClearcutDebugDumpService in 140937ms for start-requested
-11-05 15:20:46.422 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.nearby.sharing.ReceiveSurfaceService in 150936ms for start-requested
-11-05 15:20:46.423 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.geotimezone.GeoTimeZoneService in 160935ms for connection
-11-05 15:20:46.424 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.fused.FusedLocationService in 170934ms for connection
-11-05 15:20:46.424 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentIntentOperationService in 180934ms for start-requested
-11-05 15:20:46.424 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.nearby.messages.service.NearbyMessagesService in 190933ms for start-requested
-11-05 15:20:46.425 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/com.google.android.contextmanager.service.ContextManagerService in 200933ms for start-requested
-11-05 15:20:46.425 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentApiService in 210933ms for connection
-11-05 15:20:46.426 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.auth.account.authenticator.GoogleAccountAuthenticatorService in 220932ms for connection
-11-05 15:20:46.427 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentBoundBrokerService in 230931ms for connection
-11-05 15:20:46.427 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.location.geocode.GeocodeService in 240931ms for connection
-11-05 15:20:46.427 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.auth.setup.devicesignals.LockScreenService in 250930ms for start-requested
-11-05 15:20:46.428 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.nearby.exposurenotification.service.ExposureMatchingService in 260930ms for start-requested
-11-05 15:20:46.428 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentDirectBootAwareApiService in 270930ms for connection
-11-05 15:20:46.428 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService in 280929ms for start-requested
-11-05 15:20:46.451 I/ActivityManager(  524): Start proc 6680:com.google.android.gms.persistent/u0a128 for service {com.google.android.gms/com.google.android.gms.chimera.PersistentBoundBrokerService}
-11-05 15:20:46.504 W/ActivityManager(  524): Rescheduling restart of crashed service com.google.android.gms/.chimera.container.ExternalFileApkService in 853ms for other
-11-05 15:20:46.504 W/ActivityManager(  524): Rescheduling restart of crashed service com.google.android.gms/.chimera.GmsIntentOperationService in 10853ms for other
-11-05 15:20:46.624 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10128. pid: 6680
-11-05 15:20:47.208 I/ActivityManager(  524): Start proc 6753:com.google.android.gms/u0a128 for service {com.google.android.gms/com.google.android.gms.checkin.CheckinApiService}
-11-05 15:20:47.547 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10128. pid: 6753
-11-05 15:20:48.356 W/ActivityManager(  524): Failed delivering service starts
-11-05 15:20:48.356 W/ActivityManager(  524): android.os.DeadObjectException
-11-05 15:20:48.356 W/ActivityManager(  524): 	at android.os.BinderProxy.transactNative(Native Method)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at android.os.BinderProxy.transact(BinderProxy.java:584)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at android.app.IApplicationThread$Stub$Proxy.scheduleServiceArgs(IApplicationThread.java:1368)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActiveServices.sendServiceArgsLocked(ActiveServices.java:5472)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActiveServices.realStartServiceLocked(ActiveServices.java:5388)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActiveServices.bringUpServiceInnerLocked(ActiveServices.java:5151)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActiveServices.bringUpServiceLocked(ActiveServices.java:5060)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActiveServices.startServiceInnerLocked(ActiveServices.java:1368)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActiveServices.startServiceInnerLocked(ActiveServices.java:1152)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActiveServices.startServiceLocked(ActiveServices.java:1020)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActiveServices.startServiceLocked(ActiveServices.java:788)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActivityManagerService.startService(ActivityManagerService.java:13190)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActivityManagerService.startService(ActivityManagerService.java:13152)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:2818)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2720)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at android.os.Binder.execTransactInternal(Binder.java:1339)
-11-05 15:20:48.356 W/ActivityManager(  524): 	at android.os.Binder.execTransact(Binder.java:1275)
-11-05 15:20:48.366 I/ActivityManager(  524): Killing 4593:com.google.android.gms.ui/u0a128 (adj 0): Can't deliver broadcast
-11-05 15:20:48.368 W/ActivityManager(  524): Scheduling restart of crashed service com.google.android.gms/.chimera.UiIntentOperationService in 1000ms for start-requested
-11-05 15:20:48.591 W/ActivityManager(  524): Unable to start service Intent { act=com.google.android.gms.home.service.START pkg=com.google.android.gms } U=0: not found
-11-05 15:20:48.593 W/ActivityManager(  524): Unbind failed: could not find connection for android.os.BinderProxy@8e3832e
-11-05 15:20:49.381 I/ActivityManager(  524): Start proc 6903:com.google.android.gms.ui/u0a128 for service {com.google.android.gms/com.google.android.gms.chimera.UiIntentOperationService}
-11-05 15:20:49.638 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10128. pid: 6903
-11-05 15:20:54.009 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7142
-11-05 15:20:54.012 I/ActivityManager(  524): Killing 6352:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 7142
-11-05 15:20:54.399 W/ActivityManager(  524): Slow operation: 58ms so far, now at startProcess: returned from zygote!
-11-05 15:20:54.402 W/ActivityManager(  524): Slow operation: 61ms so far, now at startProcess: done updating battery stats
-11-05 15:20:54.402 W/ActivityManager(  524): Slow operation: 61ms so far, now at startProcess: building log message
-11-05 15:20:54.402 I/ActivityManager(  524): Start proc 7153:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
-11-05 15:20:54.402 W/ActivityManager(  524): Slow operation: 61ms so far, now at startProcess: starting to update pids map
-11-05 15:20:54.403 W/ActivityManager(  524): Slow operation: 62ms so far, now at startProcess: done updating pids map
-11-05 15:20:55.026 W/ActivityManager(  524): setHasOverlayUi called on unknown pid: 6352
-11-05 15:20:55.601 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 7153
-11-05 15:20:56.377 I/ReactNativeJS( 7153): Running "main"
-11-05 15:21:17.190 W/ActivityManager(  524): Slow operation: 58ms so far, now at startProcess: returned from zygote!
-11-05 15:21:17.190 W/ActivityManager(  524): Slow operation: 58ms so far, now at startProcess: done updating battery stats
-11-05 15:21:17.190 W/ActivityManager(  524): Slow operation: 58ms so far, now at startProcess: building log message
-11-05 15:21:17.190 I/ActivityManager(  524): Start proc 7383:com.android.intentresolver/u0a91 for next-top-activity {com.android.intentresolver/com.android.intentresolver.ChooserActivity}
-11-05 15:21:17.190 W/ActivityManager(  524): Slow operation: 58ms so far, now at startProcess: starting to update pids map
-11-05 15:21:17.190 W/ActivityManager(  524): Slow operation: 58ms so far, now at startProcess: done updating pids map
-11-05 15:21:17.387 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10091. pid: 7383
-11-05 15:21:38.990 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7685
-11-05 15:21:38.991 I/ActivityManager(  524): Killing 7153:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 7685
-11-05 15:21:39.382 I/ActivityManager(  524): Start proc 7697:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
-11-05 15:21:40.226 W/ActivityManager(  524): setHasOverlayUi called on unknown pid: 7153
-11-05 15:21:40.448 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 7697
-11-05 15:21:41.440 I/ReactNativeJS( 7697): Running "main"
-11-05 15:22:07.626 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7965
-11-05 15:22:07.627 I/ActivityManager(  524): Killing 7697:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 7965
-11-05 15:22:08.216 I/ActivityManager(  524): Start proc 7976:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
-11-05 15:22:08.284 W/ActivityManager(  524): setHasOverlayUi called on unknown pid: 7697
-11-05 15:22:09.803 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 7976
-11-05 15:22:10.430 I/ReactNativeJS( 7976): Running "main"
-11-05 15:22:59.950 I/ActivityManager(  524): Background started FGS: Allowed [callingPackage: com.google.android.inputmethod.latin; callingUid: 10141; uidState: BFGS; uidBFSL: [BFSL]; intent: Intent { cmp=com.google.android.inputmethod.latin/com.google.android.apps.inputmethod.libs.dataservice.superpacks.SuperpacksForegroundTaskService }; code:UID_VISIBLE; tempAllowListReason:<null>; targetSdkVersion:33; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:false]
-11-05 15:23:06.323 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8362
-11-05 15:23:06.325 I/ActivityManager(  524): Killing 7976:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8362
-11-05 15:23:06.976 W/ActivityManager(  524): setHasOverlayUi called on unknown pid: 7976
-11-05 15:23:07.433 I/ActivityManager(  524): Start proc 8373:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
-11-05 15:23:09.385 I/ActivityManager(  524): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 8373
-11-05 15:23:09.905 I/ReactNativeJS( 8373): Running "main"
-11-05 15:23:50.302 I/ActivityManager(  524): Force stopping dev.mobile.maestro appid=10193 user=-1: deletePackageX
-11-05 15:23:50.304 I/ActivityManager(  524): Killing 4879:dev.mobile.maestro/u0a193 (adj 0): stop dev.mobile.maestro due to deletePackageX
-11-05 15:23:50.306 W/ActivityManager(  524): Crash of app dev.mobile.maestro running instrumentation ComponentInfo{dev.mobile.maestro.test/androidx.test.runner.AndroidJUnitRunner}
-11-05 15:23:50.308 I/ActivityManager(  524): Force stopping dev.mobile.maestro appid=10193 user=0: finished inst
-11-05 15:23:50.646 I/ActivityManager(  524): Force stopping dev.mobile.maestro appid=10193 user=0: pkg removed
-11-05 15:23:50.782 W/ActivityManager(  524): Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
-11-05 15:23:50.837 I/ActivityManager(  524): Force stopping dev.mobile.maestro.test appid=10194 user=-1: deletePackageX
-11-05 15:23:51.068 I/ActivityManager(  524): Force stopping dev.mobile.maestro.test appid=10194 user=0: pkg removed
+11-05 16:19:56.544 I/ActivityManager(  529): Broadcasting: Intent { act=android.intent.action.CLOSE_SYSTEM_DIALOGS flg=0x400000 }
+11-05 16:19:56.546 I/ActivityManager(  529): Enqueued broadcast Intent { act=android.intent.action.CLOSE_SYSTEM_DIALOGS flg=0x400000 }: 0
+11-05 16:19:56.877 I/ActivityManager(  529): Start proc 4423:com.google.android.youtube/u0a139 for broadcast {com.google.android.youtube/com.google.android.libraries.notifications.platform.entrypoints.restart.RestartReceiver}
+11-05 16:19:57.213 I/ActivityManager(  529): Start proc 4445:com.google.android.settings.intelligence/u0a118 for broadcast {com.google.android.settings.intelligence/com.google.android.settings.intelligence.modules.contextualcards.impl.JobBootBroadcastReceiver}
+11-05 16:19:57.355 W/ActivityManager(  529): Slow operation: 59ms so far, now at attachApplicationLocked: immediately before bindApplication
+11-05 16:19:57.356 W/ActivityManager(  529): Slow operation: 59ms so far, now at attachApplicationLocked: immediately after bindApplication
+11-05 16:19:57.356 W/ActivityManager(  529): Slow operation: 59ms so far, now at attachApplicationLocked: after updateLruProcessLocked
+11-05 16:19:57.497 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10118. pid: 4445
+11-05 16:19:57.551 I/ActivityManager(  529): Background started FGS: Allowed [callingPackage: com.google.android.apps.wellbeing; callingUid: 10122; uidState: BTOP; uidBFSL: [BFSL]; intent: Intent { cmp=com.google.android.apps.wellbeing/com.google.apps.tiktok.concurrent.InternalForegroundService (has extras) }; code:BACKGROUND_ACTIVITY_PERMISSION; tempAllowListReason:<1abc513 android.intent.action.BOOT_COMPLETED/u0,reasonCode:BOOT_COMPLETED,duration:20000,callingUid:1000>; targetSdkVersion:33; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+11-05 16:19:57.681 I/ActivityManager(  529): Killing 858:com.android.systemui/u0a169 (adj -800): user request after error
+11-05 16:19:57.694 I/ActivityManager(  529): Broadcast completed: result=0
+11-05 16:19:58.429 I/ActivityManager(  529): Killing 858:com.android.systemui/u0a169 (adj -800): Can't deliver broadcast
+11-05 16:19:58.429 I/ActivityManager(  529): Killing 858:com.android.systemui/u0a169 (adj -800): Can't deliver broadcast
+11-05 16:19:58.430 I/ActivityManager(  529): Killing 858:com.android.systemui/u0a169 (adj -800): Can't deliver broadcast
+11-05 16:19:58.500 I/ActivityManager(  529): Process com.android.systemui (pid 858) has died: pers PER 
+11-05 16:19:59.655 W/ActivityManager(  529): Scheduling restart of crashed service com.android.systemui/.keyguard.KeyguardService in 0ms for persistent
+11-05 16:20:00.053 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10148. pid: 4297
+11-05 16:20:00.236 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10139. pid: 4423
+11-05 16:20:00.372 W/ActivityManager(  529): Scheduling restart of crashed service com.android.systemui/.dump.SystemUIAuxiliaryDumpService in 0ms for persistent
+11-05 16:20:00.373 W/ActivityManager(  529): Scheduling restart of crashed service com.android.systemui/.wallpapers.ImageWallpaper in 0ms for persistent
+11-05 16:20:00.373 W/ActivityManager(  529): Scheduling restart of crashed service com.android.systemui/.SystemUIService in 0ms for persistent
+11-05 16:20:00.385 W/ActivityManager(  529): Re-adding persistent process ProcessRecord{9c9dc1c 858:com.android.systemui/u0a169}
+11-05 16:20:00.496 W/ActivityManager(  529): Slow operation: 106ms so far, now at startProcess: done updating battery stats
+11-05 16:20:00.496 W/ActivityManager(  529): Slow operation: 106ms so far, now at startProcess: building log message
+11-05 16:20:00.496 I/ActivityManager(  529): Start proc 4569:com.android.systemui/u0a169 for restart com.android.systemui
+11-05 16:20:00.496 W/ActivityManager(  529): Slow operation: 106ms so far, now at startProcess: starting to update pids map
+11-05 16:20:00.497 W/ActivityManager(  529): Slow operation: 108ms so far, now at startProcess: done updating pids map
+11-05 16:20:00.583 W/ActivityManager(  529): setHasOverlayUi called on unknown pid: 858
+11-05 16:20:00.587 E/ActivityManager(  529): Sending non-protected broadcast com.android.settings.battery.action.PERIODIC_JOB_RECHECK from system 1077:com.android.settings/1000 pkg com.android.settings
+11-05 16:20:00.587 E/ActivityManager(  529): java.lang.Throwable
+11-05 16:20:00.587 E/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.checkBroadcastFromSystem(ActivityManagerService.java:14306)
+11-05 16:20:00.587 E/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.broadcastIntentLockedTraced(ActivityManagerService.java:15131)
+11-05 16:20:00.587 E/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:14370)
+11-05 16:20:00.587 E/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.broadcastIntentWithFeature(ActivityManagerService.java:15336)
+11-05 16:20:00.587 E/ActivityManager(  529): 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:2653)
+11-05 16:20:00.587 E/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2720)
+11-05 16:20:00.587 E/ActivityManager(  529): 	at android.os.Binder.execTransactInternal(Binder.java:1339)
+11-05 16:20:00.587 E/ActivityManager(  529): 	at android.os.Binder.execTransact(Binder.java:1275)
+11-05 16:20:03.018 I/ActivityManager(  529): Collecting stacks for pid 3739 into temporary file temp_anr_5602586791736127896.txt
+11-05 16:20:03.175 I/ActivityManager(  529): dumpStackTraces pids=null
+11-05 16:20:03.175 I/ActivityManager(  529): Dumping to /data/anr/anr_2026-11-05-16-20-03-175
+11-05 16:20:05.531 W/ActivityManager(  529): Slow operation: 72ms so far, now at startProcess: returned from zygote!
+11-05 16:20:05.531 W/ActivityManager(  529): Slow operation: 73ms so far, now at startProcess: done updating battery stats
+11-05 16:20:05.531 W/ActivityManager(  529): Slow operation: 73ms so far, now at startProcess: building log message
+11-05 16:20:05.531 I/ActivityManager(  529): Start proc 4745:com.google.android.googlequicksearchbox/u0a132 for broadcast {com.google.android.googlequicksearchbox/com.google.android.libraries.phenotype.client.stable.PhenotypeUpdateBackgroundBroadcastReceiver}
+11-05 16:20:05.531 W/ActivityManager(  529): Slow operation: 73ms so far, now at startProcess: starting to update pids map
+11-05 16:20:05.531 W/ActivityManager(  529): Slow operation: 73ms so far, now at startProcess: done updating pids map
+11-05 16:20:06.468 W/ActivityManager(  529): Receiver with filter android.content.IntentFilter@4dff01a already registered for pid 4745, callerPackage is com.google.android.googlequicksearchbox
+11-05 16:20:07.088 I/ActivityManager(  529): dumpStackTraces nativepids=null
+11-05 16:20:07.088 I/ActivityManager(  529): dumpStackTraces extraPids=null
+11-05 16:20:07.088 I/ActivityManager(  529): Done dumping
+11-05 16:20:07.088 E/ActivityManager(  529): ANR in com.google.android.gms.persistent
+11-05 16:20:07.088 E/ActivityManager(  529): PID: 3739
+11-05 16:20:07.088 E/ActivityManager(  529): Reason: Broadcast of Intent { act=android.intent.action.DOMAINS_NEED_VERIFICATION flg=0x10000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver (has extras) }
+11-05 16:20:07.088 E/ActivityManager(  529): ErrorId: cc417725-90fb-4f28-8492-3af19b37d0c3
+11-05 16:20:07.088 E/ActivityManager(  529): Frozen: false
+11-05 16:20:07.088 E/ActivityManager(  529): Load: 0.0 / 0.0 / 0.0
+11-05 16:20:07.088 E/ActivityManager(  529): ----- Output from /proc/pressure/memory -----
+11-05 16:20:07.088 E/ActivityManager(  529): some avg10=29.77 avg60=17.67 avg300=5.16 total=17052413
+11-05 16:20:07.088 E/ActivityManager(  529): full avg10=1.52 avg60=1.57 avg300=0.53 total=2198402
+11-05 16:20:07.088 E/ActivityManager(  529): ----- End output from /proc/pressure/memory -----
+11-05 16:20:07.088 E/ActivityManager(  529): ----- Output from /proc/pressure/cpu -----
+11-05 16:20:07.088 E/ActivityManager(  529): some avg10=87.20 avg60=64.95 avg300=21.87 total=75208993
+11-05 16:20:07.088 E/ActivityManager(  529): full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+11-05 16:20:07.088 E/ActivityManager(  529): ----- End output from /proc/pressure/cpu -----
+11-05 16:20:07.088 E/ActivityManager(  529): ----- Output from /proc/pressure/io -----
+11-05 16:20:07.088 E/ActivityManager(  529): some avg10=18.15 avg60=13.95 avg300=4.92 total=17606263
+11-05 16:20:07.088 E/ActivityManager(  529): full avg10=0.02 avg60=0.46 avg300=0.29 total=1540345
+11-05 16:20:07.088 E/ActivityManager(  529): ----- End output from /proc/pressure/io -----
+11-05 16:20:07.088 E/ActivityManager(  529): 
+11-05 16:20:07.088 E/ActivityManager(  529): CPU usage from 24787ms to -103ms ago (2026-11-05 16:19:38.376 to 2026-11-05 16:20:03.267):
+11-05 16:20:07.088 E/ActivityManager(  529):   26% 529/system_server: 14% user + 12% kernel / faults: 36231 minor 571 major
+11-05 16:20:07.088 E/ActivityManager(  529):   7.3% 1553/com.google.android.inputmethod.latin: 4.9% user + 2.4% kernel / faults: 9438 minor 271 major
+11-05 16:20:07.088 E/ActivityManager(  529):   6% 390/android.hardware.graphics.composer3-service.ranchu: 0.1% user + 5.9% kernel / faults: 4 minor 3 major
+11-05 16:20:07.088 E/ActivityManager(  529):   5.6% 1115/com.google.android.apps.nexuslauncher: 3.2% user + 2.4% kernel / faults: 30433 minor 42 major
+11-05 16:20:07.088 E/ActivityManager(  529):   5% 3067/com.google.android.apps.wallpaper: 4% user + 1% kernel / faults: 7894 minor 14 major
+11-05 16:20:07.088 E/ActivityManager(  529):   4.4% 3037/com.google.android.gms.unstable: 2.7% user + 1.7% kernel / faults: 9498 minor 29 major
+11-05 16:20:07.088 E/ActivityManager(  529):   4.1% 1621/com.google.android.gms: 2.5% user + 1.6% kernel / faults: 14248 minor 186 major
+11-05 16:20:07.088 E/ActivityManager(  529):   4.1% 3596/zygote64: 2.8% user + 1.2% kernel / faults: 23350 minor 10 major
+11-05 16:20:07.088 E/ActivityManager(  529):   3.2% 1567/com.google.android.apps.wellbeing: 1.6% user + 1.5% kernel / faults: 11065 minor 537 major
+11-05 16:20:07.088 E/ActivityManager(  529):   2.8% 442/logcat: 0.1% user + 2.7% kernel / faults: 3 minor 1 major
+11-05 16:20:07.088 E/ActivityManager(  529): 98% TOTAL: 45% user + 48% kernel + 0.3% iowait + 4% softirq
+11-05 16:20:07.088 E/ActivityManager(  529): CPU usage from 118573ms to 118573ms ago (1970-01-01 00:00:00.000 to 1970-01-01 00:00:00.000) with 0% awake:
+11-05 16:20:07.088 E/ActivityManager(  529): 0% TOTAL: 0% user + 0% kernel
+11-05 16:20:07.099 I/ActivityManager(  529): Killing 3739:com.google.android.gms.persistent/u0a128 (adj 0): bg anr
+11-05 16:20:10.106 W/ActivityManager(  529): ProcessRecord{4fb0b08 3739:com.google.android.gms.persistent/u0a128} is attached to a previous process
+11-05 16:20:10.107 W/ActivityManager(  529): Existing proc ProcessRecord{4fb0b08 3739:com.google.android.gms.persistent/u0a128} was killed 3007ms ago when adding ProcessRecord{c5eb896 0:com.google.android.gms.persistent/u0a128}
+11-05 16:20:10.256 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10132. pid: 4745
+11-05 16:20:10.390 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10169. pid: 4569
+11-05 16:20:10.554 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentApiService in 1000ms for connection
+11-05 16:20:10.554 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService in 41776ms for start-requested
+11-05 16:20:10.554 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.tron.CollectionService in 123408ms for start-requested
+11-05 16:20:10.554 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.GetToken in 10999ms for connection
+11-05 16:20:10.554 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentDirectBootAwareApiService in 20999ms for connection
+11-05 16:20:10.554 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.geotimezone.GeoTimeZoneService in 30999ms for connection
+11-05 16:20:10.554 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.proximity.firstparty.SystemMemoryCacheService in 51776ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.network.NetworkLocationService in 61776ms for connection
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentIntentOperationService in 361584ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.fused.FusedLocationService in 71776ms for connection
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService in 401584ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.nearby.sharing.ReceiveSurfaceService in 441584ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.account.authenticator.GoogleAccountAuthenticatorService in 81776ms for connection
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.gcm.GcmService in 521584ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.deviceconnection.service.DeviceConnectionWatcherService in 91776ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.gcm.http.GoogleHttpService in 101776ms for connection
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.common.stats.GmsCoreStatsService in 111776ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.contextmanager.service.ContextManagerService in 641584ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.lockbox.service.LockboxBrokerService in 681584ms for connection
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.setup.devicesignals.LockScreenService in 721584ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.gcm.PushMessagingRegistrarProxy in 133408ms for connection
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.location.geocode.GeocodeService in 143408ms for connection
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService in 153408ms for connection
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentBoundBrokerService in 163408ms for connection
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.wearable.service.WearableControlService in 921584ms for start-requested
+11-05 16:20:10.555 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.proximity.firstparty.FirstPartyDeviceRegistrationService in 173408ms for start-requested
+11-05 16:20:10.579 W/ActivityManager(  529): Slow operation: 472ms so far, now at startProcess: asking zygote to start proc
+11-05 16:20:10.719 W/ActivityManager(  529): Slow operation: 612ms so far, now at startProcess: returned from zygote!
+11-05 16:20:10.719 W/ActivityManager(  529): Slow operation: 612ms so far, now at startProcess: done updating battery stats
+11-05 16:20:10.719 W/ActivityManager(  529): Slow operation: 612ms so far, now at startProcess: building log message
+11-05 16:20:10.719 I/ActivityManager(  529): Start proc 4869:com.google.android.gms.persistent/u0a128 for content provider {com.google.android.gms/com.google.android.gms.chimera.container.GmsModuleProvider}
+11-05 16:20:10.719 W/ActivityManager(  529): Slow operation: 612ms so far, now at startProcess: starting to update pids map
+11-05 16:20:10.720 W/ActivityManager(  529): Slow operation: 613ms so far, now at startProcess: done updating pids map
+11-05 16:20:13.668 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10128. pid: 4869
+11-05 16:20:14.621 W/ActivityManager(  529): Receiver with filter android.content.IntentFilter@7ef98f1 already registered for pid 4569, callerPackage is com.android.systemui
+11-05 16:20:27.560 I/ActivityManager(  529): Killing 1077:com.android.settings/1000 (adj 925): excessive binder traffic during cached
+11-05 16:20:29.890 I/ActivityManager(  529): Force stopping dev.mobile.maestro appid=10193 user=0: start instr
+11-05 16:20:29.943 I/ActivityManager(  529): Start proc 5165:dev.mobile.maestro/u0a193 for added application dev.mobile.maestro
+11-05 16:20:32.759 I/ActivityManager(  529): Killing 4445:com.google.android.settings.intelligence/u0a118 (adj 925): excessive binder traffic during cached
+11-05 16:20:35.559 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10193. pid: 5165
+11-05 16:20:36.387 I/ActivityManager(  529): Finished processing BOOT_COMPLETED for u0
+11-05 16:20:45.076 W/ActivityManager(  529): Unable to start service Intent { act=com.google.android.gms.home.service.START pkg=com.google.android.gms } U=0: not found
+11-05 16:20:45.239 W/ActivityManager(  529): Unbind failed: could not find connection for android.os.BinderProxy@9e3614e
+11-05 16:20:46.437 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 5527
+11-05 16:20:47.011 W/ActivityManager(  529): Slow operation: 121ms so far, now at startProcess: returned from zygote!
+11-05 16:20:47.020 W/ActivityManager(  529): Slow operation: 151ms so far, now at startProcess: done updating battery stats
+11-05 16:20:47.022 W/ActivityManager(  529): Slow operation: 154ms so far, now at startProcess: building log message
+11-05 16:20:47.027 I/ActivityManager(  529): Start proc 5536:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:20:47.027 W/ActivityManager(  529): Slow operation: 158ms so far, now at startProcess: starting to update pids map
+11-05 16:20:47.029 W/ActivityManager(  529): Slow operation: 160ms so far, now at startProcess: done updating pids map
+11-05 16:20:49.495 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 5536
+11-05 16:20:50.867 I/ReactNativeJS( 5536): Running "main"
+11-05 16:20:59.446 W/ActivityManager(  529): Slow operation: 170ms so far, now at startProcess: done updating battery stats
+11-05 16:20:59.447 W/ActivityManager(  529): Slow operation: 171ms so far, now at startProcess: building log message
+11-05 16:20:59.448 I/ActivityManager(  529): Start proc 5753:com.google.android.settings.intelligence/u0a118 for broadcast {com.google.android.settings.intelligence/com.google.android.settings.intelligence.modules.contextualcards.impl.JobBootBroadcastReceiver}
+11-05 16:20:59.448 W/ActivityManager(  529): Slow operation: 172ms so far, now at startProcess: starting to update pids map
+11-05 16:20:59.448 W/ActivityManager(  529): Slow operation: 173ms so far, now at startProcess: done updating pids map
+11-05 16:21:01.292 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10118. pid: 5753
+11-05 16:21:01.694 I/ActivityManager(  529): Start proc 5800:com.android.settings/1000 for content provider {com.android.settings/com.android.settings.homepage.contextualcards.SettingsContextualCardProvider}
+11-05 16:21:02.058 W/ActivityManager(  529): Unable to start service Intent { act=com.google.android.gms.drive.ApiService.RESET_AFTER_BOOT flg=0x4 cmp=com.google.android.gms/.drive.api.ApiService (has extras) } U=0: not found
+11-05 16:21:02.418 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 1000. pid: 5800
+11-05 16:21:30.681 I/ActivityManager(  529): Background started FGS: Allowed [callingPackage: com.google.android.googlequicksearchbox; callingUid: 10132; uidState: BFGS; uidBFSL: [BFSL]; intent: Intent { cmp=com.google.android.googlequicksearchbox/com.google.android.libraries.mdi.download.foreground.sting.ForegroundDownloadService (has extras) }; code:ACTIVITY_STARTER; tempAllowListReason:<null>; targetSdkVersion:31; callerTargetSdkVersion:31; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+11-05 16:21:33.942 W/ActivityManager(  529): Unable to start service Intent { act=android.settings.hats.START_SERVICE pkg=com.google.android.settings.intelligence (has extras) } U=0: not found
+11-05 16:21:33.964 E/ActivityManager(  529): Unable to freeze binder for 5753: -11
+11-05 16:21:33.966 I/ActivityManager(  529): Killing 5753:com.google.android.settings.intelligence/u0a118 (adj 0): change com.google.android.settings.intelligence
+11-05 16:21:33.969 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.settings.intelligence/.modules.routines.impl.ComputeNewInferencesJobService in 1000ms for connection
+11-05 16:21:33.970 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.settings.intelligence/.modules.routines.impl.PruneDatabaseJobService in 11000ms for connection
+11-05 16:21:33.971 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.settings.intelligence/.modules.routines.impl.RoutinesJobIntentService in 20999ms for connection
+11-05 16:21:34.981 I/ActivityManager(  529): Start proc 6098:com.google.android.settings.intelligence/u0a118 for service {com.google.android.settings.intelligence/com.google.android.settings.intelligence.modules.routines.impl.ComputeNewInferencesJobService}
+11-05 16:21:35.177 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10118. pid: 6098
+11-05 16:21:37.250 W/ActivityManager(  529): Unable to start service Intent { act=com.google.android.play.core.splitinstall.BIND_SPLIT_INSTALL_SERVICE pkg=com.android.vending } U=0: not found
+11-05 16:21:39.279 W/ActivityManager(  529): Slow operation: 295ms so far, now at startProcess: returned from zygote!
+11-05 16:21:39.283 W/ActivityManager(  529): Slow operation: 299ms so far, now at startProcess: done updating battery stats
+11-05 16:21:39.284 W/ActivityManager(  529): Slow operation: 300ms so far, now at startProcess: building log message
+11-05 16:21:39.284 I/ActivityManager(  529): Start proc 6211:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0ai9000 for  {com.amcolink.app.dev/org.chromium.content.app.SandboxedProcessService0:0}
+11-05 16:21:39.285 W/ActivityManager(  529): Slow operation: 301ms so far, now at startProcess: starting to update pids map
+11-05 16:21:39.285 W/ActivityManager(  529): Slow operation: 301ms so far, now at startProcess: done updating pids map
+11-05 16:21:39.591 I/ActivityManager(  529): Background started FGS: Allowed [callingPackage: com.google.android.inputmethod.latin; callingUid: 10140; uidState: IMPB; uidBFSL: n/a; intent: Intent { cmp=com.google.android.inputmethod.latin/com.google.android.apps.inputmethod.libs.dataservice.superpacks.SuperpacksForegroundTaskService }; code:CURRENT_INPUT_METHOD; tempAllowListReason:<null>; targetSdkVersion:33; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+11-05 16:21:39.619 W/ActivityManager(  529): Foreground service started from background can not have location/camera/microphone access: service com.google.android.inputmethod.latin/com.google.android.apps.inputmethod.libs.dataservice.superpacks.SuperpacksForegroundTaskService
+11-05 16:21:39.702 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 99000. pid: 6211
+11-05 16:21:39.717 W/ActivityManager(  529): Slow operation: 58ms so far, now at startProcess: returned from zygote!
+11-05 16:21:39.718 W/ActivityManager(  529): Slow operation: 59ms so far, now at startProcess: done updating battery stats
+11-05 16:21:39.719 W/ActivityManager(  529): Slow operation: 59ms so far, now at startProcess: building log message
+11-05 16:21:39.719 I/ActivityManager(  529): Start proc 6240:com.google.android.webview:webview_apk/u0a133 for service {com.google.android.webview/org.chromium.android_webview.nonembedded.AwComponentUpdateService}
+11-05 16:21:39.719 W/ActivityManager(  529): Slow operation: 59ms so far, now at startProcess: starting to update pids map
+11-05 16:21:39.719 W/ActivityManager(  529): Slow operation: 59ms so far, now at startProcess: done updating pids map
+11-05 16:21:40.274 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10133. pid: 6240
+11-05 16:22:30.461 I/ActivityManager(  529): Process com.google.android.gms.persistent (pid 4869) has died: fg  BTOP
+11-05 16:22:30.534 W/ActivityManager(  529): Exception when unbinding service com.google.android.gms/.icing.service.AppIndexingService
+11-05 16:22:30.534 W/ActivityManager(  529): android.os.DeadObjectException
+11-05 16:22:30.534 W/ActivityManager(  529): 	at android.os.BinderProxy.transactNative(Native Method)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at android.app.IApplicationThread$Stub$Proxy.scheduleUnbindService(IApplicationThread.java:1419)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at com.android.server.am.ActiveServices.removeConnectionLocked(ActiveServices.java:5896)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at com.android.server.am.ActiveServices.killServicesLocked(ActiveServices.java:6432)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.cleanUpApplicationRecordLocked(ActivityManagerService.java:12989)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.handleAppDiedLocked(ActivityManagerService.java:3338)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.appDiedLocked(ActivityManagerService.java:3453)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService$AppDeathRecipient.binderDied(ActivityManagerService.java:1583)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at android.os.IBinder$DeathRecipient.binderDied(IBinder.java:319)
+11-05 16:22:30.534 W/ActivityManager(  529): 	at android.os.BinderProxy.sendDeathNotice(BinderProxy.java:704)
+11-05 16:22:30.535 W/ActivityManager(  529): Exception when unbinding service com.google.android.gms/.chimera.GmsBoundBrokerService
+11-05 16:22:30.535 W/ActivityManager(  529): android.os.DeadObjectException
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.os.BinderProxy.transactNative(Native Method)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.app.IApplicationThread$Stub$Proxy.scheduleUnbindService(IApplicationThread.java:1419)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActiveServices.removeConnectionLocked(ActiveServices.java:5896)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActiveServices.killServicesLocked(ActiveServices.java:6432)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.cleanUpApplicationRecordLocked(ActivityManagerService.java:12989)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.handleAppDiedLocked(ActivityManagerService.java:3338)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.appDiedLocked(ActivityManagerService.java:3453)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService$AppDeathRecipient.binderDied(ActivityManagerService.java:1583)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.os.IBinder$DeathRecipient.binderDied(IBinder.java:319)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.os.BinderProxy.sendDeathNotice(BinderProxy.java:704)
+11-05 16:22:30.535 W/ActivityManager(  529): Exception when unbinding service com.google.android.gms/.gcm.gmsproc.GcmInGmsTaskService
+11-05 16:22:30.535 W/ActivityManager(  529): android.os.DeadObjectException
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.os.BinderProxy.transactNative(Native Method)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.os.BinderProxy.transact(BinderProxy.java:584)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.app.IApplicationThread$Stub$Proxy.scheduleUnbindService(IApplicationThread.java:1419)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActiveServices.removeConnectionLocked(ActiveServices.java:5896)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActiveServices.killServicesLocked(ActiveServices.java:6432)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.cleanUpApplicationRecordLocked(ActivityManagerService.java:12989)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.handleAppDiedLocked(ActivityManagerService.java:3338)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService.appDiedLocked(ActivityManagerService.java:3453)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at com.android.server.am.ActivityManagerService$AppDeathRecipient.binderDied(ActivityManagerService.java:1583)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.os.IBinder$DeathRecipient.binderDied(IBinder.java:319)
+11-05 16:22:30.535 W/ActivityManager(  529): 	at android.os.BinderProxy.sendDeathNotice(BinderProxy.java:704)
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentApiService in 1000ms for connection
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.nearby.messages.service.NearbyMessagesService in 11000ms for start-requested
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService in 21000ms for start-requested
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.nearby.exposurenotification.service.ExposureMatchingService in 31000ms for start-requested
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.presencemanager.service.PresenceManagerPresenceReportService in 41000ms for start-requested
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.thunderbird.EmergencyPersistentService in 51000ms for start-requested
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentDirectBootAwareApiService in 61000ms for connection
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.clearcut.debug.ClearcutDebugDumpService in 71000ms for start-requested
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.geotimezone.GeoTimeZoneService in 81000ms for connection
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentIntentOperationService in 91000ms for start-requested
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.lockbox.service.LockboxBrokerService in 101000ms for connection
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.location.geocode.GeocodeService in 111000ms for connection
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.location.persistent.LocationPersistentService in 121000ms for start-requested
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.fused.FusedLocationService in 131000ms for connection
+11-05 16:22:30.544 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService in 141000ms for start-requested
+11-05 16:22:30.545 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.nearby.sharing.ReceiveSurfaceService in 150999ms for start-requested
+11-05 16:22:30.547 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.account.authenticator.GoogleAccountAuthenticatorService in 160997ms for connection
+11-05 16:22:30.548 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService in 170995ms for connection
+11-05 16:22:30.548 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.gcm.GcmService in 180995ms for start-requested
+11-05 16:22:30.548 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.fido.fido2.pollux.CableAuthenticatorService in 190995ms for start-requested
+11-05 16:22:30.548 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.deviceconnection.service.DeviceConnectionWatcherService in 200995ms for start-requested
+11-05 16:22:30.548 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.gcm.nts.SchedulerService in 210995ms for start-requested
+11-05 16:22:30.549 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.location.network.NetworkLocationService in 220995ms for connection
+11-05 16:22:30.549 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.common.stats.GmsCoreStatsService in 230995ms for start-requested
+11-05 16:22:30.549 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/com.google.android.contextmanager.service.ContextManagerService in 240995ms for start-requested
+11-05 16:22:30.549 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.auth.setup.devicesignals.LockScreenService in 250995ms for start-requested
+11-05 16:22:30.549 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentBoundBrokerService in 260995ms for connection
+11-05 16:22:30.785 I/ActivityManager(  529): Process com.google.android.gms (pid 1621) has died: fg  SVC 
+11-05 16:22:30.785 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.GmsIntentOperationService in 260758ms for start-requested
+11-05 16:22:30.786 W/ActivityManager(  529): Scheduling restart of crashed service com.google.android.gms/.chimera.container.ExternalFileApkService in 270758ms for start-requested
+11-05 16:22:30.865 W/ActivityManager(  529): Slow operation: 84ms so far, now at startProcess: returned from zygote!
+11-05 16:22:30.866 W/ActivityManager(  529): Slow operation: 84ms so far, now at startProcess: done updating battery stats
+11-05 16:22:30.866 W/ActivityManager(  529): Slow operation: 84ms so far, now at startProcess: building log message
+11-05 16:22:30.866 I/ActivityManager(  529): Start proc 6536:com.google.android.gms.persistent/u0a128 for service {com.google.android.gms/com.google.android.gms.chimera.PersistentBoundBrokerService}
+11-05 16:22:30.866 W/ActivityManager(  529): Slow operation: 84ms so far, now at startProcess: starting to update pids map
+11-05 16:22:30.866 W/ActivityManager(  529): Slow operation: 84ms so far, now at startProcess: done updating pids map
+11-05 16:22:31.040 W/ActivityManager(  529): Rescheduling restart of crashed service com.google.android.gms/.chimera.GmsIntentOperationService in 746ms for other
+11-05 16:22:31.040 W/ActivityManager(  529): Rescheduling restart of crashed service com.google.android.gms/.chimera.container.ExternalFileApkService in 10746ms for other
+11-05 16:22:31.902 W/ActivityManager(  529): Slow operation: 111ms so far, now at startProcess: returned from zygote!
+11-05 16:22:31.903 W/ActivityManager(  529): Slow operation: 112ms so far, now at startProcess: done updating battery stats
+11-05 16:22:31.903 W/ActivityManager(  529): Slow operation: 113ms so far, now at startProcess: building log message
+11-05 16:22:31.904 I/ActivityManager(  529): Start proc 6554:com.google.android.gms/u0a128 for service {com.google.android.gms/com.google.android.gms.chimera.GmsIntentOperationService}
+11-05 16:22:31.904 W/ActivityManager(  529): Slow operation: 113ms so far, now at startProcess: starting to update pids map
+11-05 16:22:31.904 W/ActivityManager(  529): Slow operation: 114ms so far, now at startProcess: done updating pids map
+11-05 16:22:32.379 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10128. pid: 6536
+11-05 16:22:32.570 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10128. pid: 6554
+11-05 16:22:36.484 W/ActivityManager(  529): Unable to start service Intent { act=com.google.android.gms.home.service.START pkg=com.google.android.gms } U=0: not found
+11-05 16:22:36.484 W/ActivityManager(  529): Unbind failed: could not find connection for android.os.BinderProxy@92a9e76
+11-05 16:22:53.598 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: clear data
+11-05 16:22:53.608 I/ActivityManager(  529): Killing 5536:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to clear data
+11-05 16:22:53.611 I/ActivityManager(  529): Killing 6211:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a192i0 (adj 0): isolated not needed
+11-05 16:22:53.691 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=-1: clearApplicationUserData
+11-05 16:22:54.736 W/ActivityManager(  529): setHasOverlayUi called on unknown pid: 5536
+11-05 16:22:56.242 I/ActivityManager(  529): Process com.android.externalstorage (pid 2927) early provider death
+11-05 16:22:56.243 I/ActivityManager(  529): Process com.android.externalstorage (pid 2927) has died: cch+99 CEM 
+11-05 16:22:58.770 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7075
+11-05 16:22:59.002 W/ActivityManager(  529): Slow operation: 133ms so far, now at startProcess: returned from zygote!
+11-05 16:22:59.004 W/ActivityManager(  529): Slow operation: 134ms so far, now at startProcess: done updating battery stats
+11-05 16:22:59.007 W/ActivityManager(  529): Slow operation: 137ms so far, now at startProcess: building log message
+11-05 16:22:59.007 I/ActivityManager(  529): Start proc 7083:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:22:59.007 W/ActivityManager(  529): Slow operation: 138ms so far, now at startProcess: starting to update pids map
+11-05 16:22:59.008 W/ActivityManager(  529): Slow operation: 138ms so far, now at startProcess: done updating pids map
+11-05 16:23:00.621 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 7083
+11-05 16:23:01.711 I/ReactNativeJS( 7083): Running "main"
+11-05 16:23:10.926 I/ActivityManager(  529): Start proc 7311:com.google.android.webview/u0a133 for broadcast {com.google.android.webview/com.google.android.libraries.phenotype.client.stable.PhenotypeUpdateBackgroundBroadcastReceiver}
+11-05 16:23:11.161 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10133. pid: 7311
+11-05 16:23:31.855 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7663
+11-05 16:23:31.856 I/ActivityManager(  529): Killing 7083:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 7663
+11-05 16:23:32.607 W/ActivityManager(  529): Slow operation: 76ms so far, now at startProcess: returned from zygote!
+11-05 16:23:32.608 W/ActivityManager(  529): Slow operation: 76ms so far, now at startProcess: done updating battery stats
+11-05 16:23:32.608 W/ActivityManager(  529): Slow operation: 76ms so far, now at startProcess: building log message
+11-05 16:23:32.608 I/ActivityManager(  529): Start proc 7674:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:23:32.608 W/ActivityManager(  529): Slow operation: 76ms so far, now at startProcess: starting to update pids map
+11-05 16:23:32.608 W/ActivityManager(  529): Slow operation: 77ms so far, now at startProcess: done updating pids map
+11-05 16:23:33.341 W/ActivityManager(  529): setHasOverlayUi called on unknown pid: 7083
+11-05 16:23:33.904 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 7674
+11-05 16:23:34.596 I/ReactNativeJS( 7674): Running "main"
+11-05 16:23:53.337 I/ActivityManager(  529): Start proc 7784:com.android.intentresolver/u0a92 for next-top-activity {com.android.intentresolver/com.android.intentresolver.ChooserActivity}
+11-05 16:23:53.558 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10092. pid: 7784
+11-05 16:24:16.237 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8045
+11-05 16:24:16.241 I/ActivityManager(  529): Killing 7674:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8045
+11-05 16:24:16.881 I/ActivityManager(  529): Start proc 8056:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:24:17.081 W/ActivityManager(  529): Slow operation: 90ms so far, now at attachApplicationLocked: immediately before bindApplication
+11-05 16:24:17.251 W/ActivityManager(  529): Slow operation: 260ms so far, now at attachApplicationLocked: immediately after bindApplication
+11-05 16:24:17.261 W/ActivityManager(  529): Slow operation: 270ms so far, now at attachApplicationLocked: after updateLruProcessLocked
+11-05 16:24:17.324 W/ActivityManager(  529): Slow operation: 64ms so far, now at finishAttachApplicationInner: after mServices.attachApplicationLocked
+11-05 16:24:17.389 W/ActivityManager(  529): Slow operation: 128ms so far, now at finishAttachApplicationInner: after dispatching broadcasts
+11-05 16:24:17.514 W/ActivityManager(  529): setHasOverlayUi called on unknown pid: 7674
+11-05 16:24:19.614 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 8056
+11-05 16:24:20.317 I/ReactNativeJS( 8056): Running "main"
+11-05 16:24:49.128 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8351
+11-05 16:24:49.133 I/ActivityManager(  529): Killing 8056:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8351
+11-05 16:24:49.904 W/ActivityManager(  529): Slow operation: 106ms so far, now at startProcess: returned from zygote!
+11-05 16:24:49.904 W/ActivityManager(  529): Slow operation: 107ms so far, now at startProcess: done updating battery stats
+11-05 16:24:49.905 W/ActivityManager(  529): Slow operation: 107ms so far, now at startProcess: building log message
+11-05 16:24:49.905 I/ActivityManager(  529): Start proc 8365:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:24:49.905 W/ActivityManager(  529): Slow operation: 107ms so far, now at startProcess: starting to update pids map
+11-05 16:24:49.909 W/ActivityManager(  529): Slow operation: 112ms so far, now at startProcess: done updating pids map
+11-05 16:24:50.774 W/ActivityManager(  529): setHasOverlayUi called on unknown pid: 8056
+11-05 16:24:51.188 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 8365
+11-05 16:24:51.793 I/ReactNativeJS( 8365): Running "main"
+11-05 16:25:50.437 I/ActivityManager(  529): Background started FGS: Allowed [callingPackage: com.google.android.inputmethod.latin; callingUid: 10140; uidState: BFGS; uidBFSL: [BFSL]; intent: Intent { cmp=com.google.android.inputmethod.latin/com.google.android.apps.inputmethod.libs.dataservice.superpacks.SuperpacksForegroundTaskService }; code:UID_VISIBLE; tempAllowListReason:<null>; targetSdkVersion:33; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+11-05 16:26:02.510 I/ActivityManager(  529): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8727
+11-05 16:26:02.514 I/ActivityManager(  529): Killing 8365:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8727
+11-05 16:26:03.296 W/ActivityManager(  529): Slow operation: 232ms so far, now at startProcess: returned from zygote!
+11-05 16:26:03.296 W/ActivityManager(  529): Slow operation: 233ms so far, now at startProcess: done updating battery stats
+11-05 16:26:03.297 W/ActivityManager(  529): Slow operation: 233ms so far, now at startProcess: building log message
+11-05 16:26:03.297 I/ActivityManager(  529): Start proc 8740:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-05 16:26:03.297 W/ActivityManager(  529): Slow operation: 234ms so far, now at startProcess: starting to update pids map
+11-05 16:26:03.298 W/ActivityManager(  529): Slow operation: 234ms so far, now at startProcess: done updating pids map
+11-05 16:26:04.087 W/ActivityManager(  529): setHasOverlayUi called on unknown pid: 8365
+11-05 16:26:04.513 I/ActivityManager(  529): Flag disabled. Ignoring finishAttachApplication from uid: 10192. pid: 8740
+11-05 16:26:05.230 I/ReactNativeJS( 8740): Running "main"
+11-05 16:26:47.451 I/ActivityManager(  529): Force stopping dev.mobile.maestro appid=10193 user=-1: deletePackageX
+11-05 16:26:47.453 I/ActivityManager(  529): Killing 5165:dev.mobile.maestro/u0a193 (adj 0): stop dev.mobile.maestro due to deletePackageX
+11-05 16:26:47.460 W/ActivityManager(  529): Crash of app dev.mobile.maestro running instrumentation ComponentInfo{dev.mobile.maestro.test/androidx.test.runner.AndroidJUnitRunner}
+11-05 16:26:47.467 I/ActivityManager(  529): Force stopping dev.mobile.maestro appid=10193 user=0: finished inst
+11-05 16:26:47.827 I/ActivityManager(  529): Force stopping dev.mobile.maestro appid=10193 user=0: pkg removed
+11-05 16:26:48.044 I/ActivityManager(  529): Force stopping dev.mobile.maestro.test appid=10194 user=-1: deletePackageX
+11-05 16:26:48.241 I/ActivityManager(  529): Start proc 8917:com.android.externalstorage/u0a84 for content provider {com.android.externalstorage/com.android.externalstorage.ExternalStorageProvider}
+11-05 16:26:48.420 W/ActivityManager(  529): Unable to start service Intent { cmp=com.google.android.apps.tachyon/.clientapi.ClientApiService } U=0: not found
+11-05 16:26:48.501 I/ActivityManager(  529): Force stopping dev.mobile.maestro.test appid=10194 user=0: pkg removed
