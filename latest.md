@@ -1,6 +1,6 @@
-# Android test build 12
-commit: 5c0dc1a75a0072227c9e3576dd5c17adb06c3edd
-key: success | install: success | checks: success | integration: success | prebuild: success | gradle: cancelled | release: skipped
+# Android test build 13
+commit: b8bdc912207e0e3c3648a35f17c78964d9c73405
+key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
 
 ## ci-logs/checks.log (last 120 lines)
 ```
@@ -23,7 +23,7 @@ design check ok: all colours come from src/theme/tokens.ts
 
 PASS src/api/__tests__/postAd.test.ts
 PASS src/api/__tests__/listings.test.ts
-PASS src/components/__tests__/AuthForm.test.tsx (6.48 s)
+PASS src/components/__tests__/AuthForm.test.tsx (5.529 s)
 PASS src/lib/__tests__/config.test.ts
 PASS src/api/__tests__/me.test.ts
 PASS src/lib/__tests__/secureStorage.test.ts
@@ -36,132 +36,132 @@ PASS src/api/__tests__/account.test.ts
 Test Suites: 11 passed, 11 total
 Tests:       52 passed, 52 total
 Snapshots:   0 total
-Time:        10.531 s
+Time:        9.481 s
 Ran all test suites.
 ```
 
 ## ci-logs/gradle.log (last 120 lines)
 ```
-> Task :expo-log-box:preBuild UP-TO-DATE
-> Task :expo-modules-core:preBuild UP-TO-DATE
-> Task :react-native-async-storage_async-storage:generateCodegenSchemaFromJavaScript
-> Task :react-native-async-storage_async-storage:generateCodegenArtifactsFromSchema
-> Task :react-native-async-storage_async-storage:preBuild
+> Task :react-native-webview:mergeReleaseResources
+> Task :react-native-webview:verifyReleaseResources
+> Task :react-native-webview:assembleRelease
+> Task :react-native-worklets:bundleReleaseAar
+> Task :react-native-worklets:mapReleaseSourceSetPaths
+> Task :react-native-worklets:mergeReleaseResources
+> Task :react-native-worklets:verifyReleaseResources
+> Task :react-native-worklets:assembleRelease
+> Task :react-native-reanimated:buildCMakeRelWithDebInfo[x86][reanimated]
+> Task :react-native-reanimated:buildCMakeRelWithDebInfo[x86_64][reanimated]
+> Task :react-native-reanimated:externalNativeBuildRelease
+> Task :react-native-reanimated:prefabReleasePackage
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[arm64-v8a]
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[armeabi-v7a]
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[x86]
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[x86_64]
+> Task :react-native-gesture-handler:mergeReleaseNativeLibs
+> Task :react-native-gesture-handler:copyReleaseJniLibsProjectOnly
+> Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
+> Task :react-native-reanimated:mergeReleaseNativeLibs
+> Task :react-native-reanimated:copyReleaseJniLibsProjectOnly
 
-> Task :expo-constants:createExpoConfig
-The NODE_ENV environment variable is required but was not specified. Ensure the project is bundled with Expo CLI or NODE_ENV is set. Using only .env.local and .env
+> Task :react-native-reanimated:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
 
-> Task :expo-constants:preBuild
-> Task :react-native-reanimated:assertMinimalReactNativeVersionTask
-> Task :react-native-reanimated:assertNewArchitectureEnabledTask SKIPPED
-> Task :react-native-reanimated:assertWorkletsVersionTask
-> Task :react-native-gesture-handler:generateCodegenSchemaFromJavaScript
-> Task :react-native-reanimated:generateCodegenSchemaFromJavaScript
-> Task :react-native-gesture-handler:generateCodegenArtifactsFromSchema
-> Task :react-native-gesture-handler:preBuild
-> Task :react-native-safe-area-context:generateCodegenSchemaFromJavaScript
-> Task :react-native-reanimated:generateCodegenArtifactsFromSchema
-> Task :react-native-reanimated:prepareReanimatedHeadersForPrefabs
-> Task :react-native-reanimated:preBuild
-> Task :react-native-safe-area-context:generateCodegenArtifactsFromSchema
-> Task :react-native-safe-area-context:preBuild
-> Task :react-native-screens:generateCodegenSchemaFromJavaScript
-> Task :react-native-svg:generateCodegenSchemaFromJavaScript
-> Task :react-native-screens:generateCodegenArtifactsFromSchema
-> Task :react-native-screens:preBuild
-> Task :react-native-webview:generateCodegenSchemaFromJavaScript
-> Task :react-native-svg:generateCodegenArtifactsFromSchema
-> Task :react-native-svg:preBuild
-> Task :react-native-worklets:assertMinimalReactNativeVersionTask
-> Task :react-native-worklets:assertNewArchitectureEnabledTask SKIPPED
-> Task :react-native-webview:generateCodegenArtifactsFromSchema
-> Task :react-native-webview:preBuild
-> Task :react-native-reanimated:preReleaseBuild
-> Task :expo:preReleaseBuild
-> Task :react-native-worklets:generateCodegenSchemaFromJavaScript
-> Task :expo:mergeReleaseJniLibFolders
-> Task :expo:mergeReleaseNativeLibs NO-SOURCE
-> Task :expo:copyReleaseJniLibsProjectOnly
-> Task :expo-constants:preReleaseBuild
-> Task :expo-constants:mergeReleaseJniLibFolders
-> Task :expo-constants:mergeReleaseNativeLibs NO-SOURCE
-> Task :expo-constants:copyReleaseJniLibsProjectOnly
-> Task :expo-log-box:preReleaseBuild UP-TO-DATE
-> Task :expo-log-box:mergeReleaseJniLibFolders
-> Task :expo-log-box:mergeReleaseNativeLibs NO-SOURCE
-> Task :expo-log-box:copyReleaseJniLibsProjectOnly
-> Task :expo-modules-core:preReleaseBuild UP-TO-DATE
-> Task :expo-modules-core:mergeReleaseJniLibFolders
-> Task :react-native-async-storage_async-storage:preReleaseBuild
-> Task :react-native-worklets:generateCodegenArtifactsFromSchema
-> Task :react-native-async-storage_async-storage:mergeReleaseJniLibFolders
-> Task :react-native-async-storage_async-storage:mergeReleaseNativeLibs NO-SOURCE
-> Task :react-native-async-storage_async-storage:copyReleaseJniLibsProjectOnly
-> Task :react-native-gesture-handler:preReleaseBuild
-> Task :react-native-gesture-handler:mergeReleaseJniLibFolders
-> Task :react-native-reanimated:mergeReleaseJniLibFolders
-> Task :react-native-safe-area-context:preReleaseBuild
-> Task :react-native-safe-area-context:mergeReleaseJniLibFolders
-> Task :react-native-safe-area-context:mergeReleaseNativeLibs NO-SOURCE
-> Task :react-native-worklets:prepareWorkletsHeadersForPrefabs
-> Task :react-native-worklets:preBuild
-> Task :app:preBuild
-> Task :app:preReleaseBuild
-> Task :react-native-worklets:preReleaseBuild
-> Task :react-native-safe-area-context:copyReleaseJniLibsProjectOnly
-> Task :app:mergeReleaseJniLibFolders
-> Task :react-native-screens:preReleaseBuild
+> Task :react-native-reanimated:bundleLibCompileToJarRelease
 
-> Task :react-native-worklets:configureCMakeRelWithDebInfo[arm64-v8a]
-Checking the license for package CMake 3.22.1 in /usr/local/lib/android/sdk/licenses
-License for package CMake 3.22.1 accepted.
-Preparing "Install CMake 3.22.1 v.3.22.1".
-"Install CMake 3.22.1 v.3.22.1" ready.
-Installing CMake 3.22.1 in /usr/local/lib/android/sdk/cmake/3.22.1
-"Install CMake 3.22.1 v.3.22.1" complete.
-"Install CMake 3.22.1 v.3.22.1" finished.
+> Task :react-native-gesture-handler:compileReleaseKotlin
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:8:8 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:13:29 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:14:32 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/RNGestureHandlerModule.kt:173:53 This synthetic property is based on the getter function 'fun getRootViewTag(): Int' from Kotlin. In the future, synthetic properties will be available only if the base getter function came from Java. Consider replacing this property access with a 'getRootViewTag()' function call.
 
-> Task :react-native-screens:configureCMakeRelWithDebInfo[arm64-v8a]
-> Task :react-native-screens:buildCMakeRelWithDebInfo[arm64-v8a]
-> Task :react-native-screens:configureCMakeRelWithDebInfo[armeabi-v7a]
-> Task :react-native-worklets:buildCMakeRelWithDebInfo[arm64-v8a][worklets]
-> Task :react-native-screens:buildCMakeRelWithDebInfo[armeabi-v7a]
-> Task :react-native-screens:configureCMakeRelWithDebInfo[x86]
-> Task :react-native-screens:buildCMakeRelWithDebInfo[x86]
-> Task :react-native-screens:configureCMakeRelWithDebInfo[x86_64]
-> Task :react-native-screens:buildCMakeRelWithDebInfo[x86_64]
-> Task :react-native-screens:mergeReleaseJniLibFolders
-> Task :react-native-screens:mergeReleaseNativeLibs
-> Task :react-native-screens:copyReleaseJniLibsProjectOnly
-> Task :react-native-svg:preReleaseBuild
-> Task :react-native-svg:mergeReleaseJniLibFolders
-> Task :react-native-svg:mergeReleaseNativeLibs NO-SOURCE
-> Task :react-native-svg:copyReleaseJniLibsProjectOnly
-> Task :react-native-webview:preReleaseBuild
-> Task :react-native-webview:mergeReleaseJniLibFolders
-> Task :react-native-webview:mergeReleaseNativeLibs NO-SOURCE
-> Task :react-native-webview:copyReleaseJniLibsProjectOnly
-> Task :react-native-gesture-handler:checkKotlinGradlePluginConfigurationErrors SKIPPED
-> Task :react-native-gesture-handler:generateReleaseBuildConfig
-> Task :react-native-gesture-handler:generateReleaseResValues
-> Task :react-native-gesture-handler:generateReleaseResources
-> Task :react-native-gesture-handler:packageReleaseResources
-> Task :react-native-gesture-handler:parseReleaseLocalResources
-> Task :react-native-gesture-handler:generateReleaseRFile
-> Task :react-native-reanimated:generateReleaseBuildConfig
-> Task :react-native-reanimated:generateReleaseResValues
-> Task :react-native-reanimated:generateReleaseResources
-> Task :react-native-reanimated:packageReleaseResources
-> Task :react-native-reanimated:parseReleaseLocalResources
-> Task :react-native-reanimated:generateReleaseRFile
-> Task :react-native-reanimated:javaPreCompileRelease
-> Task :react-native-svg:generateReleaseBuildConfig
-> Task :react-native-svg:generateReleaseResValues
-> Task :react-native-svg:generateReleaseResources
-> Task :react-native-svg:packageReleaseResources
-> Task :react-native-svg:parseReleaseLocalResources
-> Task :react-native-svg:generateReleaseRFile
-> Task :react-native-svg:javaPreCompileRelease
+> Task :react-native-gesture-handler:compileReleaseJavaWithJavac
+> Task :react-native-gesture-handler:bundleLibRuntimeToDirRelease
+> Task :react-native-reanimated:bundleLibRuntimeToDirRelease
+> Task :react-native-gesture-handler:bundleLibCompileToJarRelease
+> Task :react-native-reanimated:prepareReleaseArtProfile
+> Task :react-native-gesture-handler:bundleLibRuntimeToJarRelease
+> Task :react-native-reanimated:bundleLibRuntimeToJarRelease
+> Task :react-native-reanimated:mergeReleaseShaders
+> Task :react-native-reanimated:compileReleaseShaders NO-SOURCE
+> Task :react-native-reanimated:generateReleaseAssets UP-TO-DATE
+> Task :react-native-reanimated:mergeReleaseAssets
+> Task :react-native-gesture-handler:processReleaseJavaRes
+> Task :react-native-gesture-handler:createFullJarRelease
+> Task :react-native-reanimated:processReleaseJavaRes NO-SOURCE
+> Task :react-native-reanimated:createFullJarRelease
+> Task :react-native-reanimated:extractProguardFiles
+> Task :react-native-reanimated:generateReleaseLintModel
+> Task :react-native-reanimated:prepareLintJarForPublish
+> Task :react-native-gesture-handler:generateReleaseLintModel
+> Task :react-native-gesture-handler:stripReleaseDebugSymbols
+> Task :react-native-gesture-handler:copyReleaseJniLibsProjectAndLocalJars
+> Task :react-native-gesture-handler:extractReleaseAnnotations
+> Task :react-native-gesture-handler:mergeReleaseGeneratedProguardFiles
+> Task :react-native-gesture-handler:mergeReleaseConsumerProguardFiles
+> Task :react-native-gesture-handler:mergeReleaseJavaResource
+> Task :react-native-gesture-handler:syncReleaseLibJars
+> Task :react-native-gesture-handler:bundleReleaseLocalLintAar
+> Task :react-native-reanimated:stripReleaseDebugSymbols
+> Task :react-native-reanimated:copyReleaseJniLibsProjectAndLocalJars
+> Task :react-native-reanimated:extractDeepLinksForAarRelease
+> Task :react-native-reanimated:extractReleaseAnnotations
+> Task :react-native-reanimated:mergeReleaseGeneratedProguardFiles
+> Task :react-native-reanimated:mergeReleaseConsumerProguardFiles
+> Task :react-native-reanimated:mergeReleaseJavaResource
+> Task :react-native-reanimated:syncReleaseLibJars
+> Task :react-native-reanimated:bundleReleaseLocalLintAar
+> Task :react-native-reanimated:writeReleaseLintModelMetadata
+> Task :react-native-gesture-handler:lintVitalAnalyzeRelease
+> Task :react-native-reanimated:lintVitalAnalyzeRelease
+> Task :react-native-gesture-handler:generateReleaseLintVitalModel
+> Task :react-native-reanimated:generateReleaseLintVitalModel
+> Task :react-native-gesture-handler:bundleReleaseAar
+> Task :react-native-gesture-handler:assembleRelease
+> Task :react-native-reanimated:bundleReleaseAar
+> Task :react-native-reanimated:mapReleaseSourceSetPaths
+> Task :react-native-reanimated:mergeReleaseResources
+> Task :react-native-reanimated:verifyReleaseResources
+> Task :react-native-reanimated:assembleRelease
+> Task :app:buildCMakeRelWithDebInfo[armeabi-v7a]
+> Task :app:buildCMakeRelWithDebInfo[x86]
+> Task :app:buildCMakeRelWithDebInfo[x86_64]
+> Task :app:compileReleaseKotlin
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:dexBuilderRelease
+> Task :app:mergeReleaseNativeLibs
+> Task :app:mergeDexRelease
+> Task :app:mergeReleaseArtProfile
+> Task :app:stripReleaseDebugSymbols
+> Task :app:mergeReleaseGlobalSynthetics
+> Task :app:compileReleaseArtProfile
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:processReleaseJavaRes
+> Task :app:mergeReleaseJavaResource
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+
+[Incubating] Problems report is available at: file:///home/runner/work/amcolink-mobile/amcolink-mobile/android/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 43m 10s
+655 actionable tasks: 655 executed
 ```
 
 ## ci-logs/install.log (last 120 lines)
@@ -198,7 +198,7 @@ npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and cont
 npm warn deprecated whatwg-encoding@2.0.0: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 npm warn deprecated domexception@4.0.0: Use your platform's native DOMException instead
 
-added 948 packages, and audited 949 packages in 22s
+added 948 packages, and audited 949 packages in 18s
 
 89 packages are looking for funding
   run `npm fund` for details
@@ -220,32 +220,32 @@ Run `npm audit` for details.
 > amcolink-mobile@1.0.0 test:integration
 > jest --ci -c jest.integration.config.js
 
-PASS integration/staging.test.ts (11.492 s)
-  ✓ signed-out visitors can read approved shops and published ads (1336 ms)
-  ✓ the countries list is available (243 countries on staging) (191 ms)
-  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (539 ms)
-  ✓ signed-out visitors can read the public Wanted columns (513 ms)
-  ✓ signed-out visitors cannot create a shop (491 ms)
-  ✓ signed-out visitors cannot create a report (493 ms)
-  ✓ signed-out visitors cannot use admin functions (369 ms)
-  ✓ public trending lists can be read signed out (194 ms)
-  ✓ sign-up without the security check is refused (CAPTCHA is on) (193 ms)
-  ✓ notifications are private (219 ms)
-  ✓ app query: latest finds runs on staging (361 ms)
-  ✓ app query: category page with every filter runs on staging (1025 ms)
-  ✓ app query: properties for rent and for sale run on staging (368 ms)
-  ✓ app query: search runs on staging (192 ms)
-  ✓ app query: Explore collections run on staging (741 ms)
-  ✓ app query: shop profile lookup and trust run on staging (360 ms)
-  ✓ signed-out visitors cannot save, block or read other people's saved items (508 ms)
-  ✓ signed-out visitors cannot post an ad or upload a photo (407 ms)
-  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (174 ms)
-  ✓ app query: Wanted list runs on staging as a visitor (173 ms)
+PASS integration/staging.test.ts (9.962 s)
+  ✓ signed-out visitors can read approved shops and published ads (904 ms)
+  ✓ the countries list is available (243 countries on staging) (155 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (467 ms)
+  ✓ signed-out visitors can read the public Wanted columns (535 ms)
+  ✓ signed-out visitors cannot create a shop (182 ms)
+  ✓ signed-out visitors cannot create a report (172 ms)
+  ✓ signed-out visitors cannot use admin functions (342 ms)
+  ✓ public trending lists can be read signed out (422 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (440 ms)
+  ✓ notifications are private (159 ms)
+  ✓ app query: latest finds runs on staging (353 ms)
+  ✓ app query: category page with every filter runs on staging (327 ms)
+  ✓ app query: properties for rent and for sale run on staging (369 ms)
+  ✓ app query: search runs on staging (173 ms)
+  ✓ app query: Explore collections run on staging (635 ms)
+  ✓ app query: shop profile lookup and trust run on staging (359 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (449 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (642 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (152 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (158 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       20 passed, 20 total
 Snapshots:   0 total
-Time:        11.629 s
+Time:        10.062 s
 Ran all test suites.
 ```
 
