@@ -1,0 +1,53 @@
+# Newer screens open and work: Filters on a category, Property filters, the Shops directory and Near me.
+appId: com.amcolink.app.dev
+---
+- launchApp
+- tapOn:
+    text: "Wait"
+    optional: true
+- extendedWaitUntil:
+    visible: "The latest finds"
+    timeout: 60000
+# Filters on a category
+- tapOn: "Fashion"
+- extendedWaitUntil:
+    visible: "Filters"
+    timeout: 30000
+- tapOn: "Filters"
+- assertVisible: "Verified sellers only"
+- takeScreenshot: shots/25-filters
+- tapOn: "Show results"
+- tapOn: "Back"
+# Property filters and Alert me
+- tapOn: "Property"
+- extendedWaitUntil:
+    visible: "Filters"
+    timeout: 30000
+- tapOn: "Filters"
+- assertVisible: "Bedrooms"
+- takeScreenshot: shots/26-property-filters
+- tapOn: "Show places"
+- tapOn: "Back"
+# Shops directory from Explore
+- tapOn: "Explore"
+- tapOn: "Shops.*"
+- extendedWaitUntil:
+    visible: "Explore shops"
+    timeout: 30000
+- takeScreenshot: shots/27-shops-directory
+- tapOn: "Back"
+- tapOn: "Back"
+# Near me (the emulator is far from the test shops, so an empty result is fine)
+- tapOn: "Near me.*"
+- tapOn:
+    text: "While using the app"
+    optional: true
+- tapOn:
+    text: "Only this time"
+    optional: true
+- extendedWaitUntil:
+    visible: "Near me"
+    timeout: 30000
+- waitForAnimationToEnd:
+    timeout: 15000
+- takeScreenshot: shots/28-near-me

@@ -346,3 +346,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 44 — Profile location for "Near me" (website parity) — COMPLETED (code)
 - **Files:** `src/components/LocationField.tsx`, Edit profile. Edit profile no longer sends anyone to the website — everything the website's edit form has is now in the app.
 - **Website rules kept (ShopLocationField):** optional; "stand at your shop and tap"; rounded to about 0.5 km; buyers only see a rough distance; Remove clears it; saved through the same form check (parseShopForm lat/lng).
+
+## Task 45 — Emulator tests for the newer screens — COMPLETED (code)
+- New flow `07-new-screens`: Filters on a category (25), Property filters (26), Shops directory from Explore (27), Near me with the location question (28). Earlier flows already cover the photo viewer (24) and the safety reminder (23).
