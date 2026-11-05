@@ -15,6 +15,9 @@ import { ReportAndBlock } from '@/components/ReportAndBlock';
 import { StatusShareButton } from '@/components/StatusShare';
 import { QuickQuestions } from '@/components/QuickQuestions';
 import { SimilarItems } from '@/components/SimilarItems';
+import { TrustCard } from '@/components/TrustCard';
+import { getTrust } from '@/core/trust';
+import { db } from '@/api/db';
 import { fetchListing } from '@/api/listings';
 import { trackEvent } from '@/api/track';
 import { formatPrice } from '@/core/utils';
@@ -44,6 +47,7 @@ export default function ListingScreen() {
   const { user } = useAuth();
   const q = useQuery({ queryKey: ['listing', id], queryFn: () => fetchListing(String(id)), enabled: !!id });
   const ad = q.data;
+  const trustQ = useQuery({ queryKey: ['trust', ad?.shops?.id], queryFn: async () => (await getTrust(db(), [ad!.shops!.id])).get(ad!.shops!.id) ?? null, enabled: !!ad?.shops?.id });
 
   useEffect(() => {
     if (ad?.shops?.id) trackEvent(ad.shops.id, ad.id, 'view');
@@ -137,6 +141,7 @@ export default function ListingScreen() {
             </Pressable>
           ) : null}
 
+          <TrustCard trust={trustQ.data} />
           {shop && ad.availability !== 'sold' && !(user && user.id === ad.owner_id) ? (
             <QuickQuestions shopId={shop.id} adId={ad.id} shopName={shop.name} whatsapp={shop.whatsapp ?? null} adTitle={ad.title} hasPrice={ad.price !== null} />
           ) : null}

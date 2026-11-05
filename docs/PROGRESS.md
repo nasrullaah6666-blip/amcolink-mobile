@@ -285,3 +285,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 33 — Similar items under each listing (website parity) — COMPLETED (code)
 - **Files:** `src/core/similar.ts` (copied from the website lib/similar.ts + cityPattern), `src/components/SimilarItems.tsx`, end of the listing page.
 - **Website rules kept:** same category, still available and confirmed in the last 14 days, approved profiles, not this item, same town first then anywhere, closest price first, property only the same deal (rent/sale), blocked profiles left out, up to 8; title "Similar items in <town>"; "See more →" opens the category.
+
+## Task 34 — Trust score card (website parity) — COMPLETED (code)
+- **Files:** `src/components/TrustCard.tsx`, on the listing page (under the seller) and the profile page.
+- **Website rules kept:** same database score (`getTrust`), same facts (verified, rating, months, buyers in 90 days, items confirmed) and the same "not a guarantee" line. Colour: green bar on green tint for every level (the website changes colour by level; green-only rule).

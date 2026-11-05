@@ -20,6 +20,7 @@ import { cleanHours, hasHours, openStatus, weekRows } from '@/core/hours';
 import { LINK_INFO, shopLinks } from '@/core/links';
 import { safetyGate } from '@/lib/safetyGate';
 import { getTrust } from '@/core/trust';
+import { TrustCard } from '@/components/TrustCard';
 import { awayUntilLabel, isAway } from '@/core/away';
 import { useAuth } from '@/auth/session';
 import { shopUrl } from '@/lib/site';
@@ -121,6 +122,7 @@ export default function ShopScreen() {
           <Button style={styles.flex} variant="outline" title="Map" icon={<Icon name="map" color={colors.green} size={18} strokeWidth={2} />} onPress={() => Linking.openURL(mapsUrl({ ...s, name: shop.name })).catch(() => {})} />
           <Button style={styles.flex} variant="outline" title="Share" icon={<Icon name="share" color={colors.green} size={18} strokeWidth={2} />} onPress={share} />
         </View>
+        <TrustCard trust={trust} />
         {!mine ? <ReportAndBlock shopId={shop.id} shopName={shop.name} /> : null}
         {pinned.length ? (
           <>
