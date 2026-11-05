@@ -86,7 +86,7 @@ export default function WantedScreen() {
   );
 
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="Wanted" />
       <FlatList
         data={posts}

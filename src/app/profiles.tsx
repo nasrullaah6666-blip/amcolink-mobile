@@ -62,7 +62,7 @@ export default function ProfilesScreen() {
   );
 
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title={title} />
       <FlatList
         data={rows}

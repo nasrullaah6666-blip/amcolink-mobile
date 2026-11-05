@@ -43,7 +43,7 @@ export default function DeleteAccount() {
   }
 
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="Delete your account" />
       <ScrollView contentContainerStyle={styles.body} keyboardShouldPersistTaps="handled">
         {user ? <AppText variant="bodySmall" tone="secondary">Signed in as {user.email}</AppText> : null}

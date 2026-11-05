@@ -23,7 +23,7 @@ const ROWS: { kind: string; label: string; hint: string; icon: IconName; route?:
 
 export default function ExploreScreen() {
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="Explore" />
       <ScrollView contentContainerStyle={styles.body}>
         <AppText variant="bodySmall" tone="secondary">Other ways to find something.</AppText>

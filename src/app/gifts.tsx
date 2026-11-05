@@ -27,7 +27,7 @@ export default function GiftsScreen() {
     </View>
   );
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="Gifts" />
       <ListingGrid
         queryKey={['gifts', occasion, forWho, sort, country ?? 'ALL']}

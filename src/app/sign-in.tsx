@@ -7,7 +7,7 @@ import { colors } from '@/theme/tokens';
 
 export default function SignIn() {
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader />
       <AuthForm mode="signin" />
     </SafeAreaView>

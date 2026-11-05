@@ -57,7 +57,7 @@ export default function PropertiesScreen() {
     </View>
   );
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="Property" />
       <ListingGrid
         queryKey={['properties', deal, type, area, fx, country ?? 'ALL']}

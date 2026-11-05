@@ -87,7 +87,10 @@ function AdRow({ ad, stat, onChanged }: { ad: MyAd; stat: Totals; onChanged: () 
           accessibilityLabel={ad.pinned_at ? 'Unpin from the top of my profile' : 'Pin to the top of my profile (up to 4)'}
           onPress={() => run('pin', () => updateAd(ad.id, { pinned_at: ad.pinned_at ? null : new Date().toISOString() }))} /> : null}
         {ad.status !== 'removed' ? <Button style={styles.flex} title={ad.hidden_by_owner ? 'Show' : 'Hide'} variant="outline" loading={busy === 'hide'} onPress={() => run('hide', () => updateAd(ad.id, { hidden_by_owner: !ad.hidden_by_owner }))} /> : null}
-        <Button style={styles.flex} title="Delete" variant="ghost" loading={busy === 'delete'} onPress={askDelete} />
+      </View>
+      {/* Delete on its own small line: four buttons in one row don't fit on a phone ("Delet / e"). */}
+      <View style={styles.deleteRow}>
+        <Button title={busy === 'delete' ? 'Deleting…' : 'Delete listing'} variant="ghost" loading={busy === 'delete'} onPress={askDelete} accessibilityLabel={`Delete ${ad.title} permanently`} />
       </View>
       {msg ? <AppText variant="caption" tone="error">{msg}</AppText> : null}
     </View>
@@ -117,7 +120,7 @@ export default function Dashboard() {
   if (shopsQ.isError) return <SafeAreaView style={styles.page}><ScreenHeader title="My ads" /><View style={styles.pad}><ErrorState message={(shopsQ.error as Error).message} onRetry={() => shopsQ.refetch()} /></View></SafeAreaView>;
   if (!current) {
     return (
-      <SafeAreaView edges={['top']} style={styles.page}>
+      <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
         <ScreenHeader title="Start selling" />
         <View style={styles.pad}>
           <Empty title="You don't sell on Amcolink yet" hint="One profile is all you need. You choose what to post each time." action={{ title: 'Create your seller profile', onPress: () => router.push('/shops/new') }} />
@@ -178,7 +181,7 @@ export default function Dashboard() {
   );
 
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="My ads" />
       <FlatList
         data={shown}
@@ -210,4 +213,5 @@ const styles = StyleSheet.create({
   faded: { opacity: 0.5 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
   actions: { flexDirection: 'row', gap: space.sm },
+  deleteRow: { alignItems: 'flex-end', marginTop: -space.xs },
 });

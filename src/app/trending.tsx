@@ -37,7 +37,7 @@ export default function TrendingScreen() {
   const empty = q.isPending ? <Loading /> : q.isError ? <ErrorState message={(q.error as Error).message} onRetry={() => q.refetch()} /> : <Empty title={`No trending ${tab} yet this week`} />;
 
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="Top 10 this week" />
       {tab === 'items' ? (
         <FlatList

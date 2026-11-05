@@ -41,7 +41,7 @@ export default function Notifications() {
   if (!user) return <SafeAreaView style={styles.page}><ScreenHeader title="Notifications" /><View style={styles.pad}><Empty title="Sign in to see notifications" action={{ title: 'Sign in', onPress: () => router.replace('/sign-in') }} /></View></SafeAreaView>;
 
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="Notifications" right={(q.data ?? []).length ? <Button title="Clear" variant="ghost" onPress={clear} /> : null} />
       <FlatList
         data={q.data ?? []}

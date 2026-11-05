@@ -37,7 +37,7 @@ export default function NearScreen() {
   );
 
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="Near me" />
       {where.state === 'asking' || where.state === 'idle' ? <Loading label="Finding where you are…" /> : where.state !== 'ok' ? (
         <View style={styles.pad}><Empty title="Location needed" hint={'message' in where ? where.message : undefined} action={{ title: 'Try again', onPress: locate }} /></View>

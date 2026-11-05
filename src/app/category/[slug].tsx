@@ -86,7 +86,7 @@ export default function CategoryScreen() {
   );
 
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title={cat.label} />
       <ListingGrid
         queryKey={['category', filters, country ?? 'ALL']}

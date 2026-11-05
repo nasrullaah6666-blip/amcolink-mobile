@@ -32,7 +32,7 @@ export default function CollectionScreen() {
     );
   }
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title={info.title} />
       <ListingGrid
         queryKey={['collection', k, country ?? 'ALL']}

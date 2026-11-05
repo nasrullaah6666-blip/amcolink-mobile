@@ -377,3 +377,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Found by the owner (Post Ad → Properties):** the Description hint was drawn over the "Description *" label. Cause: the shared text box frame was fixed at one line (48 px) while description boxes are 96–120 px, so the box overflowed above and below its frame.
 - **Fix:** `src/components/ui/TextField.tsx` — multi-line boxes now grow with their frame. Fixes Post Ad, Edit ad, Edit profile and Post a need at once.
 - Same test also showed: photo upload from the phone works.
+
+## Task 53 — Owner's phone test: posting a property works; two layout fixes — COMPLETED (code)
+- **Passed on the owner's phone (staging):** Post Ad → Properties with a photo from the phone → published, shows first in My ads (KES 30,000, Houses & Rentals, confirmed today).
+- **Fix 1:** My ads had four buttons in a row since Pin was added, so "Delete" broke into "Delet / e". Now Edit · Pin · Hide in the row and "Delete listing" on its own small line under them.
+- **Fix 2:** screens without a tab bar (My ads, categories, search, property, Explore, sign-in, edit screens, Wanted …) let the last item slide under the phone's on-screen buttons. They now keep the bottom safe area (same fix as the tab bar earlier).
+- Staging: the profile address rule was removed on staging (owner ran the SQL) — staging now matches production for new profiles.

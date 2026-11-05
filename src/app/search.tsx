@@ -21,7 +21,7 @@ export default function SearchScreen() {
   const [q, setQ] = useState(String(params.q ?? ''));
   const [f, setF] = useState<ListFilters>(() => filtersFromParams(params));
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.page}>
       <ScreenHeader title="Search" />
       <View style={styles.box}><SearchField initial={q} onSubmit={setQ} /></View>
       {q ? (
