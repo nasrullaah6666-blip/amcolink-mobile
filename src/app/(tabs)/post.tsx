@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { AppText, Button, Chip, TextField } from '@/components/ui';
+import { AppText, Button, Chip, Icon, TextField } from '@/components/ui';
 import { Photo } from '@/components/Photo';
 import { PickerField } from '@/components/PickerField';
 import { Empty, ErrorState, Loading } from '@/components/States';
@@ -13,6 +13,7 @@ import { fetchMyShops } from '@/api/seller';
 import { uploadAdPhoto } from '@/api/photos';
 import { buildAd, buildPropertyAd, insertAd, saveProfileRole, type PriceMode, type PropertyDraft } from '@/api/postAd';
 import { db } from '@/api/db';
+import { aiHelperAvailable, middlePrice, suggestFromPhoto, type Suggestion } from '@/api/aiSuggest';
 import { needsCondition, needsExpiry, subsOf } from '@/core/categories';
 import { CONDITIONS } from '@/core/conditions';
 import { currencyForCountry } from '@/core/geo';
@@ -20,7 +21,7 @@ import { CURRENCIES, currencyLabel } from '@/core/listing';
 import { NOT_ALLOWED_ITEMS, NOT_ALLOWED_RENTALS } from '@/core/notAllowed';
 import { PropertyFields } from '@/components/PropertyFields';
 import { DEALS, type Deal } from '@/core/rentals';
-import { categoriesInGroup } from '@/core/property';
+import { categoriesInGroup, groupOfCategory } from '@/core/property';
 import { CATEGORIES } from '@/core/types';
 import { isRole, roleLabel, ROLES } from '@/core/property';
 import { colors, radius, size, space } from '@/theme/tokens';
@@ -64,6 +65,9 @@ export default function PostScreen() {
   const [newRole, setNewRole] = useState('');
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
+  const [aiBusy, setAiBusy] = useState(false);
+  const [aiNote, setAiNote] = useState('');
+  const [priceHint, setPriceHint] = useState<Suggestion['price']>(null);
 
   useEffect(() => { if (shop && !currency) setCurrency(currencyForCountry(shop.country)); }, [shop, currency]);
 
@@ -121,6 +125,26 @@ export default function PostScreen() {
     }
   }
 
+  // "Fill in the ad from my photo" (website: AdForm fillWithAI): the AI looks at the first photo and fills the form.
+  async function fillFromPhoto() {
+    if (!photos[0]) return;
+    setAiBusy(true); setAiNote(''); setPriceHint(null);
+    try {
+      const s = await suggestFromPhoto(photos[0], shop.id);
+      if (s.title) setTitle(s.title);
+      if (s.description) setDescription(s.description);
+      if (s.category && CATEGORIES.includes(s.category)) {
+        const g = groupOfCategory(s.category);
+        if (g !== 'property') { setGroup(g); setCategory(s.category); setSub(s.subcategory || ''); }
+      }
+      if (s.condition) setCondition(s.condition);
+      if (s.price && s.price.currency === (currency || currencyForCountry(shop.country))) setPriceHint(s.price);
+      setAiNote('Filled in from your photo. Check every detail before you publish.');
+    } catch (e) {
+      setAiNote((e as Error).message || 'The AI helper is unavailable.');
+    } finally { setAiBusy(false); }
+  }
+
   async function removePhoto(url: string) {
     setPhotos((p) => p.filter((x) => x !== url));
     // Website PhotoManager deleteOnRemove: delete the file now (an orphan file is harmless if this fails).
@@ -152,7 +176,7 @@ export default function PostScreen() {
       await insertAd(row);
       qc.invalidateQueries({ queryKey: ['my-ads', user!.id] });
       Alert.alert('Published', 'Your listing is saved. You can see it in My ads.');
-      setPhotos([]); setTitle(''); setDescription(''); setPrice(''); setCategory(group === 'service' ? 'Services' : ''); setSub(''); setCondition('');
+      setAiNote(''); setPriceHint(null); setPhotos([]); setTitle(''); setDescription(''); setPrice(''); setCategory(group === 'service' ? 'Services' : ''); setSub(''); setCondition('');
       setFree(false); setExpiry(''); setNoExpiry(false); setAvailability('available'); setRulesOk(false); setDeal(''); setProp({});
       router.push('/dashboard');
     } catch (e) {
@@ -199,6 +223,11 @@ export default function PostScreen() {
                   </View>
                 ) : null}
                 <AppText variant="caption" tone="secondary">{rental ? 'Real photos of the actual property only.' : 'Real photos of the actual item only. No pictures taken from other sites.'}</AppText>
+                {aiHelperAvailable() && !rental && photos.length > 0 ? (
+                  <Button title={aiBusy ? 'Looking at your photo…' : 'Fill in the ad from my photo'} size="lg" loading={aiBusy} onPress={fillFromPhoto}
+                    icon={<Icon name="sparkle" color={colors.onGreen} size={20} strokeWidth={2} />} />
+                ) : null}
+                {aiNote ? <View style={styles.note}><AppText variant="bodySmall" accessibilityLiveRegion="polite">{aiNote}</AppText></View> : null}
               </Section>
 
               <TextField label="Title *" value={title} onChangeText={setTitle} maxLength={140}
@@ -249,8 +278,18 @@ export default function PostScreen() {
                 ) : free && !service ? (
                   <View style={styles.note}><AppText variant="heading" tone="green">FREE</AppText></View>
                 ) : (
-                  <TextField label={service ? 'Amount *' : 'Price (optional)'} value={price} onChangeText={setPrice} keyboardType="decimal-pad"
-                    placeholder={service ? 'e.g. 1500' : 'Empty = Price on request'} />
+                  <View style={styles.gapXs}>
+                    <TextField label={service ? 'Amount *' : 'Price (optional)'} value={price} onChangeText={setPrice} keyboardType="decimal-pad"
+                      placeholder={service ? 'e.g. 1500' : 'Empty = Price on request'} />
+                    {priceHint ? (
+                      <Pressable accessibilityRole="button" onPress={() => setPrice(String(middlePrice(priceHint)))}>
+                        <AppText variant="bodySmall" tone="secondary">
+                          AI estimate: {priceHint.currency} {priceHint.low.toLocaleString()}–{priceHint.high.toLocaleString()}{priceHint.confident ? '' : ' (rough guess)'}.{' '}
+                          <AppText variant="bodySmall" tone="green" style={styles.underline}>Use {middlePrice(priceHint).toLocaleString()}</AppText>
+                        </AppText>
+                      </Pressable>
+                    ) : null}
+                  </View>
                 )
               ) : null}
               <PickerField label="Currency" value={currency} options={CURRENCY_OPTIONS} onChange={setCurrency} />
@@ -316,6 +355,8 @@ const styles = StyleSheet.create({
   groups: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
   row: { flexDirection: 'row', gap: space.sm },
   photos: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
+  gapXs: { gap: space.xs },
+  underline: { textDecorationLine: 'underline' },
   photoBox: { position: 'relative' },
   photo: { width: 96, height: 96, borderRadius: radius.md },
   photoWait: { backgroundColor: colors.placeholder, justifyContent: 'center' },

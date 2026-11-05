@@ -190,3 +190,10 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **What it does:** one tap makes a tall 1080×1920 picture (Status shape): Amcolink logo, the ad's main photo, price, title, condition and town, "See it and chat with the seller · amcolink.com". Then the phone's share screen opens; the person picks WhatsApp → My status (or any other app). Counts as a "share" in the seller's stats, like the existing Share button.
 - **Backend:** none. Website unchanged.
 - **Tests:** emulator flow `06-status-share` (button visible, share screen opens). Picking WhatsApp Status itself must be checked on a real phone (the emulator has no WhatsApp).
+
+## Task 22 — Fill in the ad from a photo (owner "go", 5 Nov 2026)
+- **App files:** `src/api/aiSuggest.ts` (new), Post Ad screen: green "Fill in the ad from my photo" button under the photos (Shopping and Services, once a photo is added), the note "Filled in from your photo. Check every detail before you publish.", and the website's "AI estimate … Use …" price hint.
+- **Website rules kept (AdForm fillWithAI + app/api/ai/suggest):** the AI only looks at the seller's own uploaded photo; title, description, category, kind and condition are filled in; the price is never filled in automatically (the seller taps "Use …" or types it); 20 uses per person per day; nothing is published until the seller taps Publish.
+- **Website change needed (prepared, NOT deployed — branch `ai-helper-app`, commit ff6a493d):** the helper only understood website sign-ins (cookies). It now also accepts the app's sign-in ("Bearer" token). Same checks; website behaviour unchanged. Website tests 47/47.
+- **BLOCKED on owner:** (1) "deploy" for the website change; (2) `ANTHROPIC_API_KEY` set on Render (the website's own button also stays hidden until then).
+- **Test limit:** the helper checks sign-ins against the production database, so it only works in the store (production) build. Test builds (staging) hide the button. It can only be tried for real once the store build is installed. Unit tests 56/56.

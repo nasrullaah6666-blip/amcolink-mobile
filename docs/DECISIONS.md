@@ -65,3 +65,9 @@ Each entry: what was chosen, why, and what else was considered.
 - **Chosen:** the app makes the picture and opens Android's share screen; the person taps WhatsApp, then "My status".
 - **Why:** WhatsApp has no public way for another app to post straight to Status. Opening the share screen works on every phone, also without WhatsApp (Facebook, Instagram, Telegram), and needs no extra permission.
 - **Note:** a link inside a picture cannot be tapped, so the picture shows "amcolink.com" in large text; the regular Share button still sends a tappable link.
+
+## D14. Photo helper uses the website's AI route, store build only
+- **Chosen:** the app calls the website's existing `/api/ai/suggest` with its sign-in token; the website adds only the token check.
+- **Why:** the AI key must stay on the server (never in the app), and the website already has the prompt, limits and checks — no duplicated logic.
+- **Limit:** test builds sign in to staging, which the website does not know, so the button is shown only in the production build.
+- **Colour:** the website's button is violet; the app's is Amcolink green (owner's green-only rule). The website button is unchanged unless the owner asks.
