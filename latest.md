@@ -1,6 +1,6 @@
-# Android test build 33
-commit: 9a03dc42f9cb0a0211679d4d96f8969d4b8b07ce
-key: success | install: success | checks: success | integration: success | prebuild: success | gradle: cancelled | release: skipped
+# Android test build 34
+commit: 87f4893e82b7f1d403230def0269a47eb659f3f9
+key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
 
 ## ci-logs/checks.log (last 120 lines)
 ```
@@ -23,7 +23,7 @@ design check ok: all colours come from src/theme/tokens.ts
 
 PASS src/api/__tests__/postAd.test.ts
 PASS src/api/__tests__/listings.test.ts
-PASS src/components/__tests__/AuthForm.test.tsx
+PASS src/components/__tests__/AuthForm.test.tsx (5.31 s)
 PASS src/core/__tests__/core.test.ts
 PASS src/lib/__tests__/config.test.ts
 PASS src/api/__tests__/me.test.ts
@@ -58,137 +58,137 @@ PASS src/lib/__tests__/priceDrops.test.ts
 PASS src/core/__tests__/shopEdit.test.ts
 PASS src/lib/__tests__/recent.test.ts
 PASS src/api/__tests__/account.test.ts
-PASS src/components/__tests__/filters.test.ts
+PASS src/components/__tests__/filters.test.ts (5.857 s)
 
 Test Suites: 15 passed, 15 total
 Tests:       61 passed, 61 total
 Snapshots:   0 total
-Time:        13.72 s
+Time:        16.508 s
 Ran all test suites.
 ```
 
 ## ci-logs/gradle.log (last 120 lines)
 ```
-> Task :expo-log-box:mergeReleaseGeneratedProguardFiles
-> Task :expo-log-box:mergeReleaseConsumerProguardFiles
-> Task :expo-log-box:mergeReleaseJavaResource
-> Task :expo-log-box:syncReleaseLibJars
-> Task :expo-log-box:bundleReleaseLocalLintAar
-> Task :expo-constants:stripReleaseDebugSymbols NO-SOURCE
-> Task :expo-constants:copyReleaseJniLibsProjectAndLocalJars
-> Task :expo-constants:extractDeepLinksForAarRelease
-> Task :expo-constants:extractReleaseAnnotations
-> Task :expo-constants:mergeReleaseGeneratedProguardFiles
-> Task :expo-constants:mergeReleaseConsumerProguardFiles
-> Task :expo-constants:mergeReleaseJavaResource
-> Task :expo-constants:syncReleaseLibJars
-> Task :expo-constants:bundleReleaseLocalLintAar
-> Task :expo-constants:writeReleaseLintModelMetadata
-> Task :expo-log-box:writeReleaseLintModelMetadata
-> Task :expo-modules-core:writeReleaseLintModelMetadata
-> Task :react-native-worklets:writeReleaseLintModelMetadata
-> Task :expo:lintVitalAnalyzeRelease
-> Task :expo:writeReleaseLintModelMetadata
-> Task :expo-constants:lintVitalAnalyzeRelease
-> Task :expo-log-box:lintVitalAnalyzeRelease
-> Task :expo-modules-core:lintVitalAnalyzeRelease
-> Task :react-native-reanimated:buildCMakeRelWithDebInfo[x86_64][reanimated]
-> Task :react-native-async-storage_async-storage:lintVitalAnalyzeRelease
-> Task :react-native-async-storage_async-storage:writeReleaseLintModelMetadata
-> Task :react-native-svg:writeReleaseLintModelMetadata
-> Task :react-native-gesture-handler:writeReleaseLintModelMetadata
-> Task :react-native-safe-area-context:lintVitalAnalyzeRelease
-> Task :react-native-safe-area-context:writeReleaseLintModelMetadata
-> Task :react-native-screens:lintVitalAnalyzeRelease
-> Task :react-native-screens:writeReleaseLintModelMetadata
-> Task :react-native-svg:lintVitalAnalyzeRelease
-> Task :react-native-view-shot:lintVitalAnalyzeRelease
-> Task :react-native-view-shot:writeReleaseLintModelMetadata
-> Task :react-native-webview:lintVitalAnalyzeRelease
-> Task :react-native-webview:writeReleaseLintModelMetadata
-> Task :react-native-worklets:lintVitalAnalyzeRelease
-> Task :expo:generateReleaseLintVitalModel
-> Task :expo-constants:generateReleaseLintVitalModel
-> Task :expo-log-box:generateReleaseLintVitalModel
-> Task :expo-modules-core:generateReleaseLintVitalModel
-> Task :react-native-async-storage_async-storage:generateReleaseLintVitalModel
-> Task :react-native-safe-area-context:generateReleaseLintVitalModel
-> Task :react-native-screens:generateReleaseLintVitalModel
-> Task :react-native-svg:generateReleaseLintVitalModel
-> Task :react-native-view-shot:generateReleaseLintVitalModel
-> Task :react-native-webview:generateReleaseLintVitalModel
-> Task :react-native-worklets:generateReleaseLintVitalModel
-> Task :app:collectReleaseDependencies
-> Task :app:sdkReleaseDependencyData
-> Task :app:validateSigningRelease
-> Task :app:writeReleaseAppMetadata
-> Task :app:writeReleaseSigningConfigVersions
-> Task :expo:bundleReleaseAar
-> Task :expo:mapReleaseSourceSetPaths
-> Task :expo:mergeReleaseResources
-> Task :expo:verifyReleaseResources
-> Task :expo:assembleRelease
-> Task :expo-constants:bundleReleaseAar
-> Task :expo-constants:mapReleaseSourceSetPaths
-> Task :expo-constants:mergeReleaseResources
-> Task :expo-constants:verifyReleaseResources
-> Task :expo-constants:assembleRelease
-> Task :expo-log-box:bundleReleaseAar
-> Task :expo-log-box:mapReleaseSourceSetPaths
-> Task :expo-log-box:mergeReleaseResources
-> Task :expo-log-box:verifyReleaseResources
-> Task :expo-log-box:assembleRelease
-> Task :expo-modules-core:bundleReleaseAar
-> Task :expo-modules-core:mapReleaseSourceSetPaths
-> Task :expo-modules-core:mergeReleaseResources
-> Task :expo-modules-core:verifyReleaseResources
-> Task :expo-modules-core:assembleRelease
-> Task :react-native-async-storage_async-storage:bundleReleaseAar
-> Task :react-native-async-storage_async-storage:mapReleaseSourceSetPaths
-> Task :react-native-async-storage_async-storage:mergeReleaseResources
-> Task :react-native-async-storage_async-storage:verifyReleaseResources
-> Task :react-native-async-storage_async-storage:assembleRelease
-> Task :react-native-gesture-handler:mapReleaseSourceSetPaths
-> Task :react-native-gesture-handler:mergeReleaseResources
-> Task :react-native-safe-area-context:bundleReleaseAar
-> Task :react-native-safe-area-context:mapReleaseSourceSetPaths
-> Task :react-native-safe-area-context:mergeReleaseResources
-> Task :react-native-safe-area-context:verifyReleaseResources
-> Task :react-native-safe-area-context:assembleRelease
-> Task :react-native-screens:bundleReleaseAar
-> Task :react-native-screens:mapReleaseSourceSetPaths
-> Task :react-native-screens:mergeReleaseResources
-> Task :react-native-screens:verifyReleaseResources
-> Task :react-native-screens:assembleRelease
-> Task :react-native-svg:bundleReleaseAar
-> Task :react-native-svg:mapReleaseSourceSetPaths
-> Task :react-native-svg:mergeReleaseResources
-> Task :react-native-svg:verifyReleaseResources
-> Task :react-native-svg:assembleRelease
-> Task :react-native-view-shot:bundleReleaseAar
-> Task :react-native-view-shot:mapReleaseSourceSetPaths
-> Task :react-native-view-shot:mergeReleaseResources
-> Task :react-native-view-shot:verifyReleaseResources
-> Task :react-native-view-shot:assembleRelease
-> Task :react-native-webview:bundleReleaseAar
-> Task :react-native-webview:mapReleaseSourceSetPaths
-> Task :react-native-webview:mergeReleaseResources
-> Task :react-native-webview:verifyReleaseResources
-> Task :react-native-webview:assembleRelease
-> Task :react-native-worklets:bundleReleaseAar
-> Task :react-native-worklets:mapReleaseSourceSetPaths
-> Task :react-native-worklets:mergeReleaseResources
-> Task :react-native-worklets:verifyReleaseResources
-> Task :react-native-worklets:assembleRelease
-> Task :react-native-reanimated:externalNativeBuildRelease
-> Task :react-native-reanimated:prefabReleasePackage
-> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[arm64-v8a]
-> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[armeabi-v7a]
-> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[x86]
-> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[x86_64]
-> Task :react-native-gesture-handler:mergeReleaseNativeLibs
-> Task :react-native-gesture-handler:copyReleaseJniLibsProjectOnly
-> Task :react-native-reanimated:mergeReleaseNativeLibs
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :react-native-reanimated:bundleLibCompileToJarRelease
+> Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
+
+> Task :react-native-gesture-handler:compileReleaseKotlin
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:8:8 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:13:29 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:14:32 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/RNGestureHandlerModule.kt:173:53 This synthetic property is based on the getter function 'fun getRootViewTag(): Int' from Kotlin. In the future, synthetic properties will be available only if the base getter function came from Java. Consider replacing this property access with a 'getRootViewTag()' function call.
+
+> Task :react-native-gesture-handler:compileReleaseJavaWithJavac
+> Task :react-native-gesture-handler:bundleLibRuntimeToDirRelease
+> Task :react-native-reanimated:bundleLibRuntimeToDirRelease
+> Task :react-native-reanimated:extractDeepLinksRelease
+> Task :react-native-reanimated:processReleaseManifest
+> Task :react-native-reanimated:compileReleaseLibraryResources
+> Task :react-native-gesture-handler:bundleLibCompileToJarRelease
+> Task :react-native-reanimated:prepareReleaseArtProfile
+> Task :react-native-gesture-handler:bundleLibRuntimeToJarRelease
+> Task :react-native-reanimated:bundleLibRuntimeToJarRelease
+> Task :react-native-reanimated:mergeReleaseShaders
+> Task :react-native-reanimated:compileReleaseShaders NO-SOURCE
+> Task :react-native-reanimated:generateReleaseAssets UP-TO-DATE
+> Task :react-native-reanimated:mergeReleaseAssets
+> Task :react-native-gesture-handler:processReleaseJavaRes
+> Task :react-native-gesture-handler:createFullJarRelease
+> Task :react-native-reanimated:processReleaseJavaRes NO-SOURCE
+> Task :react-native-reanimated:createFullJarRelease
+> Task :react-native-reanimated:extractProguardFiles
+> Task :react-native-reanimated:generateReleaseLintModel
+> Task :react-native-reanimated:prepareLintJarForPublish
+> Task :react-native-gesture-handler:generateReleaseLintModel
+> Task :react-native-gesture-handler:stripReleaseDebugSymbols
+> Task :react-native-gesture-handler:copyReleaseJniLibsProjectAndLocalJars
+> Task :react-native-gesture-handler:extractReleaseAnnotations
+> Task :react-native-gesture-handler:mergeReleaseGeneratedProguardFiles
+> Task :react-native-gesture-handler:mergeReleaseConsumerProguardFiles
+> Task :react-native-gesture-handler:mergeReleaseJavaResource
+> Task :react-native-gesture-handler:syncReleaseLibJars
+> Task :react-native-gesture-handler:bundleReleaseLocalLintAar
+> Task :react-native-reanimated:stripReleaseDebugSymbols
+> Task :react-native-reanimated:copyReleaseJniLibsProjectAndLocalJars
+> Task :react-native-reanimated:extractDeepLinksForAarRelease
+> Task :react-native-reanimated:extractReleaseAnnotations
+> Task :react-native-reanimated:mergeReleaseGeneratedProguardFiles
+> Task :react-native-reanimated:mergeReleaseConsumerProguardFiles
+> Task :react-native-reanimated:mergeReleaseJavaResource
+> Task :react-native-reanimated:syncReleaseLibJars
+> Task :react-native-reanimated:bundleReleaseLocalLintAar
+> Task :react-native-reanimated:writeReleaseLintModelMetadata
+> Task :react-native-gesture-handler:lintVitalAnalyzeRelease
+> Task :react-native-reanimated:lintVitalAnalyzeRelease
+> Task :react-native-gesture-handler:generateReleaseLintVitalModel
+> Task :react-native-reanimated:generateReleaseLintVitalModel
+> Task :react-native-gesture-handler:bundleReleaseAar
+> Task :react-native-gesture-handler:verifyReleaseResources
+> Task :react-native-gesture-handler:assembleRelease
+> Task :react-native-reanimated:bundleReleaseAar
+> Task :react-native-reanimated:mapReleaseSourceSetPaths
+> Task :react-native-reanimated:mergeReleaseResources
+> Task :react-native-reanimated:verifyReleaseResources
+> Task :react-native-reanimated:assembleRelease
+> Task :app:buildCMakeRelWithDebInfo[armeabi-v7a]
+> Task :app:buildCMakeRelWithDebInfo[x86]
+> Task :app:buildCMakeRelWithDebInfo[x86_64]
+
+> Task :app:processReleaseMainManifest
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml:6:3-88 Warning:
+	uses-permission#android.permission.RECORD_AUDIO was tagged at AndroidManifest.xml:6 to remove other declarations but no other declaration present
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
+	provider#expo.modules.filesystem.FileSystemFileProvider@android:authorities was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
+	activity#expo.modules.imagepicker.ExpoCropImageActivity@android:exported was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
+
+> Task :app:expoReleaseOverrideMaxSdkConflicts
+[33m---------- Expo Max Sdk Override Plugin ----------[0m
+[32m>>> No 'android:maxSdkVersion' conflicts found[0m
+[33m--------------------------------------------------[0m
+
+> Task :app:processReleaseManifest
+> Task :app:processReleaseManifestForPackage
+> Task :app:processReleaseResources
+> Task :app:mergeReleaseNativeLibs
+> Task :app:compileReleaseKotlin
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:stripReleaseDebugSymbols
+> Task :app:dexBuilderRelease
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:mergeDexRelease
+> Task :app:mergeReleaseArtProfile
+> Task :app:mergeReleaseGlobalSynthetics
+> Task :app:compileReleaseArtProfile
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:processReleaseJavaRes
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:mergeReleaseJavaResource
+> Task :app:optimizeReleaseResources
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+
+[Incubating] Problems report is available at: file:///home/runner/work/amcolink-mobile/amcolink-mobile/android/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 42m 16s
+697 actionable tasks: 697 executed
 ```
 
 ## ci-logs/install.log (last 120 lines)
@@ -225,7 +225,7 @@ npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and cont
 npm warn deprecated whatwg-encoding@2.0.0: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 npm warn deprecated domexception@4.0.0: Use your platform's native DOMException instead
 
-added 959 packages, and audited 960 packages in 15s
+added 959 packages, and audited 960 packages in 16s
 
 89 packages are looking for funding
   run `npm fund` for details
@@ -247,34 +247,34 @@ Run `npm audit` for details.
 > amcolink-mobile@1.0.0 test:integration
 > jest --ci -c jest.integration.config.js
 
-PASS integration/staging.test.ts (13.677 s)
-  ✓ signed-out visitors can read approved shops and published ads (1008 ms)
-  ✓ the countries list is available (243 countries on staging) (224 ms)
-  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (562 ms)
-  ✓ signed-out visitors can read the public Wanted columns (598 ms)
-  ✓ signed-out visitors cannot create a shop (533 ms)
-  ✓ signed-out visitors cannot create a report (227 ms)
-  ✓ signed-out visitors cannot use admin functions (438 ms)
-  ✓ public trending lists can be read signed out (214 ms)
-  ✓ sign-up without the security check is refused (CAPTCHA is on) (540 ms)
-  ✓ notifications are private (207 ms)
-  ✓ app query: latest finds runs on staging (779 ms)
-  ✓ app query: category page with every filter runs on staging (733 ms)
-  ✓ app query: properties for rent and for sale run on staging (724 ms)
-  ✓ app query: search runs on staging (238 ms)
-  ✓ app query: Explore collections run on staging (897 ms)
-  ✓ app query: shop profile lookup and trust run on staging (460 ms)
-  ✓ signed-out visitors cannot save, block or read other people's saved items (609 ms)
-  ✓ signed-out visitors cannot post an ad or upload a photo (407 ms)
-  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (518 ms)
-  ✓ app query: Wanted list runs on staging as a visitor (206 ms)
-  ✓ app query: Gifts and Trending run on staging as a visitor (1145 ms)
-  ✓ reviews: visitors can read them and are told to sign in before reviewing (423 ms)
+PASS integration/staging.test.ts (11.014 s)
+  ✓ signed-out visitors can read approved shops and published ads (1119 ms)
+  ✓ the countries list is available (243 countries on staging) (186 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (499 ms)
+  ✓ signed-out visitors can read the public Wanted columns (221 ms)
+  ✓ signed-out visitors cannot create a shop (370 ms)
+  ✓ signed-out visitors cannot create a report (184 ms)
+  ✓ signed-out visitors cannot use admin functions (362 ms)
+  ✓ public trending lists can be read signed out (152 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (202 ms)
+  ✓ notifications are private (199 ms)
+  ✓ app query: latest finds runs on staging (337 ms)
+  ✓ app query: category page with every filter runs on staging (318 ms)
+  ✓ app query: properties for rent and for sale run on staging (644 ms)
+  ✓ app query: search runs on staging (172 ms)
+  ✓ app query: Explore collections run on staging (598 ms)
+  ✓ app query: shop profile lookup and trust run on staging (320 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (469 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (598 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (163 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (142 ms)
+  ✓ app query: Gifts and Trending run on staging as a visitor (948 ms)
+  ✓ reviews: visitors can read them and are told to sign in before reviewing (287 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       22 passed, 22 total
 Snapshots:   0 total
-Time:        13.761 s
+Time:        11.105 s
 Ran all test suites.
 ```
 
