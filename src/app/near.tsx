@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as Location from 'expo-location';
 import { useQuery } from '@tanstack/react-query';
 import { AppText, Button } from '@/components/ui';
 import { ScreenHeader } from '@/components/ScreenHeader';
@@ -10,32 +9,20 @@ import { ListingCard } from '@/components/ListingCard';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { fetchNear } from '@/api/nearby';
 import { useBlocked } from '@/auth/mine';
-import { DEFAULT_RADIUS, formatKm, RADII, snap, type Point } from '@/core/distance';
+import { DEFAULT_RADIUS, formatKm, RADII } from '@/core/distance';
+import { useNearPoint } from '@/lib/useNearPoint';
 import { colors, space } from '@/theme/tokens';
-
-type Where = { state: 'asking' } | { state: 'denied' | 'failed'; message: string } | { state: 'ok'; point: Point };
 
 /**
  * Near me (website: NearMeButton + Home ?near=&r=): asks the phone for its location once, rounds it to ~0.5 km
  * (the exact spot is never sent or saved), and shows the closest listings first. Radius 2–50 km.
  */
 export default function NearScreen() {
-  const [where, setWhere] = useState<Where>({ state: 'asking' });
+  const { where, locate } = useNearPoint();
   const [radius, setRadius] = useState<number>(DEFAULT_RADIUS);
   const { blocked } = useBlocked();
 
-  const locate = async () => {
-    setWhere({ state: 'asking' });
-    try {
-      const perm = await Location.requestForegroundPermissionsAsync();
-      if (!perm.granted) { setWhere({ state: 'denied', message: 'Location is off for Amcolink. Allow it in your phone settings to see items near you.' }); return; }
-      const pos = await Location.getLastKnownPositionAsync({ maxAge: 600_000 }) ?? await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
-      setWhere({ state: 'ok', point: { lat: snap(pos.coords.latitude), lng: snap(pos.coords.longitude) } });
-    } catch {
-      setWhere({ state: 'failed', message: 'Couldn’t find your location. Check that location is on, then try again.' });
-    }
-  };
-  useEffect(() => { locate(); }, []);
+  useEffect(() => { locate(); }, [locate]);
 
   const point = where.state === 'ok' ? where.point : null;
   const q = useQuery({ queryKey: ['near', point, radius], queryFn: () => fetchNear(point!, radius), enabled: !!point });
@@ -52,8 +39,8 @@ export default function NearScreen() {
   return (
     <SafeAreaView edges={['top']} style={styles.page}>
       <ScreenHeader title="Near me" />
-      {where.state === 'asking' ? <Loading label="Finding where you are…" /> : where.state !== 'ok' ? (
-        <View style={styles.pad}><Empty title="Location needed" hint={where.message} action={{ title: 'Try again', onPress: locate }} /></View>
+      {where.state === 'asking' || where.state === 'idle' ? <Loading label="Finding where you are…" /> : where.state !== 'ok' ? (
+        <View style={styles.pad}><Empty title="Location needed" hint={'message' in where ? where.message : undefined} action={{ title: 'Try again', onPress: locate }} /></View>
       ) : (
         <FlatList
           data={rows}

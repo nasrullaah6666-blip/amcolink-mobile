@@ -338,3 +338,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Task 42 — Directory: town pick-list with counts (website parity) — COMPLETED (code)
 - Shops / providers directory: "Town" is now a pick-list of towns that have such profiles, with counts and the region (or country) as a hint, searchable; matched exactly like the website's list. Website: getShopPlaces + ShopFilterForm.
+
+## Task 43 — Near me for shops and providers (website parity) — COMPLETED (code)
+- **Files:** `src/lib/useNearPoint.ts` (shared with the listings Near me screen), `fetchProfilesNear` in `src/api/profiles.ts`, directory "📍 Near me" with 2–50 km chips, "about X km away" on each row, "Show all, not by distance".
+- **Website rules kept (ShopsDirectory ?near=):** location rounded to ~0.5 km, profiles with a map pin inside the radius closest first, then same-town profiles without a pin; blocked profiles left out.
