@@ -372,3 +372,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Task 51 — Saved property searches reopen with their filters — COMPLETED (code)
 - Saved → a property alert opens Property with its deal, area, type, bedrooms, furnished, period, owner/agent and price (values checked like the website's PropertyMarket).
+
+## Task 52 — Fix: description boxes spilled over their label (owner's phone, 5 Nov 20:31) — COMPLETED (code)
+- **Found by the owner (Post Ad → Properties):** the Description hint was drawn over the "Description *" label. Cause: the shared text box frame was fixed at one line (48 px) while description boxes are 96–120 px, so the box overflowed above and below its frame.
+- **Fix:** `src/components/ui/TextField.tsx` — multi-line boxes now grow with their frame. Fixes Post Ad, Edit ad, Edit profile and Post a need at once.
+- Same test also showed: photo upload from the phone works.

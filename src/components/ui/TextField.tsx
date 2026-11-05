@@ -11,7 +11,7 @@ export const TextField = forwardRef<TextInput, TextInputProps & { label: string;
     return (
       <View style={styles.wrap}>
         <AppText variant="label">{label}</AppText>
-        <View style={[styles.box, focused && styles.focused, !!error && styles.wrong]}>
+        <View style={[styles.box, rest.multiline && styles.boxMulti, focused && styles.focused, !!error && styles.wrong]}>
           <TextInput
             {...rest}
             ref={ref}
@@ -39,6 +39,8 @@ export const TextField = forwardRef<TextInput, TextInputProps & { label: string;
 const styles = StyleSheet.create({
   wrap: { gap: 6 },
   box: { flexDirection: 'row', alignItems: 'center', height: size.input, borderRadius: radius.md, borderWidth: 1, borderColor: colors.borderStrong, backgroundColor: colors.surface, paddingLeft: space.md + 2 },
+  // Several lines (description…): the frame grows with the text box instead of staying one line tall.
+  boxMulti: { height: undefined, minHeight: size.input, alignItems: 'stretch', paddingVertical: space.xs },
   focused: { borderColor: colors.green, borderWidth: 1.5 },
   wrong: { borderColor: colors.error, borderWidth: 1.5 },
   input: { flex: 1, ...type.body, fontSize: 16, color: colors.text, height: '100%' },
