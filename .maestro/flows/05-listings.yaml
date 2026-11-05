@@ -32,7 +32,7 @@ appId: com.amcolink.app.dev
 - back
 - back
 - tapOn: "Explore"
-- tapOn: "Deals"
+- tapOn: "Deals.*"
 # Staging's database clears the seeded price-drop dates on insert, so Deals may be empty there: just record it.
 - extendedWaitUntil:
     visible: "Items discounted 30% or more in the last 7 days."

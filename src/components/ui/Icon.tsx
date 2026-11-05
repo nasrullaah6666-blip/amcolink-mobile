@@ -5,7 +5,8 @@ import { colors, size } from '@/theme/tokens';
 export type IconName =
   | 'home' | 'heart' | 'plus' | 'user' | 'bell' | 'search' | 'chevronDown' | 'chevronLeft' | 'chevronRight'
   | 'filters' | 'house' | 'tools' | 'phone' | 'tv' | 'sofa' | 'shirt' | 'bottle' | 'car' | 'leaf' | 'hammer'
-  | 'grid' | 'compass' | 'call' | 'whatsapp' | 'map' | 'share' | 'flag' | 'more' | 'gift' | 'trend' | 'tag' | 'recycle' | 'sparkle';
+  | 'grid' | 'compass' | 'call' | 'whatsapp' | 'map' | 'share' | 'flag' | 'more' | 'gift' | 'trend' | 'tag' | 'recycle' | 'sparkle'
+  | 'handHeart' | 'bag' | 'megaphone' | 'plusCircle';
 
 /** One icon set, one stroke style. Colour defaults to the main text colour. */
 export function Icon({ name, color = colors.text, size: s = size.icon, strokeWidth = 1.8, filled }: { name: IconName; color?: string; size?: number; strokeWidth?: number; filled?: boolean }) {
@@ -20,6 +21,10 @@ export function Icon({ name, color = colors.text, size: s = size.icon, strokeWid
       {name === 'recycle' ? <Path {...p} d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" /> : null}
       {name === 'sparkle' ? <Path {...p} d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" /> : null}
       {name === 'plus' ? <Path {...p} d="M12 5v14M5 12h14" /> : null}
+      {name === 'handHeart' ? <><Path {...p} d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" /><Path {...p} d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" /><Path {...p} d="m2 15 6 6" /><Path {...p} d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z" /></> : null}
+      {name === 'bag' ? <><Path {...p} d="M6 7h12l1 13H5z" /><Path {...p} d="M9 7a3 3 0 0 1 6 0" /></> : null}
+      {name === 'megaphone' ? <><Path {...p} d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z" /><Path {...p} d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12" /></> : null}
+      {name === 'plusCircle' ? <><Circle {...p} cx="12" cy="12" r="9" /><Path {...p} d="M12 8v8M8 12h8" /></> : null}
       {name === 'user' ? <><Circle {...p} cx="12" cy="8" r="4" /><Path {...p} d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" /></> : null}
       {name === 'bell' ? <><Path {...p} d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><Path {...p} d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></> : null}
       {name === 'search' ? <><Circle {...p} cx="11" cy="11" r="7" /><Path {...p} d="m20 20-3.5-3.5" /></> : null}

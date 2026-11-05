@@ -24,9 +24,9 @@ appId: com.amcolink.app.dev
 - takeScreenshot: shots/07-category-fashion
 - tapOn: "Back"
 - tapOn: "Explore"
-- assertVisible: "Deals"
+- assertVisible: "Deals.*"
 - takeScreenshot: shots/08-explore
-- tapOn: "Free stuff"
+- tapOn: "Free stuff.*"
 - takeScreenshot: shots/09-free
 - tapOn: "Back"
 - tapOn: "Back"
