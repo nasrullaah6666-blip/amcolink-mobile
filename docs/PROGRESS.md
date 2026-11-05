@@ -357,3 +357,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Task 47 — Final report updated — COMPLETED
 - The Docs report (sections A–H) now reflects 46 tasks, the phone tests, readiness level 3, the owner list and the remaining work. `docs/OWNER-TASKS.md` updated to match.
+
+## Task 48 — Production build setup (manual, Google Play) — COMPLETED (code)
+- **Files:** `.github/workflows/android-release-build.yml` (manual only), `.github/scripts/sign-release.sh`, `docs/RELEASE.md` (owner steps).
+- Builds "Amcolink" `com.amcolink.app` against PRODUCTION with the production publishable key, Turnstile site key, permanent security page and Firebase file; signs with the owner's upload key from GitHub secrets; output = `.aab` for Google Play (kept 30 days on the run, not published). Stops and names the missing settings if any is absent; refuses a secret Supabase key.
+- **Not run yet:** needs the owner's settings (upload key etc.). Normal pushes never run it.

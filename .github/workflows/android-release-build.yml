@@ -1,0 +1,77 @@
+name: Android release build (Google Play)
+
+# Manual only: GitHub → Actions → "Android release build (Google Play)" → Run workflow.
+# Builds the STORE app ("Amcolink", com.amcolink.app) against the PRODUCTION database and signs it with the
+# owner's upload key, so it can be uploaded to Google Play. Nothing here runs on a normal push.
+# All values come from GitHub settings (Secrets / Variables) — none are in the code. See docs/RELEASE.md.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      CI: "1"
+      EXPO_PUBLIC_APP_ENV: production
+      ANDROID_VERSION_CODE: ${{ github.run_number }}
+      EXPO_PUBLIC_SUPABASE_URL: https://mjqhfqylarqgtqdfjsen.supabase.co
+      EXPO_PUBLIC_SUPABASE_KEY: ${{ secrets.PROD_SUPABASE_KEY }}
+      EXPO_PUBLIC_TURNSTILE_SITE_KEY: ${{ secrets.PROD_TURNSTILE_SITE_KEY }}
+      EXPO_PUBLIC_CAPTCHA_PAGE: ${{ vars.PROD_CAPTCHA_PAGE }}
+      GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON || secrets.GOOGLE_SERVICES }}
+      UPLOAD_KEYSTORE_BASE64: ${{ secrets.ANDROID_UPLOAD_KEYSTORE_BASE64 }}
+      UPLOAD_STORE_PASSWORD: ${{ secrets.ANDROID_UPLOAD_STORE_PASSWORD }}
+      UPLOAD_KEY_ALIAS: ${{ secrets.ANDROID_UPLOAD_KEY_ALIAS }}
+      UPLOAD_KEY_PASSWORD: ${{ secrets.ANDROID_UPLOAD_KEY_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stop if a setting is missing (names only, never values)
+        run: |
+          missing=""
+          for v in EXPO_PUBLIC_SUPABASE_KEY EXPO_PUBLIC_TURNSTILE_SITE_KEY EXPO_PUBLIC_CAPTCHA_PAGE GOOGLE_SERVICES_JSON UPLOAD_KEYSTORE_BASE64 UPLOAD_STORE_PASSWORD UPLOAD_KEY_ALIAS UPLOAD_KEY_PASSWORD; do
+            [ -n "${!v}" ] || missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then echo "Missing settings:$missing — see docs/RELEASE.md"; exit 1; fi
+          case "$EXPO_PUBLIC_SUPABASE_KEY" in sb_secret_*|*service_role*) echo "A SECRET key was put in PROD_SUPABASE_KEY. Use the publishable key."; exit 1;; esac
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Install
+        run: npm ci
+
+      - name: Checks (types, design rules, unit tests)
+        run: npm run check
+
+      - name: Firebase settings (phone alerts)
+        run: printf '%s' "$GOOGLE_SERVICES_JSON" > google-services.json
+
+      - name: Create the Android project
+        run: npx expo prebuild --platform android --clean --no-install
+
+      - name: Signing with the owner's upload key
+        run: bash .github/scripts/sign-release.sh
+
+      - name: Build the Google Play file (.aab)
+        working-directory: android
+        run: ./gradlew bundleRelease --no-daemon
+
+      - name: Keep the file on this run (download from the run page)
+        uses: actions/upload-artifact@v4
+        with:
+          name: amcolink-play-${{ github.run_number }}
+          path: android/app/build/outputs/bundle/release/app-release.aab
+          retention-days: 30
