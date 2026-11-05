@@ -3,12 +3,13 @@ import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native
 import { DeleteProfile } from '@/components/DeleteProfile';
 import { HoursField } from '@/components/HoursField';
 import { LinksField } from '@/components/LinksField';
+import { LocationField } from '@/components/LocationField';
+import { isPropertyAccount } from '@/core/property';
 import type { Hours } from '@/core/hours';
 import type { ShopLink } from '@/core/links';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
-import * as WebBrowser from 'expo-web-browser';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { AppText, Button, TextField } from '@/components/ui';
 import { ScreenHeader } from '@/components/ScreenHeader';
@@ -24,7 +25,6 @@ import { cleanHours } from '@/core/hours';
 import { shopLinks } from '@/core/links';
 import { citiesFor, levelName, regionsFor } from '@/core/places';
 import { formOf, parseShopForm } from '@/core/shop';
-import { SITE_URL } from '@/lib/site';
 import { colors, radius, space } from '@/theme/tokens';
 
 const OTHER = '__other__';
@@ -55,6 +55,7 @@ export default function EditProfile() {
   const [nameTaken, setNameTaken] = useState(false);
   const [hours, setHours] = useState<Hours>({});
   const [links, setLinks] = useState<ShopLink[]>([]);
+  const [pin, setPin] = useState<{ lat: number | null; lng: number | null }>({ lat: null, lng: null });
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const set = (k: string) => (t: string) => setV((o) => ({ ...o, [k]: t }));
@@ -73,6 +74,7 @@ export default function EditProfile() {
       address: shop.address ?? '', landmark: shop.landmark ?? '', description: shop.description ?? '', opening_hours: shop.opening_hours ?? '',
     });
     setHours(cleanHours(shop.hours)); setLinks(shopLinks(shop));
+    setPin({ lat: shop.lat ?? null, lng: shop.lng ?? null });
     const code0 = countryByName(shop.country)?.code;
     const regs = regionsFor(code0);
     if (regs.length) {
@@ -114,11 +116,10 @@ export default function EditProfile() {
       const free = await nameAvailable(v.name.trim(), shop.id);
       if (free === false) { setNameTaken(true); return; }
     }
-    // The map pin is not edited in the app yet: it goes back exactly as it is, so nothing is lost.
     const parsed = parseShopForm(formOf({
       ...v, region: regions.length ? region : '', city,
       links: JSON.stringify(links), hours: JSON.stringify(hours),
-      lat: shop.lat != null ? String(shop.lat) : '', lng: shop.lng != null ? String(shop.lng) : '',
+      lat: pin.lat != null ? String(pin.lat) : '', lng: pin.lng != null ? String(pin.lng) : '',
     }));
     if (!parsed.ok) { setMessage(parsed.error); return; }
     setBusy(true);
@@ -174,10 +175,7 @@ export default function EditProfile() {
           <HoursField value={hours} onChange={setHours} />
           <TextField label="Note about hours (optional)" value={v.opening_hours} onChangeText={set('opening_hours')} maxLength={120} placeholder="e.g. Closed for Friday prayers 12–2 PM" />
           <LinksField value={links} onChange={setLinks} />
-          <View style={styles.note}>
-            <AppText variant="bodySmall">The map pin is set on the website for now. It stays as it is when you save here.</AppText>
-            <Button title="Open the website" variant="ghost" onPress={() => WebBrowser.openBrowserAsync(`${SITE_URL}/shops/${shop.slug}/edit`)} />
-          </View>
+          <LocationField lat={pin.lat} lng={pin.lng} property={isPropertyAccount(shop)} onChange={(lat, lng) => setPin({ lat, lng })} />
           {message ? <AppText variant="bodySmall" tone="error" accessibilityRole="alert">{message}</AppText> : null}
           <Button title={busy ? 'Saving…' : 'Save'} size="lg" loading={busy} disabled={!!uploading} onPress={save} />
           <DeleteProfile shopId={shop.id} shopName={shop.name} logoUrl={shop.logo_url} coverUrl={shop.cover_url} />
@@ -197,5 +195,4 @@ const styles = StyleSheet.create({
   logo: { width: 96, height: 96, borderRadius: radius.md },
   cover: { width: '100%', height: 96, borderRadius: radius.md },
   multi: { height: 96, textAlignVertical: 'top', paddingTop: space.sm },
-  note: { gap: space.xs, padding: space.md, borderRadius: radius.md, backgroundColor: colors.greenTint },
 });

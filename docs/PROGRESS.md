@@ -342,3 +342,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 43 — Near me for shops and providers (website parity) — COMPLETED (code)
 - **Files:** `src/lib/useNearPoint.ts` (shared with the listings Near me screen), `fetchProfilesNear` in `src/api/profiles.ts`, directory "📍 Near me" with 2–50 km chips, "about X km away" on each row, "Show all, not by distance".
 - **Website rules kept (ShopsDirectory ?near=):** location rounded to ~0.5 km, profiles with a map pin inside the radius closest first, then same-town profiles without a pin; blocked profiles left out.
+
+## Task 44 — Profile location for "Near me" (website parity) — COMPLETED (code)
+- **Files:** `src/components/LocationField.tsx`, Edit profile. Edit profile no longer sends anyone to the website — everything the website's edit form has is now in the app.
+- **Website rules kept (ShopLocationField):** optional; "stand at your shop and tap"; rounded to about 0.5 km; buyers only see a rough distance; Remove clears it; saved through the same form check (parseShopForm lat/lng).
