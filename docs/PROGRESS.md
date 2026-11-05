@@ -362,3 +362,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `.github/workflows/android-release-build.yml` (manual only), `.github/scripts/sign-release.sh`, `docs/RELEASE.md` (owner steps).
 - Builds "Amcolink" `com.amcolink.app` against PRODUCTION with the production publishable key, Turnstile site key, permanent security page and Firebase file; signs with the owner's upload key from GitHub secrets; output = `.aab` for Google Play (kept 30 days on the run, not published). Stops and names the missing settings if any is absent; refuses a secret Supabase key.
 - **Not run yet:** needs the owner's settings (upload key etc.). Normal pushes never run it.
+
+## Task 49 — Store listing pack — COMPLETED (draft)
+- `docs/STORE-LISTING.md`: name, short and full description, category, countries, the Data safety answers matched to what the app really does (location rounded and not stored, alert token, usage counts), account-deletion URL, screenshot list, and the privacy page additions the website still needs (app storage, camera/photos, phone alerts, Firebase). Owner approves; the privacy page change needs "go" + "deploy".
