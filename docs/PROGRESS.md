@@ -207,3 +207,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **App files:** `src/lib/push.ts` (new); `_layout.tsx` (keeps the token saved, opens the right screen when an alert is tapped — same targets as the Notifications list); the phone asks permission once, at a moment that explains itself: saving an ad, saving a search, or opening Notifications; Sign out removes this phone's token first.
 - **Switched off** until the build has Firebase settings: CI writes `google-services.json` from the GitHub secret `GOOGLE_SERVICES_JSON` (file is git-ignored). Without it the build is unchanged and no permission is asked.
 - **BLOCKED on owner:** Firebase project. Then: the sender (staging Supabase first) and #5 Wanted matching (new database rule, SQL).
+
+## Test run — build 18 (commit ced8858)
+- Unit 56/56, staging tests passed, APK `test-build-18`. Emulator 5/6.
+- **Share to WhatsApp Status works:** the button shows on the listing, the picture is made (logo, photo, KES 15,000, title, "Used · Mombasa, Kenya", amcolink.com) and the share screen opens (`22-share-screen`). WhatsApp itself is not on the emulator.
+- 05-listings now passes end to end (listing, shop, Deals, Property rent and sale).
+- **03-account failed:** after "Back to sign in" the app was gone and the emulator's home screen showed. This code did not change since build 17, where the same test passed; the emulator's small log had already dropped the messages, so the cause (app crash or emulator) is unknown. The test run now keeps the full log and the crash log, so the next run shows the cause. Not marked as passed.
