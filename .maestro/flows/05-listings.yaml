@@ -1,0 +1,45 @@
+# With the staging test data: open a listing, its seller's page, Deals and Property lists.
+appId: com.amcolink.app.dev
+---
+- launchApp
+- extendedWaitUntil:
+    visible: "The latest finds"
+    timeout: 60000
+- extendedWaitUntil:
+    visible: ".*Samsung Galaxy A15.*"
+    timeout: 30000
+- takeScreenshot: shots/15-home-with-listings
+- tapOn: ".*Samsung Galaxy A15.*"
+- extendedWaitUntil:
+    visible: ".*Meet in a public place.*"
+    timeout: 30000
+- takeScreenshot: shots/16-listing
+- scrollUntilVisible:
+    element:
+      text: ".*View profile and all ads.*"
+    direction: DOWN
+- tapOn: ".*View profile and all ads.*"
+- extendedWaitUntil:
+    visible: ".*Juma Electronics.*"
+    timeout: 30000
+- takeScreenshot: shots/17-shop
+- back
+- back
+- tapOn: "Explore"
+- tapOn: "Deals"
+- extendedWaitUntil:
+    visible: ".*Smart TV.*"
+    timeout: 30000
+- takeScreenshot: shots/18-deals
+- back
+- back
+- tapOn: "Property"
+- extendedWaitUntil:
+    visible: ".*apartment for rent.*"
+    timeout: 30000
+- takeScreenshot: shots/19-property-rent
+- tapOn: "For sale"
+- extendedWaitUntil:
+    visible: ".*Villa for sale.*"
+    timeout: 30000
+- takeScreenshot: shots/20-property-sale
