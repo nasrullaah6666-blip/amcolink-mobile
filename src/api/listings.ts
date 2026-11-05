@@ -81,7 +81,10 @@ export async function fetchSearch(text: string, opts: { country?: string; page?:
   return rankByRelevance(must(res) as Listing[], clean, (a: Listing) => a.title).slice(from, from + PAGE_SIZE);
 }
 
-export type PropertyFilters = { deal: 'rent' | 'sale'; type?: string; area?: string; country?: string; page?: number };
+export type PropertyFilters = {
+  deal: 'rent' | 'sale'; type?: string; area?: string; country?: string; page?: number;
+  period?: string; furnished?: string; by?: string; beds?: string; min?: number; max?: number;
+};
 
 /** Properties for rent or sale (website: components/PropertyMarket.tsx). */
 export async function fetchProperties(f: PropertyFilters, c: SupabaseClient = db()): Promise<Listing[]> {
@@ -93,6 +96,14 @@ export async function fetchProperties(f: PropertyFilters, c: SupabaseClient = db
   const area = sanitizeSearch(f.area);
   if (area) q = q.or(`rental->>area.ilike.%${area}%,title.ilike.%${area}%`);
   if (f.type) q = q.eq('rental->>type', f.type);
+  // Same filters as the website's PropertyMarket (period and owner/agent only for rent).
+  if (f.period && f.deal === 'rent') q = q.eq('rental->>period', f.period);
+  if (f.furnished) q = q.eq('rental->>furnished', f.furnished);
+  if (f.by && f.deal === 'rent') q = q.eq('rental->>lister', f.by);
+  if (f.beds === '4') q = q.gte('rental->bedrooms', 4);
+  else if (f.beds) q = q.eq('rental->>bedrooms', f.beds);
+  if (f.min != null) q = q.gte('price', f.min);
+  if (f.max != null) q = q.lte('price', f.max);
   const res = await q.order('feed_boost', { ascending: false }).order('created_at', { ascending: false }).range(from, from + PAGE_SIZE - 1);
   return must(res) as Listing[];
 }

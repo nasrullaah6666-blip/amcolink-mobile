@@ -323,3 +323,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/components/PhotoViewer.tsx`, `PhotoPager` (tap a photo to open).
 - **Website rules kept (PhotoGallery Viewer):** full-size sharp photo, swipe between photos, "n / total", zoom, ✕ to close. App: pinch or double-tap to zoom (up to 4×), drag while zoomed; swiping is paused while zoomed.
 - **Tests:** emulator step in 06 (open viewer, screenshot 24, close).
+
+## Task 40 — Property filters and "Alert me" (website parity) — COMPLETED (code)
+- **Files:** `src/components/PropertyFiltersButton.tsx`, `src/components/RentalAlertButton.tsx`, Property screen, `fetchProperties` filters.
+- **Website rules kept (PropertyMarket, RentalAlertButton):** bedrooms (studio, 1, 2, 3, 4+), furnished, rent period and owner/agent (rent only), price range; "Alert me" saves the same query (`page: rentals`, `deal: sale` for sale) and the same label, so the database's alert rule matches it; asks for phone alerts at that moment.
+- **Not yet:** opening a saved property search from Saved restores its filters (it opens the Property screen).
