@@ -153,3 +153,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Fix — bottom bar hidden behind the phone's buttons (found by the owner on a real phone, build 11)
 - On phones with on-screen buttons (|||  ○  <) the tab bar had a fixed height and sat under them, so Home/Saved/Post Ad/Account were half hidden and hard to tap. The bar now adds the phone's bottom inset (`useSafeAreaInsets`). First physical-device finding.
+
+## Physical phone test — owner, build 11, 5 Nov 2026 (first real-device results)
+- **Passed:** app installs and runs; Home shows staging test listings with photos; create account + email confirmation + sign in with the security check; saving listings (heart) and the Saved tab (4 items shown with photo, title, price, "Free").
+- **Failed → fixed:** bottom bar hidden behind the phone's on-screen buttons (fixed in commit b8bdc91, build 13).
+- Website categories deploy (website commit d3ef747) confirmed live by the owner: Vehicles page shows Parts, Cars, Motorbikes & tuk-tuks, Trucks & buses, Other vehicles, Car services.
