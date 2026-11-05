@@ -1,6 +1,6 @@
-# Android test build 19
-commit: ed08721426c1be74f75450e07e92ae653388a4f1
-key: success | install: success | checks: failure | integration: skipped | prebuild: skipped | gradle: skipped | release: skipped
+# Android test build 20
+commit: 0dc8f947aa48080f2887fd3de5dcdd3939ea31f0
+key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
 
 ## ci-logs/checks.log (last 120 lines)
 ```
@@ -23,7 +23,7 @@ design check ok: all colours come from src/theme/tokens.ts
 
 PASS src/api/__tests__/postAd.test.ts
 PASS src/api/__tests__/listings.test.ts
-PASS src/components/__tests__/AuthForm.test.tsx (5.548 s)
+PASS src/components/__tests__/AuthForm.test.tsx
 PASS src/lib/__tests__/config.test.ts
 PASS src/api/__tests__/me.test.ts
 PASS src/lib/__tests__/secureStorage.test.ts
@@ -55,36 +55,137 @@ PASS src/components/__tests__/ListingCard.test.tsx
 PASS src/api/__tests__/wanted.test.ts
 PASS src/core/__tests__/core.test.ts
 PASS src/core/__tests__/shopEdit.test.ts
-FAIL src/api/__tests__/account.test.ts
-  ● notification links: only our own site; app screens when the app has them
+PASS src/api/__tests__/account.test.ts
 
-    expect(received).toEqual(expected) // deep equality
-
-    - Expected  - 1
-    + Received  + 4
-
-      Object {
-    -   "web": "/wanted",
-    +   "app": Object {
-    +     "params": Object {},
-    +     "pathname": "/wanted",
-    +   },
-      }
-
-    [0m [90m  8 |[39m   expect(noticeTarget([32m'/shops/amina-fashion-x1y2'[39m))[33m.[39mtoEqual({ app[33m:[39m { pathname[33m:[39m [32m'/shops/[slug]'[39m[33m,[39m params[33m:[39m { slug[33m:[39m [32m'amina-fashion-x1y2'[39m } } })[33m;[39m
-     [90m  9 |[39m   expect(noticeTarget([32m'/dashboard?acct=1'[39m))[33m.[39mtoEqual({ app[33m:[39m { pathname[33m:[39m [32m'/dashboard'[39m[33m,[39m params[33m:[39m {} } })[33m;[39m
-    [31m[1m>[22m[39m[90m 10 |[39m   expect(noticeTarget([32m'/wanted'[39m))[33m.[39mtoEqual({ web[33m:[39m [32m'/wanted'[39m })[33m;[39m
-     [90m    |[39m                                   [31m[1m^[22m[39m
-     [90m 11 |[39m })[33m;[39m
-     [90m 12 |[39m[0m
-
-      at Object.toEqual (src/api/__tests__/account.test.ts:10:35)
-
-Test Suites: 1 failed, 11 passed, 12 total
-Tests:       1 failed, 55 passed, 56 total
+Test Suites: 12 passed, 12 total
+Tests:       56 passed, 56 total
 Snapshots:   0 total
-Time:        11.055 s
+Time:        9.428 s
 Ran all test suites.
+```
+
+## ci-logs/gradle.log (last 120 lines)
+```
+> Task :react-native-async-storage_async-storage:mapReleaseSourceSetPaths
+> Task :react-native-async-storage_async-storage:mergeReleaseResources
+> Task :react-native-async-storage_async-storage:verifyReleaseResources
+> Task :react-native-async-storage_async-storage:assembleRelease
+> Task :react-native-gesture-handler:bundleReleaseAar
+> Task :react-native-gesture-handler:mapReleaseSourceSetPaths
+> Task :react-native-gesture-handler:mergeReleaseResources
+> Task :react-native-gesture-handler:verifyReleaseResources
+> Task :react-native-gesture-handler:assembleRelease
+> Task :react-native-reanimated:bundleReleaseAar
+> Task :react-native-reanimated:mapReleaseSourceSetPaths
+> Task :react-native-reanimated:mergeReleaseResources
+> Task :react-native-reanimated:verifyReleaseResources
+> Task :react-native-reanimated:assembleRelease
+> Task :react-native-safe-area-context:bundleReleaseAar
+> Task :react-native-safe-area-context:mapReleaseSourceSetPaths
+> Task :react-native-safe-area-context:mergeReleaseResources
+> Task :react-native-safe-area-context:verifyReleaseResources
+> Task :react-native-safe-area-context:assembleRelease
+> Task :react-native-screens:bundleReleaseAar
+> Task :react-native-screens:mapReleaseSourceSetPaths
+> Task :react-native-screens:mergeReleaseResources
+> Task :react-native-screens:verifyReleaseResources
+> Task :react-native-screens:assembleRelease
+> Task :react-native-svg:bundleReleaseAar
+> Task :react-native-svg:mapReleaseSourceSetPaths
+> Task :react-native-svg:mergeReleaseResources
+> Task :react-native-svg:verifyReleaseResources
+> Task :react-native-svg:assembleRelease
+> Task :react-native-view-shot:bundleReleaseAar
+> Task :react-native-view-shot:mapReleaseSourceSetPaths
+> Task :react-native-view-shot:mergeReleaseResources
+> Task :react-native-view-shot:verifyReleaseResources
+> Task :react-native-view-shot:assembleRelease
+> Task :react-native-webview:bundleReleaseAar
+> Task :react-native-webview:mapReleaseSourceSetPaths
+> Task :react-native-webview:mergeReleaseResources
+> Task :react-native-webview:verifyReleaseResources
+> Task :react-native-webview:assembleRelease
+> Task :app:configureCMakeRelWithDebInfo[x86_64]
+> Task :react-native-worklets:bundleReleaseAar
+> Task :react-native-worklets:mapReleaseSourceSetPaths
+> Task :react-native-worklets:mergeReleaseResources
+> Task :react-native-worklets:verifyReleaseResources
+> Task :react-native-worklets:assembleRelease
+> Task :app:buildCMakeRelWithDebInfo[x86_64]
+> Task :app:checkReleaseAarMetadata
+> Task :app:generateReleaseResValues
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:generateReleaseResources
+> Task :app:mergeReleaseResources
+> Task :app:packageReleaseResources
+> Task :app:parseReleaseLocalResources
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
+> Task :app:mergeReleaseNativeLibs
+
+> Task :app:processReleaseMainManifest
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml:4:3-88 Warning:
+	uses-permission#android.permission.RECORD_AUDIO was tagged at AndroidManifest.xml:4 to remove other declarations but no other declaration present
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
+	provider#expo.modules.filesystem.FileSystemFileProvider@android:authorities was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
+	activity#expo.modules.imagepicker.ExpoCropImageActivity@android:exported was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
+
+> Task :app:expoReleaseOverrideMaxSdkConflicts
+[33m---------- Expo Max Sdk Override Plugin ----------[0m
+[32m>>> No 'android:maxSdkVersion' conflicts found[0m
+[33m--------------------------------------------------[0m
+
+> Task :app:processReleaseManifest
+> Task :app:processReleaseManifestForPackage
+> Task :app:stripReleaseDebugSymbols
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:processReleaseResources
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:javaPreCompileRelease
+> Task :app:desugarReleaseFileDependencies
+> Task :app:mergeReleaseStartupProfile
+> Task :app:compileReleaseKotlin
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:dexBuilderRelease
+> Task :app:mergeReleaseArtProfile
+> Task :app:mergeExtDexRelease
+> Task :app:mergeReleaseGlobalSynthetics
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:mergeDexRelease
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:extractProguardFiles
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:compileReleaseArtProfile
+> Task :app:processReleaseJavaRes
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:mergeReleaseJavaResource
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:optimizeReleaseResources
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+
+[Incubating] Problems report is available at: file:///home/runner/work/amcolink-mobile/amcolink-mobile/android/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 34m 18s
+696 actionable tasks: 696 executed
 ```
 
 ## ci-logs/install.log (last 120 lines)
@@ -121,7 +222,7 @@ npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and cont
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
-added 958 packages, and audited 959 packages in 25s
+added 958 packages, and audited 959 packages in 20s
 
 89 packages are looking for funding
   run `npm fund` for details
@@ -135,4 +236,53 @@ To address all issues (including breaking changes), run:
   npm audit fix --force
 
 Run `npm audit` for details.
+```
+
+## ci-logs/integration.log (last 120 lines)
+```
+
+> amcolink-mobile@1.0.0 test:integration
+> jest --ci -c jest.integration.config.js
+
+PASS integration/staging.test.ts (12.598 s)
+  ✓ signed-out visitors can read approved shops and published ads (1311 ms)
+  ✓ the countries list is available (243 countries on staging) (177 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (578 ms)
+  ✓ signed-out visitors can read the public Wanted columns (264 ms)
+  ✓ signed-out visitors cannot create a shop (192 ms)
+  ✓ signed-out visitors cannot create a report (218 ms)
+  ✓ signed-out visitors cannot use admin functions (419 ms)
+  ✓ public trending lists can be read signed out (242 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (196 ms)
+  ✓ notifications are private (536 ms)
+  ✓ app query: latest finds runs on staging (427 ms)
+  ✓ app query: category page with every filter runs on staging (431 ms)
+  ✓ app query: properties for rent and for sale run on staging (416 ms)
+  ✓ app query: search runs on staging (204 ms)
+  ✓ app query: Explore collections run on staging (815 ms)
+  ✓ app query: shop profile lookup and trust run on staging (425 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (605 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (713 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (192 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (216 ms)
+  ✓ app query: Gifts and Trending run on staging as a visitor (1170 ms)
+  ✓ reviews: visitors can read them and are told to sign in before reviewing (753 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       22 passed, 22 total
+Snapshots:   0 total
+Time:        12.684 s
+Ran all test suites.
+```
+
+## ci-logs/prebuild.log (last 120 lines)
+```
+- Clearing android
+✔ Cleared android code
+- Creating native directory (./android)
+✔ Created native directory
+- Updating package.json
+✔ Updated package.json
+- Running prebuild
+✔ Finished prebuild
 ```
