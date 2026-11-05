@@ -242,3 +242,12 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - Owner's phone (build 23) registered (push_tokens = 1). Test via `notify(...)` → "Amcolink test alert — Phone alerts are working." arrived on the lock screen with the Amcolink icon. **#2 phone alerts work end to end on staging.**
 - Status picture (build 22) re-checked by the owner in WhatsApp: the link line is clear of WhatsApp's buttons.
 - Production is NOT set up (no production webhook/function/secrets, #5 SQL not run on production) — waits for the owner.
+
+## Task 25 — Explore layout A (owner "go A", 5 Nov 2026) — COMPLETED (build 24)
+- One list: icon, name, one-line help, arrow (same row style as Account). Website icons for Free stuff (giving hand), Brand new (bag), Wanted (megaphone), Post a need (plus in a circle). Help lines are app-only. Emulator flows match the new rows.
+
+## Task 26 — Away mode and pinning (website parity) — COMPLETED (code)
+- **Files:** `src/core/away.ts` (copied from the website + typed-date check), `src/components/AwayMode.tsx`, My ads (Away mode panel for approved profiles; Pin/Unpin on live, visible ads; "📌 Pinned" line), profile page ("… is away until …" notice; up to 4 pinned ads first).
+- **Website rules kept:** away_since/away_until, return date = start of that day, no date = until turned off; pinned_at, up to 4 shown first, newest pin first; same messages. Colour: Amcolink green tint instead of the website's indigo (owner's green-only rule).
+- **App difference:** the return date is typed (YYYY-MM-DD) like the ad expiry field; checked tomorrow … one year ahead.
+- **Tests:** unit test for the away rules (57/57). Needs a seller profile to try on a device (staging profile creation is on the owner list).

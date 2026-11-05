@@ -6,6 +6,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { AppText, Button, Chip } from '@/components/ui';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { ChipRow } from '@/components/ChipRow';
+import { AwayMode } from '@/components/AwayMode';
 import { Photo } from '@/components/Photo';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { useAuth } from '@/auth/session';
@@ -61,6 +62,7 @@ function AdRow({ ad, stat, onChanged }: { ad: MyAd; stat: Totals; onChanged: () 
             {ad.price === null ? 'Price on request' : Number(ad.price) === 0 ? 'Free' : formatPrice(ad.price, ad.currency)} · {ad.category} · {statusLine(ad)}
           </AppText>
           {ad.hidden_by_owner ? <AppText variant="caption">🙈 Hidden: only you can see it</AppText> : null}
+          {ad.pinned_at && !ad.hidden_by_owner ? <AppText variant="caption" tone="green">📌 Pinned to the top of your profile</AppText> : null}
           <AppText variant="caption" tone="secondary">👁 {stat.views} · WhatsApp {stat.whatsapp} · Calls {stat.calls}</AppText>
           {published && ad.availability !== 'sold' ? (
             age !== null && age < NUDGE_DAYS
@@ -81,6 +83,9 @@ function AdRow({ ad, stat, onChanged }: { ad: MyAd; stat: Totals; onChanged: () 
       ) : null}
       <View style={styles.actions}>
         {ad.status !== 'removed' ? <Button style={styles.flex} title="Edit" variant="outline" onPress={() => router.push({ pathname: '/edit-ad/[id]', params: { id: ad.id } })} /> : null}
+        {published && !ad.hidden_by_owner ? <Button style={styles.flex} title={ad.pinned_at ? 'Unpin' : 'Pin'} variant="outline" loading={busy === 'pin'}
+          accessibilityLabel={ad.pinned_at ? 'Unpin from the top of my profile' : 'Pin to the top of my profile (up to 4)'}
+          onPress={() => run('pin', () => updateAd(ad.id, { pinned_at: ad.pinned_at ? null : new Date().toISOString() }))} /> : null}
         {ad.status !== 'removed' ? <Button style={styles.flex} title={ad.hidden_by_owner ? 'Show' : 'Hide'} variant="outline" loading={busy === 'hide'} onPress={() => run('hide', () => updateAd(ad.id, { hidden_by_owner: !ad.hidden_by_owner }))} /> : null}
         <Button style={styles.flex} title="Delete" variant="ghost" loading={busy === 'delete'} onPress={askDelete} />
       </View>
@@ -146,6 +151,11 @@ export default function Dashboard() {
           This account is {current.status}. {current.status === 'pending' ? 'Hidden for now while we check it; only you can see it. You can still add listings.' : 'It cannot post or edit listings.'}
           {current.status === 'pending' && (current as { review_reason?: string | null }).review_reason ? ` Safety check: ${(current as { review_reason?: string | null }).review_reason}` : ''}
         </AppText></View>
+      ) : null}
+      {current.status === 'approved' ? (
+        <AwayMode shopId={current.id} awaySince={(current as { away_since?: string | null }).away_since ?? null}
+          awayUntil={(current as { away_until?: string | null }).away_until ?? null}
+          onChanged={() => qc.invalidateQueries({ queryKey: ['my-shops', user.id] })} />
       ) : null}
       {needConfirm.length > 0 ? (
         <View style={styles.alert}>

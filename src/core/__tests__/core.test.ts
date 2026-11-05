@@ -25,3 +25,16 @@ test('categories match the website (Nov 2026): new sub-categories and shared til
   expect(subsOf('Services')).toEqual(expect.arrayContaining(['Printing & branding', 'Catering & food', 'Car services']));
   for (const list of Object.values(SHARED_SUBS)) for (const x of list) expect(subsOf(x.category)).toContain(x.sub);
 });
+
+import { awayDateProblem, isAway } from '@/core/away';
+test('away mode: on until the return date, typed date checks', () => {
+  const now = new Date('2026-11-05T12:00:00');
+  expect(isAway({ away_since: '2026-11-01T00:00:00Z', away_until: null })).toBe(true);
+  expect(isAway({ away_since: null, away_until: null })).toBe(false);
+  expect(isAway({ away_since: '2026-01-01T00:00:00Z', away_until: '2026-01-02T00:00:00Z' })).toBe(false);
+  expect(awayDateProblem('', now)).toBeNull();
+  expect(awayDateProblem('2026-11-20', now)).toBeNull();
+  expect(awayDateProblem('20-11-2026', now)).toMatch(/2027-03-31/);
+  expect(awayDateProblem('2026-11-01', now)).toMatch(/tomorrow/);
+  expect(awayDateProblem('2028-01-01', now)).toMatch(/one year/);
+});

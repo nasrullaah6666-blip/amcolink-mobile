@@ -18,11 +18,14 @@ import { db } from '@/api/db';
 import { areaLine, mapsUrl, placeLine } from '@/core/address';
 import { cleanHours, openStatus } from '@/core/hours';
 import { getTrust } from '@/core/trust';
+import { awayUntilLabel, isAway } from '@/core/away';
+import { useAuth } from '@/auth/session';
 import { shopUrl } from '@/lib/site';
-import { colors, space } from '@/theme/tokens';
+import { colors, radius, space } from '@/theme/tokens';
 
 export default function ShopScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
+  const { user } = useAuth();
   const shopQ = useQuery({ queryKey: ['shop', slug], queryFn: () => fetchShop(String(slug)), enabled: !!slug });
   const shop = shopQ.data;
   const adsQ = useQuery({ queryKey: ['shop-ads', shop?.id], queryFn: () => fetchShopListings(shop!.id), enabled: !!shop?.id });
@@ -49,7 +52,13 @@ export default function ShopScreen() {
   const area = areaLine(s);
   const status = openStatus(cleanHours(s.hours), shop.country);
   const trust = trustQ.data;
-  const ads = adsQ.data ?? [];
+  const all = adsQ.data ?? [];
+  // Website: up to 4 pinned listings first (newest pin first), then the rest newest first.
+  const pinned = all.filter((a) => (a as { pinned_at?: string | null }).pinned_at && !(a as { hidden_by_owner?: boolean }).hidden_by_owner)
+    .sort((x, y) => String((y as { pinned_at?: string }).pinned_at).localeCompare(String((x as { pinned_at?: string }).pinned_at))).slice(0, 4);
+  const ads = [...pinned, ...all.filter((a) => !pinned.some((p) => p.id === a.id))];
+  const away = isAway(s);
+  const mine = user?.id === (shop as { owner_id?: string }).owner_id;
 
   const share = () => {
     trackEvent(shop.id, null, 'share');
@@ -69,6 +78,12 @@ export default function ShopScreen() {
         {status ? <AppText variant="label" tone={status.open ? 'green' : 'secondary'}>{status.text}</AppText> : null}
         {trust && trust.reviews > 0 && trust.rating != null ? (
           <AppText variant="bodySmall">{trust.rating.toFixed(1)} out of 5 · {trust.reviews} review{trust.reviews === 1 ? '' : 's'}</AppText>
+        ) : null}
+        {away ? (
+          <View style={styles.away}>
+            <AppText variant="label">🌙 {shop.name} is away{s.away_until ? ` until ${awayUntilLabel(s.away_until)}` : ' for now'}.</AppText>
+            <AppText variant="bodySmall">{mine ? 'Your listings are hidden from buyers. Turn Away mode off in My ads.' : 'Their listings will be back when they return. Follow this profile to find it again easily.'}</AppText>
+          </View>
         ) : null}
         {shop.description ? <AppText variant="body">{shop.description}</AppText> : null}
         <View style={styles.actions}>
@@ -93,7 +108,7 @@ export default function ShopScreen() {
         ListHeaderComponent={header}
         renderItem={({ item }) => <ListingCard ad={item} />}
         ListFooterComponent={<ShopReviews shopId={shop.id} ownerId={(shop as { owner_id: string }).owner_id} shopName={shop.name} />}
-        ListEmptyComponent={adsQ.isPending ? <Loading /> : adsQ.isError ? <ErrorState message={(adsQ.error as Error).message} onRetry={() => adsQ.refetch()} /> : <Empty title="No ads yet" />}
+        ListEmptyComponent={adsQ.isPending ? <Loading /> : adsQ.isError ? <ErrorState message={(adsQ.error as Error).message} onRetry={() => adsQ.refetch()} /> : <Empty title={away ? 'This profile is away. Its listings will be back soon.' : 'No ads yet'} />}
       />
       <ContactBar shop={shop} />
     </SafeAreaView>
@@ -112,5 +127,6 @@ const styles = StyleSheet.create({
   actions: { flexDirection: 'row', gap: space.sm, marginTop: space.sm },
   flex: { flex: 1 },
   section: { marginTop: space.lg, marginBottom: space.sm },
+  away: { gap: space.xs, padding: space.md, borderRadius: radius.md, backgroundColor: colors.greenTint, marginTop: space.sm },
 });
 
