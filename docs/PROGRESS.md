@@ -266,3 +266,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/components/HoursField.tsx`, `src/components/LinksField.tsx`, Edit profile (hours, "Note about hours", links). Only the map pin still opens the website.
 - **Website rules kept (HoursEditor, LinksField, parseShopForm):** a day off = closed; "use the first day's time for all open days"; up to 6 links, type found from the pasted link, one per type, reorder, remove; the same form check saves everything.
 - **App difference:** times are chosen from a half-hour list (the website box allows any minute; an existing time not on the list is kept and shown).
+
+## Task 30 — "Never pay in advance" before contacting a seller (website parity, safety) — COMPLETED (code)
+- **Found:** the website shows this reminder before the first Call / WhatsApp / seller link per listing or profile (ContactGate); the app went straight to the call.
+- **Files:** `src/lib/safetyGate.ts` (same text, same once-per-listing memory key `amc_safety_ok_v1`), Call/WhatsApp bar on listings and profiles. Buttons: Safety tips · Cancel · Call seller / Continue to WhatsApp.
+- **App difference:** Android's own dialog instead of the website's card (simplest, familiar).
+- **Tests:** emulator step in 06 (tap Call → reminder → Cancel, screenshot 23).

@@ -27,3 +27,10 @@ appId: com.amcolink.app.dev
     timeout: 3000
 - takeScreenshot: shots/22-share-screen
 - back
+# Safety reminder before contacting a seller (same as the website), shown once per listing.
+- tapOn: "Call"
+- extendedWaitUntil:
+    visible: "Never pay in advance"
+    timeout: 10000
+- takeScreenshot: shots/23-safety-reminder
+- tapOn: "Cancel"

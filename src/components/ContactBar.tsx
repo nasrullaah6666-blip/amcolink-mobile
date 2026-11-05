@@ -5,6 +5,7 @@ import { Button, Icon, AppText } from '@/components/ui';
 import { telLink, whatsappLink } from '@/core/utils';
 import { trackEvent } from '@/api/track';
 import { BRAND } from '@/lib/site';
+import { safetyGate } from '@/lib/safetyGate';
 import { colors, space } from '@/theme/tokens';
 
 type Seller = { id: string; name: string; phone: string | null; whatsapp: string | null };
@@ -24,9 +25,12 @@ export function ContactBar({ shop, adId, adTitle }: { shop: Seller; adId?: strin
       </View>
     );
   }
+  // Same as the website: the "Never pay in advance" reminder first, once per listing (or per profile).
   const open = (url: string, kind: 'call' | 'whatsapp') => {
-    trackEvent(shop.id, adId ?? null, kind);
-    Linking.openURL(url).catch(() => {});
+    safetyGate(adId ? `ad:${adId}` : `shop:${shop.id}`, kind === 'call' ? 'Call seller' : 'Continue to WhatsApp', () => {
+      trackEvent(shop.id, adId ?? null, kind);
+      Linking.openURL(url).catch(() => {});
+    });
   };
   return (
     <View style={[styles.bar, styles.row, { paddingBottom: space.md + insets.bottom }]}>
