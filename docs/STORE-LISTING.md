@@ -33,12 +33,12 @@ Amcolink does not handle payments. Meet the seller, check the item, then pay.
 | Messages, contacts, payment info, health, files | No | — | — | — |
 
 - Data is encrypted in transit: **Yes**. · Users can ask for deletion: **Yes** — in the app (Account → Delete my account) and on the website.
-- **Account deletion URL** (Google asks for one): https://amcolink.com/account (sign in → Delete account).
+- **Account deletion URL** (Google asks for one): https://amcolink.com/account/delete
 
 ## Screenshots (phone, 1080×2400; from the emulator runs on branch `ci-results`)
 Home · a listing (with Share to WhatsApp Status) · Explore · Near me · profile page · Post Ad · Saved with price drop · Property filters. Take the final set from the release build (production data), not staging "[TEST]" listings.
 
-## Privacy page additions the website still needs (website change — needs your "go" and "deploy")
+## Privacy page additions (website branch `privacy-app`, owner said "go" on 5 Nov; live after "deploy")
 1. **The Android app**: your sign-in is kept in the phone's encrypted storage; the app uses the camera and photos only when you add a photo; location only when you tap Near me or set your shop's location.
 2. **Phone alerts**: if you allow them, we store a phone token to send your alerts (price drops, saved searches, your ads, Wanted matches); delivered through Google Firebase Cloud Messaging; turned off by switching off notifications or signing out.
 3. Providers list: add **Google Firebase** (phone alerts).
