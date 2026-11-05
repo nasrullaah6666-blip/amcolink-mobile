@@ -1,4 +1,4 @@
-// Copied unchanged from the Amcolink website repo, lib/categories.ts at commit dde47f3b. The website is the source of truth: update both together.
+// Copied from the Amcolink website repo, lib/categories.ts at commit d3ef747d (only import paths and env names adapted). The website is the source of truth: update both together.
 /**
  * Categories: 10 main categories, Services included (plus Houses & Rentals, which lives in the Property tab), each with
  * subcategories. One page per main category (/category/<slug>), subcategories as ?sub=<name> on that page.
@@ -13,10 +13,10 @@ export const MAIN_CATEGORIES: CategoryInfo[] = [
   { name: "Home & Appliances", slug: "home-appliances", label: "Home & Appliances", short: "Home", blurb: "Furniture, kitchen things, fridges, washing machines and decoration for your home.", subs: ["Furniture", "Kitchen", "Appliances", "Decor", "Bedding"] },
   { name: "Fashion", slug: "fashion", label: "Fashion", short: "Fashion", blurb: "Clothes, shoes and bags for men, women and kids.", subs: ["Men", "Women", "Kids", "Shoes", "Bags"] },
   { name: "Beauty & Health", slug: "beauty", label: "Beauty & Health", short: "Beauty", blurb: "Skin care, hair, perfume, make-up, henna and health products.", subs: ["Skin care", "Hair", "Perfume", "Make-up", "Health"] },
-  { name: "Vehicles", slug: "vehicles", label: "Vehicles", short: "Vehicles", blurb: "Cars, motorbikes, bajaj and spare parts.", subs: ["Cars", "Motorbikes & tuk-tuks", "Parts", "Other vehicles"] },
+  { name: "Vehicles", slug: "vehicles", label: "Vehicles", short: "Vehicles", blurb: "Cars, motorbikes, bajaj, trucks, spare parts and car services.", subs: ["Parts", "Cars", "Motorbikes & tuk-tuks", "Trucks & buses", "Other vehicles"] },
   { name: "Food & Farming", slug: "food-farming", label: "Food & Farming", short: "Farming", blurb: "Food, livestock, seeds and farm tools from local sellers and farmers.", subs: ["Food", "Livestock", "Seeds & plants", "Farm tools"] },
   { name: "Building & Tools", slug: "building-tools", label: "Building & Tools", short: "Building", blurb: "Cement, iron sheets, tiles, solar panels, generators and tools.", subs: ["Materials", "Solar & generators", "Tools"] },
-  { name: "Services", slug: "services", label: "Services", short: "Services", blurb: "Plumbers, cleaners, tutors, drivers, hair and event help from local people. Call or WhatsApp them directly.", subs: ["Home repairs", "Cleaning", "Transport & moving", "Beauty & hair", "Tutors & lessons", "Events", "Repairs & technicians", "Other services"] },
+  { name: "Services", slug: "services", label: "Services", short: "Services", blurb: "Plumbers, cleaners, tutors, drivers, printing, catering and car help from local people. Call or WhatsApp them directly.", subs: ["Home repairs", "Cleaning", "Transport & moving", "Beauty & hair", "Tutors & lessons", "Events", "Repairs & technicians", "Printing & branding", "Catering & food", "Car services", "Other services"] },
   { name: "Other", slug: "other", label: "Other", short: "Other", blurb: "Everything else people are selling near you.", subs: [] },
 ];
 
@@ -91,3 +91,12 @@ export function categoryHref(name?: string | null, sub?: string | null): string 
   const s = n?.sub || "";
   return `/category/${c.slug}${s ? `?sub=${encodeURIComponent(s)}` : ""}`;
 }
+
+/**
+ * A subcategory that lives in one category but is also shown on another category's page, so buyers find it
+ * where they look. The listing is saved once (in `category`/`sub`); the extra tile just links there.
+ */
+export const SHARED_SUBS: Record<string, { label: string; category: string; sub: string }[]> = {
+  Vehicles: [{ label: "Car services", category: "Services", sub: "Car services" }],
+  "Phones & Tablets": [{ label: "Repairs & technicians", category: "Services", sub: "Repairs & technicians" }],
+};

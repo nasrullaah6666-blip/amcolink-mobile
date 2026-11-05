@@ -17,3 +17,11 @@ test('every category slug is unique', () => {
   const slugs = MAIN_CATEGORIES.map((c) => c.slug);
   expect(new Set(slugs).size).toBe(slugs.length);
 });
+
+import { SHARED_SUBS, subsOf } from '../categories';
+
+test('categories match the website (Nov 2026): new sub-categories and shared tiles point at real ones', () => {
+  expect(subsOf('Vehicles')).toContain('Trucks & buses');
+  expect(subsOf('Services')).toEqual(expect.arrayContaining(['Printing & branding', 'Catering & food', 'Car services']));
+  for (const list of Object.values(SHARED_SUBS)) for (const x of list) expect(subsOf(x.category)).toContain(x.sub);
+});

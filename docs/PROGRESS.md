@@ -137,3 +137,10 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/lib/countryPref.tsx`, Home country pill, country passed to Home, categories, search, property, Explore collections and Wanted.
 - **Website rules kept (CountrySwitcher):** default All countries; East Africa first in the list; remembered on the phone; lists filter by the shop's country (Wanted by the request's country; "My requests" not filtered).
 - **Tests:** emulator flow `04-country`.
+
+## Test run — build 11 (commit b9ad668, first build with the security-check key)
+- Unit 45/45, staging 20/20, emulator 3/3 PASSED. The Cloudflare check loads on Sign in and Create account ("Verifying…"). Home and Property show the staging [TEST] listings and photos.
+
+## Task 17 — Categories follow the website (website commit d3ef747, deployed 5 Nov 2026)
+- `src/core/categories.ts` copied again: Vehicles + Trucks & buses (Parts first); Services + Printing & branding, Catering & food, Car services; shared tiles (Car services on Vehicles, Repairs & technicians on Phones) open the other category, as on the website.
+- Database lists updated on staging and production by the owner (migration 046 in the website repo).
