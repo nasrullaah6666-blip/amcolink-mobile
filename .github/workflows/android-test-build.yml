@@ -68,6 +68,12 @@ jobs:
         id: integration
         run: set -o pipefail; npm run test:integration 2>&1 | tee ci-logs/integration.log
 
+      - name: Firebase settings for phone alerts (optional; alerts stay off without them)
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: |
+          if [ -n "$GOOGLE_SERVICES_JSON" ]; then printf '%s' "$GOOGLE_SERVICES_JSON" > google-services.json && echo "phone alerts: on"; else echo "phone alerts: off (no GOOGLE_SERVICES_JSON secret)"; fi
+
       - name: Create the Android project
         id: prebuild
         run: set -o pipefail; npx expo prebuild --platform android --clean --no-install 2>&1 | tee ci-logs/prebuild.log

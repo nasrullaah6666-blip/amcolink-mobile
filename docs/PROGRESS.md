@@ -201,3 +201,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Test run — build 17 (commit ba6deb4)
 - Unit 52/52, staging tests passed, APK `test-build-17`. Emulator 4/5: 01-smoke, 02-browse, 03-account, 04-country PASSED (the launcher-dialog fix works); listing, shop and Deals screens recorded.
 - 05-listings stopped at the last step: Home was still scrolled down from the listing step, so the "Property" tile was above the screen. Test fixed (scrolls up first). Not an app fault.
+
+## Task 23 — Phone alerts, app side (owner "go" for #2, 5 Nov 2026)
+- **Found on the website:** the database already writes alerts into `notifications` (price drop on a saved ad, new match for a saved search, ad approved/removed/in review, profile verified …) and already has a `push_tokens` table (migration 009). Missing: something that sends them to the phone.
+- **App files:** `src/lib/push.ts` (new); `_layout.tsx` (keeps the token saved, opens the right screen when an alert is tapped — same targets as the Notifications list); the phone asks permission once, at a moment that explains itself: saving an ad, saving a search, or opening Notifications; Sign out removes this phone's token first.
+- **Switched off** until the build has Firebase settings: CI writes `google-services.json` from the GitHub secret `GOOGLE_SERVICES_JSON` (file is git-ignored). Without it the build is unchanged and no permission is asked.
+- **BLOCKED on owner:** Firebase project. Then: the sender (staging Supabase first) and #5 Wanted matching (new database rule, SQL).

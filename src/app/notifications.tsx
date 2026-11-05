@@ -8,6 +8,7 @@ import { AppText, Button, Icon } from '@/components/ui';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { useAuth } from '@/auth/session';
+import { askForPush } from '@/lib/push';
 import { clearNotifications, fetchNotifications, markAllRead, noticeTarget, type Notice } from '@/api/account';
 import { agoLabel } from '@/core/freshness';
 import { SITE_URL } from '@/lib/site';
@@ -19,6 +20,9 @@ export default function Notifications() {
   const qc = useQueryClient();
   const q = useQuery({ queryKey: ['notices', user?.id], queryFn: () => fetchNotifications(user!.id), enabled: !!user });
   const unread = (q.data ?? []).filter((n) => !n.read_at).length;
+
+  // Someone opening their notifications is a good moment to offer the same alerts on the phone (asked once).
+  useEffect(() => { if (user) askForPush(user.id); }, [user]);
 
   useEffect(() => {
     if (user && unread > 0) markAllRead(user.id).then(() => qc.invalidateQueries({ queryKey: ['unread', user.id] })).catch(() => {});

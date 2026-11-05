@@ -3,6 +3,8 @@ import { Alert, Pressable, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
 import { AppText, Icon } from '@/components/ui';
 import { useSaved } from '@/auth/mine';
+import { useAuth } from '@/auth/session';
+import { askForPush } from '@/lib/push';
 import { colors, radius, size, space } from '@/theme/tokens';
 
 const askSignIn = (text: string) =>
@@ -11,10 +13,12 @@ const askSignIn = (text: string) =>
 /** Heart on a listing (website: FavoriteButton). */
 export function SaveButton({ adId, overlay }: { adId: string; overlay?: boolean }) {
   const { signedIn, saved, toggle } = useSaved();
+  const { user } = useAuth();
   const on = saved.ads.has(adId);
   const press = () => {
     if (!signedIn) return askSignIn('Sign in to save favorites.');
-    toggle.mutate({ adId }, { onError: (e) => Alert.alert('Saved', (e as Error).message || 'Unable to update favorite.') });
+    // Saving an ad is when a price-drop alert makes sense, so that is when the phone asks (once).
+    toggle.mutate({ adId }, { onSuccess: () => { if (!on && user) askForPush(user.id); }, onError: (e) => Alert.alert('Saved', (e as Error).message || 'Unable to update favorite.') });
   };
   return (
     <Pressable accessibilityRole="button" accessibilityLabel={on ? 'Remove favorite' : 'Save favorite'} accessibilityState={{ selected: on, busy: toggle.isPending }}

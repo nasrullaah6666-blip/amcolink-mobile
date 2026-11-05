@@ -11,6 +11,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchBlockedShops } from '@/api/me';
 import { db } from '@/api/db';
 import { config } from '@/lib/config';
+import { forgetPush } from '@/lib/push';
 import { CONTACT_EMAIL, SITE_URL } from '@/lib/site';
 import { colors, radius, size, space } from '@/theme/tokens';
 
@@ -69,7 +70,7 @@ export default function AccountScreen() {
 
   const signOut = async () => {
     setBusy(true);
-    try { await db().auth.signOut(); } finally { setBusy(false); }
+    try { await forgetPush(); await db().auth.signOut(); } finally { setBusy(false); }
   };
 
   return (
