@@ -7,6 +7,7 @@ import { ScreenHeader } from '@/components/ScreenHeader';
 import { ListingGrid } from '@/components/ListingGrid';
 import { ChipRow } from '@/components/ChipRow';
 import { SearchField } from '@/components/SearchField';
+import { SaveSearchButton } from '@/components/SaveSearchButton';
 import { Empty } from '@/components/States';
 import { fetchCategory, type CategoryFilters } from '@/api/listings';
 import { categoryByName, categoryBySlug, oldSlug, SHARED_SUBS } from '@/core/categories';
@@ -22,11 +23,11 @@ const SORTS = [
 /** One category (website: app/category/[slug]). Sub-category chips, search inside the category, sorting. */
 export default function CategoryScreen() {
   const { name: country } = useCountry();
-  const { slug, sub: subParam } = useLocalSearchParams<{ slug: string; sub?: string }>();
+  const { slug, sub: subParam, q: qParam } = useLocalSearchParams<{ slug: string; sub?: string; q?: string }>();
   const old = oldSlug(String(slug)); // old website links still work, as on the website
   const cat = categoryBySlug(String(slug)) ?? categoryBySlug(old?.slug);
   const [sub, setSub] = useState(String(subParam ?? old?.sub ?? ''));
-  const [q, setQ] = useState('');
+  const [q, setQ] = useState(String(qParam ?? ''));
   const [sort, setSort] = useState('');
 
   if (!cat) {
@@ -42,7 +43,7 @@ export default function CategoryScreen() {
   const header = (
     <View style={styles.header}>
       <AppText variant="bodySmall" tone="secondary">{cat.blurb}</AppText>
-      <SearchField placeholder={`Search ${cat.short.toLowerCase()}…`} onSubmit={setQ} label={`Search in ${cat.label}`} />
+      <SearchField initial={q} placeholder={`Search ${cat.short.toLowerCase()}…`} onSubmit={setQ} label={`Search in ${cat.label}`} />
       {cat.subs.length ? (
         <ChipRow
           options={[{ value: '', label: 'All' }, ...cat.subs.map((s) => ({ value: s, label: s })), ...(SHARED_SUBS[cat.name] ?? []).map((x) => ({ value: `shared:${x.category}|${x.sub}`, label: x.label }))]}
@@ -60,6 +61,7 @@ export default function CategoryScreen() {
         />
       ) : null}
       <ChipRow options={SORTS} value={sort} onChange={setSort} />
+      {sub || q ? <SaveSearchButton key={`${sub}|${q}`} params={{ category: cat.name, sub, q }} /> : null}
     </View>
   );
 

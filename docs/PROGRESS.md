@@ -144,3 +144,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 17 — Categories follow the website (website commit d3ef747, deployed 5 Nov 2026)
 - `src/core/categories.ts` copied again: Vehicles + Trucks & buses (Parts first); Services + Printing & branding, Catering & food, Car services; shared tiles (Car services on Vehicles, Repairs & technicians on Phones) open the other category, as on the website.
 - Database lists updated on staging and production by the owner (migration 046 in the website repo).
+
+## Task 18 — Saved searches and alerts
+- **Files:** `src/components/SaveSearchButton.tsx`, saved-search functions in `src/api/me.ts`, Saved tab section, Save search on Search and on a filtered category page.
+- **Website rules kept (SaveSearchButton, SavedSearchList, app/favorites):** same label (`describeSearch`) and stored query (`searchParamsOf`, sort left out), so a search saved in the app opens on the website and the other way; bell turns alerts on/off; delete; property searches open Property.
+- **Alerts themselves** are sent by the existing database job as notifications (shown in the app's Notifications). Push to the phone is not built (needs your approval).
+- **Not yet on a device** (needs sign-in).

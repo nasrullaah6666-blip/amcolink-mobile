@@ -3,16 +3,59 @@ import { FlatList, Pressable, RefreshControl, StyleSheet, View } from 'react-nat
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
-import { AppText, Button } from '@/components/ui';
+import { AppText } from '@/components/ui';
 import { Photo } from '@/components/Photo';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { useAuth } from '@/auth/session';
-import { fetchSavedItems, type SavedItem } from '@/api/me';
+import { deleteSavedSearch, fetchSavedItems, fetchSavedSearches, setSearchAlerts, type SavedItem, type SavedSearch } from '@/api/me';
+import { categoryByName } from '@/core/categories';
+import { parseSearch } from '@/core/search';
+import { Icon } from '@/components/ui';
 import { dealPercent } from '@/core/freshness';
 import { formatPrice } from '@/core/utils';
 import { colors, radius, space } from '@/theme/tokens';
 
-/** Saved shops and listings (website: app/favorites). Saved searches come with the search-alerts task. */
+/** Opens a saved search on the screen that shows it (website: rentalsUrl / searchUrl). */
+function openSearch(x: SavedSearch) {
+  const q = x.query ?? {};
+  if (q.page === 'rentals') { router.push('/properties'); return; }
+  const s = parseSearch(q);
+  const cat = categoryByName(s.category);
+  if (cat) router.push({ pathname: '/category/[slug]', params: { slug: cat.slug, ...(s.sub ? { sub: s.sub } : {}), ...(s.q ? { q: s.q } : {}) } });
+  else router.push({ pathname: '/search', params: { q: s.q } });
+}
+
+function SavedSearches({ userId }: { userId: string }) {
+  const q = useQuery({ queryKey: ['saved-searches', userId], queryFn: () => fetchSavedSearches(userId) });
+  const items = q.data ?? [];
+  const run = async (fn: () => Promise<void>) => { try { await fn(); } finally { q.refetch(); } };
+  return (
+    <View style={styles.searches}>
+      <AppText variant="heading">Saved searches</AppText>
+      {q.isPending ? <Loading /> : items.length === 0 ? (
+        <AppText variant="bodySmall" tone="secondary">No saved searches yet. Search for something, then tap Save search.</AppText>
+      ) : items.map((x) => (
+        <View key={x.id} style={styles.searchRow}>
+          <Pressable accessibilityRole="button" accessibilityLabel={`Open saved search ${x.label}`} onPress={() => openSearch(x)} style={styles.flex}>
+            <AppText variant="label" numberOfLines={2}>{x.label}</AppText>
+            <AppText variant="caption" tone="secondary">{x.alerts_enabled === false ? 'Alerts off' : 'Alerts on'}</AppText>
+          </Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={x.alerts_enabled === false ? `Turn on alerts for ${x.label}` : `Turn off alerts for ${x.label}`}
+            onPress={() => run(() => setSearchAlerts(x.id, x.alerts_enabled === false))} style={styles.iconBtn}>
+            <Icon name="bell" size={20} strokeWidth={2} color={x.alerts_enabled === false ? colors.borderStrong : colors.green} />
+          </Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={`Delete saved search ${x.label}`} onPress={() => run(() => deleteSavedSearch(x.id))} style={styles.iconBtn}>
+            <AppText variant="label" tone="secondary">✕</AppText>
+          </Pressable>
+        </View>
+      ))}
+      {items.length ? <AppText variant="caption" tone="secondary">When a new listing matches a saved search, you get a notification. Tap the bell to turn alerts on or off.</AppText> : null}
+      <AppText variant="heading" style={styles.second}>Favourite shops &amp; listings</AppText>
+    </View>
+  );
+}
+
+/** Saved searches, shops and listings (website: app/favorites). */
 export default function SavedScreen() {
   const { ready, user } = useAuth();
   const q = useQuery({ queryKey: ['saved-items', user?.id], queryFn: () => fetchSavedItems(user!.id), enabled: !!user });
@@ -35,6 +78,7 @@ export default function SavedScreen() {
           data={q.data ?? []}
           keyExtractor={(f) => f.id}
           contentContainerStyle={styles.list}
+          ListHeaderComponent={<SavedSearches userId={user.id} />}
           refreshControl={<RefreshControl refreshing={q.isRefetching} onRefresh={() => q.refetch()} tintColor={colors.green} colors={[colors.green]} />}
           ListEmptyComponent={q.isPending ? <Loading /> : q.isError ? <ErrorState message={(q.error as Error).message} onRetry={() => q.refetch()} /> :
             <Empty title="Nothing saved yet" hint="Tap the heart on a listing to keep it here." />}
@@ -67,6 +111,10 @@ const styles = StyleSheet.create({
   pad: { padding: space.lg },
   list: { padding: space.lg, gap: space.sm + 2 },
   row: { flexDirection: 'row', alignItems: 'center', gap: space.md, padding: space.md, borderRadius: radius.lg, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.surface },
+  searches: { gap: space.sm, marginBottom: space.sm },
+  searchRow: { flexDirection: 'row', alignItems: 'center', gap: space.sm, padding: space.md, borderRadius: radius.lg, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.surface },
+  iconBtn: { width: 44, height: 44, alignItems: 'center', justifyContent: 'center' },
+  second: { marginTop: space.md },
   thumb: { width: 56, height: 56, borderRadius: radius.md },
   flex: { flex: 1, gap: 2 },
 });

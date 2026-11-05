@@ -82,3 +82,22 @@ export async function fetchBlockedShops(userId: string, c: SupabaseClient = db()
   const rows = must(await c.from('blocked_shops').select('shop_id, shops(id,name,slug)').eq('user_id', userId).order('created_at', { ascending: false }).limit(200)) as unknown as { shops: unknown }[];
   return rows.map((b) => (Array.isArray(b.shops) ? b.shops[0] : b.shops)).filter(Boolean) as { id: string; name: string; slug: string }[];
 }
+
+/** Saved searches (website: SaveSearchButton, SavedSearchList). The database fills user_id itself. */
+export type SavedSearch = { id: string; label: string; query: Record<string, string>; alerts_enabled: boolean };
+
+export async function fetchSavedSearches(userId: string, c: SupabaseClient = db()): Promise<SavedSearch[]> {
+  return must(await c.from('saved_searches').select('id,label,query,alerts_enabled').eq('user_id', userId).order('created_at', { ascending: false })) as SavedSearch[];
+}
+export async function saveSearch(label: string, query: Record<string, string>, c: SupabaseClient = db()) {
+  const { error } = await c.from('saved_searches').insert({ label: label.slice(0, 80), query });
+  if (error) throw new Error(error.message);
+}
+export async function setSearchAlerts(id: string, on: boolean, c: SupabaseClient = db()) {
+  const { error } = await c.from('saved_searches').update({ alerts_enabled: on }).eq('id', id);
+  if (error) throw new Error(error.message);
+}
+export async function deleteSavedSearch(id: string, c: SupabaseClient = db()) {
+  const { error } = await c.from('saved_searches').delete().eq('id', id);
+  if (error) throw new Error(error.message);
+}

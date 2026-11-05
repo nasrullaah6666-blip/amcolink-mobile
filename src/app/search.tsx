@@ -5,6 +5,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { ListingGrid } from '@/components/ListingGrid';
 import { SearchField } from '@/components/SearchField';
+import { SaveSearchButton } from '@/components/SaveSearchButton';
 import { Empty } from '@/components/States';
 import { fetchSearch } from '@/api/listings';
 import { useCountry } from '@/lib/countryPref';
@@ -21,6 +22,7 @@ export default function SearchScreen() {
       <View style={styles.box}><SearchField initial={q} onSubmit={setQ} /></View>
       {q ? (
         <ListingGrid
+          header={<View style={styles.save}><SaveSearchButton key={q} params={{ q }} /></View>}
           queryKey={['search', q, country ?? 'ALL']}
           load={(page) => fetchSearch(q, { page, country: country ?? undefined })}
           emptyTitle={`No results for "${q}"`}
@@ -36,4 +38,5 @@ export default function SearchScreen() {
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.background },
   box: { paddingHorizontal: space.lg, paddingBottom: space.md },
+  save: { paddingBottom: space.md },
 });
