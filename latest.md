@@ -1,5 +1,5 @@
-# Android test build 10
-commit: 1a8b7b6555742a16c6d916f3d205b406e5358cea
+# Android test build 11
+commit: b9ad6682718b8d507cca01bda21c1fa257bbd63b
 key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
 
 ## ci-logs/checks.log (last 120 lines)
@@ -35,12 +35,34 @@ PASS src/api/__tests__/account.test.ts
 Test Suites: 10 passed, 10 total
 Tests:       45 passed, 45 total
 Snapshots:   0 total
-Time:        5.901 s
+Time:        6.71 s
 Ran all test suites.
 ```
 
 ## ci-logs/gradle.log (last 120 lines)
 ```
+> Task :react-native-webview:mergeReleaseResources
+> Task :react-native-webview:verifyReleaseResources
+> Task :react-native-webview:assembleRelease
+> Task :react-native-worklets:bundleReleaseAar
+> Task :react-native-worklets:mapReleaseSourceSetPaths
+> Task :react-native-worklets:mergeReleaseResources
+> Task :react-native-worklets:verifyReleaseResources
+> Task :react-native-worklets:assembleRelease
+> Task :react-native-reanimated:buildCMakeRelWithDebInfo[x86][reanimated]
+> Task :react-native-reanimated:buildCMakeRelWithDebInfo[x86_64][reanimated]
+> Task :react-native-reanimated:externalNativeBuildRelease
+> Task :react-native-reanimated:prefabReleasePackage
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[arm64-v8a]
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[armeabi-v7a]
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[x86]
+> Task :react-native-gesture-handler:buildCMakeRelWithDebInfo[x86_64]
+> Task :react-native-gesture-handler:mergeReleaseNativeLibs
+> Task :react-native-gesture-handler:copyReleaseJniLibsProjectOnly
+> Task :react-native-reanimated:mergeReleaseNativeLibs
+> Task :react-native-reanimated:copyReleaseJniLibsProjectOnly
+
+> Task :react-native-reanimated:compileReleaseJavaWithJavac
 Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
@@ -54,13 +76,10 @@ w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-n
 w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:14:32 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
 w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/RNGestureHandlerModule.kt:173:53 This synthetic property is based on the getter function 'fun getRootViewTag(): Int' from Kotlin. In the future, synthetic properties will be available only if the base getter function came from Java. Consider replacing this property access with a 'getRootViewTag()' function call.
 
-> Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
 > Task :react-native-gesture-handler:compileReleaseJavaWithJavac
 > Task :react-native-gesture-handler:bundleLibRuntimeToDirRelease
+> Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
 > Task :react-native-reanimated:bundleLibRuntimeToDirRelease
-> Task :react-native-reanimated:extractDeepLinksRelease
-> Task :react-native-reanimated:processReleaseManifest
-> Task :react-native-reanimated:compileReleaseLibraryResources
 > Task :react-native-gesture-handler:bundleLibCompileToJarRelease
 > Task :react-native-reanimated:prepareReleaseArtProfile
 > Task :react-native-gesture-handler:bundleLibRuntimeToJarRelease
@@ -100,7 +119,6 @@ w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-n
 > Task :react-native-gesture-handler:generateReleaseLintVitalModel
 > Task :react-native-reanimated:generateReleaseLintVitalModel
 > Task :react-native-gesture-handler:bundleReleaseAar
-> Task :react-native-gesture-handler:verifyReleaseResources
 > Task :react-native-gesture-handler:assembleRelease
 > Task :react-native-reanimated:bundleReleaseAar
 > Task :react-native-reanimated:mapReleaseSourceSetPaths
@@ -110,43 +128,25 @@ w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-n
 > Task :app:buildCMakeRelWithDebInfo[armeabi-v7a]
 > Task :app:buildCMakeRelWithDebInfo[x86]
 > Task :app:buildCMakeRelWithDebInfo[x86_64]
-
-> Task :app:processReleaseMainManifest
-/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml:4:3-88 Warning:
-	uses-permission#android.permission.RECORD_AUDIO was tagged at AndroidManifest.xml:4 to remove other declarations but no other declaration present
-/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
-	provider#expo.modules.filesystem.FileSystemFileProvider@android:authorities was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
-/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
-	activity#expo.modules.imagepicker.ExpoCropImageActivity@android:exported was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
-
-> Task :app:expoReleaseOverrideMaxSdkConflicts
-[33m---------- Expo Max Sdk Override Plugin ----------[0m
-[32m>>> No 'android:maxSdkVersion' conflicts found[0m
-[33m--------------------------------------------------[0m
-
-> Task :app:processReleaseManifest
-> Task :app:processReleaseManifestForPackage
-> Task :app:processReleaseResources
-> Task :app:mergeReleaseNativeLibs
 > Task :app:compileReleaseKotlin
-> Task :app:stripReleaseDebugSymbols
 > Task :app:compileReleaseJavaWithJavac
-> Task :app:extractReleaseNativeSymbolTables
 > Task :app:dexBuilderRelease
-> Task :app:mergeReleaseNativeDebugMetadata
-> Task :app:mergeReleaseArtProfile
+> Task :app:mergeReleaseNativeLibs
 > Task :app:mergeDexRelease
+> Task :app:mergeReleaseArtProfile
+> Task :app:stripReleaseDebugSymbols
 > Task :app:mergeReleaseGlobalSynthetics
+> Task :app:compileReleaseArtProfile
 > Task :app:mergeReleaseAssets
 > Task :app:compressReleaseAssets
+> Task :app:extractReleaseNativeSymbolTables
 > Task :app:generateReleaseLintVitalReportModel
-> Task :app:compileReleaseArtProfile
-> Task :app:processReleaseJavaRes
 > Task :app:lintVitalAnalyzeRelease
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:processReleaseJavaRes
 > Task :app:lintVitalReportRelease
 > Task :app:lintVitalRelease
 > Task :app:mergeReleaseJavaResource
-> Task :app:optimizeReleaseResources
 > Task :app:packageRelease
 > Task :app:createReleaseApkListingFileRedirect
 > Task :app:assembleRelease
@@ -159,7 +159,7 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 25m 32s
+BUILD SUCCESSFUL in 25m 25s
 655 actionable tasks: 655 executed
 ```
 
@@ -219,32 +219,32 @@ Run `npm audit` for details.
 > amcolink-mobile@1.0.0 test:integration
 > jest --ci -c jest.integration.config.js
 
-PASS integration/staging.test.ts (7.498 s)
-  ✓ signed-out visitors can read approved shops and published ads (941 ms)
-  ✓ the countries list is available (243 countries on staging) (377 ms)
-  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (158 ms)
-  ✓ signed-out visitors can read the public Wanted columns (182 ms)
-  ✓ signed-out visitors cannot create a shop (249 ms)
-  ✓ signed-out visitors cannot create a report (183 ms)
-  ✓ signed-out visitors cannot use admin functions (318 ms)
-  ✓ public trending lists can be read signed out (170 ms)
-  ✓ sign-up without the security check is refused (CAPTCHA is on) (175 ms)
-  ✓ notifications are private (146 ms)
-  ✓ app query: latest finds runs on staging (299 ms)
-  ✓ app query: category page with every filter runs on staging (283 ms)
-  ✓ app query: properties for rent and for sale run on staging (313 ms)
-  ✓ app query: search runs on staging (143 ms)
-  ✓ app query: Explore collections run on staging (572 ms)
-  ✓ app query: shop profile lookup and trust run on staging (274 ms)
-  ✓ signed-out visitors cannot save, block or read other people's saved items (414 ms)
-  ✓ signed-out visitors cannot post an ad or upload a photo (439 ms)
-  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (148 ms)
-  ✓ app query: Wanted list runs on staging as a visitor (139 ms)
+PASS integration/staging.test.ts (8.289 s)
+  ✓ signed-out visitors can read approved shops and published ads (1115 ms)
+  ✓ the countries list is available (243 countries on staging) (409 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (162 ms)
+  ✓ signed-out visitors can read the public Wanted columns (172 ms)
+  ✓ signed-out visitors cannot create a shop (161 ms)
+  ✓ signed-out visitors cannot create a report (168 ms)
+  ✓ signed-out visitors cannot use admin functions (316 ms)
+  ✓ public trending lists can be read signed out (146 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (144 ms)
+  ✓ notifications are private (160 ms)
+  ✓ app query: latest finds runs on staging (300 ms)
+  ✓ app query: category page with every filter runs on staging (351 ms)
+  ✓ app query: properties for rent and for sale run on staging (355 ms)
+  ✓ app query: search runs on staging (169 ms)
+  ✓ app query: Explore collections run on staging (624 ms)
+  ✓ app query: shop profile lookup and trust run on staging (323 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (458 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (305 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (138 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (191 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       20 passed, 20 total
 Snapshots:   0 total
-Time:        7.564 s
+Time:        8.362 s
 Ran all test suites.
 ```
 
