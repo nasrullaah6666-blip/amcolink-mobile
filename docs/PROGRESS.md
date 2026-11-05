@@ -216,3 +216,12 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Test run — build 19 (commit ed08721)
 - Stopped at the checks: one unit test still expected Wanted alerts to open the website; they now open the app's Wanted list (my change, test not re-run). Test updated; full checks 56/56 run before pushing again.
+
+## Test run — build 20 (commit after ed08721, unit-test fix)
+- Unit 56/56, staging tests passed, APK `test-build-20`. Emulator 5/6: 01, 02, 04, 05 (full), 06 Status share PASSED.
+- **03-account cause found (new full log):** the emulator's Google Play services crashed ("com.google.android.gms … has died") and Android closed our app because its sign-in security check (web view) was using a font service from Google Play services. The crash log is empty — the app itself did not crash. The flow now tries once more when this happens. Worth a real-phone check: Sign in → Forgot password → Back to sign in.
+
+## Task 24 — Phone alerts sender (prepared, not set up)
+- `server/push-sender/index.ts`: Supabase Edge Function "push". A Database Webhook on new `notifications` rows calls it; it sends the alert to that person's phones via Firebase. It does not decide who gets alerts (the database does), re-reads the row by id (payload not trusted), only sends rows under 10 minutes old, needs a secret header, forgets tokens of uninstalled apps.
+- Owner: Firebase project created and `GOOGLE_SERVICES_JSON` GitHub secret added (5 Nov) → builds from now on have phone alerts switched on.
+- **Next owner steps (staging first):** service-account key and webhook secret as Supabase secrets, create the function, create the webhook.
