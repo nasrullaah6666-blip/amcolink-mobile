@@ -328,3 +328,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/components/PropertyFiltersButton.tsx`, `src/components/RentalAlertButton.tsx`, Property screen, `fetchProperties` filters.
 - **Website rules kept (PropertyMarket, RentalAlertButton):** bedrooms (studio, 1, 2, 3, 4+), furnished, rent period and owner/agent (rent only), price range; "Alert me" saves the same query (`page: rentals`, `deal: sale` for sale) and the same label, so the database's alert rule matches it; asks for phone alerts at that moment.
 - **Not yet:** opening a saved property search from Saved restores its filters (it opens the Property screen).
+
+## Test run — build 28 (tasks 36–38)
+- Unit, staging tests passed, APK `test-build-28`. **Emulator 6/6 PASSED.**
