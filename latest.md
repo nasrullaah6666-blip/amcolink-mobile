@@ -1,6 +1,6 @@
-# Android test build 23
-commit: 81ec226721fdb7c30d1e88cc96c5a231c62f57b0
-key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
+# Android test build 24
+commit: ca051368c35825b2f888aedb21fd7ec84bcd54bc
+key: success | install: success | checks: success | integration: success | prebuild: success | gradle: cancelled | release: skipped
 
 ## ci-logs/checks.log (last 120 lines)
 ```
@@ -23,7 +23,7 @@ design check ok: all colours come from src/theme/tokens.ts
 
 PASS src/api/__tests__/postAd.test.ts
 PASS src/api/__tests__/listings.test.ts
-PASS src/components/__tests__/AuthForm.test.tsx (5.67 s)
+PASS src/components/__tests__/AuthForm.test.tsx (5.704 s)
 PASS src/lib/__tests__/config.test.ts
 PASS src/api/__tests__/me.test.ts
 PASS src/lib/__tests__/secureStorage.test.ts
@@ -60,132 +60,132 @@ PASS src/api/__tests__/account.test.ts
 Test Suites: 12 passed, 12 total
 Tests:       56 passed, 56 total
 Snapshots:   0 total
-Time:        11.286 s
+Time:        11.399 s
 Ran all test suites.
 ```
 
 ## ci-logs/gradle.log (last 120 lines)
 ```
-> Task :react-native-reanimated:compileReleaseJavaWithJavac
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopLoadingProgressEvent.kt:22:42 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopLoadingProgressEvent.kt:23:21 'fun receiveEvent(targetTag: Int, eventName: String, params: WritableMap?): Unit' is deprecated. Use [RCTModernEventEmitter.receiveEvent] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopLoadingStartEvent.kt:5:8 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopLoadingStartEvent.kt:11:3 'constructor<T : Event<T>>(viewTag: Int): Event<T>' is deprecated. Use constructor with explicit surfaceId instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopLoadingStartEvent.kt:22:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopLoadingStartEvent.kt:22:42 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopLoadingStartEvent.kt:23:21 'fun receiveEvent(targetTag: Int, eventName: String, params: WritableMap?): Unit' is deprecated. Use [RCTModernEventEmitter.receiveEvent] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopMessageEvent.kt:5:8 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopMessageEvent.kt:10:75 'constructor<T : Event<T>>(viewTag: Int): Event<T>' is deprecated. Use constructor with explicit surfaceId instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopMessageEvent.kt:21:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopMessageEvent.kt:21:42 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopMessageEvent.kt:22:21 'fun receiveEvent(targetTag: Int, eventName: String, params: WritableMap?): Unit' is deprecated. Use [RCTModernEventEmitter.receiveEvent] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopNewWindowEvent.kt:5:8 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopNewWindowEvent.kt:11:3 'constructor<T : Event<T>>(viewTag: Int): Event<T>' is deprecated. Use constructor with explicit surfaceId instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopNewWindowEvent.kt:22:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopNewWindowEvent.kt:22:42 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopNewWindowEvent.kt:23:21 'fun receiveEvent(targetTag: Int, eventName: String, params: WritableMap?): Unit' is deprecated. Use [RCTModernEventEmitter.receiveEvent] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopRenderProcessGoneEvent.kt:5:8 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopRenderProcessGoneEvent.kt:12:3 'constructor<T : Event<T>>(viewTag: Int): Event<T>' is deprecated. Use constructor with explicit surfaceId instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopRenderProcessGoneEvent.kt:23:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopRenderProcessGoneEvent.kt:23:42 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopRenderProcessGoneEvent.kt:24:21 'fun receiveEvent(targetTag: Int, eventName: String, params: WritableMap?): Unit' is deprecated. Use [RCTModernEventEmitter.receiveEvent] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopShouldStartLoadWithRequestEvent.kt:5:8 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopShouldStartLoadWithRequestEvent.kt:10:89 'constructor<T : Event<T>>(viewTag: Int): Event<T>' is deprecated. Use constructor with explicit surfaceId instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopShouldStartLoadWithRequestEvent.kt:27:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopShouldStartLoadWithRequestEvent.kt:27:42 'interface RCTEventEmitter : JavaScriptModule' is deprecated. Use [RCTModernEventEmitter] instead.
+w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/events/TopShouldStartLoadWithRequestEvent.kt:28:21 'fun receiveEvent(targetTag: Int, eventName: String, params: WritableMap?): Unit' is deprecated. Use [RCTModernEventEmitter.receiveEvent] instead.
+
+> Task :react-native-webview:javaPreCompileRelease
+
+> Task :react-native-webview:compileReleaseJavaWithJavac
 Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
-Note: Some input files use unchecked or unsafe operations.
+
+> Task :react-native-webview:bundleLibRuntimeToDirRelease
+> Task :react-native-async-storage_async-storage:generateReleaseBuildConfig
+> Task :react-native-async-storage_async-storage:generateReleaseResValues
+> Task :react-native-async-storage_async-storage:generateReleaseResources
+> Task :react-native-async-storage_async-storage:packageReleaseResources
+> Task :react-native-async-storage_async-storage:parseReleaseLocalResources
+> Task :react-native-async-storage_async-storage:generateReleaseRFile
+> Task :react-native-async-storage_async-storage:javaPreCompileRelease
+
+> Task :react-native-async-storage_async-storage:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/@react-native-async-storage/async-storage/android/src/javaPackage/java/com/reactnativecommunity/asyncstorage/AsyncStoragePackage.java uses unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 
-> Task :react-native-reanimated:bundleLibCompileToJarRelease
+> Task :react-native-async-storage_async-storage:bundleLibRuntimeToDirRelease
+> Task :expo:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo:generateReleaseBuildConfig
+> Task :expo:generateReleaseResValues
+> Task :expo:generateReleaseResources
+> Task :expo:packageReleaseResources
+> Task :expo:parseReleaseLocalResources
+> Task :expo:generateReleaseRFile
+> Task :expo-constants:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-constants:generateReleaseBuildConfig
+> Task :expo-constants:generateReleaseResValues
+> Task :expo-constants:generateReleaseResources
+> Task :expo-constants:packageReleaseResources
+> Task :expo-constants:parseReleaseLocalResources
+> Task :expo-constants:generateReleaseRFile
+> Task :expo-modules-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-modules-core:generateReleaseBuildConfig
+> Task :expo-modules-core:generateReleaseResValues
+> Task :expo-modules-core:generateReleaseResources
+> Task :expo-modules-core:packageReleaseResources
+> Task :expo-modules-core:parseReleaseLocalResources
+> Task :expo-modules-core:generateReleaseRFile
+> Task :expo-modules-core:javaPreCompileRelease
+> Task :expo-constants:javaPreCompileRelease
+> Task :expo-log-box:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-log-box:generateReleaseBuildConfig
+> Task :expo-log-box:generateReleaseResValues
+> Task :expo-log-box:generateReleaseResources
+> Task :expo-log-box:packageReleaseResources
+> Task :expo-log-box:parseReleaseLocalResources
+> Task :expo-log-box:generateReleaseRFile
+> Task :expo-log-box:javaPreCompileRelease
+> Task :expo:javaPreCompileRelease
+> Task :react-native-svg:bundleLibRuntimeToDirRelease
+> Task :react-native-view-shot:generateReleaseBuildConfig
+> Task :react-native-view-shot:generateReleaseResValues
+> Task :react-native-view-shot:generateReleaseResources
+> Task :react-native-view-shot:packageReleaseResources
+> Task :react-native-view-shot:parseReleaseLocalResources
+> Task :react-native-view-shot:generateReleaseRFile
+> Task :react-native-view-shot:javaPreCompileRelease
 
-> Task :react-native-gesture-handler:compileReleaseKotlin
-w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:8:8 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:13:29 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/Extensions.kt:14:32 'class UIManagerModule : ReactContextBaseJavaModule, OnBatchCompleteListener, LifecycleEventListener, UIManager' is deprecated. Deprecated in Java.
-w: file:///home/runner/work/amcolink-mobile/amcolink-mobile/node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/RNGestureHandlerModule.kt:173:53 This synthetic property is based on the getter function 'fun getRootViewTag(): Int' from Kotlin. In the future, synthetic properties will be available only if the base getter function came from Java. Consider replacing this property access with a 'getRootViewTag()' function call.
+> Task :react-native-view-shot:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
 
-> Task :react-native-gesture-handler:compileReleaseJavaWithJavac
-> Task :react-native-gesture-handler:bundleLibRuntimeToDirRelease
-> Task :react-native-reanimated:bundleLibRuntimeToDirRelease
-> Task :react-native-reanimated:extractDeepLinksRelease
-> Task :react-native-reanimated:processReleaseManifest
-> Task :react-native-reanimated:compileReleaseLibraryResources
-> Task :react-native-gesture-handler:bundleLibCompileToJarRelease
-> Task :react-native-reanimated:prepareReleaseArtProfile
-> Task :react-native-gesture-handler:bundleLibRuntimeToJarRelease
-> Task :react-native-reanimated:bundleLibRuntimeToJarRelease
-> Task :react-native-reanimated:mergeReleaseShaders
-> Task :react-native-reanimated:compileReleaseShaders NO-SOURCE
-> Task :react-native-reanimated:generateReleaseAssets UP-TO-DATE
-> Task :react-native-reanimated:mergeReleaseAssets
-> Task :react-native-gesture-handler:processReleaseJavaRes
-> Task :react-native-gesture-handler:createFullJarRelease
-> Task :react-native-reanimated:processReleaseJavaRes NO-SOURCE
-> Task :react-native-reanimated:createFullJarRelease
-> Task :react-native-reanimated:extractProguardFiles
-> Task :react-native-reanimated:generateReleaseLintModel
-> Task :react-native-reanimated:prepareLintJarForPublish
-> Task :react-native-gesture-handler:generateReleaseLintModel
-> Task :react-native-gesture-handler:stripReleaseDebugSymbols
-> Task :react-native-gesture-handler:copyReleaseJniLibsProjectAndLocalJars
-> Task :react-native-gesture-handler:extractReleaseAnnotations
-> Task :react-native-gesture-handler:mergeReleaseGeneratedProguardFiles
-> Task :react-native-gesture-handler:mergeReleaseConsumerProguardFiles
-> Task :react-native-gesture-handler:mergeReleaseJavaResource
-> Task :react-native-gesture-handler:syncReleaseLibJars
-> Task :react-native-gesture-handler:bundleReleaseLocalLintAar
-> Task :react-native-reanimated:stripReleaseDebugSymbols
-> Task :react-native-reanimated:copyReleaseJniLibsProjectAndLocalJars
-> Task :react-native-reanimated:extractDeepLinksForAarRelease
-> Task :react-native-reanimated:extractReleaseAnnotations
-> Task :react-native-reanimated:mergeReleaseGeneratedProguardFiles
-> Task :react-native-reanimated:mergeReleaseConsumerProguardFiles
-> Task :react-native-reanimated:mergeReleaseJavaResource
-> Task :react-native-reanimated:syncReleaseLibJars
-> Task :react-native-reanimated:bundleReleaseLocalLintAar
-> Task :react-native-reanimated:writeReleaseLintModelMetadata
-> Task :react-native-gesture-handler:lintVitalAnalyzeRelease
-> Task :react-native-reanimated:lintVitalAnalyzeRelease
-> Task :react-native-gesture-handler:generateReleaseLintVitalModel
-> Task :react-native-reanimated:generateReleaseLintVitalModel
-> Task :react-native-gesture-handler:bundleReleaseAar
-> Task :react-native-gesture-handler:verifyReleaseResources
-> Task :react-native-gesture-handler:assembleRelease
-> Task :react-native-reanimated:bundleReleaseAar
-> Task :react-native-reanimated:mapReleaseSourceSetPaths
-> Task :react-native-reanimated:mergeReleaseResources
-> Task :react-native-reanimated:verifyReleaseResources
-> Task :react-native-reanimated:assembleRelease
-> Task :app:buildCMakeRelWithDebInfo[armeabi-v7a]
-> Task :app:buildCMakeRelWithDebInfo[x86]
-> Task :app:buildCMakeRelWithDebInfo[x86_64]
+> Task :react-native-view-shot:bundleLibRuntimeToDirRelease
+> Task :app:checkReleaseDuplicateClasses
+> Task :app:buildKotlinToolingMetadata
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:generateReleaseBuildConfig
+> Task :expo:writeReleaseAarMetadata
+> Task :expo-constants:writeReleaseAarMetadata
+> Task :expo-log-box:writeReleaseAarMetadata
+> Task :expo-modules-core:writeReleaseAarMetadata
+> Task :react-native-async-storage_async-storage:writeReleaseAarMetadata
+> Task :react-native-gesture-handler:writeReleaseAarMetadata
+> Task :react-native-reanimated:writeReleaseAarMetadata
+> Task :react-native-safe-area-context:writeReleaseAarMetadata
+> Task :react-native-screens:writeReleaseAarMetadata
+> Task :react-native-svg:writeReleaseAarMetadata
+> Task :react-native-view-shot:writeReleaseAarMetadata
+> Task :react-native-webview:writeReleaseAarMetadata
 
-> Task :app:processReleaseMainManifest
-/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml:4:3-88 Warning:
-	uses-permission#android.permission.RECORD_AUDIO was tagged at AndroidManifest.xml:4 to remove other declarations but no other declaration present
-/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
-	provider#expo.modules.filesystem.FileSystemFileProvider@android:authorities was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
-/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
-	activity#expo.modules.imagepicker.ExpoCropImageActivity@android:exported was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
+> Task :app:createBundleReleaseJsAndAssets
+Using src/app as the root directory for Expo Router.
+React Compiler enabled
+Starting Metro Bundler
 
-> Task :app:expoReleaseOverrideMaxSdkConflicts
-[33m---------- Expo Max Sdk Override Plugin ----------[0m
-[32m>>> No 'android:maxSdkVersion' conflicts found[0m
-[33m--------------------------------------------------[0m
 
-> Task :app:processReleaseManifest
-> Task :app:processReleaseManifestForPackage
-> Task :app:processReleaseResources
-> Task :app:mergeReleaseNativeLibs
-> Task :app:compileReleaseKotlin
-> Task :app:stripReleaseDebugSymbols
-> Task :app:compileReleaseJavaWithJavac
-> Task :app:extractReleaseNativeSymbolTables
-> Task :app:dexBuilderRelease
-> Task :app:mergeReleaseNativeDebugMetadata
-> Task :app:mergeReleaseArtProfile
-> Task :app:mergeDexRelease
-> Task :app:mergeReleaseGlobalSynthetics
-> Task :app:mergeReleaseAssets
-> Task :app:compressReleaseAssets
-> Task :app:generateReleaseLintVitalReportModel
-> Task :app:compileReleaseArtProfile
-> Task :app:processReleaseJavaRes
-> Task :app:lintVitalAnalyzeRelease
-> Task :app:lintVitalReportRelease
-> Task :app:lintVitalRelease
-> Task :app:mergeReleaseJavaResource
-> Task :app:optimizeReleaseResources
-> Task :app:packageRelease
-> Task :app:createReleaseApkListingFileRedirect
-> Task :app:assembleRelease
-
-[Incubating] Problems report is available at: file:///home/runner/work/amcolink-mobile/amcolink-mobile/android/build/reports/problems/problems-report.html
-
-Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
-
-You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
-
-For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
-
-BUILD SUCCESSFUL in 46m 59s
-697 actionable tasks: 697 executed
+> Task :react-native-worklets:buildCMakeRelWithDebInfo[x86][worklets]
 ```
 
 ## ci-logs/install.log (last 120 lines)
@@ -222,7 +222,7 @@ npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and cont
 npm warn deprecated whatwg-encoding@2.0.0: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 npm warn deprecated domexception@4.0.0: Use your platform's native DOMException instead
 
-added 958 packages, and audited 959 packages in 20s
+added 958 packages, and audited 959 packages in 21s
 
 89 packages are looking for funding
   run `npm fund` for details
@@ -244,34 +244,34 @@ Run `npm audit` for details.
 > amcolink-mobile@1.0.0 test:integration
 > jest --ci -c jest.integration.config.js
 
-PASS integration/staging.test.ts (13.318 s)
-  ✓ signed-out visitors can read approved shops and published ads (823 ms)
-  ✓ the countries list is available (243 countries on staging) (322 ms)
-  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (329 ms)
-  ✓ signed-out visitors can read the public Wanted columns (325 ms)
-  ✓ signed-out visitors cannot create a shop (330 ms)
-  ✓ signed-out visitors cannot create a report (333 ms)
-  ✓ signed-out visitors cannot use admin functions (645 ms)
-  ✓ public trending lists can be read signed out (350 ms)
-  ✓ sign-up without the security check is refused (CAPTCHA is on) (318 ms)
-  ✓ notifications are private (117 ms)
-  ✓ app query: latest finds runs on staging (644 ms)
-  ✓ app query: category page with every filter runs on staging (488 ms)
-  ✓ app query: properties for rent and for sale run on staging (637 ms)
-  ✓ app query: search runs on staging (134 ms)
-  ✓ app query: Explore collections run on staging (665 ms)
-  ✓ app query: shop profile lookup and trust run on staging (645 ms)
-  ✓ signed-out visitors cannot save, block or read other people's saved items (929 ms)
-  ✓ signed-out visitors cannot post an ad or upload a photo (481 ms)
-  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (310 ms)
-  ✓ app query: Wanted list runs on staging as a visitor (319 ms)
-  ✓ app query: Gifts and Trending run on staging as a visitor (1094 ms)
-  ✓ reviews: visitors can read them and are told to sign in before reviewing (420 ms)
+PASS integration/staging.test.ts (11.528 s)
+  ✓ signed-out visitors can read approved shops and published ads (900 ms)
+  ✓ the countries list is available (243 countries on staging) (195 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (485 ms)
+  ✓ signed-out visitors can read the public Wanted columns (506 ms)
+  ✓ signed-out visitors cannot create a shop (175 ms)
+  ✓ signed-out visitors cannot create a report (169 ms)
+  ✓ signed-out visitors cannot use admin functions (365 ms)
+  ✓ public trending lists can be read signed out (176 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (165 ms)
+  ✓ notifications are private (185 ms)
+  ✓ app query: latest finds runs on staging (352 ms)
+  ✓ app query: category page with every filter runs on staging (361 ms)
+  ✓ app query: properties for rent and for sale run on staging (326 ms)
+  ✓ app query: search runs on staging (197 ms)
+  ✓ app query: Explore collections run on staging (737 ms)
+  ✓ app query: shop profile lookup and trust run on staging (617 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (530 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (434 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (165 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (174 ms)
+  ✓ app query: Gifts and Trending run on staging as a visitor (1020 ms)
+  ✓ reviews: visitors can read them and are told to sign in before reviewing (590 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       22 passed, 22 total
 Snapshots:   0 total
-Time:        13.424 s
+Time:        11.631 s
 Ran all test suites.
 ```
 
