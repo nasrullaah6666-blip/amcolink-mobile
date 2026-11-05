@@ -1,6 +1,6 @@
-# Android test build 29
-commit: 020751f8ae79d3e05a3c2dd3c72eebd2a5e387fd
-key: success | install: success | checks: success | integration: success | prebuild: success | gradle: cancelled | release: skipped
+# Android test build 30
+commit: 446d9d990535749767c17602df109f5c1cb1635a
+key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
 
 ## ci-logs/checks.log (last 120 lines)
 ```
@@ -58,137 +58,137 @@ PASS src/lib/__tests__/priceDrops.test.ts
 PASS src/core/__tests__/shopEdit.test.ts
 PASS src/lib/__tests__/recent.test.ts
 PASS src/api/__tests__/account.test.ts
-PASS src/components/__tests__/filters.test.ts
+PASS src/components/__tests__/filters.test.ts (5.252 s)
 
 Test Suites: 15 passed, 15 total
 Tests:       61 passed, 61 total
 Snapshots:   0 total
-Time:        12.575 s
+Time:        14.643 s
 Ran all test suites.
 ```
 
 ## ci-logs/gradle.log (last 120 lines)
 ```
-> Task :expo-modules-core:generateReleaseBuildConfig
-> Task :expo-modules-core:generateReleaseResValues
-> Task :expo-modules-core:generateReleaseResources
-> Task :expo-modules-core:packageReleaseResources
-> Task :expo-modules-core:parseReleaseLocalResources
-> Task :expo-modules-core:generateReleaseRFile
-> Task :expo-modules-core:javaPreCompileRelease
-> Task :expo-constants:javaPreCompileRelease
-> Task :expo-log-box:checkKotlinGradlePluginConfigurationErrors SKIPPED
-> Task :expo-log-box:generateReleaseBuildConfig
-> Task :expo-log-box:generateReleaseResValues
-> Task :expo-log-box:generateReleaseResources
-> Task :expo-log-box:packageReleaseResources
-> Task :expo-log-box:parseReleaseLocalResources
-> Task :expo-log-box:generateReleaseRFile
-> Task :expo-log-box:javaPreCompileRelease
-> Task :expo:javaPreCompileRelease
-> Task :react-native-svg:bundleLibRuntimeToDirRelease
-> Task :react-native-worklets:buildCMakeRelWithDebInfo[x86][worklets]
-> Task :react-native-view-shot:generateReleaseBuildConfig
-> Task :react-native-view-shot:generateReleaseResValues
-> Task :react-native-view-shot:generateReleaseResources
-> Task :react-native-view-shot:packageReleaseResources
-> Task :react-native-view-shot:parseReleaseLocalResources
-> Task :react-native-view-shot:generateReleaseRFile
-> Task :react-native-view-shot:javaPreCompileRelease
+> Task :expo:assembleRelease
+> Task :expo-constants:bundleReleaseAar
+> Task :expo-constants:mapReleaseSourceSetPaths
+> Task :expo-constants:mergeReleaseResources
+> Task :expo-constants:verifyReleaseResources
+> Task :expo-constants:assembleRelease
+> Task :expo-log-box:bundleReleaseAar
+> Task :expo-log-box:mapReleaseSourceSetPaths
+> Task :expo-log-box:mergeReleaseResources
+> Task :expo-log-box:verifyReleaseResources
+> Task :expo-log-box:assembleRelease
+> Task :expo-modules-core:bundleReleaseAar
+> Task :expo-modules-core:mapReleaseSourceSetPaths
+> Task :expo-modules-core:mergeReleaseResources
+> Task :expo-modules-core:verifyReleaseResources
+> Task :expo-modules-core:assembleRelease
+> Task :react-native-async-storage_async-storage:bundleReleaseAar
+> Task :react-native-async-storage_async-storage:mapReleaseSourceSetPaths
+> Task :react-native-async-storage_async-storage:mergeReleaseResources
+> Task :react-native-async-storage_async-storage:verifyReleaseResources
+> Task :react-native-async-storage_async-storage:assembleRelease
+> Task :react-native-gesture-handler:bundleReleaseAar
+> Task :react-native-gesture-handler:mapReleaseSourceSetPaths
+> Task :react-native-gesture-handler:mergeReleaseResources
+> Task :react-native-gesture-handler:verifyReleaseResources
+> Task :react-native-gesture-handler:assembleRelease
+> Task :app:buildCMakeRelWithDebInfo[armeabi-v7a]
+> Task :react-native-reanimated:bundleReleaseAar
+> Task :react-native-reanimated:mapReleaseSourceSetPaths
+> Task :react-native-reanimated:mergeReleaseResources
+> Task :react-native-reanimated:verifyReleaseResources
+> Task :react-native-reanimated:assembleRelease
+> Task :react-native-safe-area-context:bundleReleaseAar
+> Task :react-native-safe-area-context:mapReleaseSourceSetPaths
+> Task :react-native-safe-area-context:mergeReleaseResources
+> Task :react-native-safe-area-context:verifyReleaseResources
+> Task :react-native-safe-area-context:assembleRelease
+> Task :react-native-screens:bundleReleaseAar
+> Task :react-native-screens:mapReleaseSourceSetPaths
+> Task :react-native-screens:mergeReleaseResources
+> Task :react-native-screens:verifyReleaseResources
+> Task :react-native-screens:assembleRelease
+> Task :react-native-svg:bundleReleaseAar
+> Task :react-native-svg:mapReleaseSourceSetPaths
+> Task :react-native-svg:mergeReleaseResources
+> Task :react-native-svg:verifyReleaseResources
+> Task :react-native-svg:assembleRelease
+> Task :react-native-view-shot:bundleReleaseAar
+> Task :react-native-view-shot:mapReleaseSourceSetPaths
+> Task :react-native-view-shot:mergeReleaseResources
+> Task :react-native-view-shot:verifyReleaseResources
+> Task :react-native-view-shot:assembleRelease
+> Task :react-native-webview:bundleReleaseAar
+> Task :react-native-webview:mapReleaseSourceSetPaths
+> Task :react-native-webview:mergeReleaseResources
+> Task :react-native-webview:verifyReleaseResources
+> Task :react-native-webview:assembleRelease
+> Task :react-native-worklets:bundleReleaseAar
+> Task :react-native-worklets:mapReleaseSourceSetPaths
+> Task :react-native-worklets:mergeReleaseResources
+> Task :react-native-worklets:verifyReleaseResources
+> Task :react-native-worklets:assembleRelease
+> Task :app:buildCMakeRelWithDebInfo[x86]
+> Task :app:buildCMakeRelWithDebInfo[x86_64]
 
-> Task :react-native-view-shot:compileReleaseJavaWithJavac
-Note: Some input files use or override a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
+> Task :app:processReleaseMainManifest
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml:6:3-88 Warning:
+	uses-permission#android.permission.RECORD_AUDIO was tagged at AndroidManifest.xml:6 to remove other declarations but no other declaration present
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
+	provider#expo.modules.filesystem.FileSystemFileProvider@android:authorities was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
+	activity#expo.modules.imagepicker.ExpoCropImageActivity@android:exported was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
 
-> Task :react-native-view-shot:bundleLibRuntimeToDirRelease
-> Task :app:checkReleaseDuplicateClasses
-> Task :app:buildKotlinToolingMetadata
-> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
-> Task :app:generateReleaseBuildConfig
-> Task :expo:writeReleaseAarMetadata
-> Task :expo-constants:writeReleaseAarMetadata
-> Task :expo-log-box:writeReleaseAarMetadata
-> Task :expo-modules-core:writeReleaseAarMetadata
-> Task :react-native-async-storage_async-storage:writeReleaseAarMetadata
-> Task :react-native-gesture-handler:writeReleaseAarMetadata
-> Task :react-native-reanimated:writeReleaseAarMetadata
-> Task :react-native-safe-area-context:writeReleaseAarMetadata
-> Task :react-native-screens:writeReleaseAarMetadata
-> Task :react-native-svg:writeReleaseAarMetadata
-> Task :react-native-view-shot:writeReleaseAarMetadata
-> Task :react-native-webview:writeReleaseAarMetadata
+> Task :app:expoReleaseOverrideMaxSdkConflicts
+[33m---------- Expo Max Sdk Override Plugin ----------[0m
+[32m>>> No 'android:maxSdkVersion' conflicts found[0m
+[33m--------------------------------------------------[0m
 
-> Task :app:createBundleReleaseJsAndAssets
-Using src/app as the root directory for Expo Router.
-React Compiler enabled
-Starting Metro Bundler
+> Task :app:processReleaseManifest
+> Task :app:processReleaseManifestForPackage
+> Task :app:processReleaseResources
+> Task :app:compileReleaseKotlin
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:mergeReleaseNativeLibs
+> Task :app:dexBuilderRelease
+> Task :app:stripReleaseDebugSymbols
+> Task :app:mergeDexRelease
+> Task :app:mergeReleaseArtProfile
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:mergeReleaseGlobalSynthetics
+> Task :app:compileReleaseArtProfile
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:processReleaseJavaRes
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:mergeReleaseJavaResource
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:optimizeReleaseResources
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
 
-Android node_modules/expo-router/entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
-Android node_modules/expo-router/entry.js ▓▓▓░░░░░░░░░░░░░ 21.0% ( 47/243)
-Android node_modules/expo-router/entry.js ▓▓▓░░░░░░░░░░░░░ 21.0% ( 83/314)
+[Incubating] Problems report is available at: file:///home/runner/work/amcolink-mobile/amcolink-mobile/android/build/reports/problems/problems-report.html
 
-> Task :react-native-worklets:configureCMakeRelWithDebInfo[x86_64]
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
 
-> Task :app:createBundleReleaseJsAndAssets
-Android node_modules/expo-router/entry.js ▓▓▓░░░░░░░░░░░░░ 21.0% (159/445)
-Android node_modules/expo-router/entry.js ▓▓▓░░░░░░░░░░░░░ 21.0% (170/464)
-Android node_modules/expo-router/entry.js ▓▓▓░░░░░░░░░░░░░ 21.0% (269/590)
-Android node_modules/expo-router/entry.js ▓▓▓▓░░░░░░░░░░░░ 27.0% (389/748)
-Android node_modules/expo-router/entry.js ▓▓▓▓░░░░░░░░░░░░ 28.8% (425/793)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓░░░░░░░░░░░ 32.4% (459/806)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓░░░░░░░░░░ 38.5% (544/881)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓░░░░░░░░░░ 43.6% (620/939)
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
 
-> Task :react-native-worklets:buildCMakeRelWithDebInfo[x86_64][worklets]
+For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-> Task :app:createBundleReleaseJsAndAssets
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓░░░░░░░░ 53.7% (716/977)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 57.1% ( 778/1071)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 62.5% ( 875/1111)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 68.4% ( 932/1127)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 71.1% ( 962/1141)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 74.7% (1009/1168)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 77.3% (1144/1318)
-
-> Task :react-native-worklets:externalNativeBuildRelease
-> Task :react-native-worklets:generateJsonModelRelease
-> Task :react-native-worklets:prefabReleaseConfigurePackage
-> Task :react-native-reanimated:configureCMakeRelWithDebInfo[arm64-v8a]
-
-> Task :app:createBundleReleaseJsAndAssets
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 78.0% (1283/1462)
-
-> Task :react-native-reanimated:configureCMakeRelWithDebInfo[armeabi-v7a]
-> Task :react-native-reanimated:configureCMakeRelWithDebInfo[x86]
-> Task :react-native-reanimated:configureCMakeRelWithDebInfo[x86_64]
-> Task :react-native-reanimated:generateJsonModelRelease
-> Task :react-native-reanimated:prefabReleaseConfigurePackage
-> Task :react-native-worklets:prefabReleasePackage
-
-> Task :app:createBundleReleaseJsAndAssets
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 78.0% (1336/1577)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 78.0% (1398/1635)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 78.0% (1502/1713)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 83.8% (1583/1735)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 84.9% (1627/1766)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 85.9% (1637/1766)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 91.0% (1702/1784)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 92.3% (1761/1841)
-
-> Task :react-native-reanimated:buildCMakeRelWithDebInfo[arm64-v8a][reanimated]
-
-> Task :app:createBundleReleaseJsAndAssets
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 94.7% (1866/1921)
-Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (1937/1937)
-Android Bundled 103819ms node_modules/expo-router/entry.js (1937 modules)
-Writing bundle output to: /home/runner/work/amcolink-mobile/amcolink-mobile/android/app/build/generated/assets/react/release/index.android.bundle
-Writing sourcemap output to: /home/runner/work/amcolink-mobile/amcolink-mobile/android/app/build/intermediates/sourcemaps/react/release/index.android.bundle.packager.map
-Copying 50 asset files
-Done writing bundle output
-Done writing sourcemap output
-
-> Task :app:configureCMakeRelWithDebInfo[arm64-v8a]
-> Task :react-native-reanimated:buildCMakeRelWithDebInfo[armeabi-v7a][reanimated]
+BUILD SUCCESSFUL in 31m 23s
+697 actionable tasks: 697 executed
 ```
 
 ## ci-logs/install.log (last 120 lines)
@@ -247,34 +247,34 @@ Run `npm audit` for details.
 > amcolink-mobile@1.0.0 test:integration
 > jest --ci -c jest.integration.config.js
 
-PASS integration/staging.test.ts (9.544 s)
-  ✓ signed-out visitors can read approved shops and published ads (949 ms)
-  ✓ the countries list is available (243 countries on staging) (158 ms)
-  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (409 ms)
-  ✓ signed-out visitors can read the public Wanted columns (176 ms)
-  ✓ signed-out visitors cannot create a shop (377 ms)
-  ✓ signed-out visitors cannot create a report (176 ms)
-  ✓ signed-out visitors cannot use admin functions (523 ms)
-  ✓ public trending lists can be read signed out (153 ms)
-  ✓ sign-up without the security check is refused (CAPTCHA is on) (156 ms)
-  ✓ notifications are private (132 ms)
-  ✓ app query: latest finds runs on staging (315 ms)
-  ✓ app query: category page with every filter runs on staging (533 ms)
-  ✓ app query: properties for rent and for sale run on staging (282 ms)
-  ✓ app query: search runs on staging (147 ms)
-  ✓ app query: Explore collections run on staging (538 ms)
-  ✓ app query: shop profile lookup and trust run on staging (301 ms)
-  ✓ signed-out visitors cannot save, block or read other people's saved items (623 ms)
-  ✓ signed-out visitors cannot post an ad or upload a photo (345 ms)
-  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (139 ms)
-  ✓ app query: Wanted list runs on staging as a visitor (137 ms)
-  ✓ app query: Gifts and Trending run on staging as a visitor (833 ms)
-  ✓ reviews: visitors can read them and are told to sign in before reviewing (311 ms)
+PASS integration/staging.test.ts (10.117 s)
+  ✓ signed-out visitors can read approved shops and published ads (1111 ms)
+  ✓ the countries list is available (243 countries on staging) (212 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (439 ms)
+  ✓ signed-out visitors can read the public Wanted columns (237 ms)
+  ✓ signed-out visitors cannot create a shop (164 ms)
+  ✓ signed-out visitors cannot create a report (414 ms)
+  ✓ signed-out visitors cannot use admin functions (325 ms)
+  ✓ public trending lists can be read signed out (200 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (148 ms)
+  ✓ notifications are private (175 ms)
+  ✓ app query: latest finds runs on staging (351 ms)
+  ✓ app query: category page with every filter runs on staging (322 ms)
+  ✓ app query: properties for rent and for sale run on staging (325 ms)
+  ✓ app query: search runs on staging (138 ms)
+  ✓ app query: Explore collections run on staging (636 ms)
+  ✓ app query: shop profile lookup and trust run on staging (297 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (457 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (332 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (367 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (166 ms)
+  ✓ app query: Gifts and Trending run on staging as a visitor (637 ms)
+  ✓ reviews: visitors can read them and are told to sign in before reviewing (555 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       22 passed, 22 total
 Snapshots:   0 total
-Time:        9.627 s
+Time:        10.191 s
 Ran all test suites.
 ```
 
