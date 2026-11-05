@@ -354,3 +354,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - Tap areas: photo "remove" buttons (28 px) get an 8 px touch margin; quick-question chips are 44 px tall. Chips, hearts and tabs were already ≥ 44 px (with touch margins).
 - Every new screen has screen-reader labels (rows read as "name. help", time boxes "Monday opens: 8:00 AM", photo viewer "photo n of m", trust card read as one sentence).
 - Speed: every listing grid draws 6 cards first and keeps a 7-screen window (same as Home), for low-cost phones. Lists use small thumbnails; only the listing page and photo viewer load full photos.
+
+## Task 47 — Final report updated — COMPLETED
+- The Docs report (sections A–H) now reflects 46 tasks, the phone tests, readiness level 3, the owner list and the remaining work. `docs/OWNER-TASKS.md` updated to match.
