@@ -80,6 +80,7 @@ function AdRow({ ad, stat, onChanged }: { ad: MyAd; stat: Totals; onChanged: () 
         </View>
       ) : null}
       <View style={styles.actions}>
+        {ad.status !== 'removed' ? <Button style={styles.flex} title="Edit" variant="outline" onPress={() => router.push({ pathname: '/edit-ad/[id]', params: { id: ad.id } })} /> : null}
         {ad.status !== 'removed' ? <Button style={styles.flex} title={ad.hidden_by_owner ? 'Show' : 'Hide'} variant="outline" loading={busy === 'hide'} onPress={() => run('hide', () => updateAd(ad.id, { hidden_by_owner: !ad.hidden_by_owner }))} /> : null}
         <Button style={styles.flex} title="Delete" variant="ghost" loading={busy === 'delete'} onPress={askDelete} />
       </View>

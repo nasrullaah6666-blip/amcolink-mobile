@@ -3,7 +3,8 @@ import { Pressable, ScrollView, Share, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
-import { AppText, Icon } from '@/components/ui';
+import { AppText, Button, Icon } from '@/components/ui';
+import { useAuth } from '@/auth/session';
 import { PhotoPager } from '@/components/PhotoPager';
 import { ContactBar } from '@/components/ContactBar';
 import { ScreenHeader } from '@/components/ScreenHeader';
@@ -36,6 +37,7 @@ function Fact({ label, value }: { label: string; value?: string | null }) {
 
 export default function ListingScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { user } = useAuth();
   const q = useQuery({ queryKey: ['listing', id], queryFn: () => fetchListing(String(id)), enabled: !!id });
   const ad = q.data;
 
@@ -125,7 +127,9 @@ export default function ListingScreen() {
           <View style={styles.safety}>
             <AppText variant="bodySmall" style={styles.safetyText}>{safety}</AppText>
           </View>
-          {shop ? <ReportAndBlock adId={ad.id} shopId={shop.id} shopName={shop.name} /> : null}
+          {user && user.id === ad.owner_id ? (
+            <Button title="Edit listing" variant="outline" onPress={() => router.push({ pathname: '/edit-ad/[id]', params: { id: ad.id } })} />
+          ) : shop ? <ReportAndBlock adId={ad.id} shopId={shop.id} shopName={shop.name} /> : null}
         </View>
       </ScrollView>
       {shop ? <ContactBar shop={shop} adId={ad.id} adTitle={ad.title} /> : null}

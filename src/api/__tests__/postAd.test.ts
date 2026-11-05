@@ -48,3 +48,36 @@ test('food needs an expiry date or "no expiry"', () => {
   const ok = buildAd({ ...base, ...food, noExpiry: true }, 'u1');
   expect(ok.ok && ok.row.no_expiry).toBe(true);
 });
+
+import { buildAdEdit, type EditableAd } from '../postAd';
+
+const saved: EditableAd = {
+  id: 'a1', shop_id: 's1', title: 'Samsung A15', description: base.description, price: 15000, currency: 'KES', category: 'Phones & Tablets',
+  subcategory: 'Phones', condition: 'used', photo_urls: ['https://x/storage/v1/object/public/ad-photos/u1/a.jpg', 'https://x/storage/v1/object/public/ad-photos/u1/b.jpg'],
+  availability: 'available',
+};
+const draft = { title: saved.title, description: saved.description, price: '15000', currency: 'KES', category: saved.category, subcategory: 'Phones',
+  condition: 'used', free: false, priceMode: 'from' as const, expiryDate: '', noExpiry: false, availability: 'available' as const, photos: saved.photo_urls };
+
+test('edit: a price drop saves the new price; removed photos are listed for deletion', () => {
+  const r = buildAdEdit({ ...draft, price: '12000', photos: [saved.photo_urls[0]] }, saved);
+  expect(r.ok).toBe(true);
+  if (r.ok) {
+    expect(r.values.price).toBe(12000);
+    expect(r.values.rental).toBeNull();
+    expect(r.removedPhotos).toEqual([saved.photo_urls[1]]);
+  }
+});
+
+test('edit: an old expiry date that was not changed is still allowed (website rule)', () => {
+  const food = { ...saved, category: 'Food & Farming', subcategory: 'Food', condition: null, expiry_date: '2020-01-01' };
+  const ok = buildAdEdit({ ...draft, category: 'Food & Farming', subcategory: 'Food', condition: '', expiryDate: '2020-01-01' }, food);
+  expect(ok.ok).toBe(true);
+  const bad = buildAdEdit({ ...draft, category: 'Food & Farming', subcategory: 'Food', condition: '', expiryDate: '2021-01-01' }, food);
+  expect(bad.ok ? null : bad.error).toMatch(/expired/);
+});
+
+test('edit: at least one photo stays', () => {
+  const r = buildAdEdit({ ...draft, photos: [] }, saved);
+  expect(r.ok ? null : r.error).toMatch(/photo/);
+});

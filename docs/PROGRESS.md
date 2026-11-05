@@ -114,3 +114,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Test run — build 9 (commit 80a1ff9)
 - Unit 45/45, staging integration 20/20, APK `test-build-9`, emulator flows 3/3 PASSED.
+
+## Task 13 — Edit listing (Shopping and Services)
+- **Files:** `src/app/edit-ad/[id].tsx`, `src/components/PhotoEditor.tsx`, `buildAdEdit`/`saveAdEdit` in `src/api/postAd.ts`; Edit button in My ads and on your own listing page.
+- **Website rules kept (AdEditForm):** same checks and messages; unchanged old expiry date allowed; at least one photo; removed photo files deleted after saving; `price_from` cleared when leaving Services; price drops are saved like on the website (the database then records the drop for Deals and saved-item alerts).
+- **Property listings:** edited on the website for now (button opens it).
+- **Tests:** 3 unit tests. Not yet tried on a device (needs sign-in).
