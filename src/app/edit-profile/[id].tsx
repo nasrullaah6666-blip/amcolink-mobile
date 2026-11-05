@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native';
+import { DeleteProfile } from '@/components/DeleteProfile';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
@@ -169,6 +170,7 @@ export default function EditProfile() {
           </View>
           {message ? <AppText variant="bodySmall" tone="error" accessibilityRole="alert">{message}</AppText> : null}
           <Button title={busy ? 'Saving…' : 'Save'} size="lg" loading={busy} disabled={!!uploading} onPress={save} />
+          <DeleteProfile shopId={shop.id} shopName={shop.name} logoUrl={shop.logo_url} coverUrl={shop.cover_url} />
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>

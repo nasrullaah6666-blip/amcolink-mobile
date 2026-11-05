@@ -256,3 +256,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Files:** `src/lib/recent.ts`, `src/components/RecentlyViewed.tsx`, Home (row above "The latest finds"), listing page (remembers each public listing opened).
 - **Website rules kept (RecordView + RecentlyViewed):** on the phone only, no account; newest first, no doubles, 12 kept, 10 shown, 30 days; Clear button; same title "Continue where you left off". Hidden when empty.
 - **Tests:** unit test (58/58).
+
+## Task 28 — Delete profile (website parity) — COMPLETED (code)
+- **Files:** `src/components/DeleteProfile.tsx`, at the bottom of Edit profile.
+- **Website rules kept (DeleteShop):** type the profile name to confirm; deletes the profile (database removes its listings, reviews, statistics), then its listing photos and logo/cover; the account stays; "taking a break? use Away mode" hint.
+- **Colour:** no red button (green-only rule); the danger is in the words and the typed-name check.
