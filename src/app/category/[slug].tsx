@@ -8,9 +8,10 @@ import { ListingGrid } from '@/components/ListingGrid';
 import { ChipRow } from '@/components/ChipRow';
 import { SearchField } from '@/components/SearchField';
 import { SaveSearchButton } from '@/components/SaveSearchButton';
+import { FiltersButton, filterCount, filtersFromParams, type ListFilters } from '@/components/FiltersButton';
 import { Empty } from '@/components/States';
 import { fetchCategory, type CategoryFilters } from '@/api/listings';
-import { categoryByName, categoryBySlug, oldSlug, SHARED_SUBS } from '@/core/categories';
+import { categoryByName, categoryBySlug, needsCondition, oldSlug, SHARED_SUBS } from '@/core/categories';
 import { useCountry } from '@/lib/countryPref';
 import { colors, space } from '@/theme/tokens';
 
@@ -22,6 +23,8 @@ function withShared(category: string, subs: string[]) {
   return [...own.slice(0, last), ...shared, ...own.slice(last)];
 }
 
+const num = (t: string) => (t ? Number(t) : undefined);
+
 const SORTS = [
   { value: '', label: 'Newest' },
   { value: 'price_asc', label: 'Lowest price' },
@@ -31,12 +34,14 @@ const SORTS = [
 /** One category (website: app/category/[slug]). Sub-category chips, search inside the category, sorting. */
 export default function CategoryScreen() {
   const { name: country } = useCountry();
-  const { slug, sub: subParam, q: qParam } = useLocalSearchParams<{ slug: string; sub?: string; q?: string }>();
+  const params = useLocalSearchParams<{ slug: string; sub?: string; q?: string }>();
+  const { slug, sub: subParam, q: qParam } = params;
   const old = oldSlug(String(slug)); // old website links still work, as on the website
   const cat = categoryBySlug(String(slug)) ?? categoryBySlug(old?.slug);
   const [sub, setSub] = useState(String(subParam ?? old?.sub ?? ''));
   const [q, setQ] = useState(String(qParam ?? ''));
   const [sort, setSort] = useState('');
+  const [f, setF] = useState<ListFilters>(() => filtersFromParams(params));
 
   if (!cat) {
     return (
@@ -47,7 +52,10 @@ export default function CategoryScreen() {
     );
   }
 
-  const filters: CategoryFilters = { category: cat.name, sub: sub || undefined, q: q || undefined, sort: (sort || undefined) as CategoryFilters['sort'] };
+  const filters: CategoryFilters = {
+    category: cat.name, sub: sub || undefined, q: q || undefined, sort: (sort || undefined) as CategoryFilters['sort'],
+    city: f.city || undefined, min: num(f.min), max: num(f.max), condition: f.condition || undefined, verified: f.verified || undefined,
+  };
   const header = (
     <View style={styles.header}>
       <AppText variant="bodySmall" tone="secondary">{cat.blurb}</AppText>
@@ -69,7 +77,10 @@ export default function CategoryScreen() {
         />
       ) : null}
       <ChipRow options={SORTS} value={sort} onChange={setSort} />
-      {sub || q ? <SaveSearchButton key={`${sub}|${q}`} params={{ category: cat.name, sub, q }} /> : null}
+      <FiltersButton value={f} onChange={setF} showCondition={needsCondition(cat.name, sub)} />
+      {sub || q || filterCount(f) ? (
+        <SaveSearchButton key={`${sub}|${q}|${JSON.stringify(f)}`} params={{ category: cat.name, sub, q, city: f.city, min: f.min, max: f.max, condition: f.condition, verified: f.verified ? '1' : '' }} />
+      ) : null}
     </View>
   );
 

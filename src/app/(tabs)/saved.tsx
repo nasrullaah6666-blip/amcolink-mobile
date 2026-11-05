@@ -22,8 +22,10 @@ function openSearch(x: SavedSearch) {
   if (q.page === 'rentals') { router.push('/properties'); return; }
   const s = parseSearch(q);
   const cat = categoryByName(s.category);
-  if (cat) router.push({ pathname: '/category/[slug]', params: { slug: cat.slug, ...(s.sub ? { sub: s.sub } : {}), ...(s.q ? { q: s.q } : {}) } });
-  else router.push({ pathname: '/search', params: { q: s.q } });
+  // Filters go along so the search opens exactly as it was saved.
+  const extra = Object.fromEntries(Object.entries({ city: s.city, min: s.min, max: s.max, condition: s.condition, verified: s.verified }).filter(([, v]) => v));
+  if (cat) router.push({ pathname: '/category/[slug]', params: { slug: cat.slug, ...(s.sub ? { sub: s.sub } : {}), ...(s.q ? { q: s.q } : {}), ...extra } });
+  else router.push({ pathname: '/search', params: { q: s.q, ...extra } });
 }
 
 function SavedSearches({ userId }: { userId: string }) {

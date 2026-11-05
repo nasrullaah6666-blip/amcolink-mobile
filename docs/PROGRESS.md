@@ -298,3 +298,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Test run — build 26 (tasks 26–32)
 - Unit, staging tests passed, APK `test-build-26`. Emulator 5/6; the new "Never pay in advance" reminder shows before Call (screenshot 23).
 - 05-listings waited for the safety note, which is now lower on the page (quick WhatsApp questions above it); the listing itself opened correctly. Test now waits for "Share to WhatsApp Status".
+
+## Task 36 — Filters on category and search (website parity) — COMPLETED (code)
+- **Files:** `src/components/FiltersButton.tsx` (full-screen sheet), category and search screens, `fetchSearch` accepts the same filters, Saved searches open with their filters.
+- **Website rules kept (SearchFilters):** town (matches the profile's town or region), price from/to, condition (only where the category uses it), verified sellers only; saved searches store the same keys the database's alert rule reads (city, min, max, condition, verified).
+- **Not included:** "Near me" with distance (needs the phone's location — separate task).
+- **Tests:** unit test (60/60).

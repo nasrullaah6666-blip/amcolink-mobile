@@ -64,11 +64,17 @@ export async function fetchCategory(f: CategoryFilters, c: SupabaseClient = db()
 }
 
 /** Search across every category (the website's home search uses the same word rules). */
-export async function fetchSearch(text: string, opts: { country?: string; page?: number } = {}, c: SupabaseClient = db()): Promise<Listing[]> {
+export async function fetchSearch(text: string, opts: { country?: string; page?: number; city?: string; min?: number; max?: number; condition?: string; verified?: boolean } = {}, c: SupabaseClient = db()): Promise<Listing[]> {
   const clean = sanitizeSearch(text);
   if (!clean) return [];
   let q = liveListings(c);
   if (opts.country) q = q.eq('shops.country', opts.country);
+  const city = sanitizeSearch(opts.city);
+  if (city) q = q.or(`city.ilike.%${city}%,region.ilike.%${city}%`, { referencedTable: 'shops' });
+  if (opts.min != null) q = q.gte('price', opts.min);
+  if (opts.max != null) q = q.lte('price', opts.max);
+  if (opts.condition) q = q.eq('condition', opts.condition);
+  if (opts.verified) q = q.eq('shops.is_verified', true);
   for (const w of searchWords(clean)) q = q.or(wordFilter(w));
   const res = await q.order('feed_boost', { ascending: false }).order('created_at', { ascending: false }).range(0, 119);
   const from = (opts.page ?? 0) * PAGE_SIZE;
