@@ -1,5 +1,5 @@
-# Android test build 27
-commit: 42ae1ad7566d9b75f69e8713176a91e1dce11e24
+# Android test build 28
+commit: c21f95fc9303c108fc26c504a572eaf69ae81a44
 key: success | install: success | checks: success | integration: success | prebuild: success | gradle: success | release: success
 
 ## ci-logs/checks.log (last 120 lines)
@@ -23,7 +23,7 @@ design check ok: all colours come from src/theme/tokens.ts
 
 PASS src/api/__tests__/postAd.test.ts
 PASS src/api/__tests__/listings.test.ts
-PASS src/components/__tests__/AuthForm.test.tsx (6.252 s)
+PASS src/components/__tests__/AuthForm.test.tsx (5.809 s)
 PASS src/core/__tests__/core.test.ts
 PASS src/lib/__tests__/config.test.ts
 PASS src/api/__tests__/me.test.ts
@@ -58,11 +58,12 @@ PASS src/lib/__tests__/priceDrops.test.ts
 PASS src/core/__tests__/shopEdit.test.ts
 PASS src/lib/__tests__/recent.test.ts
 PASS src/api/__tests__/account.test.ts
+PASS src/components/__tests__/filters.test.ts (6.62 s)
 
-Test Suites: 14 passed, 14 total
-Tests:       59 passed, 59 total
+Test Suites: 15 passed, 15 total
+Tests:       61 passed, 61 total
 Snapshots:   0 total
-Time:        12.649 s
+Time:        18.64 s
 Ran all test suites.
 ```
 
@@ -126,8 +127,8 @@ Ran all test suites.
 > Task :app:mergeReleaseNativeLibs
 
 > Task :app:processReleaseMainManifest
-/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml:4:3-88 Warning:
-	uses-permission#android.permission.RECORD_AUDIO was tagged at AndroidManifest.xml:4 to remove other declarations but no other declaration present
+/home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml:6:3-88 Warning:
+	uses-permission#android.permission.RECORD_AUDIO was tagged at AndroidManifest.xml:6 to remove other declarations but no other declaration present
 /home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
 	provider#expo.modules.filesystem.FileSystemFileProvider@android:authorities was tagged at AndroidManifest.xml:0 to replace other declarations but no other declaration present
 /home/runner/work/amcolink-mobile/amcolink-mobile/android/app/src/main/AndroidManifest.xml Warning:
@@ -169,9 +170,9 @@ Ran all test suites.
 > Task :app:lintVitalRelease
 > Task :app:mergeReleaseJavaResource
 > Task :app:collectReleaseDependencies
+> Task :app:optimizeReleaseResources
 > Task :app:sdkReleaseDependencyData
 > Task :app:validateSigningRelease
-> Task :app:optimizeReleaseResources
 > Task :app:writeReleaseAppMetadata
 > Task :app:writeReleaseSigningConfigVersions
 > Task :app:packageRelease
@@ -186,7 +187,7 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 49m 24s
+BUILD SUCCESSFUL in 47m 13s
 697 actionable tasks: 697 executed
 ```
 
@@ -211,8 +212,10 @@ npm warn   peer react@"^19.3.0" from react-reconciler@0.34.0
 npm warn   node_modules/test-renderer/node_modules/react-reconciler
 npm warn     react-reconciler@"~0.34.0" from test-renderer@1.3.1
 npm warn     node_modules/test-renderer
-npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated whatwg-encoding@2.0.0: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated domexception@4.0.0: Use your platform's native DOMException instead
 npm warn deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
@@ -221,10 +224,8 @@ npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and cont
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated whatwg-encoding@2.0.0: Use @exodus/bytes instead for a more spec-conformant and faster implementation
-npm warn deprecated domexception@4.0.0: Use your platform's native DOMException instead
 
-added 958 packages, and audited 959 packages in 22s
+added 959 packages, and audited 960 packages in 24s
 
 89 packages are looking for funding
   run `npm fund` for details
@@ -246,34 +247,34 @@ Run `npm audit` for details.
 > amcolink-mobile@1.0.0 test:integration
 > jest --ci -c jest.integration.config.js
 
-PASS integration/staging.test.ts (15.209 s)
-  ✓ signed-out visitors can read approved shops and published ads (963 ms)
-  ✓ the countries list is available (243 countries on staging) (369 ms)
-  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (401 ms)
-  ✓ signed-out visitors can read the public Wanted columns (414 ms)
-  ✓ signed-out visitors cannot create a shop (352 ms)
-  ✓ signed-out visitors cannot create a report (334 ms)
-  ✓ signed-out visitors cannot use admin functions (703 ms)
-  ✓ public trending lists can be read signed out (331 ms)
-  ✓ sign-up without the security check is refused (CAPTCHA is on) (330 ms)
-  ✓ notifications are private (332 ms)
-  ✓ app query: latest finds runs on staging (685 ms)
-  ✓ app query: category page with every filter runs on staging (483 ms)
-  ✓ app query: properties for rent and for sale run on staging (496 ms)
-  ✓ app query: search runs on staging (364 ms)
-  ✓ app query: Explore collections run on staging (1385 ms)
-  ✓ app query: shop profile lookup and trust run on staging (711 ms)
-  ✓ signed-out visitors cannot save, block or read other people's saved items (832 ms)
-  ✓ signed-out visitors cannot post an ad or upload a photo (563 ms)
-  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (325 ms)
-  ✓ app query: Wanted list runs on staging as a visitor (127 ms)
-  ✓ app query: Gifts and Trending run on staging as a visitor (1233 ms)
-  ✓ reviews: visitors can read them and are told to sign in before reviewing (728 ms)
+PASS integration/staging.test.ts (18.894 s)
+  ✓ signed-out visitors can read approved shops and published ads (1380 ms)
+  ✓ the countries list is available (243 countries on staging) (201 ms)
+  ✓ signed-out visitors cannot read a Wanted buyer WhatsApp number (514 ms)
+  ✓ signed-out visitors can read the public Wanted columns (497 ms)
+  ✓ signed-out visitors cannot create a shop (472 ms)
+  ✓ signed-out visitors cannot create a report (494 ms)
+  ✓ signed-out visitors cannot use admin functions (989 ms)
+  ✓ public trending lists can be read signed out (522 ms)
+  ✓ sign-up without the security check is refused (CAPTCHA is on) (206 ms)
+  ✓ notifications are private (479 ms)
+  ✓ app query: latest finds runs on staging (1004 ms)
+  ✓ app query: category page with every filter runs on staging (753 ms)
+  ✓ app query: properties for rent and for sale run on staging (987 ms)
+  ✓ app query: search runs on staging (465 ms)
+  ✓ app query: Explore collections run on staging (1030 ms)
+  ✓ app query: shop profile lookup and trust run on staging (995 ms)
+  ✓ signed-out visitors cannot save, block or read other people's saved items (1094 ms)
+  ✓ signed-out visitors cannot post an ad or upload a photo (802 ms)
+  ✓ profile name check answers yes/no (visitors can run it on staging — see note) (227 ms)
+  ✓ app query: Wanted list runs on staging as a visitor (540 ms)
+  ✓ app query: Gifts and Trending run on staging as a visitor (1744 ms)
+  ✓ reviews: visitors can read them and are told to sign in before reviewing (703 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       22 passed, 22 total
 Snapshots:   0 total
-Time:        15.316 s
+Time:        18.998 s
 Ran all test suites.
 ```
 
