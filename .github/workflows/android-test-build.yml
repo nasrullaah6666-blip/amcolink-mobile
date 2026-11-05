@@ -70,7 +70,7 @@ jobs:
 
       - name: Firebase settings for phone alerts (optional; alerts stay off without them)
         env:
-          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON || secrets.GOOGLE_SERVICES }}
         run: |
           if [ -n "$GOOGLE_SERVICES_JSON" ]; then printf '%s' "$GOOGLE_SERVICES_JSON" > google-services.json && echo "phone alerts: on"; else echo "phone alerts: off (no GOOGLE_SERVICES_JSON secret)"; fi
 

@@ -229,3 +229,6 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Task 21b — Status picture: keep the link clear of WhatsApp's buttons (owner "go", 5 Nov 2026)
 - Owner's real-phone test: the picture posts to WhatsApp Status correctly, but WhatsApp's own buttons (views, Boost, share; the reply bar for viewers) covered "amcolink.com" at the bottom.
 - Change: "See it and chat with the seller · amcolink.com" moved into the white price card (green text); the bottom ~15% of the picture is left plain green for WhatsApp's buttons. Photo slightly shorter.
+
+## Builds 21–22 — phone alerts were still off
+- Checked the app files themselves (assets/app.config: pushReady false) and the build logs: the Firebase secret was empty. Cause: the owner's GitHub secret is named `GOOGLE_SERVICES`, the build looked for `GOOGLE_SERVICES_JSON`. The build now accepts either name. Owner's phone had registered 0 devices — expected, since alerts were off.
