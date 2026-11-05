@@ -6,7 +6,7 @@ export type IconName =
   | 'home' | 'heart' | 'plus' | 'user' | 'bell' | 'search' | 'chevronDown' | 'chevronLeft' | 'chevronRight'
   | 'filters' | 'house' | 'tools' | 'phone' | 'tv' | 'sofa' | 'shirt' | 'bottle' | 'car' | 'leaf' | 'hammer'
   | 'grid' | 'compass' | 'call' | 'whatsapp' | 'map' | 'share' | 'flag' | 'more' | 'gift' | 'trend' | 'tag' | 'recycle' | 'sparkle'
-  | 'handHeart' | 'bag' | 'megaphone' | 'plusCircle' | 'store';
+  | 'handHeart' | 'bag' | 'megaphone' | 'plusCircle' | 'store' | 'menu' | 'close';
 
 /** One icon set, one stroke style. Colour defaults to the main text colour. */
 export function Icon({ name, color = colors.text, size: s = size.icon, strokeWidth = 1.8, filled }: { name: IconName; color?: string; size?: number; strokeWidth?: number; filled?: boolean }) {
@@ -23,6 +23,8 @@ export function Icon({ name, color = colors.text, size: s = size.icon, strokeWid
       {name === 'plus' ? <Path {...p} d="M12 5v14M5 12h14" /> : null}
       {name === 'handHeart' ? <><Path {...p} d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" /><Path {...p} d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" /><Path {...p} d="m2 15 6 6" /><Path {...p} d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z" /></> : null}
       {name === 'store' ? <><Path {...p} d="M3 9l1.5-5h15L21 9" /><Path {...p} d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0" /><Path {...p} d="M5 12v8h14v-8M10 20v-5h4v5" /></> : null}
+      {name === 'menu' ? <Path {...p} d="M4 7h16M4 12h16M4 17h16" /> : null}
+      {name === 'close' ? <Path {...p} d="M6 6l12 12M18 6 6 18" /> : null}
       {name === 'bag' ? <><Path {...p} d="M6 7h12l1 13H5z" /><Path {...p} d="M9 7a3 3 0 0 1 6 0" /></> : null}
       {name === 'megaphone' ? <><Path {...p} d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z" /><Path {...p} d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12" /></> : null}
       {name === 'plusCircle' ? <><Circle {...p} cx="12" cy="12" r="9" /><Path {...p} d="M12 8v8M8 12h8" /></> : null}

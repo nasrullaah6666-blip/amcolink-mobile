@@ -383,3 +383,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Fix 1:** My ads had four buttons in a row since Pin was added, so "Delete" broke into "Delet / e". Now Edit · Pin · Hide in the row and "Delete listing" on its own small line under them.
 - **Fix 2:** screens without a tab bar (My ads, categories, search, property, Explore, sign-in, edit screens, Wanted …) let the last item slide under the phone's on-screen buttons. They now keep the bottom safe area (same fix as the tab bar earlier).
 - Staging: the profile address rule was removed on staging (owner ran the SQL) — staging now matches production for new profiles.
+
+## Task 54 — ☰ menu like the website, and the Shopping screen (owner: "go without admin") — COMPLETED (code)
+- **Files:** `src/components/MenuDrawer.tsx` (☰ next to the Country button on Home; opens from the right), `src/app/shopping.tsx` (website /shopping: shopping categories as tiles + Browse shops), icons menu/close, colour token `backdrop`.
+- **Website rules kept (MenuDrawer):** the four ways in — Shopping, Services, Properties, Explore; "Log in or create account" at the top when signed out. The website's Admin panel / Insights rows are NOT in the app (owner's choice; no admin in the app).
+- **Tests:** emulator flow 07 opens the menu (29) and Shopping (30).

@@ -6,6 +6,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { AppText, Icon, type IconName } from '@/components/ui';
 import { ListingCard } from '@/components/ListingCard';
 import { RecentlyViewed } from '@/components/RecentlyViewed';
+import { MenuButton } from '@/components/MenuDrawer';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { fetchLatest, PAGE_SIZE, type Listing } from '@/api/listings';
 import { MAIN_CATEGORIES } from '@/core/categories';
@@ -94,7 +95,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView edges={['top']} style={styles.page}>
       <View style={styles.header}>
-        <AppText variant="title" tone="green">Amcolink</AppText>
+        <AppText variant="title" tone="green" style={styles.brand}>Amcolink</AppText>
         <PickerField label="Country" value={countryCode ?? 'ALL'} options={COUNTRY_OPTIONS} onChange={(v) => setCode(v === 'ALL' ? null : v)}
           trigger={(open, current) => (
             <Pressable accessibilityRole="button" accessibilityLabel={`Country: ${current}. Change`} onPress={open} style={styles.countryPill}>
@@ -102,6 +103,7 @@ export default function HomeScreen() {
               <Icon name="chevronDown" size={16} strokeWidth={2} color={colors.textSecondary} />
             </Pressable>
           )} />
+        <MenuButton />
       </View>
       <FlatList
         data={items}
@@ -131,7 +133,8 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.background },
   countryPill: { flexDirection: 'row', alignItems: 'center', gap: space.xs, height: size.chip, maxWidth: 180, paddingHorizontal: space.md, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.borderStrong, backgroundColor: colors.surface },
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.md, paddingHorizontal: space.lg, paddingTop: space.sm, paddingBottom: space.sm },
+  header: { flexDirection: 'row', alignItems: 'center', gap: space.xs, paddingLeft: space.lg, paddingRight: space.xs, paddingTop: space.sm, paddingBottom: space.sm },
+  brand: { flex: 1 },
   band: { backgroundColor: colors.green, marginHorizontal: -space.lg, paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: space.lg },
   search: { flexDirection: 'row', alignItems: 'center', gap: space.sm + 2, height: size.input, paddingHorizontal: space.md + 2, borderRadius: radius.md, backgroundColor: colors.surface },
   searchInput: { flex: 1, ...type.body, fontSize: 16, color: colors.text },

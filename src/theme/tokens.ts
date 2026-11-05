@@ -15,6 +15,7 @@ export const colors = {
   background: '#fbfaf7',
   surface: '#ffffff',
   overlay: 'rgba(255,255,255,0.92)',
+  backdrop: 'rgba(20,33,29,0.45)', // behind the side menu
   placeholder: '#dfe7e4',
   // Text
   text: '#14211d',

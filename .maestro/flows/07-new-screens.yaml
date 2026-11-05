@@ -8,6 +8,18 @@ appId: com.amcolink.app.dev
 - extendedWaitUntil:
     visible: "The latest finds"
     timeout: 60000
+# ☰ menu (website's side menu) and the Shopping screen
+- tapOn: "Menu"
+- extendedWaitUntil:
+    visible: "Explore"
+    timeout: 10000
+- takeScreenshot: shots/29-menu
+- tapOn: "Shopping"
+- extendedWaitUntil:
+    visible: "Pick a category to see what local sellers have."
+    timeout: 10000
+- takeScreenshot: shots/30-shopping
+- tapOn: "Back"
 # Filters on a category
 - tapOn: "Fashion"
 - extendedWaitUntil:
