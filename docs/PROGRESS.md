@@ -176,3 +176,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 ## Test run — build 14 (commit cb4cad7)
 - Unit 52/52, staging 20/20, APK `test-build-14`. Emulator 4/5: the listing page (photos, price, Used/Phones tags, seller card, safety note, Call/WhatsApp) and the shop page (Follow, address, Map, Share, Report, Block, 4 ads) work with staging data.
 - 05-listings stopped at Deals: Deals is empty on staging because the database resets the seeded price-drop fields when rows are inserted (the website would show the same). Test changed to record the Deals screen without expecting an item.
+
+## Test run — build 15 (commit 7383df1)
+- Unit 52/52, staging 22/22 (new: Gifts, Trending, reviews), APK `test-build-15`.
+- Emulator 0/5: not an app fault — the emulator's own home-screen program froze ("Pixel Launcher isn't responding") and its dialog covered the app, which was running normally underneath (screenshot). Tests now wait for the emulator to settle, close system dialogs and tap "Wait" if that dialog appears.
