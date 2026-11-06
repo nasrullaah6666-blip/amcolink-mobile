@@ -6,13 +6,14 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.google.protobuf.UnsafeUtil$MemoryAccessor (file:/home/runner/.maestro/lib/protobuf-java-3.21.9.jar)
 WARNING: Please consider reporting this to the maintainers of class com.google.protobuf.UnsafeUtil$MemoryAccessor
 WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
-[Passed] 03-account (1m 39s)
-[Passed] 01-smoke (22s)
-[Passed] 02-browse (48s)
-[Passed] 07-new-screens (1m 4s)
-[Passed] 04-country (22s)
-[Passed] 06-status-share (34s)
-[Passed] 05-listings (36s)
+[Passed] 03-account (44s)
+[Passed] 08-scrolling (21s)
+[Passed] 01-smoke (20s)
+[Passed] 02-browse (43s)
+[Passed] 07-new-screens (1m 2s)
+[Passed] 04-country (21s)
+[Passed] 06-status-share (32s)
+[Passed] 05-listings (33s)
 
-7/7 Flows Passed in 5m 25s
+8/8 Flows Passed in 4m 38s
 

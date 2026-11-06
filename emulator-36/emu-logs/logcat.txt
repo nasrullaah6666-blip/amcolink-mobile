@@ -1,0 +1,29 @@
+11-06 08:11:05.405 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 5591
+11-06 08:11:05.487 I/ActivityManager(  524): Start proc 5601:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-06 08:11:14.514 I/ActivityManager(  524): Process com.google.android.gms (pid 1467) has died: fg  BTOP
+11-06 08:11:14.555 I/ActivityManager(  524): Process com.google.android.gms.persistent (pid 1424) has died: fg  BTOP
+11-06 08:11:16.649 I/ActivityManager(  524): Process com.google.android.gms.ui (pid 4378) has died: fg  SVC 
+11-06 08:11:22.367 I/ActivityManager(  524): Start proc 6146:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0ai9000 for  {com.amcolink.app.dev/org.chromium.content.app.SandboxedProcessService0:0}
+11-06 08:11:50.685 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 6695
+11-06 08:11:50.719 I/ActivityManager(  524): Killing 5601:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 6695
+11-06 08:11:51.573 I/ActivityManager(  524): Start proc 6710:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-06 08:12:08.344 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: clear data
+11-06 08:12:08.347 I/ActivityManager(  524): Killing 6710:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to clear data
+11-06 08:12:08.380 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=-1: clearApplicationUserData
+11-06 08:12:09.919 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7095
+11-06 08:12:09.989 I/ActivityManager(  524): Start proc 7104:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-06 08:12:30.045 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7528
+11-06 08:12:30.046 I/ActivityManager(  524): Killing 7104:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 7528
+11-06 08:12:30.424 I/ActivityManager(  524): Start proc 7541:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-06 08:13:12.917 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 7903
+11-06 08:13:12.918 I/ActivityManager(  524): Killing 7541:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 7903
+11-06 08:13:13.238 I/ActivityManager(  524): Start proc 7917:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-06 08:14:14.851 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8231
+11-06 08:14:14.852 I/ActivityManager(  524): Killing 7917:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8231
+11-06 08:14:15.174 I/ActivityManager(  524): Start proc 8244:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-06 08:14:36.348 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8517
+11-06 08:14:36.349 I/ActivityManager(  524): Killing 8244:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8517
+11-06 08:14:36.613 I/ActivityManager(  524): Start proc 8530:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
+11-06 08:15:08.682 I/ActivityManager(  524): Force stopping com.amcolink.app.dev appid=10192 user=0: from pid 8885
+11-06 08:15:08.683 I/ActivityManager(  524): Killing 8530:com.amcolink.app.dev/u0a192 (adj 0): stop com.amcolink.app.dev due to from pid 8885
+11-06 08:15:08.910 I/ActivityManager(  524): Start proc 8898:com.amcolink.app.dev/u0a192 for next-top-activity {com.amcolink.app.dev/com.amcolink.app.dev.MainActivity}
