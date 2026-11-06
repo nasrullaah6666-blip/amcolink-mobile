@@ -408,6 +408,7 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 
 ## Task 58 — Audit fix list (6 Nov 2026)
 - 1 Wanted alerts SQL: website branch `wanted-alerts` pushed to GitHub (it was only on this computer), rollback file added, status note in 047. Production untouched.
+  Staging checked by the owner 6 Nov (read-only): trigger wanted_notify_sellers present, same rules as 047, notifications webhook push-alerts present.
 - 2 Builds: branches only from now (D16); push-to-main trigger kept until the owner chooses.
 - 3 Lint: branch `audit-lint` (Expo's ESLint setup, 0 problems, lint added to `npm run check`).
 - 4 Old property listings: waits for the owner's rule choice (pictures first).
