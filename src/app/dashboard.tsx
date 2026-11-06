@@ -11,7 +11,7 @@ import { Photo } from '@/components/Photo';
 import { Empty, ErrorState, Loading } from '@/components/States';
 import { useAuth } from '@/auth/session';
 import { confirmAll, deleteAd, fetchMyAds, fetchMyShops, fetchMyStats, setAvailability, updateAd, type MyAd, type Stat } from '@/api/seller';
-import { agoLabel, daysSince, FRESH_DAYS, NUDGE_DAYS } from '@/core/freshness';
+import { agoLabel, daysSince, freshDaysFor, nudgeDaysFor } from '@/core/freshness';
 import { formatPrice } from '@/core/utils';
 import { colors, radius, space } from '@/theme/tokens';
 
@@ -65,10 +65,10 @@ function AdRow({ ad, stat, onChanged }: { ad: MyAd; stat: Totals; onChanged: () 
           {ad.pinned_at && !ad.hidden_by_owner ? <AppText variant="caption" tone="green">📌 Pinned to the top of your profile</AppText> : null}
           <AppText variant="caption" tone="secondary">👁 {stat.views} · WhatsApp {stat.whatsapp} · Calls {stat.calls}</AppText>
           {published && ad.availability !== 'sold' ? (
-            age !== null && age < NUDGE_DAYS
+            age !== null && age < nudgeDaysFor(ad.category)
               ? <AppText variant="caption" tone="secondary">Confirmed {agoLabel(ad.confirmed_at)}</AppText>
               : <Pressable accessibilityRole="button" onPress={() => run('confirm', () => setAvailability(ad.id, ad.availability))}>
-                  <AppText variant="caption" tone="error">{busy === 'confirm' ? 'Saving…' : `Not confirmed for ${age ?? FRESH_DAYS} days. Tap to confirm ✓`}</AppText>
+                  <AppText variant="caption" tone="error">{busy === 'confirm' ? 'Saving…' : `Not confirmed for ${age ?? freshDaysFor(ad.category)} days. Tap to confirm ✓`}</AppText>
                 </Pressable>
           ) : null}
         </View>
@@ -135,8 +135,9 @@ export default function Dashboard() {
   const allAds = adsQ.data ?? [];
   const myAds = allAds.filter((a) => a.shop_id === current.id);
   const liveAds = allAds.filter((a) => a.status === 'published' && a.availability !== 'sold');
-  const needConfirm = liveAds.filter((a) => (daysSince(a.confirmed_at) ?? FRESH_DAYS) >= NUDGE_DAYS);
-  const hiddenFromSearch = liveAds.filter((a) => (daysSince(a.confirmed_at) ?? FRESH_DAYS) >= FRESH_DAYS);
+  // Property waits 30 days, everything else 14 (website lib/freshness.ts); the nudge starts a week before an ad drops out.
+  const needConfirm = liveAds.filter((a) => (daysSince(a.confirmed_at) ?? freshDaysFor(a.category)) >= nudgeDaysFor(a.category));
+  const hiddenFromSearch = liveAds.filter((a) => (daysSince(a.confirmed_at) ?? freshDaysFor(a.category)) >= freshDaysFor(a.category));
   const shown = myAds.filter((a) => matches(a, filter));
   const cur = byShop.get(current.id) ?? EMPTY;
 
@@ -160,7 +161,7 @@ export default function Dashboard() {
       ) : null}
       {needConfirm.length > 0 ? (
         <View style={styles.alert}>
-          <AppText variant="bodySmall">⚠ {needConfirm.length} {needConfirm.length === 1 ? 'item' : 'items'} not confirmed for a week{hiddenFromSearch.length ? ` (${hiddenFromSearch.length} hidden from search)` : ''}.</AppText>
+          <AppText variant="bodySmall">⚠ {needConfirm.length} {needConfirm.length === 1 ? 'item' : 'items'} not confirmed lately{hiddenFromSearch.length ? ` (${hiddenFromSearch.length} hidden from search)` : ''}.</AppText>
           <Button title="Confirm all are still available" variant="outline" onPress={async () => {
             try { await confirmAll(user.id); setNote('Done — all your items show as available today.'); refresh(); } catch (e) { setNote((e as Error).message); }
           }} />

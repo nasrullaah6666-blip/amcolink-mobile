@@ -405,3 +405,9 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - Home: the Amcolink logo row slides away as you scroll; the green search band stays on top and the status bar turns green behind it (light status-bar text on green).
 - Bottom bar (Home, Saved, Account): slides away while scrolling down, comes back when scrolling up or at the top — same rules as the website's ScrollChrome (12 px shake guard, never in the first 120 px). The strip over the phone's own buttons always stays.
 - src/lib/scrollBars.ts, (tabs)/_layout.tsx HidingTabBar, (tabs)/index.tsx, saved.tsx, account.tsx; emulator flow 08-scrolling (shots 31–32); 01-smoke scrolls back up before tapping Post Ad.
+
+## Task 59 — Property 30 days ("go" 6 Nov 2026 14:49) — COMPLETED (code, branch property-30-days; website branch property-30-days 22b64ce6)
+- Rent and sale lists hide listings not confirmed for 30 days (shops stay 14). Nothing deleted; one tap in My ads brings them back.
+- My ads: property nudges from day 23 and says 30 days (before: the 14-day shop rule, wrongly "hidden from search").
+- src/core/freshness.ts re-copied from the website (commit 22b64ce6): freshDaysFor / nudgeDaysFor. fetchProperties, similar.ts, dashboard.tsx.
+- Note: staging test ads were seeded on 4 Nov; shop test ads drop out of Home after 14 days (about 18 Nov) unless re-confirmed on staging.
