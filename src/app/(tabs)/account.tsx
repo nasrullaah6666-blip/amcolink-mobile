@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Linking, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Linking, Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Animated from 'react-native-reanimated';
+import { useBarsScroll } from '@/lib/scrollBars';
 import { router } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import { AppText, Button, Icon, type IconName } from '@/components/ui';
@@ -68,6 +70,7 @@ export default function AccountScreen() {
   const [busy, setBusy] = useState(false);
   const fullName = typeof user?.user_metadata?.full_name === 'string' ? user.user_metadata.full_name : '';
 
+  const onScroll = useBarsScroll();
   const signOut = async () => {
     setBusy(true);
     try { await forgetPush(); await db().auth.signOut(); } finally { setBusy(false); }
@@ -75,7 +78,7 @@ export default function AccountScreen() {
 
   return (
     <SafeAreaView edges={['top']} style={styles.page}>
-      <ScrollView contentContainerStyle={styles.body}>
+      <Animated.ScrollView contentContainerStyle={styles.body} onScroll={onScroll} scrollEventThrottle={16}>
         <AppText variant="title" accessibilityRole="header">{user ? 'My account' : 'Account'}</AppText>
         {!ready ? <Loading /> : user ? (
           <View style={[styles.panel, styles.me]}>
@@ -125,7 +128,7 @@ export default function AccountScreen() {
         <AppText variant="caption" tone="secondary" style={styles.env}>
           {config.isStaging ? 'Test build · connected to STAGING' : 'Production build'}
         </AppText>
-      </ScrollView>
+      </Animated.ScrollView>
     </SafeAreaView>
   );
 }

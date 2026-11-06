@@ -21,6 +21,12 @@ appId: com.amcolink.app.dev
     direction: DOWN
     timeout: 15000
 - takeScreenshot: shots/03-account
+# The bottom bar hides while scrolling down (like the website): scroll back up so it shows again.
+- scrollUntilVisible:
+    element:
+      text: "Post Ad"
+    direction: UP
+    timeout: 15000
 - tapOn: "Post Ad"
 - takeScreenshot: shots/04-post-ad
 - tapOn: "Home"

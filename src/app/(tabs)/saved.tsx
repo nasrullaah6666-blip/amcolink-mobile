@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
-import { FlatList, Pressable, RefreshControl, StyleSheet, View } from 'react-native';
+import { Pressable, RefreshControl, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Animated from 'react-native-reanimated';
+import { useBarsScroll } from '@/lib/scrollBars';
 import { router } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
 import { AppText } from '@/components/ui';
@@ -68,6 +70,7 @@ export default function SavedScreen() {
   const { ready, user } = useAuth();
   const q = useQuery({ queryKey: ['saved-items', user?.id], queryFn: () => fetchSavedItems(user!.id), enabled: !!user });
   const drops = usePriceDrops().data;
+  const onScroll = useBarsScroll();
   useEffect(() => { if (drops?.latest) markDropsSeen(drops.latest); }, [drops?.latest]);
 
   const open = (f: SavedItem) =>
@@ -84,8 +87,10 @@ export default function SavedScreen() {
           <Empty title="Save what you like" hint="Sign in, then tap the heart on any listing or Follow on a shop." action={{ title: 'Sign in', onPress: () => router.push('/sign-in') }} />
         </View>
       ) : (
-        <FlatList
+        <Animated.FlatList
           data={q.data ?? []}
+          onScroll={onScroll}
+          scrollEventThrottle={16}
           keyExtractor={(f) => f.id}
           contentContainerStyle={styles.list}
           ListHeaderComponent={<>

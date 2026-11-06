@@ -1,10 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Tabs } from 'expo-router';
+import { BottomTabBar, type BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon, type IconName } from '@/components/ui';
 import { colors, radius, size, type } from '@/theme/tokens';
 import { useDropDot } from '@/lib/priceDrops';
+import { barsHidden } from '@/lib/scrollBars';
 
 /** Bottom bar: Home · Saved · Post Ad · Account (same 4 items as the website). */
 function TabIcon({ name, focused }: { name: IconName; focused: boolean }) {
@@ -30,17 +33,36 @@ function PostAdIcon() {
   );
 }
 
-export default function TabsLayout() {
-  // Phones with on-screen buttons (|||  ○  <) draw them over the app: lift the bar above them.
+/**
+ * The bar slides away while scrolling down a tab's list and comes back when scrolling up (website: ScrollChrome).
+ * The strip over the phone's own buttons (|||  ○  <) always stays, so nothing is drawn under them.
+ */
+function HidingTabBar(props: BottomTabBarProps) {
   const insets = useSafeAreaInsets();
+  const slide = useAnimatedStyle(() => ({ height: withTiming(barsHidden.value ? 0 : size.tabBar, { duration: 200 }) }));
+  return (
+    <View style={{ backgroundColor: colors.surface }}>
+      <Animated.View style={[{ overflow: 'hidden', justifyContent: 'flex-start' }, slide]}>
+        <BottomTabBar {...props} />
+      </Animated.View>
+      <View style={{ height: insets.bottom }} />
+    </View>
+  );
+}
+
+export default function TabsLayout() {
   return (
     <Tabs
+      tabBar={(props) => <HidingTabBar {...props} />}
+      safeAreaInsets={{ bottom: 0 }}
+      // A new tab always starts with the bar showing.
+      screenListeners={{ focus: () => { barsHidden.value = 0; } }}
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.green,
         tabBarInactiveTintColor: colors.textSecondary,
         tabBarLabelStyle: type.tab,
-        tabBarStyle: { height: size.tabBar + insets.bottom, paddingBottom: insets.bottom, backgroundColor: colors.surface, borderTopColor: colors.border },
+        tabBarStyle: { height: size.tabBar, paddingBottom: 0, backgroundColor: colors.surface, borderTopColor: colors.border },
         sceneStyle: { backgroundColor: colors.background },
       }}
     >

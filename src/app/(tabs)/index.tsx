@@ -1,7 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import { FlatList, Pressable, RefreshControl, StyleSheet, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { router } from 'expo-router';
+import { Pressable, RefreshControl, StyleSheet, TextInput, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { router, useFocusEffect } from 'expo-router';
+import { setStatusBarStyle } from 'expo-status-bar';
+import Animated, {
+  interpolateColor, runOnJS, useAnimatedReaction, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue,
+} from 'react-native-reanimated';
+import { barsOnScroll } from '@/lib/scrollBars';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { AppText, Icon, type IconName } from '@/components/ui';
 import { ListingCard } from '@/components/ListingCard';
@@ -38,25 +43,31 @@ const TILES: Tile[] = [
   { key: 'explore', label: 'Explore', icon: 'compass', go: () => router.push('/explore') },
 ];
 
-function Header({ onSearch }: { onSearch: (q: string) => void }) {
+/** The green band with the search box. It stays on top while the list scrolls (website: sticky search band). */
+function SearchBand({ onSearch }: { onSearch: (q: string) => void }) {
   const [q, setQ] = useState('');
   return (
-    <View>
-      <View style={styles.band}>
-        <View style={styles.search}>
-          <Icon name="search" color={colors.textSecondary} size={20} strokeWidth={2} />
-          <TextInput
-            accessibilityLabel="Search"
-            placeholder="I'm looking for…"
-            placeholderTextColor={colors.textSecondary}
-            style={styles.searchInput}
-            value={q}
-            onChangeText={setQ}
-            returnKeyType="search"
-            onSubmitEditing={() => q.trim() && onSearch(q.trim())}
-          />
-        </View>
+    <View style={styles.band}>
+      <View style={styles.search}>
+        <Icon name="search" color={colors.textSecondary} size={20} strokeWidth={2} />
+        <TextInput
+          accessibilityLabel="Search"
+          placeholder="I'm looking for…"
+          placeholderTextColor={colors.textSecondary}
+          style={styles.searchInput}
+          value={q}
+          onChangeText={setQ}
+          returnKeyType="search"
+          onSubmitEditing={() => q.trim() && onSearch(q.trim())}
+        />
       </View>
+    </View>
+  );
+}
+
+function Header() {
+  return (
+    <View>
       <View style={styles.grid}>
         {TILES.map((t) => (
           <Pressable key={t.key} accessibilityRole="button" accessibilityLabel={t.label} onPress={t.go} style={styles.tile}>
@@ -93,27 +104,39 @@ export default function HomeScreen() {
   const items: Listing[] = (feed.data?.pages.flat() ?? []).filter((a) => !blocked.has(a.shop_id));
   const onSearch = useCallback((q: string) => router.push({ pathname: '/search', params: { q } }), []);
 
+  // Website on phones: the logo row slides away as you scroll, the green search band stays on top
+  // (and the phone's status bar turns green behind it); the bottom bar hides while scrolling down.
+  const insets = useSafeAreaInsets();
+  const [brandH, setBrandH] = useState(52);
+  const [topH, setTopH] = useState(52 + size.input + space.md + space.lg);
+  const y = useSharedValue(0);
+  const onScroll = useAnimatedScrollHandler<{ last?: number; travelled?: number }>({
+    onScroll: (e, ctx) => { y.value = e.contentOffset.y; barsOnScroll(e.contentOffset.y, ctx); },
+  });
+  const slide = useAnimatedStyle(() => ({ transform: [{ translateY: -Math.min(Math.max(y.value, 0), brandH) }] }));
+  const statusBg = useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(y.value, [brandH - 12, brandH], [colors.background, colors.green]),
+  }));
+  // Light status-bar text on green, dark text on the light page.
+  const [onGreen, setOnGreen] = useState(false);
+  useAnimatedReaction(() => y.value > brandH - 6, (now, before) => { if (now !== before) runOnJS(setOnGreen)(now); }, [brandH]);
+  useFocusEffect(useCallback(() => {
+    setStatusBarStyle(onGreen ? 'light' : 'dark');
+    return () => setStatusBarStyle('dark');
+  }, [onGreen]));
+
   return (
-    <SafeAreaView edges={['top']} style={styles.page}>
-      <View style={styles.header}>
-        <AppText variant="title" tone="green" style={styles.brand}>Amcolink</AppText>
-        <PickerField label="Country" value={countryCode ?? 'ALL'} options={COUNTRY_OPTIONS} onChange={(v) => setCode(v === 'ALL' ? null : v)}
-          trigger={(open, current) => (
-            <Pressable accessibilityRole="button" accessibilityLabel={`Country: ${current}. Change`} onPress={open} style={styles.countryPill}>
-              <AppText variant="label" numberOfLines={1}>{current}</AppText>
-              <Icon name="chevronDown" size={16} strokeWidth={2} color={colors.textSecondary} />
-            </Pressable>
-          )} />
-        <MenuButton />
-      </View>
-      <FlatList
+    <View style={styles.page}>
+      <Animated.FlatList
         data={items}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
         keyExtractor={(a) => a.id}
         numColumns={2}
         columnWrapperStyle={styles.row}
-        contentContainerStyle={styles.content}
+        contentContainerStyle={[styles.content, { paddingTop: insets.top + topH }]}
         renderItem={({ item }) => <ListingCard ad={item} />}
-        ListHeaderComponent={<Header onSearch={onSearch} />}
+        ListHeaderComponent={<Header />}
         ListEmptyComponent={
           feed.isPending ? <Loading label="Loading the latest finds…" />
             : feed.isError ? <ErrorState message={(feed.error as Error).message} onRetry={() => feed.refetch()} />
@@ -122,21 +145,40 @@ export default function HomeScreen() {
         ListFooterComponent={feed.isFetchingNextPage ? <Loading label="Loading more…" /> : null}
         onEndReached={() => feed.hasNextPage && !feed.isFetchingNextPage && feed.fetchNextPage()}
         onEndReachedThreshold={0.6}
-        refreshControl={<RefreshControl refreshing={feed.isRefetching && !feed.isFetchingNextPage} onRefresh={() => feed.refetch()} colors={[colors.green]} tintColor={colors.green} />}
+        refreshControl={<RefreshControl refreshing={feed.isRefetching && !feed.isFetchingNextPage} onRefresh={() => feed.refetch()} colors={[colors.green]} tintColor={colors.green} progressViewOffset={insets.top + topH} />}
         removeClippedSubviews
         initialNumToRender={6}
         windowSize={7}
       />
-    </SafeAreaView>
+      <View style={styles.top} pointerEvents="box-none">
+        <Animated.View style={[{ paddingTop: insets.top }, slide]} onLayout={(e) => setTopH(e.nativeEvent.layout.height - insets.top)}>
+          <View style={styles.header} onLayout={(e) => setBrandH(e.nativeEvent.layout.height)}>
+            <AppText variant="title" tone="green" style={styles.brand}>Amcolink</AppText>
+            <PickerField label="Country" value={countryCode ?? 'ALL'} options={COUNTRY_OPTIONS} onChange={(v) => setCode(v === 'ALL' ? null : v)}
+              trigger={(open, current) => (
+                <Pressable accessibilityRole="button" accessibilityLabel={`Country: ${current}. Change`} onPress={open} style={styles.countryPill}>
+                  <AppText variant="label" numberOfLines={1}>{current}</AppText>
+                  <Icon name="chevronDown" size={16} strokeWidth={2} color={colors.textSecondary} />
+                </Pressable>
+              )} />
+            <MenuButton />
+          </View>
+          <SearchBand onSearch={onSearch} />
+        </Animated.View>
+        <Animated.View style={[styles.statusCover, { height: insets.top }, statusBg]} />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.background },
   countryPill: { flexDirection: 'row', alignItems: 'center', gap: space.xs, height: size.chip, maxWidth: 180, paddingHorizontal: space.md, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.borderStrong, backgroundColor: colors.surface },
-  header: { flexDirection: 'row', alignItems: 'center', gap: space.xs, paddingLeft: space.lg, paddingRight: space.xs, paddingTop: space.sm, paddingBottom: space.sm },
+  header: { backgroundColor: colors.background, flexDirection: 'row', alignItems: 'center', gap: space.xs, paddingLeft: space.lg, paddingRight: space.xs, paddingTop: space.sm, paddingBottom: space.sm },
   brand: { flex: 1 },
-  band: { backgroundColor: colors.green, marginHorizontal: -space.lg, paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: space.lg },
+  band: { backgroundColor: colors.green, paddingHorizontal: space.lg, paddingTop: space.md, paddingBottom: space.lg },
+  top: { position: 'absolute', top: 0, left: 0, right: 0 },
+  statusCover: { position: 'absolute', top: 0, left: 0, right: 0 },
   search: { flexDirection: 'row', alignItems: 'center', gap: space.sm + 2, height: size.input, paddingHorizontal: space.md + 2, borderRadius: radius.md, backgroundColor: colors.surface },
   searchInput: { flex: 1, ...type.body, fontSize: 15, color: colors.text },
   content: { paddingHorizontal: space.lg, paddingBottom: space.xxl },

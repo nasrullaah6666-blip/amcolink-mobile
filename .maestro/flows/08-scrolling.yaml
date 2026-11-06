@@ -1,0 +1,31 @@
+# Scrolling like the website: the logo row slides away, the green search stays on top,
+# the bottom bar hides while scrolling down and comes back when scrolling up.
+appId: com.amcolink.app.dev
+---
+- launchApp
+- tapOn:
+    text: "Wait"
+    optional: true
+- extendedWaitUntil:
+    visible: "The latest finds"
+    timeout: 60000
+- swipe:
+    start: 50%, 80%
+    end: 50%, 25%
+    duration: 600
+- swipe:
+    start: 50%, 80%
+    end: 50%, 25%
+    duration: 600
+- waitForAnimationToEnd:
+    timeout: 5000
+- assertVisible: "I'm looking for…"
+- takeScreenshot: shots/31-home-scrolling-down
+- swipe:
+    start: 50%, 40%
+    end: 50%, 60%
+    duration: 400
+- waitForAnimationToEnd:
+    timeout: 5000
+- assertVisible: "Post Ad"
+- takeScreenshot: shots/32-home-scrolling-up

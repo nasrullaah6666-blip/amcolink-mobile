@@ -400,3 +400,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - Build 34 (tasks 54–55) built and was published as test-build-34, but GitHub stopped the run at 2,000/2,000 free minutes, so the emulator check was skipped.
 - The owner made the repository public for a short while (public projects build for free), then makes it private again.
 - Notes-only commits (docs/**, *.md) no longer start a build.
+
+## Task 57 — Scrolling like the website (owner's video, "go" 6 Nov 2026 10:40) — COMPLETED (code)
+- Home: the Amcolink logo row slides away as you scroll; the green search band stays on top and the status bar turns green behind it (light status-bar text on green).
+- Bottom bar (Home, Saved, Account): slides away while scrolling down, comes back when scrolling up or at the top — same rules as the website's ScrollChrome (12 px shake guard, never in the first 120 px). The strip over the phone's own buttons always stays.
+- src/lib/scrollBars.ts, (tabs)/_layout.tsx HidingTabBar, (tabs)/index.tsx, saved.tsx, account.tsx; emulator flow 08-scrolling (shots 31–32); 01-smoke scrolls back up before tapping Post Ad.
