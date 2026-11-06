@@ -8,6 +8,10 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    # Notes-only changes don't build (saves GitHub Actions minutes).
+    paths-ignore:
+      - 'docs/**'
+      - '**/*.md'
 
 permissions:
   contents: write

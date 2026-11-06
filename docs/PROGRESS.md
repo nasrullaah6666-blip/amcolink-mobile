@@ -395,3 +395,8 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - **Colours:** normal (outline) buttons are grey border + dark text; selected chips are light-green tint with green text; solid green only for a screen's one main action (Publish, Sign in, WhatsApp, Save…). Made secondary: Share to WhatsApp Status, AI photo helper, "I have it — WhatsApp" on Wanted cards, Try again. Home: Property and Services tiles look like the others (the website shows them solid green — owner's choice for the app).
 - **My ads:** Edit · Pin · Hide · Delete fit in one row again (Delete as a small text button).
 - All in `src/theme/tokens.ts`, `Button`, `Chip`, `TextField`, `SearchField`, `ScreenHeader` plus a few screens — one design file, so every screen follows.
+
+## Task 56 — GitHub Actions minutes ran out (6 Nov 2026)
+- Build 34 (tasks 54–55) built and was published as test-build-34, but GitHub stopped the run at 2,000/2,000 free minutes, so the emulator check was skipped.
+- The owner made the repository public for a short while (public projects build for free), then makes it private again.
+- Notes-only commits (docs/**, *.md) no longer start a build.
