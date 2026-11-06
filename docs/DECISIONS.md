@@ -71,3 +71,15 @@ Each entry: what was chosen, why, and what else was considered.
 - **Why:** the AI key must stay on the server (never in the app), and the website already has the prompt, limits and checks — no duplicated logic.
 - **Limit:** test builds sign in to staging, which the website does not know, so the button is shown only in the production build.
 - **Colour:** the website's button is violet; the app's is Amcolink green (owner's green-only rule). The website button is unchanged unless the owner asks.
+
+## D15. Package warnings from npm audit (6 Nov 2026)
+- `npm audit` lists 25 warnings (5 "high": decode-uri-component, zod and others). All are inside build tools and helper
+  libraries used while building or testing (Metro, Jest, Expo's command-line tools), not code that runs on the phone.
+- **Chosen:** do NOT run `npm audit fix --force`: it would jump Expo/React Native versions and break the build.
+  They go away with the planned Expo upgrade (D1). Re-check after that upgrade.
+
+## D16. Branches and builds (6 Nov 2026)
+- GitHub's 2,000 free Actions minutes ran out on 6 Nov (about 34 builds in one day, every commit went straight to main).
+- **Chosen:** work only on branches (PROJECT_RULES rule 10); main changes only with the owner's approval.
+  Pushing a branch never builds. Notes-only changes (docs, *.md) never build. A push to main builds as before
+  (open question for the owner: keep that, or start builds only by hand with "Run workflow").

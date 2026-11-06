@@ -405,3 +405,13 @@ Status values: NOT STARTED / IN PROGRESS / BLOCKED / COMPLETED.
 - Home: the Amcolink logo row slides away as you scroll; the green search band stays on top and the status bar turns green behind it (light status-bar text on green).
 - Bottom bar (Home, Saved, Account): slides away while scrolling down, comes back when scrolling up or at the top — same rules as the website's ScrollChrome (12 px shake guard, never in the first 120 px). The strip over the phone's own buttons always stays.
 - src/lib/scrollBars.ts, (tabs)/_layout.tsx HidingTabBar, (tabs)/index.tsx, saved.tsx, account.tsx; emulator flow 08-scrolling (shots 31–32); 01-smoke scrolls back up before tapping Post Ad.
+
+## Task 58 — Audit fix list (6 Nov 2026)
+- 1 Wanted alerts SQL: website branch `wanted-alerts` pushed to GitHub (it was only on this computer), rollback file added, status note in 047. Production untouched.
+- 2 Builds: branches only from now (D16); push-to-main trigger kept until the owner chooses.
+- 3 Lint: branch `audit-lint` (Expo's ESLint setup, 0 problems, lint added to `npm run check`).
+- 4 Old property listings: waits for the owner's rule choice (pictures first).
+- 5 Starter leftovers: branch `audit-cleanup` (iPhone icon → Amcolink icon, unused Expo sample images removed).
+- 6 npm audit: noted in D15, no force-fix.
+- 7 `npm run compare:website ../african-market`: branch `audit-core-compare`; today all 32 copies match.
+- 8 Permanent security-check page for the store build: already in RELEASE.md (`PROD_CAPTCHA_PAGE`); reminder at release.
