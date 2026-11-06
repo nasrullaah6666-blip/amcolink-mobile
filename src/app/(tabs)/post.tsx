@@ -21,9 +21,8 @@ import { CURRENCIES, currencyLabel } from '@/core/listing';
 import { NOT_ALLOWED_ITEMS, NOT_ALLOWED_RENTALS } from '@/core/notAllowed';
 import { PropertyFields } from '@/components/PropertyFields';
 import { DEALS, type Deal } from '@/core/rentals';
-import { categoriesInGroup, groupOfCategory } from '@/core/property';
+import { categoriesInGroup, groupOfCategory, isRole, roleLabel, ROLES } from '@/core/property';
 import { CATEGORIES } from '@/core/types';
-import { isRole, roleLabel, ROLES } from '@/core/property';
 import { colors, radius, size, space } from '@/theme/tokens';
 
 const MAX_PHOTOS = 6;

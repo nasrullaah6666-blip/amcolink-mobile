@@ -12,7 +12,7 @@ jest.mock('@/api/db', () => ({ db: () => ({ auth: { signInWithPassword: mockSign
 // The real check is a Cloudflare page; here it hands over a token straight away.
 jest.mock('../HumanCheck', () => {
   const { useEffect } = jest.requireActual('react');
-  return { HumanCheck: ({ onToken }: { onToken: (t: string | null) => void }) => { useEffect(() => { onToken(mockToken); }, []); return null; } };
+  return { HumanCheck: ({ onToken }: { onToken: (t: string | null) => void }) => { useEffect(() => { onToken(mockToken); }, []); /* eslint-disable-line react-hooks/exhaustive-deps */ return null; } };
 });
 
 beforeEach(() => { mockSignIn.mockReset(); mockSignUp.mockReset(); mockReplace.mockReset(); mockToken = 'token-1'; });

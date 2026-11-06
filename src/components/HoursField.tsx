@@ -9,7 +9,8 @@ import { colors, radius, space } from '@/theme/tokens';
 const STEPS = Array.from({ length: 48 }, (_, i) => `${String(Math.floor(i / 2)).padStart(2, '0')}:${i % 2 ? '30' : '00'}`);
 const options = (cur: string) => (STEPS.includes(cur) ? STEPS : [cur, ...STEPS]).map((t) => ({ value: t, label: niceTime(t) }));
 
-/** A compact time box that opens the picker list. */
+/** A compact time box that opens the picker list. (A render helper for PickerField, not a component.) */
+// eslint-disable-next-line react/display-name
 const timeBox = (label: string) => (open: () => void, text: string) => (
   <Pressable accessibilityRole="button" accessibilityLabel={`${label}: ${text}`} onPress={open} style={styles.time}>
     <AppText variant="body" numberOfLines={1}>{text}</AppText>

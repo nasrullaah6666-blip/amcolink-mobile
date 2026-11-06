@@ -79,10 +79,9 @@ test('notifications are private', async () => {
 });
 
 // The app's own list queries must be accepted by the real database (staging may have no rows yet).
-import { fetchCategory, fetchCollection, fetchLatest, fetchProperties, fetchSearch, fetchShop } from '../src/api/listings';
+import { fetchCategory, fetchCollection, fetchLatest, fetchProperties, fetchSearch, fetchShop, fetchGifts } from '../src/api/listings';
 import { getTrust } from '../src/core/trust';
 import { fetchWanted } from '../src/api/wanted';
-import { fetchGifts } from '../src/api/listings';
 import { getTrending } from '../src/core/trending';
 import { fetchReviews } from '../src/api/reviews';
 

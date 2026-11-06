@@ -1,4 +1,4 @@
-import { buildAd, type AdDraft } from '../postAd';
+import { buildAd, type AdDraft, buildAdEdit, type EditableAd } from '../postAd';
 
 const base: AdDraft = {
   shopId: 's1', group: 'shop', title: 'Samsung A15', description: 'Very clean phone, 128 GB, box and charger included.', price: '15000', currency: 'KES',
@@ -49,7 +49,6 @@ test('food needs an expiry date or "no expiry"', () => {
   expect(ok.ok && ok.row.no_expiry).toBe(true);
 });
 
-import { buildAdEdit, type EditableAd } from '../postAd';
 
 const saved: EditableAd = {
   id: 'a1', shop_id: 's1', title: 'Samsung A15', description: base.description, price: 15000, currency: 'KES', category: 'Phones & Tablets',

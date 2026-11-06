@@ -1,5 +1,5 @@
 // Spot checks that the rules copied from the website still behave like the website.
-import { MAIN_CATEGORIES, normalizeCategory, RENTAL_CATEGORY } from '../categories';
+import { MAIN_CATEGORIES, normalizeCategory, RENTAL_CATEGORY, SHARED_SUBS, subsOf } from '../categories';
 
 test('10 main categories, Services included, like the website', () => {
   expect(MAIN_CATEGORIES).toHaveLength(10);
@@ -18,7 +18,6 @@ test('every category slug is unique', () => {
   expect(new Set(slugs).size).toBe(slugs.length);
 });
 
-import { SHARED_SUBS, subsOf } from '../categories';
 
 test('categories match the website (Nov 2026): new sub-categories and shared tiles point at real ones', () => {
   expect(subsOf('Vehicles')).toContain('Trucks & buses');

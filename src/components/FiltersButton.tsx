@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppText, Button, Chip, TextField } from '@/components/ui';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { CONDITIONS } from '@/core/conditions';
-import { colors, radius, space } from '@/theme/tokens';
+import { colors, space } from '@/theme/tokens';
 
 /** The website's search filters (components/SearchFilters.tsx): town, price range, condition, verified sellers only. */
 export type ListFilters = { city: string; min: string; max: string; condition: string; verified: boolean };

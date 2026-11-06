@@ -19,7 +19,7 @@ import { FEATURED_COUNTRIES, OTHER_COUNTRIES } from '@/core/geo';
 import { PickerField } from '@/components/PickerField';
 import { useBlocked } from '@/auth/mine';
 import { useCountry } from '@/lib/countryPref';
-import { colors, fonts, radius, size, space, type } from '@/theme/tokens';
+import { colors, radius, size, space, type } from '@/theme/tokens';
 
 const ICONS: Record<string, IconName> = {
   phones: 'phone', electronics: 'tv', 'home-appliances': 'sofa', fashion: 'shirt', beauty: 'bottle', vehicles: 'car',
