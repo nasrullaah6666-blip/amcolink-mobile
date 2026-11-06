@@ -46,3 +46,14 @@ test('near me: distance, rounding to ~0.5 km, labels (website rules)', () => {
   expect(formatKm(2.3)).toBe('about 2.5 km away');
   expect(formatKm(12.6)).toBe('about 13 km away');
 });
+
+import { freshDaysFor, nudgeDaysFor } from '../freshness';
+
+describe('freshness (same rule as the website)', () => {
+  it('keeps property 30 days and everything else 14, nudging a week before', () => {
+    expect(freshDaysFor('Houses & Rentals')).toBe(30);
+    expect(freshDaysFor('Fashion')).toBe(14);
+    expect(nudgeDaysFor('Houses & Rentals')).toBe(23);
+    expect(nudgeDaysFor('Fashion')).toBe(7);
+  });
+});

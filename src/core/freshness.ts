@@ -1,8 +1,21 @@
-// Copied from the Amcolink website repo, lib/freshness.ts at commit dde47f3b (only import paths and env names adapted). The website is the source of truth: update both together.
+// Copied from the Amcolink website repo, lib/freshness.ts at commit 22b64ce6 (only import paths and env names adapted). The website is the source of truth: update both together.
 // "Still available" freshness rules. Sellers confirm listings with one tap; listings not
 // confirmed for FRESH_DAYS drop out of search until the seller confirms again.
 export const FRESH_DAYS = 14;
 export const NUDGE_DAYS = 7;
+/** Houses and rooms (rent and sale) take longer to let or sell: they stay listed for 30 days per confirmation. */
+export const PROPERTY_FRESH_DAYS = 30;
+const PROPERTY_CATEGORY = "Houses & Rentals";
+
+/** Days a listing stays listed after its last "still available" confirmation (property 30, everything else 14). */
+export function freshDaysFor(category?: string | null): number {
+  return category === PROPERTY_CATEGORY ? PROPERTY_FRESH_DAYS : FRESH_DAYS;
+}
+
+/** From this age on, the seller is asked to confirm (one week before the listing would drop out). */
+export function nudgeDaysFor(category?: string | null): number {
+  return freshDaysFor(category) - (FRESH_DAYS - NUDGE_DAYS);
+}
 export const DEAL_DAYS = 7;
 /** Minimum discount for the Deals tab and the home "Deals" row. */
 export const BIG_DEAL_PERCENT = 30;
@@ -26,9 +39,9 @@ export function agoLabel(iso?: string | null): string {
   return d === 0 ? "today" : d === 1 ? "yesterday" : `${d} days ago`;
 }
 
-export function isFresh(iso?: string | null): boolean {
+export function isFresh(iso?: string | null, category?: string | null): boolean {
   const d = daysSince(iso);
-  return d !== null && d < FRESH_DAYS;
+  return d !== null && d < freshDaysFor(category);
 }
 
 /** Returns the % drop when the listing is a current deal, otherwise null. */

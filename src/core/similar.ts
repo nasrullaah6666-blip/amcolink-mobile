@@ -1,7 +1,7 @@
-// Copied from the website: lib/similar.ts + cityPattern from lib/nearby.ts (commit 13076bf7). Keep in step with the website.
+// Copied from the website: lib/similar.ts + cityPattern from lib/nearby.ts (commit 22b64ce6). Keep in step with the website.
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Ad } from "@/core/types";
-import { cutoffIso, FRESH_DAYS } from "@/core/freshness";
+import { cutoffIso, freshDaysFor } from "@/core/freshness";
 
 export function cityPattern(city: string): string {
   return city.replace(/[^\p{L}\p{N}\s-]/gu, " ").replace(/\s+/g, " ").trim().slice(0, 60);
@@ -17,7 +17,7 @@ export async function getSimilarAds(s: SupabaseClient, ad: Ad, city: string, blo
   const base = () => {
     const q = s.from("ads").select("*, shops!inner(id,name,slug,city,region,is_verified,status)")
       .eq("status", "published").eq("availability", "available").eq("shops.status", "approved")
-      .eq("category", ad.category).neq("id", ad.id).gte("confirmed_at", cutoffIso(FRESH_DAYS))
+      .eq("category", ad.category).neq("id", ad.id).gte("confirmed_at", cutoffIso(freshDaysFor(ad.category)))
       .order("feed_boost", { ascending: false }).order("created_at", { ascending: false }).limit(40);
     return deal ? q.eq("transaction_type", deal) : q;
   };

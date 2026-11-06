@@ -4,7 +4,7 @@
  */
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Ad, Shop } from '@/core/types';
-import { BIG_DEAL_PERCENT, cutoffIso, DEAL_DAYS, dealPercent, FRESH_DAYS } from '@/core/freshness';
+import { BIG_DEAL_PERCENT, cutoffIso, DEAL_DAYS, dealPercent, FRESH_DAYS, PROPERTY_FRESH_DAYS } from '@/core/freshness';
 import { RENTAL } from '@/core/rentals';
 import { searchWords, wordFilter, rankByRelevance } from '@/core/searchWords';
 import { sanitizeSearch } from '@/core/utils';
@@ -91,7 +91,8 @@ export async function fetchProperties(f: PropertyFilters, c: SupabaseClient = db
   const from = (f.page ?? 0) * PAGE_SIZE;
   let q = c.from('ads').select(LISTING_SELECT)
     .eq('status', 'published').eq('category', RENTAL).eq('transaction_type', f.deal)
-    .in('availability', ['available', 'reserved']).eq('shops.status', 'approved');
+    .in('availability', ['available', 'reserved']).eq('shops.status', 'approved')
+    .gte('confirmed_at', cutoffIso(PROPERTY_FRESH_DAYS)); // not confirmed for 30 days: drops out until the lister confirms again
   if (f.country) q = q.eq('shops.country', f.country);
   const area = sanitizeSearch(f.area);
   if (area) q = q.or(`rental->>area.ilike.%${area}%,title.ilike.%${area}%`);
