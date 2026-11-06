@@ -10,7 +10,8 @@
     "check:design": "node scripts/check-design.js",
     "check": "npm run typecheck && npm run lint && npm run check:design && npm run test",
     "test": "jest --ci",
-    "test:integration": "jest --ci -c jest.integration.config.js"
+    "test:integration": "jest --ci -c jest.integration.config.js",
+    "compare:website": "node scripts/compare-website.js"
   },
   "dependencies": {
     "@expo-google-fonts/outfit": "^0.4.3",
