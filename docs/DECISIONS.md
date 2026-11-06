@@ -81,5 +81,5 @@ Each entry: what was chosen, why, and what else was considered.
 ## D16. Branches and builds (6 Nov 2026)
 - GitHub's 2,000 free Actions minutes ran out on 6 Nov (about 34 builds in one day, every commit went straight to main).
 - **Chosen:** work only on branches (PROJECT_RULES rule 10); main changes only with the owner's approval.
-  Pushing a branch never builds. Notes-only changes (docs, *.md) never build. A push to main builds as before
-  (open question for the owner: keep that, or start builds only by hand with "Run workflow").
+  Pushing a branch never builds. Notes-only changes (docs, *.md) never build.
+  Owner chose (6 Nov): builds stay AUTOMATIC — every approved change that goes to main builds by itself.
