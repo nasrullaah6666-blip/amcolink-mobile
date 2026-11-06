@@ -16,7 +16,7 @@ and given to the owner together when asked. Updated: 5 Nov 2026, 20:19.
 | AI photo helper: `ANTHROPIC_API_KEY` on Render (paid) + green or violet website button | turns on #3 |
 | Google Play developer account (one-time fee) | needed to publish |
 | Release settings in GitHub (upload key, production publishable key, Turnstile site key, permanent security page) | steps in `docs/RELEASE.md` |
-| Phone alerts + Wanted alerts on production, then "deploy" the website branch `wanted-alerts` | when the store app is ready |
+| Phone alerts + Wanted alerts on production, then "deploy" the website branch `wanted-alerts` | when the store app is ready. The SQL is saved in the website repo, branch `wanted-alerts`: `supabase/migrations/047_wanted_alerts.sql` (run on staging 5 Nov, result "wanted alerts ready"), undo file `supabase/rollback/047_wanted_alerts_rollback.sql`. There is no 045: the numbering skipped it. |
 | After the first Play upload: the public app-signing fingerprint for App Links, then "deploy" the website file | `docs/APP-LINKS.md` |
 
 Done 5 Nov: Cloudflare purge · Wanted alerts on staging · Firebase project + `GOOGLE_SERVICES` secret · Supabase `push` function, secrets and webhook on staging · real phone alert received · Status share and Forgot password checked on the phone · app ID `com.amcolink.app` confirmed · Explore layout A chosen.
